@@ -1,4 +1,5 @@
 /** ESTE ARCHIVO CONTIENE TODOS LOS ESTILOS DE LA APLICACION NUESTRA FAMILIA**/
+  
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -12,25 +13,52 @@ body{
     position: relative;
     width: 45px;
     height: 45px;
-    left: 490px;
+    left: 120px;
 }
+.img-especialidad{
+    display:block;
+margin:auto;
+}
+
 .site-header{
     padding: 50px 0;
 }
-.contenedor{
-    max-width: 1700px;
-    margin: 0 auto;
-}
+
 header{
     width: 100%;
 }
 
+/** Globales **/
+img{
+    max-width: 100%; /** Declaracion para un solo tamaño de imagenes **/
+}
+
+.contenedor{
+    width: auto;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+h1{
+    font-size: 3.8rem;
+    color: #6199D1;
+}
+
+
+/** Utilidades **/
+.seccion{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.centrar-texto{
+    text-align: center;
+}
 /**Navegacion**/
 .barra{
     background-color: #6199D1;
 }
 .navegacion-principal a{
-    
     text-decoration: none;
     text-emphasis-color: white;
     font-size: 22px;
@@ -44,15 +72,6 @@ header{
         display: inline-block;
         margin-right: 20px;
     }
-}
-
-
-*{
-	margin: 0;
-	padding: 0;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
 }
 
 .navegacion-principal ul{
@@ -100,11 +119,20 @@ header{
 	visibility: visible;
 	opacity: 1;
 }
-.titulo{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: #6199D1;
-    text-align: center;
-}
+
 .parrafo{
     text-align: justify;
+}
+
+/** Especialidades **/
+
+.contenido-especialidad{
+    padding: 2rem;
+}
+.contenido-especialidad h3{
+    margin: 0;
+}
+.uno{
+    font-family:'Courier New', Courier, monospace;
+    
 }
