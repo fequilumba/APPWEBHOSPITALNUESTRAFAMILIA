@@ -13,8 +13,13 @@ body{
     position: relative;
     width: 45px;
     height: 45px;
-    left: 490px;
+    left: 120px;
 }
+.img-especialidad{
+    display:block;
+margin:auto;
+}
+
 .site-header{
     padding: 50px 0;
 }
@@ -29,7 +34,7 @@ img{
 }
 
 .contenedor{
-    width: 95%;
+    width: auto;
     max-width: 120rem;
     margin: 0 auto;
 }
