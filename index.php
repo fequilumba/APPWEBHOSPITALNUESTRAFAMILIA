@@ -31,8 +31,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Historia</a>
-                  <a class="dropdown-item" href="#">Misión</a>
-                  <a class="dropdown-item" href="#">Visión</a>
+                  <a class="dropdown-item" href="#">Misión y Visión</a>
                 </div>
             </li>
 
@@ -48,7 +47,7 @@
 
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Guía del medico
+                    Guía del médico
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Registrar</a>
@@ -96,7 +95,7 @@
         </div>
       </nav>
 
-    <h1 class="centrar-texto">"HOSPITAL NUESTRA FAMILIA"</h1>   
+    <h1 class="centrar-texto titulo">"HOSPITAL NUESTRA FAMILIA"</h1>   
     <div>
         <p class="parrafo">El Hospital Nuestra Familia  cuenta con acreditación internacional tipo oro otorgada por la prestigiosa organización 
 
