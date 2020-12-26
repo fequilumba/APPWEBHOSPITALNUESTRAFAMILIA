@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="Vista/Recursos/img/logo.png">
     <link rel="stylesheet" type="text/css" href="Vista/Recursos/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="fonts.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -13,12 +12,13 @@
     <link rel="stylesheet" href="Vista/Recursos/css/normalize.css">
     <link rel="stylesheet" href="Vista/Recursos/css/estilos.css">
 </head>
-<body>
-  <div class="container-fluid">
-    <br>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="index.php"><img class="logo" href="index.php"src="Vista/Recursos/img/logo.png" alt=""></a>
+<body>
+    <div class="container-fluid">
+        <br>
+  
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"><img class="logo" src="Vista/Recursos/img/logo.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,8 +31,8 @@
                             Hospital
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="historia.php">Historia</a>
-                        <a class="dropdown-item" href="misionVision.php">Misión y Visión</a>
+                        <a class="dropdown-item" href="#">Historia</a>
+                        <a class="dropdown-item" href="#">Misión y Visión</a>
                         </div>
                     </li>
 
@@ -73,12 +73,11 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Recetas</a>
                             <a class="dropdown-item" href="#">Citas</a>
-                            <a class="dropdown-item" href="#">Pacientes</a>
                         </div>
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="contactos.php">Contactos</a>
+                        <a class="nav-link" href="#">Contactos</a>
                     </li>
                 </ul>
 
@@ -96,81 +95,65 @@
             </div>
         </nav><!-- Cierre barra navbar -->
 
-    <h1 class="centrar-texto titulo">"HOSPITAL NUESTRA FAMILIA"</h1>   
-    <div>
-        <p class="parrafo">El Hospital "Nuestra Familia"  cuenta con acreditación internacional tipo oro otorgada por la prestigiosa organización 
+        <h1 class="centrar-texto">Llena el formulario de Registro</h1>
+        
+        <main class="seccion contenido-centrado">
 
-            Acreditación Canadá International (ACI), gracias a los estándares de calidad, calidez y seguridad en sus prácticas 
-            
-            profesionales</p>
+            <form class="contacto" action="">
+                <fieldset class="contenedor">
+                    <legend >Información Personal</legend>
+
+                    <label for="cedula">Cédula:</label>
+                    <input type="text" id="cedula" placeholder="Tu cédula">
+
+                    <label for="nombre">Nombres:</label>
+                    <input type="text" id="nombre" placeholder="Tus Nombres">
+
+                    <label for="apellido">Apellidos:</label>
+                    <input type="text" id="apellido" placeholder="Tus Apellidos">
+
+                    <label for="email">E-mail: </label>
+                    <input type="email" id="email" placeholder="Tu Correo electrónico" required>
+
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" placeholder="Tu Teléfono" required>
+
+                    <label for="direccion">Dirección:</label>
+                    <input type="direc" id="direccion" placeholder="Tu dirección" required>
+
+                    <label for="ciudadresidencia">Ciudad de Residencia:</label>
+                    <input type="ciu_residencia" id="ciudadresidencia" placeholder="Tu ciudad de residencia" required>
+
+                    <label for="fecha_naci">Fecha de Nacimiento:</label>
+                    <input type="date" id="fecha_naci">
+
+
+                    <p>Género:</p>
+                    <br>
+                   <div class="forma-contacto">
+                        <label for="masculino">Masculino</label>
+                        <input type="radio" name="contacto" value="masculino" id="masculino">
+                        <label for="femenino">Femenino</label>
+                        <input type="radio" name="contacto" value="femenino" id="femenino">
+                    </div>
+
+                </fieldset>
+
+                <input type="submit" value="Enviar" class="boton boton-celeste">
+            </form>
+        </main>
+        
+        </div>
+                <br>
+                <footer class="site-footer">
+                    <p>Autor: Fausto Quilumba</p>
+                    <p>Todos los Derechos Reservados 2020 - 2021 &copy;</p>
+                </footer>
+            </div>
+        </div>
+        
     </div>
     
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="padding-top: 20px;">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100 responsive col-xs-12 col-sm-12 col-md-12 col-lg-12" src="Vista/Recursos/img/doctor-portada.jpg" alt="" height="450px">
-        </div>
-
-        <div class="carousel-item">
-          <img class="d-block w-100 responsive col-xs-12 col-sm-12 col-md-12 col-lg-12" src="Vista/Recursos/img/odontologia.jpg" alt="" height="450px">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100 responsive col-xs-12 col-sm-12 col-md-12 col-lg-12" src="Vista/Recursos/img/laboratorio.jpg" alt="" height="450px">
-        </div>
-      </div>
-
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class=" carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Anterior</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-         <span class="sr-only">Siguiente</span>
-      </a>
-    </div><!--Cierre clase carousel-->
-    <br> 
-    <br>
-      <h2 style="text-align: center;">ESPECIALIDADES</h2>
-    <br>
-    <div class="container">
-      <div class="row">	
-      
-        <aside class="col-md-4 text-justify">
-          <img class="img-especialidad" src="Vista/Recursos/img/medicina-interna.jpg" alt="Imagen Medicina Interna" width="350px" height="200px">
-          <p>
-            <h3 style="text-align: center;">Medicina Interna</h3>
-              Es una especialidad médica que se dedica a la atención integral del adulto enfermo, enfocada al diagnóstico y el 
-              tratamiento no quirúrgico de las enfermedades que afectan a sus órganos y sistemas internos, y a su prevención.
-          </p>
-        </aside>
-      
-        <aside class="col-md-4 text-justify">
-          <img class="img-especialidad" src="Vista/Recursos/img/endocrinologia.jpg" alt="Imagen Endocrinologia" width="350px" height="200px">
-          <p>
-            <h3 style="text-align: center;">Endocrinología</h3>
-            Rama de la medicina que se especializa en el diagnóstico y tratamiento de trastornos del sistema endocrino, 
-            que incluye las glándulas y órganos que elaboran hormonas. Estos trastornos incluyen diabetes, infertilidad, 
-            y problemas tiroideos, suprarrenales y de la hipófisis.
-          </p>
-        </aside>       
         
-        <aside class="col-md-4 text-justify">
-          <img class="img-especialidad" src="Vista/Recursos/img/ginecologia.jpg" alt="Imagen Ginecologia" width="350px" height="200px">
-          <p>
-            <h3 style="text-align: center;">Ginecología</h3>
-            La especialidad de Ginecología y Obstetricia es el campo de la medicina que se ocupa de la salud integral 
-            de la mujer, así como de los fenómenos fisiológicos relacionados con la reproducción humana, incluyendo la 
-            gestación, el parto y el puerperio.
-          </p>
-        </aside>
-      </div>
-    </div>
-
-    <br>
-    <footer class="site-footer">
-      <p>Autor: Fausto Quilumba</p>
-      <p>Todos los Derechos Reservados 2020 - 2021 &copy;</p>
-    </footer>
-</div>
 </body>
 </html>

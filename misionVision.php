@@ -68,6 +68,7 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Recetas</a>
                 <a class="dropdown-item" href="#">Citas</a>
+                <a class="dropdown-item" href="#">Pacientes</a>
               </div>
             </li>
             <li class="nav-item active">

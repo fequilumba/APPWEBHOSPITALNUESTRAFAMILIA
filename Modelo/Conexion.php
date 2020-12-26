@@ -1,6 +1,6 @@
 <?php
-class Conexion{
-    private $servidor ="localhost";
+class conexion{
+    /*private $servidor ="localhost";
     private $db ="dbhospital";
     private $puerto = 3306;
     private $charset = "utf8";
@@ -12,6 +12,12 @@ class Conexion{
 
     function __construct(){
         $this->pdo= new PDO("mysql:dbname={$this->db};host={$this->servidor};port={$this->puerto};charset={$this->charset}",$this->usuario,$this->contrasenia,$this->atributos);
-     }
+     }*/
+     public static function conectar(){
+        $x = new PDO("mysql:host=localhost; dbname=dbhospital; charset=utf8 ","root", "");
+        $x->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $x;
+    }
 }
+
 ?>
