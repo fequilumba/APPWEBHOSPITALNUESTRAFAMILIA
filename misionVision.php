@@ -12,13 +12,12 @@
     <link rel="stylesheet" href="Vista/Recursos/css/normalize.css">
     <link rel="stylesheet" href="Vista/Recursos/css/estilos.css">
 </head>
-
 <body>
   <div class="container-fluid">
     <br>
   
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img class="logo" src="Vista/Recursos/img/logo.png" alt=""></a>
+        <a class="navbar-brand" href="index.php"><img class="logo" src="Vista/Recursos/img/logo.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,11 +30,10 @@
                     Hospital
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Historia</a>
-                  <a class="dropdown-item" href="#">Misión y Visión</a>
+                <a class="dropdown-item" href="historia.php">Historia</a>
+                <a class="dropdown-item" href="misionVision.php">Misión y Visión</a>
                 </div>
             </li>
-
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Guía del paciente
@@ -45,7 +43,6 @@
                   <a class="dropdown-item" href="#">Buscar</a>
                 </div>
             </li>
-
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Guía del médico
@@ -55,7 +52,6 @@
                   <a class="dropdown-item" href="#">Buscar</a>
                 </div>
             </li>
-
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Citas
@@ -65,7 +61,6 @@
                   <a class="dropdown-item" href="#">Cancelar</a>
                 </div>
             </li>
-
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Visualizar
@@ -75,12 +70,10 @@
                 <a class="dropdown-item" href="#">Citas</a>
               </div>
             </li>
-
             <li class="nav-item active">
-                <a class="nav-link" href="#">Contactos</a>
+                <a class="nav-link" href="contactos.php">Contactos</a>
             </li>
            
-
           </ul>
           <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown active">
@@ -95,11 +88,9 @@
         </ul>
         </div>
       </nav>
-
       <br>
       <img class="img-especialidad" src="Vista/Recursos/img/mision-vision.png" alt="Misión y Visión">
       <br>
-
       <div class="container">
         <div class="row">
           <br>
@@ -112,7 +103,6 @@
               </p>
             </div>
           </div>
-
           <div class="col-md-4 text-justify">
             <h2 class="centrar-texto">Visión</h2>
             <div>
@@ -121,7 +111,6 @@
               </p>
             </div>
           </div>
-
           <div class="col-md-4 text-justify">
             <h2 class="centrar-texto">Valores</h2>
             <div>
