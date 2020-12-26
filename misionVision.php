@@ -1,3 +1,39 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@jorgeLQ 
+Learn Git and GitHub without any code!
+Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
+
+
+fequilumba
+/
+APPWEBHOSPITALNUESTRAFAMILIA
+1
+0
+0
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+APPWEBHOSPITALNUESTRAFAMILIA/misionVision.php
+@fequilumba
+fequilumba contacto.php, arreglo de algunas clases
+…
+Latest commit 2997474 13 hours ago
+ History
+ 1 contributor
+144 lines (127 sloc)  6.36 KB
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +48,6 @@
     <link rel="stylesheet" href="Vista/Recursos/css/normalize.css">
     <link rel="stylesheet" href="Vista/Recursos/css/estilos.css">
 </head>
-
 <body>
   <div class="container-fluid">
     <br>
@@ -35,7 +70,6 @@
                   <a class="dropdown-item" href="#">Misión y Visión</a>
                 </div>
             </li>
-
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Guía del paciente
@@ -45,7 +79,6 @@
                   <a class="dropdown-item" href="#">Buscar</a>
                 </div>
             </li>
-
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Guía del médico
@@ -55,7 +88,6 @@
                   <a class="dropdown-item" href="#">Buscar</a>
                 </div>
             </li>
-
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Citas
@@ -65,7 +97,6 @@
                   <a class="dropdown-item" href="#">Cancelar</a>
                 </div>
             </li>
-
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Visualizar
@@ -75,12 +106,10 @@
                 <a class="dropdown-item" href="#">Citas</a>
               </div>
             </li>
-
             <li class="nav-item active">
                 <a class="nav-link" href="#">Contactos</a>
             </li>
            
-
           </ul>
           <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown active">
@@ -95,11 +124,9 @@
         </ul>
         </div>
       </nav>
-
       <br>
       <img class="img-especialidad" src="Vista/Recursos/img/mision-vision.png" alt="Misión y Visión">
       <br>
-
       <div class="container">
         <div class="row">
           <br>
@@ -112,7 +139,6 @@
               </p>
             </div>
           </div>
-
           <div class="col-md-4 text-justify">
             <h2 class="centrar-texto">Visión</h2>
             <div>
@@ -121,7 +147,6 @@
               </p>
             </div>
           </div>
-
           <div class="col-md-4 text-justify">
             <h2 class="centrar-texto">Valores</h2>
             <div>
@@ -142,3 +167,15 @@
         
 </body>
 </html>
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
