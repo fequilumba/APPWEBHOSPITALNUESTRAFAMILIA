@@ -91,7 +91,7 @@ header{
     border-radius: 7px;
   }
   
-  .login-box input[type="submit"] {
+  .login-box button{
     border: none;
     outline: none;
     height: 40px;
@@ -101,7 +101,7 @@ header{
     border-radius: 20px;
   }
   
-  .login-box input[type="submit"]:hover {
+  .login-box button:hover {
     cursor: pointer;
     background: #69aff0;
     color: #000;

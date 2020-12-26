@@ -1,8 +1,43 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@jorgeLQ 
+Learn Git and GitHub without any code!
+Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
+
+
+fequilumba
+/
+APPWEBHOSPITALNUESTRAFAMILIA
+1
+0
+0
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+APPWEBHOSPITALNUESTRAFAMILIA/misionVision.php
+@fequilumba
+fequilumba contacto.php, arreglo de algunas clases
+…
+Latest commit 2997474 13 hours ago
+ History
+ 1 contributor
+144 lines (127 sloc)  6.36 KB
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="Vista/Recursos/img/logo.png">
     <link rel="stylesheet" type="text/css" href="Vista/Recursos/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="fonts.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -14,10 +49,10 @@
     <link rel="stylesheet" href="Vista/Recursos/css/estilos.css">
 </head>
 <body>
-    <div class="container-fluid">
+  <div class="container-fluid">
     <br>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#"><img class="logo" src="Vista/Recursos/img/logo.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -35,7 +70,6 @@
                   <a class="dropdown-item" href="#">Misión y Visión</a>
                 </div>
             </li>
-
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Guía del paciente
@@ -45,7 +79,6 @@
                   <a class="dropdown-item" href="#">Buscar</a>
                 </div>
             </li>
-
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Guía del médico
@@ -55,7 +88,6 @@
                   <a class="dropdown-item" href="#">Buscar</a>
                 </div>
             </li>
-
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Citas
@@ -65,7 +97,6 @@
                   <a class="dropdown-item" href="#">Cancelar</a>
                 </div>
             </li>
-
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Visualizar
@@ -75,12 +106,10 @@
                 <a class="dropdown-item" href="#">Citas</a>
               </div>
             </li>
-
             <li class="nav-item active">
                 <a class="nav-link" href="#">Contactos</a>
             </li>
            
-
           </ul>
           <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown active">
@@ -95,71 +124,58 @@
         </ul>
         </div>
       </nav>
-
-    <h1 class="centrar-texto titulo">"HOSPITAL NUESTRA FAMILIA"</h1>   
-    <div>
-        <p class="parrafo">El Hospital Nuestra Familia  cuenta con acreditación internacional tipo oro otorgada por la prestigiosa organización 
-
-            Acreditación Canadá International (ACI), gracias a los estándares de calidad, calidez y seguridad en sus prácticas 
-            
-            profesionales</p>
-    </div>
-    
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="padding-top: 20px;">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img class="d-block w-100 responsive col-xs-12 col-sm-12 col-md-12 col-lg-12" src="Vista/Recursos/img/doctor-portada.jpg" alt="" height="450px">
+      <br>
+      <img class="img-especialidad" src="Vista/Recursos/img/mision-vision.png" alt="Misión y Visión">
+      <br>
+      <div class="container">
+        <div class="row">
+          <br>
+          <div class="col-md-4 text-justify">
+            <h2 class="centrar-texto">Misión</h2>
+            <div>
+              <p class="parrafo">El Hospital “Nuestra Familia", es una entidad privada que promueve la 
+                atención de alta calidad y proporciona atención médica basada en principios éticos y morales, 
+                con responsabilidad en la atención inmediata a pacientes.
+              </p>
             </div>
-            <div class="carousel-item">
-            <img class="d-block w-100 responsive col-xs-12 col-sm-12 col-md-12 col-lg-12" src="Vista/Recursos/img/odontologia.jpg" alt="" height="450px">
+          </div>
+          <div class="col-md-4 text-justify">
+            <h2 class="centrar-texto">Visión</h2>
+            <div>
+              <p class="parrafo">Ser un referente de salud, calidad y seguridad del paciente a nivel nacional, 
+                convirtiéndose en un hospital docente en varias especialidades médicas.
+              </p>
             </div>
-            <div class="carousel-item">
-            <img class="d-block w-100 responsive col-xs-12 col-sm-12 col-md-12 col-lg-12" src="Vista/Recursos/img/laboratorio.jpg" alt="" height="450px">
+          </div>
+          <div class="col-md-4 text-justify">
+            <h2 class="centrar-texto">Valores</h2>
+            <div>
+              <p class="parrafo">Los valores fundamentales que se inculcan en nuestra casa de salud se basan en
+                el respeto, integridad, transparencia, calidez y calidad hacia nuestros pacientes.
+              </p>
             </div>
+          </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class=" carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Anterior</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Siguiente</span>
-        </a>
-    </div>
-    <br> 
+      </div>
     <br>
-        <h2 style="text-align: center;">ESPECIALIDADES</h2>
-    <br>
-
-    <div class="row">	
-        <aside class="col-md-4 text-justify">
-            <img class="img-especialidad" src="Vista/Recursos/img/medicina-interna.jpg" alt="Imagen Medicina Interna" width="350px" height="200px">
-        <p>
-          
-          <h3>Medicina Interna</h3>
-          Es una especialidad médica que se dedica a la atención integral del adulto enfermo, enfocada al diagnóstico y el 
-          tratamiento no quirúrgico de las enfermedades que afectan a sus órganos y sistemas internos, y a su prevención</p>
-      </aside>
-      
-      <aside class="col-md-4 text-justify">
-        <img class="img-especialidad" src="Vista/Recursos/img/endocrinologia.jpg" alt="Imagen Endocrinologia" width="350px" height="200px">
-      <p>
-          <h3>Endocrinología</h3>
-          Rama de la medicina que se especializa en el diagnóstico y tratamiento de trastornos del sistema endocrino, 
-          que incluye las glándulas y órganos que elaboran hormonas. Estos trastornos incluyen diabetes, infertilidad, 
-          y problemas tiroideos, suprarrenales y de la hipófisis.
-      </p>
-      </aside>       
-      
-      <aside class="col-md-4 text-justify">
-        <img class="img-especialidad" src="Vista/Recursos/img/ginecologia.jpg" alt="Imagen Ginecologia" width="350px" height="200px">
-        <p>
-          <h3>Ginecología</h3>
-          La especialidad de Ginecología y Obstetricia es el campo de la medicina que se ocupa de la salud integral 
-          de la mujer, así como de los fenómenos fisiológicos relacionados con la reproducción humana, incluyendo la 
-          gestación, el parto y el puerperio.</p>
-      </aside>
+    <footer class="site-footer">
+      <p>Autor: Fausto Quilumba</p>
+      <p>Todos los Derechos Reservados 2020 - 2021 &copy;</p>
+    </footer>
   </div>
-</div>
+    
+        
 </body>
 </html>
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
