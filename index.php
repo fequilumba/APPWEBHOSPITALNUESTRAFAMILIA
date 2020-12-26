@@ -18,7 +18,7 @@
     <br>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"><img class="logo" src="Vista/Recursos/img/logo.png" alt=""></a>
+            <a class="navbar-brand" href="#"><img class="logo" href="index.php"src="Vista/Recursos/img/logo.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,8 +31,8 @@
                             Hospital
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Historia</a>
-                        <a class="dropdown-item" href="#">Misión y Visión</a>
+                        <a class="dropdown-item" href="historia.php">Historia</a>
+                        <a class="dropdown-item" href="misionVision.php">Misión y Visión</a>
                         </div>
                     </li>
 
@@ -77,7 +77,7 @@
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Contactos</a>
+                        <a class="nav-link" href="contactos.php">Contactos</a>
                     </li>
                 </ul>
 
