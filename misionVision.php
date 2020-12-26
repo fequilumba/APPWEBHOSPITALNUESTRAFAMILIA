@@ -1,39 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@jorgeLQ 
-Learn Git and GitHub without any code!
-Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
-
-
-fequilumba
-/
-APPWEBHOSPITALNUESTRAFAMILIA
-1
-0
-0
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-APPWEBHOSPITALNUESTRAFAMILIA/misionVision.php
-@fequilumba
-fequilumba contacto.php, arreglo de algunas clases
-…
-Latest commit 2997474 13 hours ago
- History
- 1 contributor
-144 lines (127 sloc)  6.36 KB
-  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +17,7 @@ Latest commit 2997474 13 hours ago
     <br>
   
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img class="logo" src="Vista/Recursos/img/logo.png" alt=""></a>
+        <a class="navbar-brand" href="index.php"><img class="logo" src="Vista/Recursos/img/logo.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -66,8 +30,8 @@ Latest commit 2997474 13 hours ago
                     Hospital
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Historia</a>
-                  <a class="dropdown-item" href="#">Misión y Visión</a>
+                <a class="dropdown-item" href="historia.php">Historia</a>
+                <a class="dropdown-item" href="misionVision.php">Misión y Visión</a>
                 </div>
             </li>
             <li class="nav-item dropdown active">
@@ -107,7 +71,7 @@ Latest commit 2997474 13 hours ago
               </div>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#">Contactos</a>
+                <a class="nav-link" href="contactos.php">Contactos</a>
             </li>
            
           </ul>
@@ -167,15 +131,3 @@ Latest commit 2997474 13 hours ago
         
 </body>
 </html>
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
