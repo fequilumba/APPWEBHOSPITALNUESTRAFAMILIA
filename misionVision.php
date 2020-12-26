@@ -99,36 +99,38 @@
       <br>
       <img class="img-especialidad" src="Vista/Recursos/img/mision-vision.png" alt="Misión y Visión">
       <br>
-      <div class="row">
-        <br>
-        <div class="col-md-4 text-justify contenedor">
-          <h2 class="centrar-texto">Misión</h2>
-          <div>
-            <p class="parrafo">El Hospital “Nuestra Familia, es una entidad privada que promueve la 
-              atención de alta calidad y proporciona atención médica basada en principios éticos y morales, 
-              con responsabilidad en la atención inmediata a pacientes siguiendo las medidas de seguridad requeridas.
-            </p>
+
+      <div class="container">
+        <div class="row">
+          <br>
+          <div class="col-md-4 text-justify">
+            <h2 class="centrar-texto">Misión</h2>
+            <div>
+              <p class="parrafo">El Hospital “Nuestra Familia", es una entidad privada que promueve la 
+                atención de alta calidad y proporciona atención médica basada en principios éticos y morales, 
+                con responsabilidad en la atención inmediata a pacientes.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4 text-justify">
+            <h2 class="centrar-texto">Visión</h2>
+            <div>
+              <p class="parrafo">Ser un referente de salud, calidad y seguridad del paciente a nivel nacional, 
+                convirtiéndose en un hospital docente en varias especialidades médicas.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4 text-justify">
+            <h2 class="centrar-texto">Valores</h2>
+            <div>
+              <p class="parrafo">Los valores fundamentales que se inculcan en nuestra casa de salud se basan en
+                el respeto, integridad, transparencia, calidez y calidad hacia nuestros pacientes.
+              </p>
+            </div>
           </div>
         </div>
-
-        <div class="col-md-4 text-justify contenedor">
-          <h2 class="centrar-texto">Visión</h2>
-          <div>
-            <p class="parrafo">Ser un referente de salud, calidad y seguridad del paciente a nivel nacional, 
-              convirtiéndose en un hospital docente en varias especialidades médicas.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-4 text-justify contenedor">
-          <h2 class="centrar-texto">Valores</h2>
-          <div>
-            <p class="parrafo">Los valores fundamentales que se inculcan en nuestra casa de salud se basan en
-              el respeto, integridad, transparencia, calidez y calidad hacia nuestros pacientes.
-            </p>
-          </div>
-        </div>
-
       </div>
     <br>
     <footer class="site-footer">
