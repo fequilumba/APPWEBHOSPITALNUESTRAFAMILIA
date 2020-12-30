@@ -11,14 +11,14 @@
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Persona <button class="btn btn-success" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                          <h1 class="box-title">Medico <button class="btn btn-success" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
                     <!-- /.box-header -->
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">
-                        <table id="tbllistado" class="table table-striped
+                        <table id="tbllistado3" class="table table-striped
                         table-bordered table-condensed table-hover">
                           <thead>
                             <th>Opciones    </th>
@@ -50,7 +50,7 @@
                         </table>
                     </div>
                     <div class="panel-body" style="height: 600px;" id="formularioregistros">
-                        <form name="formulario" id="formulario" method="POST">
+                        <form name="formulario3" id="formulario3" method="POST">
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="">Cédula</label>
                             <input type="hidden" name="idpersona" id="idpersona">

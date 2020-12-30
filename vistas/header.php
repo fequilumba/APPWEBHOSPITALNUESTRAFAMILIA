@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -66,8 +66,7 @@
                   <li class="user-header">
                     <img src="../public/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
-                      www.incanatoit.com - Desarrollando Software
-                      <small>www.youtube.com/jcarlosad7</small>
+                      www.hnf.com - Desarrollando Software
                     </p>
                   </li>
                   
@@ -117,7 +116,6 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li  onclick="mostrarform(true)"><a href=""><i class="fa fa-circle-o"></i> Registrar</a></li>
                 <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Buscar</a></li>
                 <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Eliminar</a></li>
                 <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Actualizar</a></li>

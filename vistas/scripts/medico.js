@@ -3,7 +3,7 @@ var tabla
 function init() {
     mostrarform(false);
     listar();
-    $("#formulario").on("submit",function(e){
+    $("#formulario2").on("submit",function(e){
         guardaryeditar(e);
     });
 }
@@ -40,7 +40,7 @@ function cancelarform(){
 }
 //funcion listar
 function listar(){
-    tabla=$('#tbllistado').dataTable({
+    tabla=$('#tbllistado2').dataTable({
         "aProcessing":true,//activar procesamiento del datatable
         "aServerSide": true,//paginacion y filtrado realizados por el servidor
         dom: 'Bfetip',//definir los parametro del control de tabla
@@ -53,7 +53,7 @@ function listar(){
             'pdf',
         ],
         "ajax":{
-            url: '../ajax/persona.php?op=listar',
+            url: '../ajax/medico.php?op=listar',
             type: "get",
             dataTyoe: "json",
             error: function(e){

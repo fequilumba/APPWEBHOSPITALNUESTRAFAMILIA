@@ -1,6 +1,6 @@
 <?php
-    require_once "../modelos/Persona.php";
-    $persona = new Persona();
+    require_once "../modelos/Medico.php";
+    $persona = new Medico();
 
     $idpersona = isset($_POST["idpersona"])? limpiarCadena($_POST["idpersona"]):""; 
     $cedula= isset($_POST["cedula"])? limpiarCadena($_POST["cedula"]):"";
@@ -31,7 +31,7 @@
             }
             break;
         case 'listar':
-            $rspta=$persona->mostrarPaciente();
+            $rspta=$persona->mostrarMedico();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
@@ -40,6 +40,7 @@
                     "1"=>$reg->cedula,
                     "2"=>$reg->nombres,
                     "3"=>$reg->apellidos,
+                    //"4"=>$reg->especialida,
                     "4"=>$reg->email,
                     "5"=>$reg->telefono,
                     "6"=>$reg->direccion,
@@ -55,7 +56,6 @@
                 "aaData"=>$data);    
                 echo json_encode($results);   
             break;
-        
         case 'mostrar':
                 $rspta=$persona->mostrar($idpersona);
                 echo json_encode($rspta);
