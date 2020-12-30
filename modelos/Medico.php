@@ -1,6 +1,6 @@
 <?php
  require "../config/Conexion.php";
- class Persona{
+ class Medico{
      public function __construct(){
         
      }
@@ -59,16 +59,21 @@
         return ejecutarConsultaSimpleFila($sql);
     }
     //////////////medicos/////////////
-    /*public function mostrarMedico(){
-        $sql= "SELECT p.`idpersona`, p.`cedula`, p.`nombres`,p.`apellidos`,
+    public function mostrarMedico(){
+        /*$sql= "SELECT p.`idpersona`, p.`cedula`, p.`nombres`,p.`apellidos`,
                 e.`tipo_especialidad`,p.`email`,
                 p.`telefono`,p.`direccion`,p.`ciudad_residencia`,
                 p.`fecha_nacimiento`,p.`genero` 
                 FROM `persona` p INNER JOIN `especialidad` e
-                ON p.`idpersona`=e.`persona_idpersona`";
+                ON p.`idpersona`=e.`persona_idpersona`";*/
+                $sql= "SELECT `persona`.`idpersona`, `persona`.`cedula`, `persona`.`nombres`,`persona`.`apellidos`,`persona`.`email`,`persona`.`telefono`,`persona`.`direccion`
+                ,`persona`.`ciudad_residencia`,`persona`.`fecha_nacimiento`,`persona`.`genero` 
+                FROM `persona`, `persona_has_rol` 
+                where `persona`.`idpersona`=`persona_has_rol`.`persona_idpersona` 
+                AND `persona_has_rol`.`rol_idrol`=2";
 
         return ejecutarConsulta($sql);
-    }*/
+    }
     
 
 
