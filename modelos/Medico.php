@@ -10,7 +10,6 @@
                                 $ciudad, $fnacimiento, $genero){
         $sql= "INSERT INTO `persona` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, `ciudad_residencia`, `fecha_nacimiento`, `genero`) 
         VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad', '$fnacimiento', '$genero')";
-
         return ejecutarConsulta($sql);
         
     }
@@ -27,13 +26,6 @@
     public function mostrar($idpersona)
         {
             $sql= "SELECT * FROM `persona` WHERE `idpersona`='$idpersona'";
-           /* $sql= "SELECT `persona`.`idpersona`, `persona`.`cedula`, `persona`.`nombres`,`persona`.`apellidos`,`persona`.`email`,`persona`.`telefono`,`persona`.`direccion`
-            ,`persona`.`ciudad_residencia`,`persona`.`fecha_nacimiento`,`persona`.`genero` 
-            FROM `persona`, `persona_has_rol` 
-            where `persona`.`idpersona`=`persona_has_rol`.`persona_idpersona` 
-            AND `persona_has_rol`.`rol_idrol`=3 AND `idpersona`='$idpersona'";*/
-
-    
             return ejecutarConsultaSimpleFila($sql);
         }
 
@@ -42,40 +34,37 @@
         $sql= "DELETE FROM `persona`  WHERE `idpersona`='$idpersona'";
         return ejecutarConsulta($sql);
     }
-    //listar pacientes
-    public function mostrarPaciente(){
-        $sql= "SELECT `persona`.`idpersona`, `persona`.`cedula`, `persona`.`nombres`,`persona`.`apellidos`,`persona`.`email`,`persona`.`telefono`,`persona`.`direccion`
-        ,`persona`.`ciudad_residencia`,`persona`.`fecha_nacimiento`,`persona`.`genero` 
-        FROM `persona`, `persona_has_rol` 
-        where `persona`.`idpersona`=`persona_has_rol`.`persona_idpersona` 
-        AND `persona_has_rol`.`rol_idrol`=3";
-
-        return ejecutarConsulta($sql);
-    }
-    //listar roles
-    public function listaRoles(){
-        $sql= "SELECT * FROM `rol`";
-
-        return ejecutarConsultaSimpleFila($sql);
-    }
     //////////////medicos/////////////
     public function mostrarMedico(){
-        /*$sql= "SELECT p.`idpersona`, p.`cedula`, p.`nombres`,p.`apellidos`,
-                e.`tipo_especialidad`,p.`email`,
-                p.`telefono`,p.`direccion`,p.`ciudad_residencia`,
-                p.`fecha_nacimiento`,p.`genero` 
-                FROM `persona` p INNER JOIN `especialidad` e
-                ON p.`idpersona`=e.`persona_idpersona`";*/
-                $sql= "SELECT `persona`.`idpersona`, `persona`.`cedula`, `persona`.`nombres`,`persona`.`apellidos`,`persona`.`email`,`persona`.`telefono`,`persona`.`direccion`
-                ,`persona`.`ciudad_residencia`,`persona`.`fecha_nacimiento`,`persona`.`genero` 
-                FROM `persona`, `persona_has_rol` 
-                where `persona`.`idpersona`=`persona_has_rol`.`persona_idpersona` 
-                AND `persona_has_rol`.`rol_idrol`=2";
+        $sql= "SELECT p.`cedula`, e.`nombre`, p.`nombres`,p.`apellidos`,p.`email`, p.`telefono`,p.`direccion`,
+                        p.`ciudad_residencia`, p.`fecha_nacimiento`,p.`genero`, p.`estado` 
+                FROM `persona` p 
+                INNER JOIN `especialidad` e ON p.`especialidad_idespecialidad`=e.`idespecialidad` 
+                INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` AND pr.`rol_idrol`=2";
 
         return ejecutarConsulta($sql);
     }
-    
+    public function selectEspecialidad(){
+        $sql= "SELECT * FROM `especialidad`";
 
+        return ejecutarConsulta($sql);
+    }
+    //METODOS PARA ACTIVAR/DESACTIVAR MEDICOS
+    public function desactivar($idpersona)
+    {
+        $sql= "UPDATE `persona` SET `estado`='0' 
+               WHERE `idpersona`='$idpersona'";
+        
+        return ejecutarConsulta($sql);
+    }
+
+    public function activar($idespecialidad)
+    {
+        $sql= "UPDATE `persona` SET `estado`='1' 
+               WHERE `idpersona`='$idpersona'";
+        
+        return ejecutarConsulta($sql);
+    }
 
  }
 ?>

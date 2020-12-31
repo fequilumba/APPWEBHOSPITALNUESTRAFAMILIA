@@ -21,8 +21,9 @@
                         <table id="tbllistado2" class="table table-striped
                         table-bordered table-condensed table-hover">
                           <thead>
-                            <th>Opciones    </th>
+                            <th>Opciones  </th>
                             <th>Cédula</th>
+                            <th>Especialidad</th>
                             <th>Nombres</th>
                             <th>Apellidos</th>
                             <th>Email</th>
@@ -31,13 +32,15 @@
                             <th>Ciudad</th>
                             <th>Fecha Nacimiento</th>
                             <th>Género</th>
+                            <th>Estado</th>
                           </thead>
                           <tbody>
 
                           </tbody>
                           <tfoot>
-                            <th>Opciones    </th>
+                            <th>Opciones  </th>
                             <th>Cédula</th>
+                            <th>Especialidad</th>
                             <th>Nombres</th>
                             <th>Apellidos</th>
                             <th>Email</th>
@@ -46,6 +49,7 @@
                             <th>Ciudad</th>
                             <th>Fecha Nacimiento</th>
                             <th>Género</th>
+                            <th>Estado</th>
                           </tfoot>
                         </table>
                     </div>
@@ -55,6 +59,12 @@
                             <label for="">Cédula</label>
                             <input type="hidden" name="idpersona" id="idpersona">
                             <input type="text" name="cedula" id="cedula" maxlength="45" placeholder="Cédula" require>
+                            </div>
+                            
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label for="">Especialidad</label>
+                              <select class="form-control" name="idespecialidad" id="idespecialidad"  ></select>
+                              <!--<input type="text" name="especialidad" id="especialidad"  placeholder="especialidad" require>-->
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Nombres</label>

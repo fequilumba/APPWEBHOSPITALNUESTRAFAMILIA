@@ -6,11 +6,21 @@ function init() {
     $("#formulario2").on("submit",function(e){
         guardaryeditar(e);
     });
+
+    //Cargamos los items al select especialidad
+    $.post("../ajax/medico.php?op=selectEspecialidad",function(r)
+        {        
+            //console.log(data);
+            $("#idespecialidad").html(r);
+            //$("#idespecialidad").selectpicker('refresh');
+        }
+    );
 }
 //funcion limpiar
 function limpiar(){
     $("#idpersona").val("");
     $("#cedula").val("");
+    $("#idespecialidad").val("");
     $("#nombres").val("");
     $("#apellidos").val("");
     $("#email").val("");
@@ -72,7 +82,7 @@ function guardaryeditar(e){
     $("#btnGuardar").prop("disabled",true);
     var formData = new FormData($("#formulario")[0]);
     $.ajax({
-        url: "../ajax/persona.php?op=guardaryeditar",
+        url: "../ajax/medico.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -88,11 +98,12 @@ function guardaryeditar(e){
 }
 
 function mostrar(idpersona){
-    $.post("../ajax/persona.php?op=mostrar",{idpersona : idpersona}, function(data, status)
+    $.post("../ajax/medico.php?op=mostrar",{idpersona : idpersona}, function(data, status)
     {
         data = JSON.parse(data);
         mostrarform(true);
         $("#cedula").val(data.cedula)
+        $("#tipoespecialidad").val(data.tipoespecialidad)
         $("#nombres").val(data.nombres)
         $("#apellidos").val(data.apellidos)
         $("#email").val(data.email)
