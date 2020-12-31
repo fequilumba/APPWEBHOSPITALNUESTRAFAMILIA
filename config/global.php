@@ -2,7 +2,7 @@
     //ip del servidor
     define("DB_HOST", "localhost");
     //nombre de la base de datos
-    define("DB_NAME","dbhospital");
+    define("DB_NAME","dbhospitalnf");
     //nombre del usuario propietario de la base de datos
     define("DB_USERNAME","root");
     //contrasenia d ela bd
