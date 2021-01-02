@@ -11,16 +11,17 @@ function init() {
     $.post("../ajax/medico.php?op=selectEspecialidad",function(r)
         {        
             //console.log(data);
-            $("#idespecialidad").html(r);
-            //$("#idespecialidad").selectpicker('refresh');
+            $("#especialidad_idespecialidad").html(r);
+            $("#especialidad_idespecialidad").selectpicker('refresh');
+            
         }
     );
 }
 //funcion limpiar
 function limpiar(){
     $("#idpersona").val("");
+    //$("#especialidad_idespecialidad").val("");
     $("#cedula").val("");
-    $("#idespecialidad").val("");
     $("#nombres").val("");
     $("#apellidos").val("");
     $("#email").val("");
@@ -71,7 +72,7 @@ function listar(){
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 5, //paginacion--> cada 5 registros
+        "iDisplayLength": 7, //paginacion--> cada 5 registros
         "order": [[0, "desc" ]]//ordenar (columna)
     }).DataTable();
 }
@@ -102,8 +103,9 @@ function mostrar(idpersona){
     {
         data = JSON.parse(data);
         mostrarform(true);
+        
+        $("#especialidad_idespecialidad").val(data.especialidad_idespecialidad)
         $("#cedula").val(data.cedula)
-        $("#tipoespecialidad").val(data.tipoespecialidad)
         $("#nombres").val(data.nombres)
         $("#apellidos").val(data.apellidos)
         $("#email").val(data.email)
@@ -116,16 +118,44 @@ function mostrar(idpersona){
 
     });
 }
-function eliminar(idpersona) {
-    bootbox.confirm("Estas seguro que quieres ELIMINAR este registro" , function (result) { 
-        if (result) {
-            $.post("../ajax/persona.php?op=eliminar",{idpersona : idpersona}, function(e)
-            {
-                bootbox.alert(e);
-                //tabla.ajax.reload();
-            });
+
+//funcion para descativar especialidades
+function desactivar(idpersona)
+{
+    bootbox.confirm("¿Estas seguro de desactivar al Médico?",function(result){
+        if(result)
+        {
+            $.post(
+                "../ajax/medico.php?op=desactivar",
+                {idpersona:idpersona},
+                function(e)
+                {
+                    bootbox.alert(e);
+                    tabla.ajax.reload();
+        
+                }
+            );
         }
-     });
+    });
+}
+
+function activar(idpersona)
+{
+    bootbox.confirm("¿Estas seguro de activar al Médico?",function(result){
+        if(result)
+        {
+            $.post(
+                "../ajax/medico.php?op=activar",
+                {idpersona:idpersona},
+                function(e)
+                {
+                    bootbox.alert(e);
+                    tabla.ajax.reload();
+        
+                }
+            );
+        }
+    });
 }
 
 init();

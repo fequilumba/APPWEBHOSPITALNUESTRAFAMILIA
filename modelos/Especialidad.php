@@ -41,7 +41,12 @@
         
         return ejecutarConsulta($sql);
     }
-
+    //selecccionar una especialidad para un medico
+    public function selectEspecialidad(){
+        $sql= "SELECT * FROM `especialidad` 
+                WHERE `especialidad`.`estado`=1";
+        return ejecutarConsulta($sql);
+     }
 
  }
 ?>

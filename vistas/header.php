@@ -16,7 +16,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../public/css/_all-skins.min.css">
     <link rel="icon" href="../public/img/apple-touch-icon.png">
-
+    
     <!--DATA TABLES-->
     <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="../public/datatables/buttons.dataTables.min.css">
@@ -34,6 +34,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/bootstrap/css/normalize.css">
     <link rel="stylesheet" href="../public/bootstrap/css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">
 
   </head>
   <body class="hold-transition skin-blue-light sidebar-mini">

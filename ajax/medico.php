@@ -2,8 +2,8 @@
     require_once "../modelos/Medico.php";
     $persona = new Medico();
     $idpersona = isset($_POST["idpersona"])? limpiarCadena($_POST["idpersona"]):""; 
+    $especialidad_idespecialidad = isset($_POST["especialidad_idespecialidad"])? limpiarCadena($_POST["especialidad_idespecialidad"]):""; 
     $cedula= isset($_POST["cedula"])? limpiarCadena($_POST["cedula"]):"";
-    $idespecialidad = isset($_POST["idespecialidad"])? limpiarCadena($_POST["idespecialidad"]):""; 
     $nombres= isset($_POST["nombres"])? limpiarCadena($_POST["nombres"]):"";
     $apellidos= isset($_POST["apellidos"])? limpiarCadena($_POST["apellidos"]):"";
     $email = isset($_POST["email"])? limpiarCadena($_POST["email"]):"";
@@ -12,33 +12,28 @@
     $ciudad= isset($_POST["ciudad"])? limpiarCadena($_POST["ciudad"]):"";
     $fnacimiento= isset($_POST["fnacimiento"])? limpiarCadena($_POST["fnacimiento"]):""; 
     $genero= isset($_POST["genero"])? limpiarCadena($_POST["genero"]):"";
-    $estado= isset($_POST["estado"])? limpiarCadena($_POST["estado"]):"";
-
+   
     switch ($_GET["op"]) {
         case 'guardaryeditar':
             if (empty($idpersona)) {
-                $rspta=$persona->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
-                $direccion,$ciudad, $fnacimiento, $genero);
-               // $rspta2=$persona->insertarEspecialidad($idespecialidad,$idpersona);
-                
-                $rspta = $persona->insertarEspecialidad($idespecialidad, $idpersona);
+                $rspta=$persona->insertar($especialidad_idespecialidad ,$cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+                $ciudad, $fnacimiento, $genero);
                 echo $rspta? "Medico registrado" : "Medico no se pudo registrar";
                 
 
             }else{
-                $rspta=$persona->editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+                $rspta=$persona->editar($idpersona,$especialidad_idespecialidad, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
                 $ciudad, $fnacimiento, $genero);
-                echo $rspta? "Médico actualizado" : "No se pudo actualizar al Médico";
-                                
+                echo $rspta? "Médico actualizado" : "No se pudo actualizar al Médico";              
             }
             break;
         case 'desactivar':
-                $rspta=$especialidad->desactivar($idpersona);
+                $rspta=$persona->desactivar($idpersona);
                 echo $rspta ? "Médico desactivado" : "No se pudo desactivar al Médico";
     
                 break;
         case 'activar':
-                $rspta=$especialidad->activar($idpersona);
+                $rspta=$persona->activar($idpersona);
                 echo $rspta ? "Médico activada" : "No se pudo activar al Médico";
     
                 break;
@@ -47,7 +42,7 @@
                     echo json_encode($rspta);
                 break;
         case 'listar':
-            $rspta=$persona->mostrarMedico();
+            $rspta=$persona->listar();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
@@ -58,8 +53,8 @@
                         '<button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-pencil"></li></button>'.
                         ' <button class="btn btn-primary" onclick="activar('.$reg->idpersona.')"><li class="fa fa-check"></li></button>'
                         ,
-                    "1"=>$reg->cedula,
-                    "2"=>$reg->nombre,
+                    "1"=>$reg->especialidad,
+                    "2"=>$reg->cedula,
                     "3"=>$reg->nombres,
                     "4"=>$reg->apellidos,
                     "5"=>$reg->email,
@@ -68,7 +63,10 @@
                     "8"=>$reg->ciudad_residencia,
                     "9"=>$reg->fecha_nacimiento,
                     "10"=>$reg->genero,
-                    "11"=>$reg->estado
+                    "11"=>$reg->estado ?
+                    '<span class="label bg-green">Activado</span>'
+                    :      
+                    '<span class="label bg-red">Desactivado</span>'
                 );
             }
             $results = array(
@@ -84,10 +82,11 @@
             $especialidad = new Especialidad();
             $rspta = $especialidad->selectEspecialidad();
             while ($reg = $rspta->fetch_object()) {
-                echo '<option value='.$reg->idespecialidad.'>'
-                        .$reg->idespecialidad.
+                echo '<option value='.$reg->especialidad_idespecialidad.'>'
+                        .$reg->nombre.
                       '</option>';
             }
+        break;
     }
 
 
