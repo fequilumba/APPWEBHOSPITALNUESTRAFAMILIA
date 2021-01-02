@@ -16,8 +16,8 @@ function limpiar(){
     $("#email").val("");
     $("#telefono").val("");
     $("#direccion").val("");
-    $("#ciudad").val("");
-    $("#fnacimiento").val("");
+    $("#ciudad_residencia").val("");
+    $("#fecha_nacimiento").val("");
     $("#genero").val("");
 }
 //mostrar formulario
@@ -98,23 +98,47 @@ function mostrar(idpersona){
         $("#email").val(data.email)
         $("#telefono").val(data.telefono)
         $("#direccion").val(data.direccion)
-        $("#ciudad").val(data.ciudad)
-        $("#fnacimiento").val(data.fnacimiento);
-        $("#genero").val(data.genero);
-        $("#idpersona").val(data.idpersona);
+        $("#ciudad_residencia").val(data.ciudad_residencia)
+        $("#fecha_nacimiento").val(data.fecha_nacimiento)
+        $("#genero").val(data.genero)
+        $("#idpersona").val(data.idpersona)
 
     });
 }
-function eliminar(idpersona) {
-    bootbox.confirm("Estas seguro que quieres ELIMINAR este registro" , function (result) { 
-        if (result) {
-            $.post("../ajax/persona.php?op=eliminar",{idpersona : idpersona}, function(e)
-            {
-                bootbox.alert(e);
-                //tabla.ajax.reload();
-            });
+//funcion para descativar especialidades
+function desactivar(idpersona)
+{
+    bootbox.confirm("¿Estas seguro de desactivar al Cliente?",function(result){
+        if(result)
+        {
+            $.post(
+                "../ajax/persona.php?op=desactivar", {idpersona : idpersona}, function(e)
+                {
+                    bootbox.alert(e);
+                    tabla.ajax.reload();
+        
+                });
         }
-     });
+    })
+}
+
+function activar(idpersona)
+{
+    bootbox.confirm("¿Estas seguro de activar al Cliente?",function(result){
+        if(result)
+        {
+            $.post(
+                "../ajax/persona.php?op=activar",
+                {idpersona:idpersona},
+                function(e)
+                {
+                    bootbox.alert(e);
+                    tabla.ajax.reload();
+        
+                }
+            );
+        }
+    });
 }
 
 init();

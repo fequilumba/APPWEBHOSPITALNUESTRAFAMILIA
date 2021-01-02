@@ -22,8 +22,8 @@
                         table-bordered table-condensed table-hover">
                           <thead>
                             <th>Opciones  </th>
-                            <th>Cédula</th>
                             <th>Especialidad</th>
+                            <th>Cédula</th>
                             <th>Nombres</th>
                             <th>Apellidos</th>
                             <th>Email</th>
@@ -39,8 +39,8 @@
                           </tbody>
                           <tfoot>
                             <th>Opciones  </th>
-                            <th>Cédula</th>
                             <th>Especialidad</th>
+                            <th>Cédula</th>
                             <th>Nombres</th>
                             <th>Apellidos</th>
                             <th>Email</th>
@@ -55,25 +55,26 @@
                     </div>
                     <div class="panel-body" style="height: 600px;" id="formularioregistros">
                         <form name="formulario2" id="formulario2" method="POST">
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label for="">Cédula</label>
-                            <input type="hidden" name="idpersona" id="idpersona">
-                            <input type="text" name="cedula" id="cedula" maxlength="45" placeholder="Cédula" require>
-                            </div>
-                            
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Especialidad</label>
-                              <select class="form-control" name="idespecialidad" id="idespecialidad"  ></select>
-                              <!--<input type="text" name="especialidad" id="especialidad"  placeholder="especialidad" require>-->
+                              <input type="hidden" name="idpersona" id="idpersona">
+                              <select name="especialidad_idespecialidad" id="especialidad_idespecialidad"  class="form-control selectpicker" ></select>
                             </div>
+                        
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label for="">Cédula</label>                          
+                              <input type="text" name="cedula" id="cedula" maxlength="45" placeholder="Cédula" required>
+                            </div>
+                            
+                            
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Nombres</label>
-                              <input type="text" name="nombres" id="nombres" maxlength="45" placeholder="Nombres" require>
+                              <input type="text" name="nombres" id="nombres" maxlength="45" placeholder="Nombres" required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Apellidos</label>
-                              <input type="text" name="apellidos" id="apellidos" maxlength="45" placeholder="Apellidos"require>
+                              <input type="text" name="apellidos" id="apellidos" maxlength="45" placeholder="Apellidos"required>
                             </div>
                             
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -83,22 +84,22 @@
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Teléfono</label>
-                              <input type="text" name="telefono" id="telefono"  placeholder="Teléfono"require>
+                              <input type="text" name="telefono" id="telefono"  placeholder="Teléfono"required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Dirección</label>
-                              <input type="text" name="direccion" id="direccion" maxlength="45" placeholder="Dirección"require>
+                              <input type="text" name="direccion" id="direccion" maxlength="45" placeholder="Dirección"required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Ciudad</label>
-                              <input type="text" name="ciudad" id="ciudad" maxlength="45" placeholder="Ciudad"require>
+                              <input type="text" name="ciudad" id="ciudad" maxlength="45" placeholder="Ciudad"required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Fecha Nacimiento</label>
-                              <input type="date" name="fnacimiento" id="fnacimiento" require>
+                              <input type="date" name="fnacimiento" id="fnacimiento" required>
                             </div>
                             
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -116,8 +117,7 @@
 
                             <button class="btn btn-danger" onclick="cancelarform()"
                             type="button"><i class="fa fa-arrow-circle-left"> Cancelar</i></button>
-
-                          </div>
+                            </div>
                           </div>
                         </form>
                     </div>

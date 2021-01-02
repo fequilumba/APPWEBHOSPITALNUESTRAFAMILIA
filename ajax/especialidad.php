@@ -44,7 +44,10 @@
                         ,
                     //"1"=>$reg->idespecialidad,
                     "1"=>$reg->nombre,
-                    "2"=>$reg->estado
+                    "2"=>$reg->estado ?
+                    '<span class="label bg-green">Activado</span>'
+                    :      
+                    '<span class="label bg-red">Desactivado</span>'
                 );
             }
             $results = array(
@@ -55,6 +58,5 @@
                 echo json_encode($results);   
             break;
     }
-
 
 ?>

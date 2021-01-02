@@ -3,49 +3,72 @@
     $persona = new Persona();
 
     $idpersona = isset($_POST["idpersona"])? limpiarCadena($_POST["idpersona"]):""; 
+    $especialidad_idespecialidad = isset($_POST["especialidad_idespecialidad"])? limpiarCadena($_POST["especialidad_idespecialidad"]):""; 
     $cedula= isset($_POST["cedula"])? limpiarCadena($_POST["cedula"]):"";
     $nombres= isset($_POST["nombres"])? limpiarCadena($_POST["nombres"]):"";
     $apellidos= isset($_POST["apellidos"])? limpiarCadena($_POST["apellidos"]):"";
     $email = isset($_POST["email"])? limpiarCadena($_POST["email"]):"";
     $telefono= isset($_POST["telefono"])? limpiarCadena($_POST["telefono"]):"";
     $direccion= isset($_POST["direccion"])? limpiarCadena($_POST["direccion"]):"";
-    $ciudad= isset($_POST["ciudad"])? limpiarCadena($_POST["ciudad"]):"";
-    $fnacimiento= isset($_POST["fnacimiento"])? limpiarCadena($_POST["fnacimiento"]):""; 
+    $ciudad_residencia= isset($_POST["ciudad_residencia"])? limpiarCadena($_POST["ciudad_residencia"]):"";
+    $fecha_nacimiento= isset($_POST["fecha_nacimiento"])? limpiarCadena($_POST["fecha_nacimiento"]):""; 
     $genero= isset($_POST["genero"])? limpiarCadena($_POST["genero"]):"";
+    $estado= isset($_POST["estado"])? limpiarCadena($_POST["estado"]):"";
 
     switch ($_GET["op"]) {
         case 'guardaryeditar':
             if (empty($idpersona)) {
-                //$fnacimiento1 = strtotime($fnacimiento);
-                //$fnacimiento1 = date('yyyy-MM-dd',$fnacimiento);
                 $rspta=$persona->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
-                $direccion,$ciudad, $fnacimiento, $genero);
+                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero);
                 echo $rspta? "persona registrada" : "Persona no se pudo registrar";
                 
 
             }else{
                 $rspta=$persona->editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                $ciudad, $fnacimiento, $genero);
+                $ciudad_residencia, $fecha_nacimiento, $genero);
                 echo $rspta? "persona actualizada" : "Persona no se pudo actualizar";
                                 
             }
             break;
+        case 'desactivar':
+                $rspta=$persona->desactivar($idpersona);
+                echo $rspta ? "Persona desactivada" : "No se pudo desactivar la persona";
+    
+                break;
+        case 'activar':
+                $rspta=$persona->activar($idpersona);
+                echo $rspta ? "Persona activada" : "No se pudo activar la persona";
+    
+                break;
+        case 'mostrar':
+                    $rspta=$persona->mostrar($idpersona);
+                    echo json_encode($rspta);
+                break;
         case 'listar':
-            $rspta=$persona->mostrarPaciente();
+            $rspta=$persona->listar();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                    "0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')"><i class="fa fa-pencil"></i></button>'.
-                        ' <button class="btn btn-danger" onclick="eliminar('.$reg->idpersona.')"><i class="fa fa-close"></i></button>',
-                    "1"=>$reg->cedula,
-                    "2"=>$reg->nombres,
-                    "3"=>$reg->apellidos,
-                    "4"=>$reg->email,
-                    "5"=>$reg->telefono,
-                    "6"=>$reg->direccion,
-                    "7"=>$reg->ciudad_residencia,
-                    "8"=>$reg->fecha_nacimiento,
-                    "9"=>$reg->genero
+                    "0"=> ($reg->estado) ? 
+                        '<button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-pencil"></li></button>'.
+                        ' <button class="btn btn-danger" onclick="desactivar('.$reg->idpersona.')"><li class="fa fa-close"></li></button>'
+                        :
+                        '<button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-pencil"></li></button>'.
+                        ' <button class="btn btn-primary" onclick="activar('.$reg->idpersona.')"><li class="fa fa-check"></li></button>'
+                        ,
+                        "1"=>$reg->cedula,
+                        "2"=>$reg->nombres,
+                        "3"=>$reg->apellidos,
+                        "4"=>$reg->email,
+                        "5"=>$reg->telefono,
+                        "6"=>$reg->direccion,
+                        "7"=>$reg->ciudad_residencia,
+                        "8"=>$reg->fecha_nacimiento,
+                        "9"=>$reg->genero,
+                        "10"=>$reg->estado ?
+                    '<span class="label bg-green">Activado</span>'
+                    :      
+                    '<span class="label bg-red">Desactivado</span>'
                 );
             }
             $results = array(
@@ -54,16 +77,6 @@
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data);    
                 echo json_encode($results);   
-            break;
-        
-        case 'mostrar':
-                $rspta=$persona->mostrar($idpersona);
-                echo json_encode($rspta);
-            break;
-        case 'eliminar':
-                $rspta=$persona->eliminar($idpersona);
-                echo $rspta? "Registro eliminado" : "El registro no pudo ser eliminado";
-                
             break;
     }
 

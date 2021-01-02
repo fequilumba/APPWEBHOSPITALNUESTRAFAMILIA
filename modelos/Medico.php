@@ -5,38 +5,35 @@
         
      }
 
-     //Metodo para insertar registros
-     public function insertar($cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+     //Metodo para insertar registros del medico
+     public function insertar($especialidad_idespecialidad ,$cedula, $nombres, $apellidos, $email, $telefono, $direccion,
                                 $ciudad, $fnacimiento, $genero){
-        $sql= "INSERT INTO `persona` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, `ciudad_residencia`, `fecha_nacimiento`, `genero`) 
-        VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad', '$fnacimiento', '$genero')";
+
+        $sql="INSERT INTO `persona` (`especialidad_idespecialidad`, `cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, `ciudad_residencia`, `fecha_nacimiento`, `genero`, `estado`) 
+                VALUES ('3', '$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion', '$ciudad', '$fnacimiento', '$genero', 1);";
         return ejecutarConsulta($sql);
         
     }
-     //metodo para editar registros
-     public function editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+     //metodo para editar registros del medico
+     public function editar($idpersona,$especialidad_idespecialidad, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
                                 $ciudad, $fnacimiento, $genero){
-        $sql= "UPDATE `persona` SET `cedula`='$cedula', `nombres`='$nombres', `apellidos`='$apellidos', `email`='$email', 
-        `telefono`='$telefono', `direccion`='$direccion', `ciudad_residencia`='$ciudad', `fecha_nacimiento`='$fnacimiento', `genero`='$genero'
-        WHERE `idpersona`='$idpersona'";
+        $sql= "UPDATE `persona` SET `persona`.`especialidad_idespecialidad`='$especialidad_idespecialidad',`persona`.`cedula`='$cedula', `persona`.`nombres`='$nombres', `persona`.`apellidos`='$apellidos', `persona`.`email`='$email', 
+        `persona`.`telefono`='$telefono', `persona`.`direccion`='$direccion', `persona`.`ciudad_residencia`='$ciudad', `persona`.`fecha_nacimiento`='$fnacimiento', `persona`.`genero`='$genero'
+        WHERE `persona`.`idpersona`='$idpersona'";
 
         return ejecutarConsulta($sql);
     }
-    //mostrar un registro para editar
+    //mostrar el registro de un medico para editar
     public function mostrar($idpersona)
         {
-            $sql= "SELECT * FROM `persona` WHERE `idpersona`='$idpersona'";
+            $sql= "SELECT * FROM `persona` WHERE `persona`.`idpersona`='$idpersona'";
             return ejecutarConsultaSimpleFila($sql);
         }
 
-    //eliminar registros
-    public function eliminar($idpersona){
-        $sql= "DELETE FROM `persona`  WHERE `idpersona`='$idpersona'";
-        return ejecutarConsulta($sql);
-    }
-    //////////////medicos/////////////
-    public function mostrarMedico(){
-        $sql= "SELECT p.`cedula`, e.`nombre`, p.`nombres`,p.`apellidos`,p.`email`, p.`telefono`,p.`direccion`,
+    //mostrar datos de un medico especifico
+
+    public function listar(){
+        $sql= "SELECT p.`idpersona`,e.`nombre` AS especialidad, p.`cedula`, p.`nombres`,p.`apellidos`,p.`email`, p.`telefono`,p.`direccion`,
                         p.`ciudad_residencia`, p.`fecha_nacimiento`,p.`genero`, p.`estado` 
                 FROM `persona` p 
                 INNER JOIN `especialidad` e ON p.`especialidad_idespecialidad`=e.`idespecialidad` 
@@ -44,24 +41,19 @@
 
         return ejecutarConsulta($sql);
     }
-    public function selectEspecialidad(){
-        $sql= "SELECT * FROM `especialidad`";
-
-        return ejecutarConsulta($sql);
-    }
     //METODOS PARA ACTIVAR/DESACTIVAR MEDICOS
     public function desactivar($idpersona)
     {
-        $sql= "UPDATE `persona` SET `estado`='0' 
-               WHERE `idpersona`='$idpersona'";
-        
+        $sql= " UPDATE `persona` SET `persona`.`estado` = '0' 
+                WHERE `persona`.`idpersona` = '$idpersona'";
+       
         return ejecutarConsulta($sql);
     }
 
-    public function activar($idespecialidad)
+    public function activar($idpersona)
     {
-        $sql= "UPDATE `persona` SET `estado`='1' 
-               WHERE `idpersona`='$idpersona'";
+        $sql= " UPDATE `persona` SET `persona`.`estado` = '1' 
+                WHERE `persona`.`idpersona` = '$idpersona'";
         
         return ejecutarConsulta($sql);
     }
