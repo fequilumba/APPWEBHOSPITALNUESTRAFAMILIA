@@ -14,18 +14,28 @@
     $fecha_nacimiento= isset($_POST["fecha_nacimiento"])? limpiarCadena($_POST["fecha_nacimiento"]):""; 
     $genero= isset($_POST["genero"])? limpiarCadena($_POST["genero"]):"";
     $estado= isset($_POST["estado"])? limpiarCadena($_POST["estado"]):"";
+    $idhorario= isset($_POST["idhorario"])? limpiarCadena($_POST["idhorario"]):"";
+    $hora_inicio= isset($_POST["hora_inicio"])? limpiarCadena($_POST["hora_inicio"]):"";
+    $hora_fin= isset($_POST["hora_fin"])? limpiarCadena($_POST["hora_fin"]):"";
 
     switch ($_GET["op"]) {
         case 'guardaryeditar':
             if (empty($idpersona)) {
                 $rspta=$medico->insertar($especialidad_idespecialidad,$cedula, $nombres, $apellidos, $email, $telefono, 
                 $direccion,$ciudad_residencia, $fecha_nacimiento, $genero);
+                require_once "../modelos/Horario.php";
+                $horario = new Horario();
+                $rspta2 = $horario->insertarHorario($especialidad_idespecialidad,$hora_inicio,$hora_fin);
                 echo $rspta? "Médico registrado" : "Médico no se pudo registrar";
                 
 
             }else{
                 $rspta=$medico->editar($idpersona, $especialidad_idespecialidad,$cedula, $nombres, $apellidos, $email, $telefono, 
                 $direccion,$ciudad_residencia, $fecha_nacimiento, $genero);
+                require_once "../modelos/Horario.php";
+                $horario = new Horario();
+                $rspta2 = $horario->editarHorario($idhorario,$especialidad_idespecialidad,$hora_inicio,$hora_fin);
+                
                 echo $rspta? "Médico actualizado" : "Médico no se pudo actualizar";
                                 
             }
