@@ -3,7 +3,7 @@ var tabla
 function init() {
     mostrarform(false);
     listar();
-    $("#formulario2").on("submit",function(e){
+    $("#formulario").on("submit",function(e){
         guardaryeditar(e);
     });
 
@@ -20,15 +20,14 @@ function init() {
 //funcion limpiar
 function limpiar(){
     $("#idpersona").val("");
-    //$("#especialidad_idespecialidad").val("");
     $("#cedula").val("");
     $("#nombres").val("");
     $("#apellidos").val("");
     $("#email").val("");
     $("#telefono").val("");
     $("#direccion").val("");
-    $("#ciudad").val("");
-    $("#fnacimiento").val("");
+    $("#ciudad_residencia").val("");
+    $("#fecha_nacimiento").val("");
     $("#genero").val("");
 }
 //mostrar formulario
@@ -51,7 +50,7 @@ function cancelarform(){
 }
 //funcion listar
 function listar(){
-    tabla=$('#tbllistado2').dataTable({
+    tabla=$('#tbllistado').dataTable({
         "aProcessing":true,//activar procesamiento del datatable
         "aServerSide": true,//paginacion y filtrado realizados por el servidor
         dom: 'Bfetip',//definir los parametro del control de tabla
@@ -72,7 +71,7 @@ function listar(){
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 7, //paginacion--> cada 5 registros
+        "iDisplayLength": 5, //paginacion--> cada 5 registros
         "order": [[0, "desc" ]]//ordenar (columna)
     }).DataTable();
 }
@@ -103,22 +102,19 @@ function mostrar(idpersona){
     {
         data = JSON.parse(data);
         mostrarform(true);
-        
-        $("#especialidad_idespecialidad").val(data.especialidad_idespecialidad)
         $("#cedula").val(data.cedula)
         $("#nombres").val(data.nombres)
         $("#apellidos").val(data.apellidos)
         $("#email").val(data.email)
         $("#telefono").val(data.telefono)
         $("#direccion").val(data.direccion)
-        $("#ciudad").val(data.ciudad)
-        $("#fnacimiento").val(data.fnacimiento);
-        $("#genero").val(data.genero);
-        $("#idpersona").val(data.idpersona);
+        $("#ciudad_residencia").val(data.ciudad_residencia)
+        $("#fecha_nacimiento").val(data.fecha_nacimiento)
+        $("#genero").val(data.genero)
+        $("#idpersona").val(data.idpersona)
 
     });
 }
-
 //funcion para descativar especialidades
 function desactivar(idpersona)
 {
@@ -126,17 +122,14 @@ function desactivar(idpersona)
         if(result)
         {
             $.post(
-                "../ajax/medico.php?op=desactivar",
-                {idpersona:idpersona},
-                function(e)
+                "../ajax/medico.php?op=desactivar", {idpersona : idpersona}, function(e)
                 {
                     bootbox.alert(e);
                     tabla.ajax.reload();
         
-                }
-            );
+                });
         }
-    });
+    })
 }
 
 function activar(idpersona)

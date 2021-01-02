@@ -11,17 +11,17 @@
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Medico <button class="btn btn-success" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                          <h1 class="box-title">Médico <button class="btn btn-success" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
                     <!-- /.box-header -->
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">
-                        <table id="tbllistado2" class="table table-striped
+                        <table id="tbllistado" class="table table-striped
                         table-bordered table-condensed table-hover">
                           <thead>
-                            <th>Opciones  </th>
+                            <th>Opciones</th>
                             <th>Especialidad</th>
                             <th>Cédula</th>
                             <th>Nombres</th>
@@ -38,7 +38,7 @@
 
                           </tbody>
                           <tfoot>
-                            <th>Opciones  </th>
+                            <th>Opciones</th>
                             <th>Especialidad</th>
                             <th>Cédula</th>
                             <th>Nombres</th>
@@ -54,19 +54,17 @@
                         </table>
                     </div>
                     <div class="panel-body" style="height: 600px;" id="formularioregistros">
-                        <form name="formulario2" id="formulario2" method="POST">
+                        <form name="formulario" id="formulario" method="POST">
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Especialidad</label>
                               <input type="hidden" name="idpersona" id="idpersona">
                               <select name="especialidad_idespecialidad" id="especialidad_idespecialidad"  class="form-control selectpicker" ></select>
                             </div>
                         
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Cédula</label>                          
-                              <input type="text" name="cedula" id="cedula" maxlength="45" placeholder="Cédula" required>
-                            </div>
-                            
-                            
+                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="">Cédula</label>
+                            <input type="text" name="cedula" id="cedula" maxlength="45" placeholder="Cédula" required>
+                          </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Nombres</label>
                               <input type="text" name="nombres" id="nombres" maxlength="45" placeholder="Nombres" required>
@@ -76,10 +74,10 @@
                               <label for="">Apellidos</label>
                               <input type="text" name="apellidos" id="apellidos" maxlength="45" placeholder="Apellidos"required>
                             </div>
-                            
+
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Email</label>
-                              <input type="text" name="email" id="email" maxlength="45" placeholder="Email">
+                              <input type="text" name="email" id="email" maxlength="45" placeholder="email@address.com" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" >
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -94,12 +92,12 @@
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Ciudad</label>
-                              <input type="text" name="ciudad" id="ciudad" maxlength="45" placeholder="Ciudad"required>
+                              <input type="text" name="ciudad_residencia" id="ciudad_residencia" maxlength="45" placeholder="Ciudad"required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Fecha Nacimiento</label>
-                              <input type="date" name="fnacimiento" id="fnacimiento" required>
+                              <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required>
                             </div>
                             
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -117,7 +115,8 @@
 
                             <button class="btn btn-danger" onclick="cancelarform()"
                             type="button"><i class="fa fa-arrow-circle-left"> Cancelar</i></button>
-                            </div>
+
+                          </div>
                           </div>
                         </form>
                     </div>
