@@ -20,6 +20,9 @@
     <script src="../public/datatables/vfs_fonts.js"></script>
     <script src="../public/js/bootbox.min.js"></script>
     <script src="../public/js/bootstrap-select.min.js"></script>
-
+    <script src="../public/js/clockpicker.js"></script>
+    <script type="text/javascript">
+      $('.clockpicker').clockpicker();
+    </script>
   </body>
 </html>

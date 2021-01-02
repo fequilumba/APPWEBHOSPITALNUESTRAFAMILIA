@@ -58,6 +58,7 @@
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Especialidad</label>
                               <input type="hidden" name="idpersona" id="idpersona">
+                              <input type="hidden" name="idhorario" id="idhorario">
                               <select name="especialidad_idespecialidad" id="especialidad_idespecialidad"  class="form-control selectpicker" ></select>
                             </div>
                         
@@ -108,9 +109,18 @@
                               <label for="correo">F</label>
                               <input type="radio" name="genero" value="F" id="femenino">
                             </div>
+
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label for="">Hora inicio</label>
+                              <input type="time" name="hora_inicio" id="hora_inicio" min="09:00:00" max="12:00:00" required>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label for="">Hora Fin</label>
+                              <input type="time" name="hora_fin" id="hora_fin"  required>
+                            </div>
                           
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <button class="btn btn-primary" type="submit" 
+                            <button class="btn btn-primary" type="submit"  
                             id="btnGuardar"><i class="fa fa-save"> Guardar</i></button>
 
                             <button class="btn btn-danger" onclick="cancelarform()"

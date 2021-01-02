@@ -10,9 +10,7 @@
                                 $ciudad_residencia, $fecha_nacimiento, $genero){
         $sql= "INSERT INTO `persona` (`especialidad_idespecialidad`,`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, `ciudad_residencia`, `fecha_nacimiento`, `genero`, `estado`) 
         VALUES ('$especialidad_idespecialidad','$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia', '$fecha_nacimiento', '$genero', 1)";
-
         return ejecutarConsulta($sql);
-        
     }
      //metodo para editar registros
      public function editar($idpersona,$especialidad_idespecialidad, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
@@ -20,7 +18,6 @@
         $sql= "UPDATE `persona` SET `especialidad_idespecialidad`='$especialidad_idespecialidad',`cedula`='$cedula', `nombres`='$nombres', `apellidos`='$apellidos', `email`='$email', 
         `telefono`='$telefono', `direccion`='$direccion', `ciudad_residencia`='$ciudad_residencia', `fecha_nacimiento`='$fecha_nacimiento', `genero`='$genero'
         WHERE `idpersona`='$idpersona'";
-
         return ejecutarConsulta($sql);
     }
     //mostrar un registro para editar

@@ -3,32 +3,14 @@ var tabla
 function init() {
     mostrarform(false);
     listar();
-    $("#formulario").on("submit",function(e){
+    $("#formularioh").on("submit",function(e){
         guardaryeditar(e);
     });
 
-    //Cargamos los items al select especialidad
-    $.post("../ajax/medico.php?op=selectEspecialidad",function(r)
-        {        
-            //console.log(data);
-            $("#especialidad_idespecialidad").html(r);
-            $("#especialidad_idespecialidad").selectpicker('refresh');
-            
-        }
-    );
 }
 //funcion limpiar
 function limpiar(){
-    $("#idpersona").val("");
-    $("#cedula").val("");
-    $("#nombres").val("");
-    $("#apellidos").val("");
-    $("#email").val("");
-    $("#telefono").val("");
-    $("#direccion").val("");
-    $("#ciudad_residencia").val("");
-    $("#fecha_nacimiento").val("");
-    $("#genero").val("");
+    $("#idhorario").val("");
     $("#hora_inicio").val("");
     $("#hora_fin").val("");
 }
@@ -45,14 +27,14 @@ function mostrarform(flag){
     }
 }
 
-//cancelar form
+//funcion cancelar form
 function cancelarform(){
     limpiar();
     mostrarform(false);
 }
 //funcion listar
 function listar(){
-    tabla=$('#tbllistado').dataTable({
+    tabla=$('#tbllistadoh').dataTable({
         "aProcessing":true,//activar procesamiento del datatable
         "aServerSide": true,//paginacion y filtrado realizados por el servidor
         dom: 'Bfetip',//definir los parametro del control de tabla
@@ -65,7 +47,7 @@ function listar(){
             'pdf',
         ],
         "ajax":{
-            url: '../ajax/medico.php?op=listar',
+            url: '../ajax/horario.php?op=listar',
             type: "get",
             dataTyoe: "json",
             error: function(e){
@@ -80,18 +62,18 @@ function listar(){
 
 //funcion guardar o editar
 function guardaryeditar(e){
-    e.preventDefault();
+    e.preventDefault(); //no se activa la accion predeterminada del evento
     $("#btnGuardar").prop("disabled",true);
-    var formData = new FormData($("#formulario")[0]);
+    var formData = new FormData($("#formularioh")[0]);
     $.ajax({
-        url: "../ajax/medico.php?op=guardaryeditar",
+        url: "../ajax/especialidad.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
         processData: false,
 
         success: function(datos){
-            alert(datos);
+            bootbox.alert(datos);
             mostrarform(false);
             tabla.ajax.reload();
         }
@@ -99,49 +81,44 @@ function guardaryeditar(e){
     limpiar();
 }
 
-function mostrar(idpersona){
-    $.post("../ajax/medico.php?op=mostrar",{idpersona : idpersona}, function(data, status)
+function mostrar(idespecialidad){
+    $.post("../ajax/horario.php?op=mostrar",{idespecialidad : idespecialidad}, function(data, status)
     {
         data = JSON.parse(data);
         mostrarform(true);
-        $("#cedula").val(data.cedula)
-        $("#nombres").val(data.nombres)
-        $("#apellidos").val(data.apellidos)
-        $("#email").val(data.email)
-        $("#telefono").val(data.telefono)
-        $("#direccion").val(data.direccion)
-        $("#ciudad_residencia").val(data.ciudad_residencia)
-        $("#fecha_nacimiento").val(data.fecha_nacimiento)
-        $("#genero").val(data.genero)
-        $("#idpersona").val(data.idpersona)
+        $("#nombre").val(data.nombre)
+        $("#idespecialidad").val(data.idespecialidad)
 
     });
 }
 //funcion para descativar especialidades
-function desactivar(idpersona)
+function desactivar(idespecialidad)
 {
-    bootbox.confirm("¿Estas seguro de desactivar al Médico?",function(result){
+    bootbox.confirm("¿Estas seguro de desactivar la Especialidad?",function(result){
         if(result)
         {
             $.post(
-                "../ajax/medico.php?op=desactivar", {idpersona : idpersona}, function(e)
+                "../ajax/horario.php?op=desactivar",
+                {idespecialidad:idespecialidad},
+                function(e)
                 {
                     bootbox.alert(e);
                     tabla.ajax.reload();
         
-                });
+                }
+            );
         }
-    })
+    });
 }
 
-function activar(idpersona)
+function activar(idespecialidad)
 {
-    bootbox.confirm("¿Estas seguro de activar al Médico?",function(result){
+    bootbox.confirm("¿Estas seguro de activar la Especialdiad?",function(result){
         if(result)
         {
             $.post(
-                "../ajax/medico.php?op=activar",
-                {idpersona:idpersona},
+                "../ajax/horario.php?op=activar",
+                {idespecialidad:idespecialidad},
                 function(e)
                 {
                     bootbox.alert(e);
