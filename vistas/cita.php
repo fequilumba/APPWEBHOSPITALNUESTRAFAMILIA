@@ -54,27 +54,28 @@
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Paciente</label>
-                              <select name="persona_idpersona" id="persona_idpersona"  class="form-control" ></select>
+                              <select name="persona_idpersona" id="persona_idpersona" class="form-control" class="form-control" ></select>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Fecha/Hora</label>
-                              <input type="date" name="fecha_cita" id="fecha_cita" required>
-                              <input type="time" name="hora_cita" id="hora_cita" required>
+                              <input type="date" name="fecha_cita" class="form-control" id="fecha_cita" required>
+                              <br>
+                              <input type="time" name="hora_cita" class="form-control" id="hora_cita" required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Diagnóstico</label>
-                              <input type="text" name="diagnostico" id="diagnostico" maxlength="255" placeholder=" " required>
+                              <input type="text" name="diagnostico" id="diagnostico" class="form-control" maxlength="255" placeholder=" " required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Sintomas</label>
-                              <input type="text" name="sintomas" id="sintomas" maxlength="255" placeholder=" "required>
+                              <input type="text" name="sintomas" id="sintomas" class="form-control" maxlength="255" placeholder=" "required>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Motivo</label>
-                              <input type="text" name="motivo_consulta" id="motivo_consulta" maxlength="255" placeholder=" "required>
+                              <input type="text" name="motivo_consulta" id="motivo_consulta" class="form-control" maxlength="255" placeholder=" "required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

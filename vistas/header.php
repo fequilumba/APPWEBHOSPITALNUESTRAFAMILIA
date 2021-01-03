@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -16,7 +16,8 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../public/css/_all-skins.min.css">
     <link rel="icon" href="../public/img/apple-touch-icon.png">
-    
+    <link rel="shortcut icon" href="../public/img/favicon.ico">
+
     <!--DATA TABLES-->
     <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="../public/datatables/buttons.dataTables.min.css">
@@ -31,9 +32,10 @@
     <script type="text/javascript" src="../public/bootstrap/js/carusel.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/bootstrap/css/normalize.css">
-    <link rel="stylesheet" href="../public/bootstrap/css/estilos.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
     <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">
     <!--clockpicker-->
     <link rel="stylesheet" type="text/css" href="../public/css/clockpicker.css">
@@ -51,7 +53,7 @@
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>H</b>NF</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>H. NUESTRA FAMILIA</b></span>
+          <span class="logo-lg"><b>Hospital</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -68,15 +70,15 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="../public/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                  <img src="../public/dist/img/user2-160x160.png" class="user-image" alt="User Image">
                   <span class="hidden-xs">Fausto Quilumba</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="../public/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="../public/dist/img/user2-160x160.png" class="img-circle" alt="User Image">
                     <p>
-                      www.hnf.com - Desarrollando Software
+                      Admin: Fausto Quilumba
                     </p>
                   </li>
                   
@@ -84,7 +86,7 @@
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Cerrar</a>
+                      <a href="#" class="btn btn-warning ">Cerrar Sesión</a>
                     </div>
                   </li>
                 </ul>
