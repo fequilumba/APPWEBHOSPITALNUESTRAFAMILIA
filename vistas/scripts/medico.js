@@ -12,7 +12,7 @@ function init() {
         {        
             //console.log(data);
             $("#especialidad_idespecialidad").html(r);
-            $("#especialidad_idespecialidad").selectpicker('refresh');
+            //$("#especialidad_idespecialidad").selectpicker('refresh');
             
         }
     );
@@ -39,9 +39,11 @@ function mostrarform(flag){
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
         $("#btnGuardar").prop("disabled",false);
+        $("#btnagregar").hide();
     }else{
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
+        $("#btnagregar").show();
     }
 }
 
@@ -122,37 +124,42 @@ function mostrar(idpersona){
 //funcion para descativar especialidades
 function desactivar(idpersona)
 {
-    bootbox.confirm("¿Estas seguro de desactivar al Médico?",function(result){
-        if(result)
-        {
+
+    alertify.confirm("Médico","¿Estas seguro de desactivar al Médico?",
+        function(){
             $.post(
                 "../ajax/medico.php?op=desactivar", {idpersona : idpersona}, function(e)
                 {
-                    bootbox.alert(e);
+                    //alertify.alert(e);
                     tabla.ajax.reload();
+                    alertify.success('Médico desactivado');
         
                 });
-        }
-    })
+        },
+        function(){
+            alertify.error('Cancelado');
+        });
+
+
+
 }
 
 function activar(idpersona)
 {
-    bootbox.confirm("¿Estas seguro de activar al Médico?",function(result){
-        if(result)
-        {
+    alertify.confirm("Médico","¿Estas seguro de activar al Médico?",
+        function(){
             $.post(
-                "../ajax/medico.php?op=activar",
-                {idpersona:idpersona},
-                function(e)
+                "../ajax/medico.php?op=activar", {idpersona : idpersona}, function(e)
                 {
-                    bootbox.alert(e);
+                    //alertify.alert(e);
                     tabla.ajax.reload();
+                    alertify.success('Médico activado');
         
-                }
-            );
-        }
-    });
+                });
+        },
+        function(){
+            alertify.error('Cancelado');
+        });
 }
 
 init();

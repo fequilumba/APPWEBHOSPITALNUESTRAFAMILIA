@@ -20,9 +20,11 @@ function mostrarform(flag){
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
         $("#btnGuardar").prop("disabled",false);
+        $("#btnagregar").hide();
     }else{
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
+        $("#btnagregar").show();
     }
 }
 
@@ -93,40 +95,38 @@ function mostrar(idespecialidad){
 //funcion para descativar especialidades
 function desactivar(idespecialidad)
 {
-    bootbox.confirm("¿Estas seguro de desactivar la Especialidad?",function(result){
-        if(result)
-        {
+    alertify.confirm("Especialidad","¿Estas seguro de desactivar la Especialidad?",
+        function(){
             $.post(
-                "../ajax/especialidad.php?op=desactivar",
-                {idespecialidad:idespecialidad},
-                function(e)
+                "../ajax/especialidad.php?op=desactivar", {idespecialidad : idespecialidad}, function(e)
                 {
-                    bootbox.alert(e);
+                    //alertify.alert(e);
                     tabla.ajax.reload();
+                    alertify.success('Especialidad desactivada');
         
-                }
-            );
-        }
-    });
+                });
+        },
+        function(){
+            alertify.error('Cancelado');
+        });
 }
 
 function activar(idespecialidad)
 {
-    bootbox.confirm("¿Estas seguro de activar la Especialdiad?",function(result){
-        if(result)
-        {
+    alertify.confirm("Especialidad","¿Estas seguro de activar la Especialidad?",
+        function(){
             $.post(
-                "../ajax/especialidad.php?op=activar",
-                {idespecialidad:idespecialidad},
-                function(e)
+                "../ajax/especialidad.php?op=activar", {idespecialidad : idespecialidad}, function(e)
                 {
-                    bootbox.alert(e);
+                    //alertify.alert(e);
                     tabla.ajax.reload();
+                    alertify.success('Especialidad activada');
         
-                }
-            );
-        }
-    });
+                });
+        },
+        function(){
+            alertify.error('Cancelado');
+        });
 }
 
 init();
