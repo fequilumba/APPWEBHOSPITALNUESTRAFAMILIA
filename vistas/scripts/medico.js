@@ -104,6 +104,8 @@ function mostrar(idpersona){
     {
         data = JSON.parse(data);
         mostrarform(true);
+        $("#especialidad_idespecialidad").val(data.especialidad_idespecialidad);
+        //$('#especialidad_idespecialidad').selectpicker('refresh');
         $("#cedula").val(data.cedula)
         $("#nombres").val(data.nombres)
         $("#apellidos").val(data.apellidos)

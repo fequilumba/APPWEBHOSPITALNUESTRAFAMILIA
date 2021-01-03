@@ -55,11 +55,10 @@
 
         return ejecutarConsulta($sql);
     }
-    //listar roles
-    public function listaRoles(){
-        $sql= "SELECT * FROM `rol`";
+    public function selectPaciente(){
+        $sql= "SELECT `persona`.`idpersona`, CONCAT(`persona`.`nombres`, ' ' ,`persona`.`apellidos`) as nombres FROM `persona`";
 
-        return ejecutarConsultaSimpleFila($sql);
+        return ejecutarConsulta($sql);
     }
     
 }

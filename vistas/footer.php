@@ -24,5 +24,6 @@
     <script type="text/javascript">
       $('.clockpicker').clockpicker();
     </script>
+    <script src="../public/js/alertify.js"></script>
   </body>
 </html>
