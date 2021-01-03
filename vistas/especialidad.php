@@ -38,7 +38,7 @@
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Nombre</label>
                               <input type="hidden" name="idespecialidad" id="idespecialidad">
-                              <input type="text" name="nombre" id="nombre" maxlength="45" placeholder="Nombre" required>
+                              <input type="text" name="nombre" id="nombre" class="form-control" maxlength="45" placeholder="Nombre especialidad" required>
                             </div>
                           
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

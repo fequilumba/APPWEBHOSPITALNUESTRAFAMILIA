@@ -22,10 +22,9 @@
                         table-bordered table-condensed table-hover">
                           <thead>
                             <th>Opciones</th>
-                            <th>Especialidad</th>
+                            <th>Area</th>
                             <th>Cédula</th>
                             <th>Nombres</th>
-                            <th>Apellidos</th>
                             <th>Email</th>
                             <th>teléfono</th>
                             <th>Dirección</th>
@@ -39,10 +38,9 @@
                           </tbody>
                           <tfoot>
                             <th>Opciones</th>
-                            <th>Especialidad</th>
+                            <th>Area</th>
                             <th>Cédula</th>
                             <th>Nombres</th>
-                            <th>Apellidos</th>
                             <th>Email</th>
                             <th>Teléfono</th>
                             <th>Dirección</th>
@@ -64,59 +62,60 @@
                         
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="">Cédula</label>
-                            <input type="text" name="cedula" id="cedula" maxlength="45" placeholder="Cédula" required>
+                            <input type="text" name="cedula" id="cedula" maxlength="45" placeholder="Cédula"class="form-control" required>
                           </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Nombres</label>
-                              <input type="text" name="nombres" id="nombres" maxlength="45" placeholder="Nombres" required>
+                              <input type="text" name="nombres" id="nombres" maxlength="45" placeholder="Nombres" class="form-control" required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Apellidos</label>
-                              <input type="text" name="apellidos" id="apellidos" maxlength="45" placeholder="Apellidos"required>
+                              <input type="text" name="apellidos" id="apellidos" maxlength="45" placeholder="Apellidos" class="form-control" required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Email</label>
-                              <input type="text" name="email" id="email" maxlength="45" placeholder="email@address.com" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" >
+                              <input type="text" name="email" id="email" maxlength="45" class="form-control" placeholder="email@address.com" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" >
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Teléfono</label>
-                              <input type="text" name="telefono" id="telefono"  placeholder="Teléfono"required>
+                              <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Teléfono"required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Dirección</label>
-                              <input type="text" name="direccion" id="direccion" maxlength="45" placeholder="Dirección"required>
+                              <input type="text" name="direccion" id="direccion" class="form-control" maxlength="45" placeholder="Dirección"required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Ciudad</label>
-                              <input type="text" name="ciudad_residencia" id="ciudad_residencia" maxlength="45" placeholder="Ciudad"required>
+                              <input type="text" name="ciudad_residencia" id="ciudad_residencia" class="form-control" maxlength="45" placeholder="Ciudad"required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Fecha Nacimiento</label>
-                              <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required>
+                              <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" required>
                             </div>
                             
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Genero</label>
-                            <!--  <input type="text" name="genero" id="genero"  placeholder="Genero" require>-->
-                              <label for="telefono">M</label>
+                              <br>
+                              <label for="telefono">Hombre</label>
                               <input type="radio" name="genero" value="M" id="masculino">
-                              <label for="correo">F</label>
+                              
+                              <label for="correo">Mujer</label>
                               <input type="radio" name="genero" value="F" id="femenino">
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Hora inicio</label>
-                              <input type="time" name="hora_inicio" id="hora_inicio" min="09:00:00" max="12:00:00" required>
+                              <input type="time" name="hora_inicio" id="hora_inicio" class="form-control" required>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Hora Fin</label>
-                              <input type="time" name="hora_fin" id="hora_fin"  required>
+                              <input type="time" name="hora_fin" id="hora_fin" class="form-control" required>
                             </div>
                           
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

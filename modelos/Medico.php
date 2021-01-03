@@ -45,7 +45,7 @@
     }
     //listar Medicos
     public function listar(){
-        $sql= "SELECT p.`idpersona`,e.`nombre`, p.`cedula`, p.`nombres`,p.`apellidos`,p.`email`, p.`telefono`,p.`direccion`,
+        $sql= "SELECT p.`idpersona`,e.`nombre`, p.`cedula`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres,p.`email`, p.`telefono`,p.`direccion`,
                         p.`ciudad_residencia`, p.`fecha_nacimiento`,p.`genero`, p.`estado` 
                 FROM `persona` p 
                 INNER JOIN `especialidad` e ON p.`especialidad_idespecialidad`=e.`idespecialidad`  

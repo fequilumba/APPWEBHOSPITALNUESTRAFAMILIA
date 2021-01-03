@@ -59,7 +59,7 @@
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                    "0"=> ($reg->estado) ? 
+                    "0"=>($reg->estado)?
                         '<button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-pencil"></li></button>'.
                         ' <button class="btn btn-danger" onclick="desactivar('.$reg->idpersona.')"><li class="fa fa-close"></li></button>'
                         :
@@ -69,14 +69,13 @@
                         "1"=>$reg->nombre,
                         "2"=>$reg->cedula,
                         "3"=>$reg->nombres,
-                        "4"=>$reg->apellidos,
-                        "5"=>$reg->email,
-                        "6"=>$reg->telefono,
-                        "7"=>$reg->direccion,
-                        "8"=>$reg->ciudad_residencia,
-                        "9"=>$reg->fecha_nacimiento,
-                        "10"=>$reg->genero,
-                        "11"=>$reg->estado ?
+                        "4"=>$reg->email,
+                        "5"=>$reg->telefono,
+                        "6"=>$reg->direccion,
+                        "7"=>$reg->ciudad_residencia,
+                        "8"=>$reg->fecha_nacimiento,
+                        "9"=>$reg->genero,
+                        "10"=>$reg->estado ?
                     '<span class="label bg-green">Activado</span>'
                     :      
                     '<span class="label bg-red">Desactivado</span>'

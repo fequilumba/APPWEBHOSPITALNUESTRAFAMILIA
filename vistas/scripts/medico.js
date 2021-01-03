@@ -20,6 +20,7 @@ function init() {
 //funcion limpiar
 function limpiar(){
     $("#idpersona").val("");
+    $("#especialidad_idespecialidad").val("");
     $("#cedula").val("");
     $("#nombres").val("");
     $("#apellidos").val("");
