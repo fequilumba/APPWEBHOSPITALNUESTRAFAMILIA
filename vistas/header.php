@@ -35,7 +35,10 @@
     <link rel="stylesheet" href="../public/bootstrap/css/normalize.css">
     <link rel="stylesheet" href="../public/bootstrap/css/estilos.css">
     <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">
+    <!--clockpicker-->
     <link rel="stylesheet" type="text/css" href="../public/css/clockpicker.css">
+    <!--alertify-->
+    <link rel="stylesheet" type="text/css" href="../public/css/alertify.css">
 
   </head>
   <body class="hold-transition skin-blue-light sidebar-mini">
