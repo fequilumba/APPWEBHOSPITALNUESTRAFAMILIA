@@ -27,9 +27,11 @@ function mostrarform(flag){
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
         $("#btnGuardar").prop("disabled",false);
+        $("#btnagregar").hide();
     }else{
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
+        $("#btnagregar").show();
     }
 }
 
@@ -108,37 +110,38 @@ function mostrar(idpersona){
 //funcion para descativar especialidades
 function desactivar(idpersona)
 {
-    bootbox.confirm("¿Estas seguro de desactivar al Cliente?",function(result){
-        if(result)
-        {
+    alertify.confirm("Cliente","¿Estas seguro de desactivar al Cliente?",
+        function(){
             $.post(
                 "../ajax/persona.php?op=desactivar", {idpersona : idpersona}, function(e)
                 {
-                    bootbox.alert(e);
+                    //alertify.alert(e);
                     tabla.ajax.reload();
+                    alertify.success('Cliente desactivado');
         
                 });
-        }
-    })
+        },
+        function(){
+            alertify.error('Cancelado');
+        });
 }
 
 function activar(idpersona)
 {
-    bootbox.confirm("¿Estas seguro de activar al Cliente?",function(result){
-        if(result)
-        {
+    alertify.confirm("Cliente","¿Estas seguro de activar al Cliente?",
+        function(){
             $.post(
-                "../ajax/persona.php?op=activar",
-                {idpersona:idpersona},
-                function(e)
+                "../ajax/persona.php?op=activar", {idpersona : idpersona}, function(e)
                 {
-                    bootbox.alert(e);
+                    //alertify.alert(e);
                     tabla.ajax.reload();
+                    alertify.success('Cliente activado');
         
-                }
-            );
-        }
-    });
+                });
+        },
+        function(){
+            alertify.error('Cancelado');
+        });
 }
 
 init();

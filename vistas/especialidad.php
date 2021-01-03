@@ -11,7 +11,7 @@
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Especialidad <button class="btn btn-success" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                          <h1 class="box-title">Especialidad <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Nueva Especialidad</button></h1>
                         <div class="box-tools pull-right"></div>
                     </div>
                     <!-- /.box-header -->
@@ -33,7 +33,7 @@
                         </table>
                     </div>
 
-                    <div class="panel-body" style="height: 400px;" id="formularioregistros">
+                    <div class="panel-body"  id="formularioregistros">
                         <form name="formularioe" id="formularioe" method="POST">
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Nombre</label>
