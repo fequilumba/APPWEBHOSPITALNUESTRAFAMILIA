@@ -31,7 +31,7 @@
                 echo json_encode($rspta);
             break;
         case 'listar':
-            $rspta=$especialidad->listarEspecialidad();
+            $rspta=$especialidad->listar();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(

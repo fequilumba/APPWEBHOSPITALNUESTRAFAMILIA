@@ -19,13 +19,13 @@
         case 'guardaryeditar':
             if (empty($idpersona)) {
                 $rspta=$persona->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
-                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero);
+                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero, $_POST['rol']);
                 echo $rspta? "persona registrada" : "Persona no se pudo registrar";
                 
 
             }else{
                 $rspta=$persona->editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero);
+                $ciudad_residencia, $fecha_nacimiento, $genero,  $_POST['rol']);
                 echo $rspta? "persona actualizada" : "Persona no se pudo actualizar";
                                 
             }
@@ -77,6 +77,33 @@
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data);    
                 echo json_encode($results);   
+            break;
+            case 'roles':
+                //Obtenemos todos los roles de la tabla rol
+            require_once "../modelos/Rol.php";
+            $rol = new Rol();
+            $rspta = $rol->listarRolClientes();
+    
+            //Obtener los roles asignados al cleinte
+            $id=$_GET['id'];
+            $marcados = $persona->listaMarcados($id);
+            //Declaramos el array para almacenar todos los roles marcados
+            $valores=array();
+    
+            //Almacenar los roles asignados al cliente en el array
+            while ($per = $marcados->fetch_object())
+                {
+                    array_push($valores, $per->rol_idrol);
+                }
+    
+            //Mostramos la lista de permisos en la vista y si están o no marcados
+            while ($reg = $rspta->fetch_object())
+                    {
+                        $sw=in_array($reg->idrol,$valores)?'checked':'';
+                        echo '<li> <input type="checkbox" '.$sw.'  name="rol[]" value="'.$reg->idrol.'">'.$reg->nombre.'</li>';
+                        //echo '<li> <input type="checkbox" name="rol[]" value="'.$reg->idrol.'">'.$reg->nombre.'</li>';
+                    }
+            
             break;
     }
 

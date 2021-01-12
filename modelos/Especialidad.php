@@ -4,7 +4,7 @@
      public function __construct(){
         
      }
-     public function listarEspecialidad(){
+     public function listar(){
         $sql= "SELECT * FROM `especialidad`";
         return ejecutarConsulta($sql);
      }
@@ -45,6 +45,10 @@
     public function selectEspecialidad(){
         $sql= "SELECT * FROM `especialidad` 
                 WHERE `especialidad`.`estado`=1";
+        return ejecutarConsulta($sql);
+     }
+     public function listarEspecialidad(){
+        $sql= "SELECT * FROM `especialidad` WHERE `especialidad`.`estado`=1";
         return ejecutarConsulta($sql);
      }
 

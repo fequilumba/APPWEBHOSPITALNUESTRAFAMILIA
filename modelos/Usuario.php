@@ -46,7 +46,6 @@
             $num_elementos=$num_elementos +1;
         }
         return $sw;
-
     }
     //mostrar datos de un usuario especifico por id
     public function mostrar($idusuario)

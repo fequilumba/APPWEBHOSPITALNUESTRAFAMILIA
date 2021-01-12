@@ -21,20 +21,14 @@
     switch ($_GET["op"]) {
         case 'guardaryeditar':
             if (empty($idpersona)) {
-                $rspta=$medico->insertar($especialidad_idespecialidad,$cedula, $nombres, $apellidos, $email, $telefono, 
-                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero);
-                require_once "../modelos/Horario.php";
-                $horario = new Horario();
-                $rspta2 = $horario->insertarHorario($especialidad_idespecialidad,$hora_inicio,$hora_fin);
-                echo $rspta? "Médico registrado" : "Médico no se pudo registrar";
+                $rspta=$medico->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
+                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero, $_POST['especialidad']);
+                echo $rspta? "Médico registrado" : "No se pudo registrar todos los datos del medico";
                 
 
             }else{
-                $rspta=$medico->editar($idpersona, $especialidad_idespecialidad,$cedula, $nombres, $apellidos, $email, $telefono, 
-                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero);
-                require_once "../modelos/Horario.php";
-                $horario = new Horario();
-                $rspta2 = $horario->editarHorario($idhorario,$especialidad_idespecialidad,$hora_inicio,$hora_fin);
+                $rspta=$medico->editar($idpersona,$cedula, $nombres, $apellidos, $email, $telefono, 
+                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$_POST['especialidad']);
                 
                 echo $rspta? "Médico actualizado" : "Médico no se pudo actualizar";
                                 
@@ -98,6 +92,37 @@
                           '</option>';
                 }
             break;
+        case 'especialidades':
+            require_once "../modelos/Especialidad.php";
+            $especialidad=new Especialidad();
+            $rspta = $especialidad->listarEspecialidad();
+            //obtener las especialidades asiganadas a un medico
+            $id=$_GET['id'];
+            $marcados = $medico->listaMarcados($id);
+            //array para almacenar todas las especialidades marcadas
+            $valores=array();
+            //almacenar las especialdiades al usuario en el array
+            while ($per =$marcados->fetch_object()) {
+                array_push($valores, $per->especialidad_idespecialidad);
+            }
+            //Mostrar una lista de especialidades en la vista de registro de medicos y si estan o no marcados 
+            while ($reg = $rspta->fetch_object()) 
+            {
+                $sw=in_array($reg->idespecialidad,$valores)?'checked':'';
+                echo '<li> <input type="checkbox" '.$sw.'  name="especialidad[]" value="'.$reg->idespecialidad.'">'.$reg->nombre.'</li>';
+            }
+
+            break;
+        case 'roles':
+                require_once "../modelos/Rol.php";
+                $rol=new ROl();
+                $rspta = $rol->listarRol();
+                //Mostrar una lista de especialidades en la vista de registro de medicos y si estan o no marcados 
+                while ($reg = $rspta->fetch_object()) {
+                    echo '<li> <input type="checkbox" name="rol[]" value="'.$reg->idrol.'"> '.$reg->nombre.'</li>';
+                } 
+    
+                break;
     }
 
 ?>

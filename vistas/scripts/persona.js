@@ -6,6 +6,10 @@ function init() {
     $("#formulario").on("submit",function(e){
         guardaryeditar(e);
     });
+    //mostrar roles
+	$.post("../ajax/persona.php?op=roles&id=",function(r){
+		$("#roles").html(r);
+	});
 }
 //funcion limpiar
 function limpiar(){
@@ -19,6 +23,8 @@ function limpiar(){
     $("#ciudad_residencia").val("");
     $("#fecha_nacimiento").val("");
     $("#genero").val("");
+    $("#administrador").val("");
+    $("#cliente").val("");
 }
 //mostrar formulario
 function mostrarform(flag){
@@ -106,6 +112,9 @@ function mostrar(idpersona){
         $("#idpersona").val(data.idpersona)
 
     });
+    $.post("../ajax/persona.php?op=roles&id="+idpersona,function(r){
+		$("#roles").html(r);
+	});
 }
 //funcion para descativar especialidades
 function desactivar(idpersona)
