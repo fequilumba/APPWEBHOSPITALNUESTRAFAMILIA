@@ -16,11 +16,23 @@ function init() {
             
         }
     );
+    //mostrar especialidades
+    $.post("../ajax/medico.php?op=especialidades&id=",function(r)
+        {   
+            $("#especialidades").html(r);
+        });
+    //mostrar roles
+    $.post("../ajax/medico.php?op=roles",function(r)
+        {        
+            $("#roles").html(r);
+        }
+    );
+
 }
 //funcion limpiar
 function limpiar(){
     $("#idpersona").val("");
-    $("#especialidad_idespecialidad").val("");
+    $("#especialidades").val("");
     $("#cedula").val("");
     $("#nombres").val("");
     $("#apellidos").val("");
@@ -30,8 +42,6 @@ function limpiar(){
     $("#ciudad_residencia").val("");
     $("#fecha_nacimiento").val("");
     $("#genero").val("");
-    $("#hora_inicio").val("");
-    $("#hora_fin").val("");
 }
 //mostrar formulario
 function mostrarform(flag){
@@ -121,6 +131,9 @@ function mostrar(idpersona){
         $("#idpersona").val(data.idpersona)
 
     });
+    $.post("../ajax/medico.php?op=especialidades&id="+idpersona,function(r){
+		$("#especialidades").html(r);
+	});
 }
 //funcion para descativar especialidades
 function desactivar(idpersona)

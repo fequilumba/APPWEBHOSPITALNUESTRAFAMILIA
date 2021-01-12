@@ -35,7 +35,8 @@
     <link rel="stylesheet" href="../public/bootstrap/css/normalize.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    
+    <!--full calendar-->
+    <link rel="stylesheet" type="text/css" href="../public/css/fullcalendar.min.css">
     <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">
     <!--clockpicker-->
     <link rel="stylesheet" type="text/css" href="../public/css/clockpicker.css">

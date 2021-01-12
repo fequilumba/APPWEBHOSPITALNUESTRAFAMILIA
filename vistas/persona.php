@@ -75,7 +75,7 @@
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Teléfono</label>
-                              <input type="text" name="telefono" id="telefono" class="form-control"  placeholder="Teléfono"required>
+                              <input type="text" name="telefono" id="telefono" class="form-control"  placeholder="Teléfono">
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -101,7 +101,14 @@
                               <label for="">Mujer</label>
                               <input type="radio" name="genero" value="F" id="femenino">
                             </div>
-                          
+
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="">Roles:</label><br>
+                              <ul style="list-style: none;" id="roles">
+
+                              </ul>
+                            </div>
+
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <button class="btn btn-primary" type="submit" 
                             id="btnGuardar"><i class="fa fa-save"> Guardar</i></button>

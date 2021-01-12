@@ -1,0 +1,12 @@
+.container-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.fondo{
+    background-image: url("../img/portada-login.jpg");
+    background-color: #cccccc;
+   }
+.estilo{
+    color: rgb(80, 196, 231);
+}
