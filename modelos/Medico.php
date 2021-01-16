@@ -7,12 +7,13 @@
 
      //Metodo para insertar registros
      public function insertar($cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                                $ciudad_residencia, $fecha_nacimiento, $genero,$especialidades){
+                                $ciudad_residencia, $fecha_nacimiento, $genero,$especialidades,$roles){
         $sql= "INSERT INTO `persona` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, `ciudad_residencia`, `fecha_nacimiento`, `genero`, `estado`) 
         VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia', '$fecha_nacimiento', '$genero', 1)";
-        //return ejecutarConsulta($sql);
+        
         $idpersonanew=ejecutarConsulta_retornarID($sql);
-        //$idpersonanew2=ejecutarConsulta_retornarID($sql);
+        $medico= new Medico();
+        $medico->rol($idpersonanew,$roles);
         $num_elementos=0;
         $sw=true;
 
@@ -24,24 +25,31 @@
             ejecutarConsulta($sql_detalle) or $sw = false;
             $num_elementos=$num_elementos +1;
         }
-        /*while ($num_elementos_rol < count($roles)) { //mientras que el numero de elementos sea menor que la cantidad de especialdiades escogidas
+        return $sw;
+    }
+
+    function rol($idpersonanew,$roles){
+        $num_elementos=0;
+        $sw=true;
+        while ($num_elementos < count($roles)) { //mientras que el numero de elementos sea menor que la cantidad de especialdiades escogidas
             //insertamos cada uno de los permiso del usuario, cin wihle recorremo todos los permisos asigandos
             $sql_rol = "INSERT INTO `persona_has_rol` (`persona_idpersona`, `rol_idrol`) 
-                            VALUES('$idpersonanew2','$roles[$num_elementos_rol]')";
+                            VALUES('$idpersonanew','$roles[$num_elementos]')";
                             //enviamos la variable.. true si es de manera correcta
             ejecutarConsulta($sql_rol) or $sw = false;
-            $num_elementos_rol=$num_elementos_rol +1;
-        }*/
-
+            $num_elementos  =$num_elementos +1;
+        }
         return $sw;
     }
      //metodo para editar registros
      public function editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                                $ciudad_residencia, $fecha_nacimiento, $genero,$especialidades){
+                                $ciudad_residencia, $fecha_nacimiento, $genero,$especialidades,$roles){
         $sql= "UPDATE `persona` SET `cedula`='$cedula', `nombres`='$nombres', `apellidos`='$apellidos', `email`='$email', 
         `telefono`='$telefono', `direccion`='$direccion', `ciudad_residencia`='$ciudad_residencia', `fecha_nacimiento`='$fecha_nacimiento', `genero`='$genero'
         WHERE `idpersona`='$idpersona'";
         ejecutarConsulta($sql);
+        $medico= new Medico();
+        $medico->editarRol($idpersona,$roles);
         //eliminar todas las especialidades asignadas para volver a registrarlos
         $sqldel="DELETE FROM `persona_has_especialidad` WHERE `persona_idpersona`='$idpersona'";
         ejecutarConsulta($sqldel);
@@ -59,6 +67,23 @@
         }
         return $sw;
     }
+    public function editarRol($idpersona,$roles){
+        $sqldel="DELETE FROM `persona_has_rol` WHERE `persona_idpersona`='$idpersona'";
+        ejecutarConsulta($sqldel);
+
+        $num_elementos=0;
+        $sw=true;
+        while ($num_elementos < count($roles)) { //mientras que el numero de elementos sea menor que la cantidad de especialdiades escogidas
+            //insertamos cada uno de los permiso del usuario, cin wihle recorremo todos los permisos asigandos
+            $sql_rol = "INSERT INTO `persona_has_rol` (`persona_idpersona`, `rol_idrol`) 
+                            VALUES('$idpersona','$roles[$num_elementos]')";
+                            //enviamos la variable.. true si es de manera correcta
+            ejecutarConsulta($sql_rol) or $sw = false;
+            $num_elementos  =$num_elementos +1;
+        }
+        return $sw;
+    }
+
     //mostrar un registro para editar
     public function mostrar($idpersona)
         {
@@ -104,6 +129,10 @@
 
         return ejecutarConsulta($sql);
     }
-    
+    public function listaMarcadosRol($idpersona){
+        $sql= "SELECT * FROM `persona_has_rol` WHERE persona_idpersona='$idpersona'";
+
+        return ejecutarConsulta($sql);
+    }
 }
 ?>

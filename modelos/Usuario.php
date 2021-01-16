@@ -5,29 +5,41 @@
         
      }
      //Metodo para insertar usuarioss
-     public function insertar($username,$contrasenia,$email,$imagen,$permisos){
-        $sql= "INSERT INTO `usuario` (`username`, `contrasenia`,`email`,`imagen`,`estado`) 
-        VALUES ('$username','$contrasenia','$email','$imagen','1')";
-        //return ejecutarConsulta($sql);
-        $idusuarionew = ejecutarConsulta_retornarID($sql);
+     public function insertar($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
+                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen){
+        
+        $pieces = explode(" ", $nombres); 
+        $str=""; 
+        foreach($pieces as $piece) 
+        { 
+            $str.=$piece[0]; 
+        }  
+        
+        $contrasenia= $cedula . $str;
+        $sql= "INSERT INTO `usuario` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
+                `ciudad_residencia`, `fecha_nacimiento`, `genero`,`login`, `contrasenia`,`imagen`,`estado`) 
+        VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia',
+                '$fecha_nacimiento','$genero',/*login-cedula*/'$cedula','$contrasenia','$imagen','1')";
 
-        $num_elementos=0;
-        $sw=true;
-
-        while ($num_elementos < count($permisos)) { 
-            //insertamos cada uno de los permiso del usuario, cin wihle recorremo todos los permisos asigandos
-            $sql_detalle = "INSERT INTO `usuario_permiso` (`usuario_idusuario`, `permiso_idpermiso`) 
-                            VALUES('$idusuarionew','$permisos[$num_elementos]')";
-                            //enviamos la variable.. true si es de manera correcta
-            ejecutarConsulta($sql_detalle) or $sw = false;
-            $num_elementos=$num_elementos +1;
-        }
-        return $sw;
+        return ejecutarConsulta($sql);
     }
+
      //metodo para editar o actualizar especialidad
-     public function editar($idusuario,$username,$contrasenia,$email,$imagen,$permisos){
-        $sql= " UPDATE `usuario` SET `username` = '$username',`contrasenia` = '$contrasenia',
-        `email` = '$email',`imagen` = '$imagen' WHERE `usuario`.`idusuario` = '$idusuario'";
+     public function editar($idpersona,$cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+                            $ciudad_residencia, $fecha_nacimiento, $genero, $imagen){
+        $pieces = explode(" ", $nombres); 
+        $str=""; 
+        foreach($pieces as $piece) 
+        { 
+        $str.=$piece[0]; 
+        }  
+                                
+        $contrasenia= $cedula . $str;
+
+        $sql= " UPDATE `usuario` SET `cedula`='$cedula', `nombres`='$nombres', `apellidos`='$apellidos', `email`='$email', 
+                        `telefono`='$telefono', `direccion`='$direccion', `ciudad_residencia`='$ciudad_residencia', `fecha_nacimiento`='$fecha_nacimiento', 
+                        `genero`='$genero',`login`='$cedula',`contrasenia`='$contrasenia',`imagen`='$imagen'
+                WHERE `idusuario`='$idpersona'";
         //return ejecutarConsulta($sql);
         ejecutarConsulta($sql);
         //Eliminamos todos los permisos asignados para volverlos a registrar
@@ -47,6 +59,25 @@
         }
         return $sw;
     }
+
+    public function editarUsuario($idpersona,$cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+                            $ciudad_residencia, $fecha_nacimiento, $genero, $imagen){
+        $pieces = explode(" ", $nombres); 
+        $str=""; 
+        foreach($pieces as $piece) 
+        { 
+        $str.=$piece[0]; 
+        }                      
+        $contrasenia= $cedula . $str;
+
+        $sql= " UPDATE `usuario` SET `cedula`='$cedula', `nombres`='$nombres', `apellidos`='$apellidos', `email`='$email', 
+                        `telefono`='$telefono', `direccion`='$direccion', `ciudad_residencia`='$ciudad_residencia', `fecha_nacimiento`='$fecha_nacimiento', 
+                        `genero`='$genero',`login`='$cedula',`contrasenia`='$contrasenia',`imagen`='$imagen'
+                WHERE `idusuario`='$idpersona'";
+        return ejecutarConsulta($sql);
+        
+    }
+
     //mostrar datos de un usuario especifico por id
     public function mostrar($idusuario)
         {
@@ -71,7 +102,9 @@
     }
     public function listar()
     {
-        $sql= "SELECT u.`idusuario`, u.`username`, u.`email`, u.`imagen`, u.`estado` FROM `usuario` u";
+        $sql= "SELECT u.`idusuario`, u.`cedula`, CONCAT(u.`nombres`, ' ' ,u.`apellidos`) as nombres, u.`email`, u.`telefono`, 
+                    u.`direccion`, u.`ciudad_residencia`, u.`fecha_nacimiento`, u.`genero`, u.`login`, u.`imagen`, u.`estado`
+                FROM `usuario` u";
         
         return ejecutarConsulta($sql);
     }
@@ -80,6 +113,13 @@
         $sql= "SELECT * FROM `usuario_permiso` WHERE `usuario_idusuario`='$idusuario' ";        
         return ejecutarConsulta($sql);
     }
-
+    public function verificar($login,$clave)
+    {
+        $sql= "SELECT u.`idusuario`, u.`cedula`,u.`nombres`,u.`apellidos`,u.`email`, u.`telefono`, 
+        u.`direccion`, u.`ciudad_residencia`, u.`fecha_nacimiento`, u.`genero`, u.`login`, u.`imagen`, u.`estado` 
+                FROM `usuario` u 
+                WHERE `login`='$login' AND `contrasenia`='$clave' AND `estado`=1";        
+        return ejecutarConsulta($sql);
+    }
  }
 ?>

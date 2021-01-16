@@ -1,4 +1,12 @@
 <?php
+//Activamos el almacenamiento en el buffer
+ob_start();
+session_start();
+if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. significa que no se ha logeado al sistema
+{
+  header("Location: login.html");
+}else
+{
   require 'header.php';
 ?>
 
@@ -82,4 +90,8 @@
 
 <?php
   require 'footer.php';
+?>
+<?php
+}
+ob_end_flush();
 ?>

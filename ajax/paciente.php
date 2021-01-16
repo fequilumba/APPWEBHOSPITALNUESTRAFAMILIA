@@ -1,6 +1,6 @@
 <?php
-    require_once "../modelos/Persona.php";
-    $persona = new Persona();
+    require_once "../modelos/Paciente.php";
+    $paciente = new Paciente();
 
     $idpersona = isset($_POST["idpersona"])? limpiarCadena($_POST["idpersona"]):""; 
     $especialidad_idespecialidad = isset($_POST["especialidad_idespecialidad"])? limpiarCadena($_POST["especialidad_idespecialidad"]):""; 
@@ -19,42 +19,42 @@
     switch ($_GET["op"]) {
         case 'guardaryeditar':
             if (empty($idpersona)) {
-                $rspta=$persona->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
-                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero, $_POST['rol']);
+                $rspta=$paciente->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
+                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero);
                 require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
                 $rspta = $usuario->insertar($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
                 $ciudad_residencia, $fecha_nacimiento, $genero,$imagen);
-                echo $rspta? "Cliente registrada" : "Cliente no se pudo registrar";
+                echo $rspta? "Paciente registrado" : "Paciente no se pudo registrar";
                 
 
             }else{
-                $rspta=$persona->editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,  $_POST['rol']);
+                $rspta=$paciente->editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+                $ciudad_residencia, $fecha_nacimiento, $genero);
                 require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
                 $rspta = $usuario->editarUsuario($idpersona,$cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
                 $ciudad_residencia, $fecha_nacimiento, $genero,$imagen);
-                echo $rspta? "Cliente actualizado" : "Cliente no se pudo actualizar";
+                echo $rspta? "Paciente actualizado" : "Paciente no se pudo actualizar";
                                 
             }
             break;
         case 'desactivar':
-                $rspta=$persona->desactivar($idpersona);
-                echo $rspta ? "Persona desactivada" : "No se pudo desactivar la persona";
+                $rspta=$paciente->desactivar($idpersona);
+                echo $rspta ? "Paciente desactivado" : "No se pudo desactivar al paciente";
     
                 break;
         case 'activar':
-                $rspta=$persona->activar($idpersona);
-                echo $rspta ? "Persona activada" : "No se pudo activar la persona";
+                $rspta=$paciente->activar($idpersona);
+                echo $rspta ? "Paciente activado" : "No se pudo activar al paciente";
     
                 break;
         case 'mostrar':
-                    $rspta=$persona->mostrar($idpersona);
+                    $rspta=$paciente->mostrar($idpersona);
                     echo json_encode($rspta);
                 break;
         case 'listar':
-            $rspta=$persona->listar();
+            $rspta=$paciente->listar();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
@@ -67,14 +67,13 @@
                         ,
                         "1"=>$reg->cedula,
                         "2"=>$reg->nombres,
-                        "3"=>$reg->apellidos,
-                        "4"=>$reg->email,
-                        "5"=>$reg->telefono,
-                        "6"=>$reg->direccion,
-                        "7"=>$reg->ciudad_residencia,
-                        "8"=>$reg->fecha_nacimiento,
-                        "9"=>$reg->genero,
-                        "10"=>$reg->estado ?
+                        "3"=>$reg->email,
+                        "4"=>$reg->telefono,
+                        "5"=>$reg->direccion,
+                        "6"=>$reg->ciudad_residencia,
+                        "7"=>$reg->fecha_nacimiento,
+                        "8"=>$reg->genero,
+                        "9"=>$reg->estado ?
                     '<span class="label bg-green">Activado</span>'
                     :      
                     '<span class="label bg-red">Desactivado</span>'
@@ -86,32 +85,6 @@
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data);    
                 echo json_encode($results);   
-            break;
-            case 'roles':
-                //Obtenemos todos los roles de la tabla rol
-            require_once "../modelos/Rol.php";
-            $rol = new Rol();
-            $rspta = $rol->listarRolClientes();
-            //Obtener los roles asignados al cleinte
-            $id=$_GET['id'];
-            $marcados = $persona->listaMarcados($id);
-            //Declaramos el array para almacenar todos los roles marcados
-            $valores=array();
-    
-            //Almacenar los roles asignados al cliente en el array
-            while ($per = $marcados->fetch_object())
-                {
-                    array_push($valores, $per->rol_idrol);
-                }
-    
-            //Mostramos la lista de permisos en la vista y si están o no marcados
-            while ($reg = $rspta->fetch_object())
-                    {
-                    $sw=in_array($reg->idrol,$valores)?'checked':'';
-                    echo '<li> <input type="checkbox" '.$sw.'  name="rol[]" value="'.$reg->idrol.'">'.$reg->nombre.'</li>';
-                    //echo '<li> <input type="checkbox" name="rol[]" value="'.$reg->idrol.'">'.$reg->nombre.'</li>';
-            }
-            
             break;
     }
 

@@ -19,7 +19,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Cliente <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Nuevo Cliente</button></h1>
+                          <h1 class="box-title">Paciente <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Nuevo Paciente</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -32,7 +32,6 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                             <th>Opciones</th>
                             <th>Cédula</th>
                             <th>Nombres</th>
-                            <th>Apellidos</th>
                             <th>Email</th>
                             <th>teléfono</th>
                             <th>Dirección</th>
@@ -48,7 +47,6 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                             <th>Opciones</th>
                             <th>Cédula</th>
                             <th>Nombres</th>
-                            <th>Apellidos</th>
                             <th>Email</th>
                             <th>Teléfono</th>
                             <th>Dirección</th>
@@ -110,12 +108,12 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                               <input type="radio" name="genero" value="F" id="femenino">
                             </div>
 
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <!--<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="">Roles:</label><br>
                               <ul style="list-style: none;" id="roles">
 
                               </ul>
-                            </div>
+                            </div>-->
 
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <button class="btn btn-primary" type="submit" 
@@ -139,7 +137,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 <?php
   require 'footer.php';
 ?>
-<script type="text/javascript" src="scripts/persona.js"></script>
+<script type="text/javascript" src="scripts/paciente.js"></script>
 <?php
 }
 ob_end_flush();

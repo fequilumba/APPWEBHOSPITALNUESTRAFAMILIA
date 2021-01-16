@@ -7,31 +7,10 @@ function init() {
         guardaryeditar(e);
     });
 
-    //Cargamos los items al select especialidad
-    $.post("../ajax/medico.php?op=selectEspecialidad",function(r)
-        {        
-            //console.log(data);
-            $("#especialidad_idespecialidad").html(r);
-            //$("#especialidad_idespecialidad").selectpicker('refresh');
-            
-        }
-    );
-    //mostrar roles
-	$.post("../ajax/medico.php?op=roles&id2=",function(r){
-		$("#roles").html(r);
-	});
-    //mostrar especialidades
-    $.post("../ajax/medico.php?op=especialidades&id=",function(r)
-        {   
-            $("#especialidades").html(r);
-        });
-    
-
 }
 //funcion limpiar
 function limpiar(){
     $("#idpersona").val("");
-    $("#especialidades").val("");
     $("#cedula").val("");
     $("#nombres").val("");
     $("#apellidos").val("");
@@ -77,7 +56,7 @@ function listar(){
             'pdf',
         ],
         "ajax":{
-            url: '../ajax/medico.php?op=listar',
+            url: '../ajax/paciente.php?op=listar',
             type: "get",
             dataTyoe: "json",
             error: function(e){
@@ -96,7 +75,7 @@ function guardaryeditar(e){
     $("#btnGuardar").prop("disabled",true);
     var formData = new FormData($("#formulario")[0]);
     $.ajax({
-        url: "../ajax/medico.php?op=guardaryeditar",
+        url: "../ajax/paciente.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -112,7 +91,7 @@ function guardaryeditar(e){
 }
 
 function mostrar(idpersona){
-    $.post("../ajax/medico.php?op=mostrar",{idpersona : idpersona}, function(data, status)
+    $.post("../ajax/paciente.php?op=mostrar",{idpersona : idpersona}, function(data, status)
     {
         data = JSON.parse(data);
         mostrarform(true);
@@ -128,26 +107,18 @@ function mostrar(idpersona){
         $("#idpersona").val(data.idpersona)
 
     });
-    $.post("../ajax/medico.php?op=roles&id2="+idpersona,function(r){
-		$("#roles").html(r);
-	});
-    $.post("../ajax/medico.php?op=especialidades&id="+idpersona,function(r){
-		$("#especialidades").html(r);
-    });
-    
 }
-//funcion para descativar medicos
+//funcion para descativar especialidades
 function desactivar(idpersona)
 {
-
-    alertify.confirm("Médico","¿Estas seguro de desactivar al Médico?",
+    alertify.confirm("Paciente","¿Estas seguro de desactivar al Paciente?",
         function(){
             $.post(
-                "../ajax/medico.php?op=desactivar", {idpersona : idpersona}, function(e)
+                "../ajax/paciente.php?op=desactivar", {idpersona : idpersona}, function(e)
                 {
                     //alertify.alert(e);
                     tabla.ajax.reload();
-                    alertify.success('Médico desactivado');
+                    alertify.success('Paciente desactivado');
         
                 });
         },
@@ -158,14 +129,14 @@ function desactivar(idpersona)
 
 function activar(idpersona)
 {
-    alertify.confirm("Médico","¿Estas seguro de activar al Médico?",
+    alertify.confirm("Paciente","¿Estas seguro de activar al Paciente?",
         function(){
             $.post(
-                "../ajax/medico.php?op=activar", {idpersona : idpersona}, function(e)
+                "../ajax/persona.php?op=activar", {idpersona : idpersona}, function(e)
                 {
                     //alertify.alert(e);
                     tabla.ajax.reload();
-                    alertify.success('Médico activado');
+                    alertify.success('Paciente activado');
         
                 });
         },
