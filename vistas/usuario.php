@@ -1,4 +1,12 @@
 <?php
+//Activamos el almacenamiento en el buffer
+ob_start();
+session_start();
+if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. significa que no se ha logeado al sistema
+{
+  header("Location: login.html");
+}else
+{
 require 'header.php';
 ?>
 <!--Contenido-->
@@ -10,8 +18,9 @@ require 'header.php';
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Usuario <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar Usuario</button>
-                        <div class="box-tools pull-right">
+                          <!--<h1 class="box-title">Usuario <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar Usuario</button>-->
+                          <h1 class="box-title">Usuario</h1>
+                          <div class="box-tools pull-right">
                         </div>
                     </div>
                     <!-- /.box-header -->
@@ -19,18 +28,32 @@ require 'header.php';
                     <div class="panel-body table-responsive" id="listadoregistros">
                         <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                           <thead>
-                            <th>Opciones</th>
-                            <th>Username</th>
+                            <th>Desactivar/<br>Activar</th>
+                            <th>Cédula</th>
+                            <th>Nombres</th>
                             <th>Email</th>
+                            <th>teléfono</th>
+                            <th>Dirección</th>
+                            <th>Ciudad</th>
+                            <th>Fecha Nacimiento</th>
+                            <th>Género</th>
+                            <th>Login</th>
                             <th>Imagen</th>
                             <th>Estado</th>
                           </thead>
                           <tbody>                            
                           </tbody>
                           <tfoot>
-                            <th>Opciones</th>
-                            <th>Username</th>
+                            <th>Desactivar/<br>Activar</th>
+                            <th>Cédula</th>
+                            <th>Nombres</th>
                             <th>Email</th>
+                            <th>teléfono</th>
+                            <th>Dirección</th>
+                            <th>Ciudad</th>
+                            <th>Fecha Nacimiento</th>
+                            <th>Género</th>
+                            <th>Login</th>
                             <th>Imagen</th>
                             <th>Estado</th>
                           </tfoot>
@@ -38,6 +61,7 @@ require 'header.php';
                     </div>
                     <div class="panel-body" id="formularioregistros">
                         <form name="formulario" id="formulario" method="POST">
+                          
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label>Username(*):</label>
                             <input type="hidden" name="idusuario" id="idusuario">
@@ -51,6 +75,8 @@ require 'header.php';
                             <label>Email:</label>
                             <input type="email" class="form-control" name="email" id="email" maxlength="45" placeholder="email@address.com" required>
                           </div>
+
+
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Permisos:</label>
                             <ul style="list-style: none;" id="permisos"> 
@@ -83,3 +109,7 @@ require 'footer.php';
 ?>
 
 <script type="text/javascript" src="scripts/usuario.js"></script>
+<?php
+}
+ob_end_flush();
+?>

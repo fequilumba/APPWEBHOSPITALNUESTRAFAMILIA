@@ -94,6 +94,21 @@
         return ejecutarConsulta($sql);
     }
 
-    
+    //registra persona desde el formulario de registro en linea
+    public function clienteRegistro($cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+                                    $ciudad_residencia, $fecha_nacimiento, $genero){
+        $sql_persona= "INSERT INTO `persona` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
+                     `ciudad_residencia`, `fecha_nacimiento`, `genero`, `estado`) 
+                     VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia', 
+                                '$fecha_nacimiento', '$genero', 1)";
+
+        $idpersonanew = ejecutarConsulta_retornarID($sql_persona);
+
+        $sql_detalle = "INSERT INTO `persona_has_rol` (`persona_idpersona`, `rol_idrol`) 
+                        VALUES('$idpersonanew','3')";
+                //enviamos la variable.. true si es de manera correcta
+        return ejecutarConsulta($sql_detalle);
+    }
+
 }
 ?>

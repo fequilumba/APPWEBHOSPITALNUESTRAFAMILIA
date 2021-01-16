@@ -129,9 +129,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Buscar</a></li>
-                <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Eliminar</a></li>
-                <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Actualizar</a></li>
+                <li><a href="paciente.php"><i class="fa fa-circle-o"></i> Registrar</a></li>}
               </ul>
             </li>
             <li class="treeview">
@@ -141,10 +139,8 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="venta.php"><i class="fa fa-circle-o"></i> Registrar</a></li>
-                <li><a href="cliente.php"><i class="fa fa-circle-o"></i> Buscar</a></li>
-                <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Eliminar</a></li>
-                <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Actualizar</a></li>
+                <li><a href="medico.php"><i class="fa fa-circle-o"></i> Registrar</a></li>
+                <li><a href="especialidad.php"><i class="fa fa-circle-o"></i> Especialidades</a></li>
               </ul>
             </li>                       
             <li class="treeview">
