@@ -10,7 +10,7 @@ $("#frmAcceso").on('submit',function(e)
     {
         if (data!="null")
         {
-            $(location).attr("href","especialidad.php");            
+            $(location).attr("href","home.php");            
         }
         else
         {

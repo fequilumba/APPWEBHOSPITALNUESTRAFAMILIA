@@ -153,7 +153,7 @@ function eliminar(idcita_medica)
                 }
             );
         }
-    });*/
+    });*/  
     alertify.confirm("CITA","¿Estas seguro de eliminar la cita?",
         function(){
             $.post(
