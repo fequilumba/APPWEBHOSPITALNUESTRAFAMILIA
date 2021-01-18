@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="../public/css/_all-skins.min.css">
     <link rel="icon" href="../public/img/apple-touch-icon.png">
     <link rel="shortcut icon" href="../public/img/favicon.ico">
+    <!--full calendar-->
+    
+    <link href='../public/plugins/calendario/lib/main.css' rel='stylesheet'/>
+    <script src='../public/plugins/calendario/lib/main.js'></script>
+    <script href="../public/bootstrap/css/bootstrap.css"></script>
 
     <!--DATA TABLES-->
     <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">
@@ -24,19 +29,9 @@
     <link rel="stylesheet" type="text/css" href="../public/datatables/responsive.dataTables.min.css">
 
     <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-select.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
     <!--mis estilos personalizados-->
-    <script type="text/javascript" src="../public/bootstrap/js/carusel.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../public/bootstrap/css/normalize.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!--full calendar-->
-    <link rel="stylesheet" type="text/css" href="../public/css/fullcalendar.min.css">
+    
     <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">
     <!--clockpicker-->
     <link rel="stylesheet" type="text/css" href="../public/css/clockpicker.css">
@@ -121,7 +116,6 @@
                 <li><a href="mision-vision.php"><i class="fa fa-circle-o"></i> Misión/Visón</a></li>
               </ul>
             </li>
-            
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-users"></i>
@@ -129,7 +123,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="paciente.php"><i class="fa fa-circle-o"></i> Registrar</a></li>}
+                <li><a href="paciente.php"><i class="fa fa-circle-o"></i> Registrar</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -142,6 +136,18 @@
                 <li><a href="medico.php"><i class="fa fa-circle-o"></i> Registrar</a></li>
                 <li><a href="especialidad.php"><i class="fa fa-circle-o"></i> Especialidades</a></li>
               </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-list-alt"></i>
+                <span>Mi Agenda</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="cita.php"><i class="fa fa-circle-o"></i> ver Agenda</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Exámenes</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Receta</a></li>
+              </ul>
             </li>                       
             <li class="treeview">
               <a href="#">
@@ -149,8 +155,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Registrar</a></li>
-                <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Cancelar</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Agendar</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Cancelar</a></li>
                 
               </ul>
             </li>
@@ -160,8 +166,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
+                <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Historial Medico</a></li>
                 <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Recetas</a></li>
-                <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Citas</a></li>
                 <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Examenes</a></li>                
               </ul>
             </li>

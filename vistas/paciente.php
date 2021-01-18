@@ -8,6 +8,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 }else
 {
   require 'header.php';
+  if ($_SESSION['guiapaciente']=1) {
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
@@ -135,6 +136,10 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
 <?php
+}
+else {
+  require 'noacceso.php';
+}
   require 'footer.php';
 ?>
 <script type="text/javascript" src="scripts/paciente.js"></script>
