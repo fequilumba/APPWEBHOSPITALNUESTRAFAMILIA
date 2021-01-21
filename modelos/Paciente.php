@@ -61,7 +61,8 @@
         return ejecutarConsulta($sql);
     }
     public function selectPaciente(){
-        $sql= "SELECT `persona`.`idpersona`, CONCAT(`persona`.`nombres`, ' ' ,`persona`.`apellidos`) as nombres FROM `persona`";
+        $sql= "SELECT p.`idpersona`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres FROM `persona` p
+        INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` AND pr.`rol_idrol`=4 and p.estado=1";
 
         return ejecutarConsulta($sql);
     }

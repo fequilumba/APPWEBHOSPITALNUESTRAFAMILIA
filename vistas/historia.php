@@ -40,23 +40,23 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
     <div class="row">
       <h2 class="h1 text-center text-primary">Historia</h2>
       
-      <div>
-        <p class="h4 text-justify">El Hospital “Nuestra Familia” es la institución con 93 años de servicio a la comunidad sus 
-          secretos e inspiraciones para mantenerse en un constante crecimiento durante mucho tiempo esta en la 
-          esencia de su misión y visión.
-        </p>
-            
-        <p class="h4 text-justify">Durante su incesante y perseverante historia de esta Casa de Salud, se ha caracterizado por la creciente 
-          valor de servicios lo que conlleva al desarrollo institucional, además por albergar y forjar a los más notables
-          profesionales que ha dado la medicina ecuatoriana.
-        </p>
+      <aside class="h4 text-justify">
+        <div>
+          <p style="font-size: 20px;">El Hospital “Nuestra Familia” es la institución con 93 años de servicio a la comunidad sus 
+            secretos e inspiraciones para mantenerse en un constante crecimiento durante mucho tiempo esta en la 
+            esencia de su misión y visión.
+            Durante su incesante y perseverante historia de esta Casa de Salud, se ha caracterizado por la creciente 
+            valor de servicios lo que conlleva al desarrollo institucional, además por albergar y forjar a los más notables
+            profesionales que ha dado la medicina ecuatoriana.
+          </p>
 
-        <p class="h4 text-justify">Contamos con 10 especialidades médicas, 5 especialidades quirúrgicas, 1 unidades especial y 1 servicio general; en este
-          periodo, el Ministerio de Salud ha invertido significativamente para equiparlo de una moderna infraestructura que se
-          revierte en la óptimna atención de todos los pacientes. Contamos con salas de laborotario e imagen que cubre las necesidades
-          más recientes y exigentes de la comunidad.
-        </p>
-      </div>
+          <p style="font-size: 20px;">Contamos con 10 especialidades médicas, 5 especialidades quirúrgicas, 1 unidades especial y 1 servicio general; en este
+            periodo, el Ministerio de Salud ha invertido significativamente para equiparlo de una moderna infraestructura que se
+            revierte en la óptimna atención de todos los pacientes. Contamos con salas de laborotario e imagen que cubre las necesidades
+            más recientes y exigentes de la comunidad.
+          </p>
+        </div>
+      </aside>
     </div>
   </section>
 </div>

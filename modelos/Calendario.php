@@ -57,7 +57,7 @@
     
     
 }
-$sql= "SELECT * FROM `cita_medica`";
+$sql= "SELECT idcita_medica , persona_idpersona, especialidad_idespecialidad, start, motivo_consulta , estado_idestado, horario_idhorario FROM `cita_medica`";
 
         $sql=ejecutarConsulta($sql);
         $resultado=$sql->fetch_object();

@@ -83,11 +83,6 @@
 
         return ejecutarConsulta($sql);
     }
-    public function selectPaciente(){
-        $sql= "SELECT `persona`.`idpersona`, CONCAT(`persona`.`nombres`, ' ' ,`persona`.`apellidos`) as nombres FROM `persona`";
-
-        return ejecutarConsulta($sql);
-    }
     public function listaMarcados($idpersona)
     {
         $sql= "SELECT * FROM `persona_has_rol` WHERE `persona_idpersona`='$idpersona'";        

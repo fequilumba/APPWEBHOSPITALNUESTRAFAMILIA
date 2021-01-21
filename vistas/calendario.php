@@ -11,6 +11,8 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
   //if ($_SESSION['miagenda']==1) {
 ?>
 
+
+
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -42,7 +44,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="titulo"></h4>
+        <h4 class="modal-title" id="titulo">CITA MÉDICA</h4>
       </div>
         <div class="modal-body">
           <label for="">Paciente</label>
@@ -50,13 +52,9 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
           <label for="">Especialidad</label>
             <select name="especialidad" id="especialidad" class="form-control"></select> <br>
           <label for="">Fecha</label>
-            <input type="date" id="fecha"class="form-control"> <br>
-          <label for="">Diagnostico</label>
-            <input type="text" class="form-control"> <br>
-          <label for="">Sintomas</label>
-            <input type="text" class="form-control"> <br>
-          <label for="">Motivo</label>
-            <input type="text" class="form-control"> <br>
+            <input type="date" id="fecha"class="form-control" disabled> <br>
+          <label for="">Motivo Cita</label>
+          <textarea name="motivo" id="motivo" class="form-control" rows="3"></textarea><br>
           <label for="">Horario</label>
             <select name="hora" id="hora" class="form-control"></select> <br>
         </div>
