@@ -20,7 +20,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Citas <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Nueva Cita</button></h1>
+                          <h1 class="box-title">Cita <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Proxima Cita</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -63,30 +63,33 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Paciente</label>
-                              <select name="persona_idpersona" id="persona_idpersona" class="form-control" class="form-control" ></select>
+                              <select name="persona_idpersona" id="persona_idpersona" class="form-control selectpicker" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar"></select>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Fecha/Hora</label>
+                              <label for="">Fecha</label>
                               <input type="date" name="fecha_cita" class="form-control" id="fecha_cita" required>
                               <br>
-                              <input type="time" name="hora_cita" class="form-control" id="hora_cita" required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Diagnóstico</label>
-                              <input type="text" name="diagnostico" id="diagnostico" class="form-control" maxlength="255" placeholder=" " required>
+                              <textarea name="diagnostico" id="diagnostico" class="form-control" cols="" rows="3"></textarea>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Sintomas</label>
-                              <input type="text" name="sintomas" id="sintomas" class="form-control" maxlength="255" placeholder=" "required>
+                              <textarea name="sintomas" id="sintomas" class="form-control" cols="" rows="3"></textarea>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Motivo</label>
-                              <input type="text" name="motivo_consulta" id="motivo_consulta" class="form-control" maxlength="255" placeholder=" "required>
+                              <textarea name="motivo_consulta" id="motivo_consulta" class="form-control" cols="" rows="3"></textarea>
                             </div>
-
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            
+                            <label for="">Hora</label>
+                              <select name="horario_idhorario" id="horario_idhorario" class="form-control"required ></select>
+                              </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Estado</label>
                               <select name="estado_idestado" id="estado_idestado"  class="form-control" placeholder="seleccionar"></select>
@@ -119,10 +122,6 @@ else {
   require 'footer.php';
 ?>
 <script type="text/javascript" src="scripts/cita.js"></script>
-
-<script src="../public/js/jquery.min.js"></script>
-    <script src="../public/js/moment.min.js"></script>
-    <script src="../public/js/fullcalendar.min.js"></script>
 <?php
 }
 ob_end_flush();

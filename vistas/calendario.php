@@ -48,7 +48,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
       </div>
         <div class="modal-body">
           <label for="">Paciente</label>
-            <select name="paciente" id="paciente" class="form-control"></select> <br>
+            <select name="paciente" id="paciente" class="form-control selectpicker" data-live-search="true" data-live-search-style="startsWith"></select> <br>
           <label for="">Especialidad</label>
             <select name="especialidad" id="especialidad" class="form-control"></select> <br>
           <label for="">Fecha</label>
