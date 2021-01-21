@@ -47,3 +47,16 @@
      text-align: justify;
      line-height: normal;
  }
+ .columna {
+    width:33%;
+    float:left;
+  }
+  
+  @media (max-width: 500px) {
+    
+    .columna {
+      width:auto;
+      float:none;
+    }
+    
+  }
