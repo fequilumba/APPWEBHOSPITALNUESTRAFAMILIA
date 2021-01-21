@@ -115,7 +115,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="historia.php"><i class="fa fa-circle-o"></i> Historia</a></li>
-                <li><a href="mision-vision.php"><i class="fa fa-circle-o"></i> Misión/Visón</a></li>
+                <li><a href="misionVision.php"><i class="fa fa-circle-o"></i> Misión/Visón</a></li>
               </ul>
             </li>
             <li class="treeview">

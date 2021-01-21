@@ -47,24 +47,24 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
     
     
     <div class="row">
-      <h2 class="h1 text-center text-primary">ESPECIALIDADES</h2>	
+      <h2 class="titulo">ESPECIALIDADES</h2>	
       <aside class="col-md-4 text-justify">
-        <h3 style="text-align:center;">Medicina Interna</h3>
+        <h3 class="titulo1">Medicina Interna</h3>
         <div style="text-align:center;">
           <img src="../public/img/medicina-interna.jpg" alt="Imagen Medicina Interna" width="350px" height="200px">
         </div>
-        <p class="h4">
+        <p class="parrafo">
           Es una especialidad médica que se dedica a la atención integral del adulto enfermo, enfocada al diagnóstico y el 
           tratamiento no quirúrgico de las enfermedades que afectan a sus órganos y sistemas internos, y a su prevención.
         </p>
       </aside>
       
       <aside class="col-md-4 text-justify">
-        <h3 style="text-align:center;">Endocrinología</h3>
+        <h3 class="titulo1">Endocrinología</h3>
         <div style="text-align:center;">
           <img src="../public/img/endocrinologia.jpg" alt="Imagen Endocrinologia" width="350px" height="200px">
         </div>
-        <p class="h4">
+        <p class="parrafo">
           Rama de la medicina que se especializa en el diagnóstico y tratamiento de trastornos del sistema endocrino, 
           que incluye las glándulas y órganos que elaboran hormonas. Estos trastornos incluyen diabetes, infertilidad, 
           y problemas tiroideos, suprarrenales y de la hipófisis.
@@ -72,11 +72,11 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
       </aside>       
         
       <aside class="col-md-4 text-justify">
-        <h3 style="text-align: center;">Ginecología</h3>
+        <h3 class="titulo1">Ginecología</h3>
         <div style="text-align:center;">
           <img class="img-especialidad" src="../public/img/ginecologia.jpg" alt="Imagen Ginecologia" width="350px" height="200px">
         </div>
-        <p class="h4">
+        <p class="parrafo">
           La especialidad de Ginecología y Obstetricia es el campo de la medicina que se ocupa de la salud integral 
           de la mujer, así como de los fenómenos fisiológicos relacionados con la reproducción humana, incluyendo la 
           gestación, el parto y el puerperio.
