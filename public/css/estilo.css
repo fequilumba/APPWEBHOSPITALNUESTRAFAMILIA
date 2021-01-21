@@ -29,3 +29,21 @@
      right:0px;	
      pointer-events: none;
  }
+
+ .titulo{
+     font-size: 40px;
+     text-align: center;
+     color: #4a99ce;
+ }
+
+ .titulo1{
+    font-size: 30px;
+    text-align: center;
+}
+
+ /* ESTILOS PARA LOS PARRAFOS */
+ .parrafo{
+     font-size: 21px;
+     text-align: justify;
+     line-height: normal;
+ }

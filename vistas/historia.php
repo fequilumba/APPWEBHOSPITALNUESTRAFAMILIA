@@ -12,7 +12,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 ?>
 <div class="content-wrapper">
   <section class="content">
-    <h1 class="h1 text-center text-primary">"HOSPITAL NUESTRA FAMILIA"</h1>
+    <h1 class="titulo">"HOSPITAL NUESTRA FAMILIA"</h1>
     
     <div class="col-md-10 col-md-offset-1">
       <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel">
@@ -37,12 +37,12 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
       </div> <!--Cierre clase carousel-->
     </div>
      
-    <div class="row">
-      <h2 class="h1 text-center text-primary">Historia</h2>
+    <div>
+      <h2 class="titulo">Historia</h2>
       
-      <aside class="h4 text-justify">
+      <div>
         <div>
-          <p style="font-size: 20px;">El Hospital “Nuestra Familia” es la institución con 93 años de servicio a la comunidad sus 
+          <p class="parrafo">El Hospital “Nuestra Familia” es la institución con 93 años de servicio a la comunidad sus 
             secretos e inspiraciones para mantenerse en un constante crecimiento durante mucho tiempo esta en la 
             esencia de su misión y visión.
             Durante su incesante y perseverante historia de esta Casa de Salud, se ha caracterizado por la creciente 
@@ -50,13 +50,13 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
             profesionales que ha dado la medicina ecuatoriana.
           </p>
 
-          <p style="font-size: 20px;">Contamos con 10 especialidades médicas, 5 especialidades quirúrgicas, 1 unidades especial y 1 servicio general; en este
+          <p class="parrafo">Contamos con 10 especialidades médicas, 5 especialidades quirúrgicas, 1 unidades especial y 1 servicio general; en este
             periodo, el Ministerio de Salud ha invertido significativamente para equiparlo de una moderna infraestructura que se
             revierte en la óptimna atención de todos los pacientes. Contamos con salas de laborotario e imagen que cubre las necesidades
             más recientes y exigentes de la comunidad.
           </p>
         </div>
-      </aside>
+  </div>
     </div>
   </section>
 </div>
