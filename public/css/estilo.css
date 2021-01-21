@@ -5,58 +5,88 @@
     overflow: hidden;
     width: 230px;
     position:relative;
- }
- select {
+}
+select {
     background: transparent;
     border: none;
     font-size: 14px;
     height: 30px;
     padding: 5px;
     width: 250px;
- }
- select:focus{ outline: none;}
+}
+
+select:focus{ 
+  outline: none;
+}
  
- .caja::after{
-     content:"\025be";
-     display:table-cell;
-     padding-top:7px;
-     text-align:center;
-     width:30px;
-     height:30px;
-     background-color:#d9d9d9;
-     position:absolute;
-     top:0;
-     right:0px;	
-     pointer-events: none;
- }
+ 
+.caja::after{
+  content:"\025be";
+  display:table-cell;
+  padding-top:7px;
+  text-align:center;
+  width:30px;
+  height:30px;
+  background-color:#d9d9d9;
+  position:absolute;
+  top:0;
+  right:0px;	
+  pointer-events: none;
+}
 
- .titulo{
-     font-size: 40px;
-     text-align: center;
-     color: #4a99ce;
- }
+/* ESTILOS PARA IMAGENES */
+.img{
+  text-align: center;
+}
 
- .titulo1{
+.img-especialidades{
+  width: 350px;
+  height: 200px;
+}
+
+/* ESTILOS PARA LOS TITULOS */
+.titulo{
+    font-size: 40px;
+    text-align: center;
+    color: #4a99ce;
+}
+
+.titulo1{
     font-size: 30px;
     text-align: center;
 }
 
- /* ESTILOS PARA LOS PARRAFOS */
- .parrafo{
+
+/* ESTILOS PARA LOS PARRAFOS Y COLUMNAS */
+.parrafo{
      font-size: 21px;
      text-align: justify;
      line-height: normal;
- }
- .columna {
-    width:33%;
+}
+
+.columna {
+    width:33.3%;
     float:left;
   }
   
-  @media (max-width: 500px) {
-    
-    .columna {
-      width:auto;
-      float:none;
-    }
-    
-  }
+@media (max-width: 500px) {  
+  .columna {
+    width:auto;
+    float:none;
+  }  
+}
+
+/* ESTILOS GOOGLE-MAPS */
+.google-maps {
+    position: relative;
+    padding-bottom: 75%; 
+    height: 0;
+    overflow: hidden;    
+}
+.google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% ;
+    height: 100%;
+}

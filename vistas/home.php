@@ -13,9 +13,9 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 
 <div class="content-wrapper">
   <section class="content">
-    <h1 class="h1 text-center text-primary">"HOSPITAL NUESTRA FAMILIA"</h1>   
-    <div style="font-size: 20px;">
-      <p class="text-justify">El Hospital "Nuestra Familia"  cuenta con acreditación internacional tipo oro otorgada por la prestigiosa organización 
+    <h1 class="titulo">"HOSPITAL NUESTRA FAMILIA"</h1>   
+    <div>
+      <p class="parrafo">El Hospital "Nuestra Familia"  cuenta con acreditación internacional tipo oro otorgada por la prestigiosa organización 
       Acreditación Canadá International (ACI), gracias a los estándares de calidad, calidez y seguridad en sus prácticas 
       profesionales</p>
     </div>
@@ -47,10 +47,11 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
     
     
     <div class="row">
-      <h2 class="titulo">ESPECIALIDADES</h2>	
-      <aside class="col-md-4 text-justify">
+      <h2 class="titulo">ESPECIALIDADES</h2>
+      
+      <aside class="col-md-4">
         <h3 class="titulo1">Medicina Interna</h3>
-        <div style="text-align:center;">
+        <div class="img">
           <img src="../public/img/medicina-interna.jpg" alt="Imagen Medicina Interna" width="350px" height="200px">
         </div>
         <p class="parrafo">
@@ -59,9 +60,9 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
         </p>
       </aside>
       
-      <aside class="col-md-4 text-justify">
+      <aside class="col-md-4">
         <h3 class="titulo1">Endocrinología</h3>
-        <div style="text-align:center;">
+        <div class="img">
           <img src="../public/img/endocrinologia.jpg" alt="Imagen Endocrinologia" width="350px" height="200px">
         </div>
         <p class="parrafo">
@@ -71,10 +72,10 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
         </p>
       </aside>       
         
-      <aside class="col-md-4 text-justify">
+      <aside class="col-md-4">
         <h3 class="titulo1">Ginecología</h3>
-        <div style="text-align:center;">
-          <img class="img-especialidad" src="../public/img/ginecologia.jpg" alt="Imagen Ginecologia" width="350px" height="200px">
+        <div class="img">
+          <img src="../public/img/ginecologia.jpg" alt="Imagen Ginecologia" width="350px" height="200px">
         </div>
         <p class="parrafo">
           La especialidad de Ginecología y Obstetricia es el campo de la medicina que se ocupa de la salud integral 
