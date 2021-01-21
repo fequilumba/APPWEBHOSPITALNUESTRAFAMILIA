@@ -1,74 +1,67 @@
 <?php
   require 'header.php';
 ?>
+
 <div class="content-wrapper">
+    <section class="content">
         
-        <!-- Main content -->
-        <section class="content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="box">
-                    <h1 class="titulo">CONTACTOS</h1>
-                        <div class="box-header with-border">
-                         <!--inicio formulario contactos-->
-                            
-                            <br>
-                            <div class="img">
-                                <img src="../files/img/LOGO.png" alt="Imagen Logo" height="100px" width="180px">
-                            </div>
-                            <br>
-                            <div>
-                                <div class="columna">
-                                    <div style="text-align: center;">
-                                        <img src="../public/img/phone.png" alt="#">
-                                    </div>
-                                    <h6 style="text-align: center; font-family: cursive;"><b>LLAMENOS</b></h6>
-                                    <ul class="list-unstyled text-small">
-                                        <P style="text-align: center;">
-                                            <b>Citas:</b> (+593) 979589877<br>
-                                            <b>Gerencia:</b> (+593) 899788598<br>
-                                        </P>
-                                    </ul>
-                                </div>
-                                
-                                <div class="columna">
-                                    <div style="text-align: center;">
-                                        <img src="../public/img/clock.png" alt="#">
-                                    </div>
-                                    <h6 style="text-align: center; font-family: cursive;"><b>HORARIOS DE ATENCION</b></h6>
-                                    <ul class="list-unstyled text-small">
-                                        <P style="text-align: center;">
-                                            <b> Lunes a Viernes: </b>09h00 a 12h00 <br>
-                                            <b> Lunes a Viernes: </b>14h00 a 16h00 <br>
-                                        </P>
-                                    </ul>    
-                                </div>
+        <div class="img">
+            <h1 class="titulo">CONTACTOS</h1>
+            <img src="../files/img/LOGO.png" alt="Imagen Logo">
+        </div>
 
-                                <div class="columna">
-                                    <div style="text-align: center;">
-                                        <img src="../public/img/direccion.png" alt="#">
-                                    </div>
-                                    <h6 style="text-align: center; font-family: cursive;"><b>DIRECCION</b></h6>
-                                    <ul class="list-unstyled text-small">
-                                        <P style="text-align: center;">Malimpia 445, Quito 170131</P>
-                                    </ul>
-                                </div>
-                            </div>  <!--fin formulario contactos-->
-                            <!--Fin centro -->
-                        </div>                                                   
-                        <!--mapa-->
-                        
-                        <div class="google-maps">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14955.01096747024!2d-78.55059576253925!3d-0.2700112320026364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x233538c4d1964cf7!2sHospitales%20publicos!5e0!3m2!1ses-419!2sec!4v1611204078448!5m2!1ses-419!2sec" frameborder="0"></iframe>
-                        </div>
-                        
-                    </div><!-- /.box -->
-                    
-                </div><!-- /.col -->    
-            </div><!-- /.row -->
-      </section><!-- /.content -->
+        
+        <br>
+        <div class="row">
+            
+            <aside class="col-md-4">
+                <br>
+                <div class="img">
+                    <img src="../public/img/phone.png" alt="#">
+                </div>
+                
+                <div>
+                    <h6 class="centrar-texto-contac"><b>LLAMENOS</b></h6>
+                    <p><b>Citas:</b> (+593) 979589877<br>
+                    <b>Gerencia:</b> (+593) 899788598
+                    </p>
+                </div>
+            </aside>
 
-    </div><!-- /.content-wrapper -->
+            <aside class="col-md-4">
+                <br>
+                <div class="img">
+                    <img src="../public/img/clock.png" alt="#">
+                </div>
+                
+                <div>
+                    <h6 class="centrar-texto-contac"><b>HORARIOS DE ATENCIÓN</b></h6>
+                    <p><b>Lunes a Viernes:</b> 09h00 a 12h00<br>
+                    <b>Lunes a Viernes:</b> 14h00 a 16h00
+                    </p>
+                </div>
+            </aside>
+        
+            <aside class="col-md-4">
+                <br>
+                <div class="img">
+                    <img src="../public/img/direccion.png" alt="#">
+                </div>
+
+                <div>
+                    <h6 class="centrar-texto-contac"><b>DIRECCIÓN</b></h6>
+                    <p>Malimpia 445, Quito 170131</p>
+                </div>
+            </aside>
+        </div>
+
+        <br>
+        <div class="google-maps">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14955.01096747024!2d-78.55059576253925!3d-0.2700112320026364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x233538c4d1964cf7!2sHospitales%20publicos!5e0!3m2!1ses-419!2sec!4v1611204078448!5m2!1ses-419!2sec" frameborder="0"></iframe>
+        </div>
+        
+    </section>
+</div>
 <?php
   require 'footer.php';
 ?>
