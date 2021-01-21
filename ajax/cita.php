@@ -81,12 +81,32 @@
                 }
             break;
         case 'selectPaciente':
-                require_once "../modelos/Persona.php";
-                $persona = new Persona();
-                $rspta = $persona->selectPaciente();
+            require_once "../modelos/Paciente.php";
+                $paciente = new Paciente();
+                $rspta = $paciente->selectPaciente();
                 while ($reg = $rspta->fetch_object()) {
                     echo '<option value='.$reg->idpersona.'>'
                             .$reg->nombres.
+                          '</option>';
+                }
+            break;
+        case 'selectEspecialidad':
+                require_once "../modelos/Especialidad.php";
+                $especialidad = new Especialidad();
+                $rspta = $especialidad->selectEspecialidad();
+                while ($reg = $rspta->fetch_object()) {
+                    echo '<option value='.$reg->idespecialidad.'>'
+                            .$reg->nombre.
+                          '</option>';
+                }
+            break;
+        case 'selectHorario':
+                require_once "../modelos/Horario.php";
+                $horario = new Horario();
+                $rspta = $horario->selectHorario();
+                while ($reg = $rspta->fetch_object()) {
+                    echo '<option value='.$reg->idhorario.'>'
+                            .$reg->hora.
                           '</option>';
                 }
             break;

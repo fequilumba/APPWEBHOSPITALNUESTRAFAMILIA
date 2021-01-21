@@ -11,6 +11,8 @@
     <!-- AdminLTE App -->
     <script src="../public/js/app.min.js"></script>
     <!-- DATA TABLES-->
+    <script src='../public/plugins/calendario/lib/main.js'></script>
+    <script src= '../public/plugins/calendario/lib/locales/es.js'></script>
     <script src="../public/datatables/jquery.dataTables.min.js"></script>
     <script src="../public/datatables/buttons.colVis.min.js"></script>
     <script src="../public/datatables/buttons.html5.min.js"></script>

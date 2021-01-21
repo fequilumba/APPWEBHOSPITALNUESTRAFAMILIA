@@ -1,11 +1,38 @@
 
 function init(){
   guardaryeditar()
+  //Cargamos los items al select Especialidad
+  $.post("../ajax/cita.php?op=selectEspecialidad",function(r)
+        {        
+            //console.log(data);
+            $("#especialidad").html(r);
+            //$("#especialidad_idespecialidad").selectpicker('refresh');
+            
+        }
+    );
+    $.post("../ajax/cita.php?op=selectPaciente",function(r)
+        {        
+            //console.log(data);
+            $("#paciente").html(r);
+            //$("#especialidad_idespecialidad").selectpicker('refresh');
+            
+        }
+    );
+    $.post("../ajax/cita.php?op=selectHorario",function(r)
+        {        
+            //console.log(data);
+            $("#hora").html(r);
+            //$("#especialidad_idespecialidad").selectpicker('refresh');
+            
+        }
+    );       
 }
+
 function guardaryeditar() {
   var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
+      locale: 'es',
       navLinks: true,
       headerToolbar: {
         left: 'prev,next today',
@@ -13,24 +40,16 @@ function guardaryeditar() {
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
       },
       
-      /*dateClick: function(info) {
-        alert('Clicked on: ' + info.dateStr);
+      dateClick: function(info) {
+        /*alert('Clicked on: ' + info.dateStr);
         alert('Current view: ' + info.view.type);
         $("#titulo").html(info.dateStr);
         // change the day's background color just for fun
-        info.dayEl.style.backgroundColor = 'red';
+        info.dayEl.style.backgroundColor = 'red';*/
+        $("#fecha").val(info.dateStr);
         $("#flipFlop").modal();
-      },*/
-      events:[
-
-                {id: 1,
-                title: 'evento',
-                nombre: 'Juan',
-                start: '2021-01-05',
-                end: '2021-01-08'},
-                {"idcita_medica":"1","persona_idpersona":"3","especialidad_idespecialidad":"1","start":"2021-01-17","diagnostico":"","sintomas":"","motivo_consulta":"","estado_idestado":"1","horario_idhorario":"1"}
-
-        ],
+      },
+      events:[{"title":"2","persona_idpersona":"2","especialidad_idespecialidad":"1","start":"2021-01-20","motivo_consulta":"","estado_idestado":"1","horario_idhorario":"2"}],
       eventClick: function(events){
         $("#titulo").html(events.title);
         $("#flipFlop").modal();

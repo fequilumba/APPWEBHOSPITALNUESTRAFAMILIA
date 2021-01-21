@@ -14,12 +14,13 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 <div class="content-wrapper">
   <section class="content">
     <h1 class="h1 text-center text-primary">"HOSPITAL NUESTRA FAMILIA"</h1>   
-    <div>
-      <p class="h4">El Hospital "Nuestra Familia"  cuenta con acreditación internacional tipo oro otorgada por la prestigiosa organización 
+    <div style="font-size: 20px;">
+      <p class="text-justify">El Hospital "Nuestra Familia"  cuenta con acreditación internacional tipo oro otorgada por la prestigiosa organización 
       Acreditación Canadá International (ACI), gracias a los estándares de calidad, calidez y seguridad en sus prácticas 
       profesionales</p>
     </div>
     
+
     <div class="col-md-10 col-md-offset-1">
       <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel">
         <div class="carousel-inner">
@@ -48,8 +49,10 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
     <div class="row">
       <h2 class="h1 text-center text-primary">ESPECIALIDADES</h2>	
       <aside class="col-md-4 text-justify">
-        <h3 style="text-align: center;">Medicina Interna</h3>
-        <img class="mx-auto d-block" src="../public/img/medicina-interna.jpg" alt="Imagen Medicina Interna" width="350px" height="200px">
+        <h3 style="text-align:center;">Medicina Interna</h3>
+        <div style="text-align:center;">
+          <img src="../public/img/medicina-interna.jpg" alt="Imagen Medicina Interna" width="350px" height="200px">
+        </div>
         <p class="h4">
           Es una especialidad médica que se dedica a la atención integral del adulto enfermo, enfocada al diagnóstico y el 
           tratamiento no quirúrgico de las enfermedades que afectan a sus órganos y sistemas internos, y a su prevención.
@@ -57,8 +60,10 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
       </aside>
       
       <aside class="col-md-4 text-justify">
-        <h3 style="text-align: center;">Endocrinología</h3>
-        <img class="img-especialidad" src="../public/img/endocrinologia.jpg" alt="Imagen Endocrinologia" width="350px" height="200px">
+        <h3 style="text-align:center;">Endocrinología</h3>
+        <div style="text-align:center;">
+          <img src="../public/img/endocrinologia.jpg" alt="Imagen Endocrinologia" width="350px" height="200px">
+        </div>
         <p class="h4">
           Rama de la medicina que se especializa en el diagnóstico y tratamiento de trastornos del sistema endocrino, 
           que incluye las glándulas y órganos que elaboran hormonas. Estos trastornos incluyen diabetes, infertilidad, 
@@ -68,7 +73,9 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
         
       <aside class="col-md-4 text-justify">
         <h3 style="text-align: center;">Ginecología</h3>
-        <img class="img-especialidad" src="../public/img/ginecologia.jpg" alt="Imagen Ginecologia" width="350px" height="200px">
+        <div style="text-align:center;">
+          <img class="img-especialidad" src="../public/img/ginecologia.jpg" alt="Imagen Ginecologia" width="350px" height="200px">
+        </div>
         <p class="h4">
           La especialidad de Ginecología y Obstetricia es el campo de la medicina que se ocupa de la salud integral 
           de la mujer, así como de los fenómenos fisiológicos relacionados con la reproducción humana, incluyendo la 

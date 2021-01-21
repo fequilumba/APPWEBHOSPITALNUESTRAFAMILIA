@@ -17,10 +17,12 @@
     <link rel="stylesheet" href="../public/css/_all-skins.min.css">
     <link rel="icon" href="../public/img/apple-touch-icon.png">
     <link rel="shortcut icon" href="../public/img/favicon.ico">
-    <!--full calendar-->
     
+    <!--full calendar-->
     <link href='../public/plugins/calendario/lib/main.css' rel='stylesheet'/>
-    <script src='../public/plugins/calendario/lib/main.js'></script>
+    
+    <!--<script src= '../public/plugins/calendario/lib/locales/es.js'></script>-->
+    
     <script href="../public/bootstrap/css/bootstrap.css"></script>
 
     <!--DATA TABLES-->
@@ -155,7 +157,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Agendar</a></li>
+                <li><a href="calendario.php"><i class="fa fa-circle-o"></i> Agendar</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i> Cancelar</a></li>
                 
               </ul>

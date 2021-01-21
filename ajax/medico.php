@@ -90,16 +90,7 @@
                 "aaData"=>$data);    
                 echo json_encode($results);   
             break;
-        case 'selectEspecialidad':
-                require_once "../modelos/Especialidad.php";
-                $especialidad = new Especialidad();
-                $rspta = $especialidad->selectEspecialidad();
-                while ($reg = $rspta->fetch_object()) {
-                    echo '<option value='.$reg->idespecialidad.'>'
-                            .$reg->nombre.
-                          '</option>';
-                }
-            break;
+        
         case 'especialidades':
                 require_once "../modelos/Especialidad.php";
                 $especialidad=new Especialidad();

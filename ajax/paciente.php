@@ -86,6 +86,8 @@
                 "aaData"=>$data);    
                 echo json_encode($results);   
             break;
+        
     }
+    
 
 ?>
