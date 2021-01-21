@@ -44,8 +44,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
       </div><!--Cierre clase carousel-->
     </div>
     
-    
-    
+      
     <div class="row">
       <h2 class="titulo">ESPECIALIDADES</h2>
       
