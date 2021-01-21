@@ -14,7 +14,7 @@ function init(){
         {        
             //console.log(data);
             $("#paciente").html(r);
-            //$("#especialidad_idespecialidad").selectpicker('refresh');
+            $("#especialidad_idespecialidad").selectpicker('refresh');
             
         }
     );

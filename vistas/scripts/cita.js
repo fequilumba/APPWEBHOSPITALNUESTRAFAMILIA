@@ -8,7 +8,7 @@ function init() {
     });
 
     //Cargamos los items al select Especialidad
-    $.post("../ajax/medico.php?op=selectEspecialidad",function(r)
+    $.post("../ajax/cita.php?op=selectEspecialidad",function(r)
         {        
             //console.log(data);
             $("#especialidad_idespecialidad").html(r);
@@ -30,10 +30,18 @@ function init() {
         {        
             //console.log(data);
             $("#persona_idpersona").html(r);
-            //$("#especialidad_idespecialidad").selectpicker('refresh');
+            $("#persona_idpersona").selectpicker('refresh');
             
         }
     );
+    $.post("../ajax/cita.php?op=selectHorario",function(r)
+        {        
+            //console.log(data);
+            $("#horario_idhorario").html(r);
+            //$("#especialidad_idespecialidad").selectpicker('refresh');
+            
+        }
+    ); 
 }
 //funcion limpiar
 function limpiar(){
@@ -41,10 +49,10 @@ function limpiar(){
     $("#especialidad_idespecialidad").val("");
     $("#persona_idpersona").val("");
     $("#fecha_cita").val("");
-    $("#hora_cita").val("");
     $("#diagnostico").val("");
     $("#sintomas").val("");
     $("#motivo_consulta").val("");
+    $("#horario_idhorario").val("");
     $("#estado_idestado").val("");
 }
 //mostrar formulario
@@ -127,11 +135,11 @@ function mostrar(idcita_medica){
         //$('#especialidad_idespecialidad').selectpicker('refresh');
         $("#persona_idpersona").val(data.persona_idpersona);
         //$('#persona_idpersona').selectpicker('refresh');
-        $("#fecha_cita").val(data.fecha_cita)
-        $("#hora_cita").val(data.hora_cita)
+        $("#fecha_cita").val(data.start)
         $("#diagnostico").val(data.diagnostico)
         $("#sintomas").val(data.sintomas)
         $("#motivo_consulta").val(data.motivo_consulta)
+        $("#horario_idhorario").val(data.horario_idhorario);
         $("#estado_idestado").val(data.estado_idestado);
         //$('#estado_idestado').selectpicker('refresh');
         $("#idcita_medica").val(data.idcita_medica)

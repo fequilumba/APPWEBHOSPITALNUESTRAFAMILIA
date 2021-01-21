@@ -10,21 +10,20 @@
     $diagnostico = isset($_POST["diagnostico"])? limpiarCadena($_POST["diagnostico"]):"";
     $sintomas= isset($_POST["sintomas"])? limpiarCadena($_POST["sintomas"]):"";
     $motivo_consulta= isset($_POST["motivo_consulta"])? limpiarCadena($_POST["motivo_consulta"]):"";
+    $horario_idhorario = isset($_POST["horario_idhorario"])? limpiarCadena($_POST["horario_idhorario"]):""; 
     $estado_idestado= isset($_POST["estado_idestado"])? limpiarCadena($_POST["estado_idestado"]):"";
     
     switch ($_GET["op"]) {
         case 'guardaryeditar':
             if (empty($idcita_medica)) {
                 $rspta=$cita->insertar($especialidad_idespecialidad,$persona_idpersona, 
-                                        $fecha_cita, $hora_cita, $diagnostico, $sintomas, 
-                                        $motivo_consulta,$estado_idestado);
-                //echo $rspta? "Cita registrada" : "La cita no se pudo registrar";
+                $fecha_cita, $diagnostico, $sintomas, $motivo_consulta, $horario_idhorario,$estado_idestado);
+                echo $rspta? "Cita registrada" : "La cita no se pudo registrar";
                 
 
             }else{
                 $rspta=$cita->editar($idcita_medica,$especialidad_idespecialidad,$persona_idpersona, 
-                $fecha_cita, $hora_cita, $diagnostico, $sintomas, 
-                $motivo_consulta,$estado_idestado);
+                $fecha_cita, $diagnostico, $sintomas, $motivo_consulta, $horario_idhorario,$estado_idestado);
                 echo $rspta? "Cita actualizada" : "La cita no se pudo actualizar";
                                 
             }
@@ -59,16 +58,6 @@
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data);    
                 echo json_encode($results);   
-            break;
-        case 'selectEspecialidad':
-                require_once "../modelos/Especialidad.php";
-                $especialidad = new Especialidad();
-                $rspta = $especialidad->selectEspecialidad();
-                while ($reg = $rspta->fetch_object()) {
-                    echo '<option value='.$reg->idespecialidad.'>'
-                            .$reg->nombre.
-                          '</option>';
-                }
             break;
         case 'selectEstado':
                 require_once "../modelos/Estado.php";
