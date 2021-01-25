@@ -71,7 +71,7 @@ function listar(){
         "ajax":{
             url: '../ajax/usuario.php?op=listar',
             type: "get",
-            dataTyoe: "json",
+            dataType: "json",
             error: function(e){
                 console.log(e,responseText);
             }

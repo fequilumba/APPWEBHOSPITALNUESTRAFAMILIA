@@ -135,15 +135,14 @@ function mostrar(idcita_medica){
         //$('#especialidad_idespecialidad').selectpicker('refresh');
         $("#persona_idpersona").val(data.persona_idpersona);
         //$('#persona_idpersona').selectpicker('refresh');
-        $("#fecha_cita").val(data.start)
-        $("#diagnostico").val(data.diagnostico)
-        $("#sintomas").val(data.sintomas)
-        $("#motivo_consulta").val(data.motivo_consulta)
+        $("#fecha_cita").val(data.start);
+        $("#diagnostico").val(data.diagnostico);
+        $("#sintomas").val(data.sintomas);
+        $("#motivo_consulta").val(data.motivo_consulta);
         $("#horario_idhorario").val(data.horario_idhorario);
         $("#estado_idestado").val(data.estado_idestado);
         //$('#estado_idestado').selectpicker('refresh');
-        $("#idcita_medica").val(data.idcita_medica)
-
+        $("#idcita_medica").val(data.idcita_medica);
     });
 }
 

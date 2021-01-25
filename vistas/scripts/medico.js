@@ -79,7 +79,7 @@ function listar(){
         "ajax":{
             url: '../ajax/medico.php?op=listar',
             type: "get",
-            dataTyoe: "json",
+            dataType: "json",
             error: function(e){
                 console.log(e,responseText);
             }
@@ -116,16 +116,16 @@ function mostrar(idpersona){
     {
         data = JSON.parse(data);
         mostrarform(true);
-        $("#cedula").val(data.cedula)
-        $("#nombres").val(data.nombres)
-        $("#apellidos").val(data.apellidos)
-        $("#email").val(data.email)
-        $("#telefono").val(data.telefono)
-        $("#direccion").val(data.direccion)
-        $("#ciudad_residencia").val(data.ciudad_residencia)
-        $("#fecha_nacimiento").val(data.fecha_nacimiento)
-        $("#genero").val(data.genero)
-        $("#idpersona").val(data.idpersona)
+        $("#cedula").val(data.cedula);
+        $("#nombres").val(data.nombres);
+        $("#apellidos").val(data.apellidos);
+        $("#email").val(data.email);
+        $("#telefono").val(data.telefono);
+        $("#direccion").val(data.direccion);
+        $("#ciudad_residencia").val(data.ciudad_residencia);
+        $("#fecha_nacimiento").val(data.fecha_nacimiento);
+        $("#genero").val(data.genero);
+        $("#idpersona").val(data.idpersona);
 
     });
     $.post("../ajax/medico.php?op=roles&id2="+idpersona,function(r){

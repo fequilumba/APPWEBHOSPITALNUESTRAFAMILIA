@@ -1,4 +1,6 @@
 <?php
+/*llamar desde js-Calendario con AJAX a calendario y de ajax/calendario llamar al modelo po funcioin y con una
+lista de arreglos (Array)*/
     require_once "../modelos/Cita.php";
     $cita = new Cita();
 
@@ -28,6 +30,20 @@
                                 
             }
             break;
+        case 'guardarCita':
+                if (empty($idcita_medica)) {
+                    $rspta=$cita->insertarCita($especialidad_idespecialidad,$persona_idpersona, 
+                    $fecha_cita, $motivo_consulta, $horario_idhorario);
+                    
+                    
+    
+                }else{
+                    $rspta=$cita->editarCita($idcita_medica,$especialidad_idespecialidad,$persona_idpersona, 
+                    $fecha_cita, $motivo_consulta, $horario_idhorario);
+                    echo $rspta? "Cita actualizada" : "La cita no se pudo actualizar";
+                                    
+                }
+                break;
         case 'mostrar':
                     $rspta=$cita->mostrar($idcita_medica);
                     echo json_encode($rspta);
@@ -59,6 +75,22 @@
                 "aaData"=>$data);    
                 echo json_encode($results);   
             break;
+        case 'listarCitas':
+                $rspta=$cita->listarCitas();
+                $data = Array();
+                while ($reg=$rspta->fetch_object()) {
+                    $data[]= array(
+                        "id"=>'<button onclick="mostrarCita('.$reg->idcita_medica.')"></button>',
+                        "title"=> $reg->title,
+                        "start"=>$reg->start
+                    );
+                }  
+                echo json_encode($data);   
+                break;
+        case 'mostrarCita':
+                    $rspta=$cita->mostrarCita($idcita_medica);
+                    echo json_encode($rspta);
+                break;
         case 'selectEstado':
                 require_once "../modelos/Estado.php";
                 $estado = new Estado();
