@@ -1,36 +1,48 @@
+function init() {
+  calendario()
+  $("#formCitas").on("submit",function(e){
+    guardaryeditar(e);
+    location.reload();
 
-function init(){
-  guardaryeditar()
+  });
   //Cargamos los items al select Especialidad
   $.post("../ajax/cita.php?op=selectEspecialidad",function(r)
-        {        
-            //console.log(data);
-            $("#especialidad").html(r);
-            //$("#especialidad_idespecialidad").selectpicker('refresh');
-            
-        }
-    );
-    $.post("../ajax/cita.php?op=selectPaciente",function(r)
-        {        
-            //console.log(data);
-            $("#paciente").html(r);
-            $("#especialidad_idespecialidad").selectpicker('refresh');
-            
-        }
-    );
-    $.post("../ajax/cita.php?op=selectHorario",function(r)
-        {        
-            //console.log(data);
-            $("#hora").html(r);
-            //$("#especialidad_idespecialidad").selectpicker('refresh');
-            
-        }
-    );       
-}
+  {        
+      //console.log(data);
+      $("#especialidad_idespecialidad").html(r);
+      //$("#especialidad_idespecialidad").selectpicker('refresh');
+      
+  });
+  $.post("../ajax/cita.php?op=selectPaciente",function(r)
+  {        
+      //console.log(data);
+      $("#persona_idpersona").html(r);
+      $("#persona_idpersona").selectpicker('refresh');
+      
+  });
+  $.post("../ajax/cita.php?op=selectHorario",function(r)
+  {        
+      //console.log(data);
+      $("#horario_idhorario").html(r);
+      //$("#especialidad_idespecialidad").selectpicker('refresh');
+      
+  });       
+  
+  /*$('btnAgregar').click(function(){
+      var nuevaCita={
+        title:$('#paciente').val(),
+        start:$('#fecha').val()
+      };
+  
+  });*/
 
-function guardaryeditar() {
-  var calendarEl = document.getElementById('calendar');
+}//fin init
 
+
+function calendario() { 
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
       locale: 'es',
       navLinks: true,
@@ -39,72 +51,78 @@ function guardaryeditar() {
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
       },
-      
-      dateClick: function(info) {
-        /*alert('Clicked on: ' + info.dateStr);
-        alert('Current view: ' + info.view.type);
-        $("#titulo").html(info.dateStr);
-        // change the day's background color just for fun
-        info.dayEl.style.backgroundColor = 'red';*/
-        $("#fecha").val(info.dateStr);
-        $("#flipFlop").modal();
-      },
-      events:[{"title":"2","persona_idpersona":"2","especialidad_idespecialidad":"1","start":"2021-01-20","motivo_consulta":"","estado_idestado":"1","horario_idhorario":"2"}],
-      eventClick: function(events){
-        $("#titulo").html(events.title);
-        $("#flipFlop").modal();
-      }
-      
-    });
-
-    calendar.render();
-  }
-
-
-/*  document.addEventListener('DOMContentLoaded', function() {
+      events: '../ajax/cita.php?op=listarCitas'
+      ,
+  
+      eventClick: /*'../ajax/cita.php?op=mostrarCita', function (data,events) {
+        data = JSON.parse(data);
+          $("#especialidad_idespecialidad").val(data.especialidad_idespecialidad);
+          $("#persona_idpersona").val(data.persona_idpersona);
+          $("#fecha_cita").val(data.start);
+          $("#motivo_consulta").val(data.motivo_consulta);
+          $("#horario_idhorario").val(data.horario_idhorario);
+          $("#idcita_medica").val(events.id);
+      }*/
+      function mostrar(idcita_medica){
+        $.post("../ajax/especialidad.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status)
+        {
+            data = JSON.parse(data);
+            $("#modalCitas").modal();
+            $("#especialidad_idespecialidad").val(data.especialidad_idespecialidad);
+            $("#persona_idpersona").val(data.persona_idpersona);
+            $("#fecha_cita").val(data.start);
+            $("#motivo_consulta").val(data.motivo_consulta);
+            $("#horario_idhorario").val(data.horario_idhorario);
+            $("#idcita_medica").val(data.idcita_medica);  
     
-  var calendarEl = document.getElementById('calendar');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      navLinks: true,
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+        });
+    },
+      dateClick: function(info, jsEvent,view) {
+        //$("#fecha").val(info.dateStr);
+        /*$("#modalCitas").modal();*/
+        $("#fecha_cita").val(info.dateStr);   
+        $("#modalCitas").modal();
+        /*calendar.addEvent({
+          title:"prueba",
+          date:info.dateStr
+        });  */ 
       },
-      
-      /*dateClick: function(info) {
-        alert('Clicked on: ' + info.dateStr);
-        alert('Current view: ' + info.view.type);
-        $("#titulo").html(info.dateStr);
-        // change the day's background color just for fun
-        info.dayEl.style.backgroundColor = 'red';
-        $("#flipFlop").modal();
-      },
-      events:[
-        {
-          title  : 'event1',
-          start  : '2021-01-01'
-        },
-        {
-          title  : 'event2',
-          start  : '2021-01-01',
-          end    : '2021-01-07'
-        },
-        {
-          title  : 'event3',
-          start  : '2021-01-17T19:30:00',
-          allDay : false // will make the time show
-        }
-      ],
-      eventClick: function(events){
-        $("#titulo").html(events.title);
-        $("#flipFlop").modal();
+      editable: true,
+      eventDrop: function(info) {
+        $("#fecha_cita").val(info.dateStr);
+        "../ajax/cita.php?op=guardarCita"
       }
       
-    });
-
+    });//fin eventListener
     calendar.render();
-  });*/
+  });
+ }//fin funcion calendario
+
+
+
+function guardaryeditar(e){
+  e.preventDefault(); //no se activa la accion predeterminada del evento
+  
+  var formData = new FormData($("#formCitas")[0]);
+  $.ajax({
+      url: "../ajax/cita.php?op=guardarCita",
+      type: "POST",
+      data: formData,
+      contentType: false,
+      processData: false,
+
+      /*success: function(datos){      
+          bootbox.alert(datos);
+      }*/
+
+  });
+
+
+  //fullCalendar('refetchEvents').FullCalendar;
+  //FullCalendar('refresh');
+  //$("#calendar").fullCalendar('rerenderEvents');
+  alertify.success('Cita registrada');
+  $("#modalCitas").modal('toggle');
+}
 
 init();

@@ -50,7 +50,7 @@ function listar(){
         "ajax":{
             url: '../ajax/especialidad.php?op=listar',
             type: "get",
-            dataTyoe: "json",
+            dataType: "json",
             error: function(e){
                 console.log(e,responseText);
             }
