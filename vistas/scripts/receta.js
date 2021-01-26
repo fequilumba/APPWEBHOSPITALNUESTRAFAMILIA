@@ -8,7 +8,7 @@ function init() {
     });
 
     //Cargamos los items al select Especialidad
-    $.post("../ajax/cita.php?op=selectEspecialidad",function(r)
+    $.post("../ajax/receta.php?op=selectEspecialidad",function(r)
         {        
             //console.log(data);
             $("#especialidad_idespecialidad").html(r);
@@ -17,7 +17,7 @@ function init() {
         }
     );
     //Cargamos los items al select Estado
-    $.post("../ajax/cita.php?op=selectEstado",function(r)
+    $.post("../ajax/receta.php?op=selectEstado",function(r)
         {        
             //console.log(data);
             $("#estado_idestado").html(r);
@@ -26,7 +26,7 @@ function init() {
         }
     );
     //Cargamos los items al select Paciente
-    $.post("../ajax/cita.php?op=selectPaciente",function(r)
+    $.post("../ajax/receta.php?op=selectPaciente",function(r)
         {        
             //console.log(data);
             $("#persona_idpersona").html(r);
@@ -34,7 +34,7 @@ function init() {
             
         }
     );
-    $.post("../ajax/cita.php?op=selectHorario",function(r)
+    $.post("../ajax/receta.php?op=selectHorario",function(r)
         {        
             //console.log(data);
             $("#horario_idhorario").html(r);
@@ -90,7 +90,7 @@ function listar(){
             'pdf',
         ],
         "ajax":{
-            url: '../ajax/cita.php?op=listar',
+            url: '../ajax/receta.php?op=listar',
             type: "get",
             dataTyoe: "json",
             error: function(e){
@@ -109,7 +109,7 @@ function guardaryeditar(e){
     $("#btnGuardar").prop("disabled",true);
     var formData = new FormData($("#formulariocita")[0]);
     $.ajax({
-        url: "../ajax/cita.php?op=guardaryeditar",
+        url: "../ajax/receta.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -127,26 +127,22 @@ function guardaryeditar(e){
 }
 
 function mostrar(idcita_medica){
-    $.post("../ajax/cita.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status)
+    $.post("../ajax/receta.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status)
     {
         data = JSON.parse(data);
         mostrarform(true);
         $("#especialidad_idespecialidad").val(data.especialidad_idespecialidad);
-        //$('#especialidad_idespecialidad').selectpicker('refresh');
+        $('#especialidad_idespecialidad').selectpicker('refresh');
         $("#persona_idpersona").val(data.persona_idpersona);
-        //$('#persona_idpersona').selectpicker('refresh');
+        $('#persona_idpersona').selectpicker('refresh');
         $("#fecha_cita").val(data.start);
-        $("#diagnostico").val(data.diagnostico);
-        $("#sintomas").val(data.sintomas);
-        $("#motivo_consulta").val(data.motivo_consulta);
-        $("#horario_idhorario").val(data.horario_idhorario);
-        $("#estado_idestado").val(data.estado_idestado);
-        //$('#estado_idestado').selectpicker('refresh');
+        $("#observaciones").val(data.diagnostico);
+        $("#medicamentos").val(data.sintomas);
         $("#idcita_medica").val(data.idcita_medica);
     });
 }
 
-function eliminar(idcita_medica)
+/*function eliminar(idcita_medica)
 {
    /*alertify.confirm("CITA","¿Estas seguro de eliminar la cita?",function(result){
         if(result)
@@ -160,22 +156,23 @@ function eliminar(idcita_medica)
                 }
             );
         }
-    });*/  
-    alertify.confirm("CITA","¿Estas seguro de eliminar la cita?",
+    });
+
+    alertify.confirm("receta","¿Estas seguro de eliminar la receta?",
         function(){
             $.post(
-                "../ajax/cita.php?op=eliminar", {idcita_medica : idcita_medica},
+                "../ajax/receta.php?op=eliminar", {idcita_medica : idcita_medica},
                 function(e)
                 {
                     //alertify.alert(e);
                     tabla.ajax.reload();
-                    alertify.success('Cita eliminada');
+                    alertify.success('receta eliminada');
                 }
             );
         },
         function(){
             alertify.error('Cancelado');
         });
-}
+}*/
 
 init();
