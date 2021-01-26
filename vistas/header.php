@@ -148,7 +148,7 @@
               <ul class="treeview-menu">
                 <li><a href="cita.php"><i class="fa fa-circle-o"></i> ver Agenda</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i> Exámenes</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Receta</a></li>
+                <li><a href="receta.php"><i class="fa fa-circle-o"></i> Receta</a></li>
               </ul>
             </li>                       
             <li class="treeview">
