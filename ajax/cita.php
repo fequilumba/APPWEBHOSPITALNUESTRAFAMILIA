@@ -34,9 +34,7 @@ lista de arreglos (Array)*/
                 if (empty($idcita_medica)) {
                     $rspta=$cita->insertarCita($especialidad_idespecialidad,$persona_idpersona, 
                     $fecha_cita, $motivo_consulta, $horario_idhorario);
-                    
-                    
-    
+                    echo $rspta? "Cita registrada" : "La cita no se pudo registrar";
                 }else{
                     $rspta=$cita->editarCita($idcita_medica,$especialidad_idespecialidad,$persona_idpersona, 
                     $fecha_cita, $motivo_consulta, $horario_idhorario);

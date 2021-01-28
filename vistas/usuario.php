@@ -4,7 +4,7 @@ ob_start();
 session_start();
 if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. significa que no se ha logeado al sistema
 {
-  header("Location: login.html");
+  header("Location: login.php");
 }else
 {
 require 'header.php';

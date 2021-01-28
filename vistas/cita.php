@@ -57,24 +57,24 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Especialidad</label>
                               <input type="hidden" name="idcita_medica" id="idcita_medica">
-                              <select name="especialidad_idespecialidad" id="especialidad_idespecialidad"  class="form-control" placeholder="seleccionar" ></select>
+                              <select name="especialidad_idespecialidad" id="especialidad_idespecialidad"  class="form-control" placeholder="seleccionar" required></select>
                             </div>
 
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Paciente</label>
-                              <select name="persona_idpersona" id="persona_idpersona" class="form-control selectpicker" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar"></select>
+                              <select name="persona_idpersona" id="persona_idpersona" class="form-control selectpicker" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Fecha</label>
-                              <input type="date" name="fecha_cita" class="form-control" id="fecha_cita" required>
+                              <input type="date" name="fecha_cita" id="fecha_cita" class="form-control"  required>
                               <br>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Diagnóstico</label>
-                              <textarea name="diagnostico" id="diagnostico" class="form-control" cols="" rows="3"></textarea>
+                              <textarea name="diagnostico" id="diagnostico" class="form-control" cols="" rows="3" required></textarea>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -92,7 +92,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                               </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Estado</label>
-                              <select name="estado_idestado" id="estado_idestado"  class="form-control" placeholder="seleccionar"></select>
+                              <select name="estado_idestado" id="estado_idestado"  class="form-control" placeholder="seleccionar" required></select>
                             </div>
                           
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

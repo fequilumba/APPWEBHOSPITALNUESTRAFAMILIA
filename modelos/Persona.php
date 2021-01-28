@@ -95,7 +95,7 @@
         $sql_persona= "INSERT INTO `persona` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
                      `ciudad_residencia`, `fecha_nacimiento`, `genero`, `estado`) 
                      VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia', 
-                                '$fecha_nacimiento', '$genero', 1)";
+                                '$fecha_nacimiento', '$genero', '1')";
 
         $idpersonanew = ejecutarConsulta_retornarID($sql_persona);
 

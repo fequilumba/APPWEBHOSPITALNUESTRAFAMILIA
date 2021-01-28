@@ -19,12 +19,6 @@
     
     <link rel="shortcut icon" href="../files/img/LOGO.png">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body class="hold-transition login-page fondo">
     <div class="login-box">
@@ -78,7 +72,7 @@
             <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
           </div>
           <div class="form-group has-feedback">
-            <label for="">Genero</label>
+            <label for="">Género</label>
             <br>
             <label for="">Hombre </label>
             <input type="radio" name="genero" value="M" id="masculino">
@@ -105,7 +99,7 @@
           </div>
         </form>
 
-        <a href="login.html"> <u>LOG IN</u></a><br>
+        <a href="login.php"> <u>LOG IN</u></a><br>
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
