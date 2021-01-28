@@ -47,6 +47,9 @@
             <input type="password" id="clavea" name="clavea" class="form-control" placeholder="Password">
             <span class="fa fa-key form-control-feedback"></span>
           </div>
+          <div class="form-group has-feedback">
+            <select name="rol" id="rol"class="form-control"></select>
+          </div>
           <div class="row">
             <div class="col-xs-8">
 
@@ -60,7 +63,7 @@
         
         <a href="#"> <u> Olvidé mi password</u></a><br>
 
-        <a href="registro.html">Crear Cuenta</a><br>
+        <a href="registro.php">Crear Cuenta</a><br>
         
 
       </div><!-- /.login-box-body -->
@@ -73,5 +76,6 @@
     <!-- Bootbox -->
     <script src="../public/js/bootbox.min.js"></script>
     <script type="text/javascript" src="scripts/login.js"></script>
+    <script type="text/javascript" src="scripts/rol.js"></script>
   </body>
 </html>

@@ -23,7 +23,7 @@
                 $direccion,$ciudad_residencia, $fecha_nacimiento, $genero);
                 require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
-                $rspta = $usuario->insertar($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
+                $rspta = $usuario->insertarUPaciente($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
                 $ciudad_residencia, $fecha_nacimiento, $genero,$imagen);
                 echo $rspta? "Paciente registrado" : "Paciente no se pudo registrar";
                 

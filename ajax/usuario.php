@@ -162,5 +162,15 @@ switch ($_GET["op"]){
 		}
 		echo json_encode($fetch);
 		break;
+	case 'selectRol':
+			require_once "../modelos/Rol.php";
+            $rol = new Rol();
+			$rspta = $rol->listarRol();
+                while ($reg = $rspta->fetch_object()) {
+                    echo '<option value='.$reg->idrol.'>'
+                            .$reg->nombre.
+                          '</option>';
+                }
+		break;
 }
 ?>

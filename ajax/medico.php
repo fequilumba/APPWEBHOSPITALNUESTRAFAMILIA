@@ -26,8 +26,8 @@
                 $direccion,$ciudad_residencia, $fecha_nacimiento, $genero, $_POST['especialidad'],$_POST['rol']);
                 require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
-                $rspta = $usuario->insertar($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen);
+                $rspta = $usuario->insertarUMedico($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
+                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$_POST['rol']);
                 echo $rspta? "Médico registrado" : "No se pudo registrar todos los datos del medico";
                 
 
@@ -36,8 +36,8 @@
                 $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$_POST['especialidad'],$_POST['rol']);
                 require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
-                $rspta = $usuario->editarUsuario($idpersona,$cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen);
+                $rspta = $usuario->editarUMedico($idpersona,$cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
+                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$_POST['rol']);
                 echo $rspta? "Médico actualizado" : "Médico no se pudo actualizar";
                                 
             }

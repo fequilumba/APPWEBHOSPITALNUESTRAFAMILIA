@@ -63,7 +63,7 @@
             }
         });
         limpiar();
-        $(location).attr("href","login.html");
+        $(location).attr("href","login.php");
     }
 
 init();

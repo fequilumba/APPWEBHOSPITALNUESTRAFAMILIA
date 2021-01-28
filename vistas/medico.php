@@ -4,7 +4,7 @@ ob_start();
 session_start();
 if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. significa que no se ha logeado al sistema
 {
-  header("Location: login.html");
+  header("Location: login.php");
 }else
 {
   require 'header.php';
@@ -109,7 +109,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                             </div>
                             
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Genero</label>
+                              <label for="">Género</label>
                               <br>
                               <label for="telefono">Hombre</label>
                               <input type="radio" name="genero" value="M" id="masculino">

@@ -13,7 +13,7 @@ function init() {
             //console.log(data);
             $("#especialidad_idespecialidad").html(r);
             //$("#especialidad_idespecialidad").selectpicker('refresh');
-            
+
         }
     );
     //Cargamos los items al select Estado
@@ -135,7 +135,7 @@ function mostrar(idcita_medica){
         //$('#especialidad_idespecialidad').selectpicker('refresh');
         $("#persona_idpersona").val(data.persona_idpersona);
         //$('#persona_idpersona').selectpicker('refresh');
-        $("#fecha_cita").val(data.start);
+        $("#fecha_cita").val(data.fecha_cita);
         $("#diagnostico").val(data.diagnostico);
         $("#sintomas").val(data.sintomas);
         $("#motivo_consulta").val(data.motivo_consulta);

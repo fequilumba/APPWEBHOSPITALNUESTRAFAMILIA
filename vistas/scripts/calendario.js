@@ -54,7 +54,7 @@ function calendario() {
       events: '../ajax/cita.php?op=listarCitas'
       ,
   
-      eventClick: /*'../ajax/cita.php?op=mostrarCita', function (data,events) {
+     /* eventClick:'../ajax/cita.php?op=mostrarCita', function (data,events) {
         data = JSON.parse(data);
           $("#especialidad_idespecialidad").val(data.especialidad_idespecialidad);
           $("#persona_idpersona").val(data.persona_idpersona);
@@ -62,7 +62,7 @@ function calendario() {
           $("#motivo_consulta").val(data.motivo_consulta);
           $("#horario_idhorario").val(data.horario_idhorario);
           $("#idcita_medica").val(events.id);
-      }*/
+      }
       function mostrar(idcita_medica){
         $.post("../ajax/especialidad.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status)
         {
@@ -76,8 +76,8 @@ function calendario() {
             $("#idcita_medica").val(data.idcita_medica);  
     
         });
-    },
-      dateClick: function(info, jsEvent,view) {
+    },*/
+      dateClick: function(info) {
         //$("#fecha").val(info.dateStr);
         /*$("#modalCitas").modal();*/
         $("#fecha_cita").val(info.dateStr);   
@@ -87,11 +87,6 @@ function calendario() {
           date:info.dateStr
         });  */ 
       },
-      editable: true,
-      eventDrop: function(info) {
-        $("#fecha_cita").val(info.dateStr);
-        "../ajax/cita.php?op=guardarCita"
-      }
       
     });//fin eventListener
     calendar.render();

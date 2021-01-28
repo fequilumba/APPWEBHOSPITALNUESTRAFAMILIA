@@ -9,7 +9,7 @@
      public function insertar($especialidad_idespecialidad,$persona_idpersona, 
      $fecha_cita, $diagnostico, $sintomas, $motivo_consulta, $horario_idhorario,$estado_idestado){
         $sql= "INSERT INTO `cita_medica` (`especialidad_idespecialidad`, `persona_idpersona`, 
-        `start`, `diagnostico`, `sintomas`, `motivo_consulta`,`horario_idhorario`, `estado_idestado`) 
+        `fecha_cita`, `diagnostico`, `sintomas`, `motivo_consulta`,`horario_idhorario`, `estado_idestado`) 
         VALUES ('$especialidad_idespecialidad','$persona_idpersona', '$fecha_cita', '$diagnostico', '$sintomas', 
         '$motivo_consulta','$horario_idhorario', '$estado_idestado')"
         
@@ -19,7 +19,7 @@
      //metodo para editar registros
      public function editar($idcita_medica,$especialidad_idespecialidad,$persona_idpersona, 
      $fecha_cita, $diagnostico, $sintomas, $motivo_consulta, $horario_idhorario,$estado_idestado){
-        $sql= "UPDATE `cita_medica` SET `especialidad_idespecialidad`='$especialidad_idespecialidad',`persona_idpersona`='$persona_idpersona', `start`='$fecha_cita', 
+        $sql= "UPDATE `cita_medica` SET `especialidad_idespecialidad`='$especialidad_idespecialidad',`persona_idpersona`='$persona_idpersona', `fecha_cita`='$fecha_cita', 
          `diagnostico`='$diagnostico', `sintomas`='$sintomas', `motivo_consulta`='$motivo_consulta',`horario_idhorario`='$horario_idhorario', 
          `estado_idestado`='$estado_idestado' WHERE `idcita_medica`='$idcita_medica'";
         return ejecutarConsulta($sql);
@@ -40,7 +40,7 @@
     //listar citas
     public function listar(){
         $sql= "SELECT cm.idcita_medica, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombre, 
-                    p.`telefono`, cm.`start` as fecha_cita, h.`hora` as hora_cita, s.`nombre` AS estado       
+                    p.`telefono`, cm.`fecha_cita`, h.`hora` as hora_cita, s.`nombre` AS estado       
         FROM `cita_medica` cm 
         INNER JOIN `estado` s ON cm.`estado_idestado`= s.`idestado`
         INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
@@ -50,7 +50,7 @@
         return ejecutarConsulta($sql);
     }
     public function listarCitas(){
-        $sql= "SELECT cm.idcita_medica, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as title , CONCAT(cm.start,' ',h.hora) as start 
+        $sql= "SELECT cm.idcita_medica, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as title , CONCAT(cm.fecha_cita,' ',h.hora) as start 
         FROM `cita_medica` cm
         INNER JOIN `horario` h ON h.`idhorario`=cm.`horario_idhorario`
         INNER JOIN `persona` p ON p.`idpersona`=cm.`persona_idpersona`";
@@ -59,24 +59,21 @@
     }
     public function insertarCita($especialidad_idespecialidad,$persona_idpersona, 
     $fecha_cita, $motivo_consulta, $horario_idhorario){
-        $sql= "INSERT INTO `cita_medica` (`especialidad_idespecialidad`, `persona_idpersona`, 
-        `start`, `diagnostico`, `sintomas`, `motivo_consulta`,`horario_idhorario`, `estado_idestado`) 
-        VALUES ('$especialidad_idespecialidad','$persona_idpersona', '$fecha_cita', ' ', ' ', 
-        '$motivo_consulta','$horario_idhorario', '1')";
-
+        $sql= "INSERT INTO `cita_medica` (`especialidad_idespecialidad`, `persona_idpersona`, `fecha_cita`, `diagnostico`, `sintomas`, `motivo_consulta`, `horario_idhorario`, `estado_idestado`) 
+        VALUES ('$especialidad_idespecialidad', '$persona_idpersona', '$fecha_cita', '', '', '$motivo_consulta', '$horario_idhorario', '1')";
         return ejecutarConsulta($sql);
     }
     public function editarCita($idcita_medica,$especialidad_idespecialidad,$persona_idpersona, 
     $fecha_cita, $motivo_consulta, $horario_idhorario){
         $sql= "UPDATE `cita_medica` SET `especialidad_idespecialidad`='$especialidad_idespecialidad',`persona_idpersona`='$persona_idpersona', 
-        `start`='$fecha_cita', `motivo_consulta`='$motivo_consulta',`horario_idhorario`='$horario_idhorario'
+        `fecha_cita`='$fecha_cita', `motivo_consulta`='$motivo_consulta',`horario_idhorario`='$horario_idhorario'
         WHERE `idcita_medica`='$idcita_medica'";
 
         return ejecutarConsulta($sql);
     }
     public function mostrarCita($idcita_medica)
         {
-            $sql= "SELECT `especialidad_idespecialidad`,`persona_idpersona`, `start`,`motivo_consulta`,
+            $sql= "SELECT `especialidad_idespecialidad`,`persona_idpersona`, `fecha_cita`,`motivo_consulta`,
             `horario_idhorario`
             FROM `cita_medica` 
             WHERE `idcita_medica`='$idcita_medica'";

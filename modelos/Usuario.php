@@ -4,7 +4,7 @@
      public function __construct(){
         
      }
-     //Metodo para insertar usuarioss
+     //Metodo para insertar Clientes desde el form de registro
      public function insertar($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
                 $ciudad_residencia, $fecha_nacimiento, $genero,$imagen){
         
@@ -19,12 +19,69 @@
         $sql= "INSERT INTO `usuario` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
                 `ciudad_residencia`, `fecha_nacimiento`, `genero`,`login`, `contrasenia`,`imagen`,`estado`) 
         VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia',
-                '$fecha_nacimiento','$genero',/*login-cedula*/'$cedula','$contrasenia','$imagen','1')";
+                '$fecha_nacimiento','$genero','$cedula','$contrasenia','$imagen','1')";
 
-        return ejecutarConsulta($sql);
+        //return ejecutarConsulta($sql);
+
+        $idpersonanew = ejecutarConsulta_retornarID($sql);
+
+        $sql_detalle = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
+                        VALUES('$idpersonanew','3')";
+        return ejecutarConsulta($sql_detalle);
     }
+    //insetar paciente en la tabla usuario y con el rol de usuario paciente
+    public function insertarUPaciente($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
+                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen){
+        
+        $pieces = explode(" ", $nombres); 
+        $str=""; 
+        foreach($pieces as $piece) 
+        { 
+            $str.=$piece[0]; 
+        }  
+        
+        $contrasenia= $cedula . $str;
+        $sql= "INSERT INTO `usuario` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
+                `ciudad_residencia`, `fecha_nacimiento`, `genero`,`login`, `contrasenia`,`imagen`,`estado`) 
+        VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia',
+                '$fecha_nacimiento','$genero','$cedula','$contrasenia','$imagen','1')";
 
-     //metodo para editar o actualizar especialidad
+        $idpersonanew = ejecutarConsulta_retornarID($sql);
+
+        $sql_detalle = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
+                        VALUES('$idpersonanew','4')";
+        return ejecutarConsulta($sql_detalle);
+    }
+    public function insertarUMedico($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
+                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$roles){
+        
+        $pieces = explode(" ", $nombres); 
+        $str=""; 
+        foreach($pieces as $piece) 
+        { 
+            $str.=$piece[0]; 
+        }  
+        
+        $contrasenia= $cedula . $str;
+        $sql= "INSERT INTO `usuario` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
+                `ciudad_residencia`, `fecha_nacimiento`, `genero`,`login`, `contrasenia`,`imagen`,`estado`) 
+        VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia',
+                '$fecha_nacimiento','$genero','$cedula','$contrasenia','$imagen','1')";
+
+        $idpersonanew = ejecutarConsulta_retornarID($sql);
+        $num_elementos=0;
+        $sw=true;
+        while ($num_elementos < count($roles)) { //mientras que el numero de elementos sea menor que la cantidad de especialdiades escogidas
+            //insertamos cada uno de los permiso del usuario, cin wihle recorremo todos los permisos asigandos
+            $sql_rol = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
+                            VALUES('$idpersonanew','$roles[$num_elementos]')";
+                            //enviamos la variable.. true si es de manera correcta
+            ejecutarConsulta($sql_rol) or $sw = false;
+            $num_elementos  =$num_elementos +1;
+        }
+        return $sw;
+    }
+     //metodo para editar o actualizar un paciente 
      public function editar($idpersona,$cedula, $nombres, $apellidos, $email, $telefono, $direccion,
                             $ciudad_residencia, $fecha_nacimiento, $genero, $imagen){
         $pieces = explode(" ", $nombres); 
@@ -77,6 +134,36 @@
         return ejecutarConsulta($sql);
         
     }
+    public function editarUMedico($idpersona,$cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+                            $ciudad_residencia, $fecha_nacimiento, $genero, $imagen,$roles){
+        $pieces = explode(" ", $nombres); 
+        $str=""; 
+        foreach($pieces as $piece) 
+        { 
+        $str.=$piece[0]; 
+        }                      
+        $contrasenia= $cedula . $str;
+
+        $sql= " UPDATE `usuario` SET `cedula`='$cedula', `nombres`='$nombres', `apellidos`='$apellidos', `email`='$email', 
+                        `telefono`='$telefono', `direccion`='$direccion', `ciudad_residencia`='$ciudad_residencia', `fecha_nacimiento`='$fecha_nacimiento', 
+                        `genero`='$genero',`login`='$cedula',`contrasenia`='$contrasenia',`imagen`='$imagen'
+                WHERE `idusuario`='$idpersona'";
+        ejecutarConsulta($sql);
+        $sqldel="DELETE FROM `usuario_has_rol` WHERE `usuario_idusuario`='$idpersona'";
+        ejecutarConsulta($sqldel);
+        $num_elementos=0;
+        $sw=true;
+        while ($num_elementos < count($roles)) { //mientras que el numero de elementos sea menor que la cantidad de especialdiades escogidas
+            //insertamos cada uno de los permiso del usuario, cin wihle recorremo todos los permisos asigandos
+            $sql_rol = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
+                            VALUES('$idpersona','$roles[$num_elementos]')";
+                            //enviamos la variable.. true si es de manera correcta
+            ejecutarConsulta($sql_rol) or $sw = false;
+            $num_elementos  =$num_elementos +1;
+        }
+        return $sw;
+        
+    }
 
     //mostrar datos de un usuario especifico por id
     public function mostrar($idusuario)
@@ -120,6 +207,11 @@
                 FROM `usuario` u 
                 WHERE `login`='$login' AND `contrasenia`='$clave' AND `estado`=1";        
         return ejecutarConsulta($sql);
+    }
+    public function selectRol()
+    {
+        $sql= "SELECT * FROM `rol`";        
+        return ejecutarConsulta($sql);   
     }
  }
 ?>
