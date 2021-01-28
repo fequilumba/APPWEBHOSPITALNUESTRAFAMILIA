@@ -84,7 +84,7 @@
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      <a href="#" class="btn btn-warning ">Cerrar Sesión</a>
+                      <a href="../ajax/usuario.php?op=salir" class="btn btn-warning ">Cerrar Sesión</a>
                     </div>
                   </li>
                 </ul>

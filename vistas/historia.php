@@ -8,7 +8,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 }else
 {
   require 'header.php';
-  //if ($_SESSION['hospital']==1) {
+  if ($_SESSION['hospital']==1) {
 ?>
 <div class="content-wrapper">
   <section class="content">
@@ -61,10 +61,10 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
   </section>
 </div>
 <?php
-/*}
+}
 else {
   require 'noacceso.php';
-}*/
+}
   require 'footer.php';
 ?>
 <?php

@@ -195,19 +195,22 @@
         
         return ejecutarConsulta($sql);
     }
-    public function listaMarcados($idusuario)
+    public function listaMarcados($rol_idrol)
     {
-        $sql= "SELECT * FROM `usuario_permiso` WHERE `usuario_idusuario`='$idusuario' ";        
+        $sql= "SELECT * FROM `rol_has_permiso` WHERE `rol_idrol`='$rol_idrol' ";        
         return ejecutarConsulta($sql);
     }
-    public function verificar($login,$clave)
+    
+    public function verificar($login,$clave,$rol_idrol)
     {
         $sql= "SELECT u.`idusuario`, u.`cedula`,u.`nombres`,u.`apellidos`,u.`email`, u.`telefono`, 
-        u.`direccion`, u.`ciudad_residencia`, u.`fecha_nacimiento`, u.`genero`, u.`login`, u.`imagen`, u.`estado` 
+        u.`direccion`, u.`ciudad_residencia`, u.`fecha_nacimiento`, u.`genero`, u.`login`, u.`imagen`, u.`estado`, ur.`rol_idrol`
                 FROM `usuario` u 
-                WHERE `login`='$login' AND `contrasenia`='$clave' AND `estado`=1";        
+                INNER JOIN usuario_has_rol ur ON u.`idusuario`= ur.`usuario_idusuario`
+                WHERE u.`login`='$login' AND u.`contrasenia`='$clave' AND u.`estado`=1 AND ur.rol_idrol='$rol_idrol'";        
         return ejecutarConsulta($sql);
     }
+
     public function selectRol()
     {
         $sql= "SELECT * FROM `rol`";        
