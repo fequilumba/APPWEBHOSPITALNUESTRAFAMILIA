@@ -19,18 +19,12 @@
     
     <link rel="shortcut icon" href="../files/img/LOGO.png">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body class="hold-transition login-page fondo">
     <div class="login-box">
       <div class="login-logo">
         <b class="estilo">HOSPITAL NUESTRA FAMILIA</b>
-      </div><!-- /.login-logo -->
+      </div>
       <div class="login-box-body">
         
         <p class="login-box-msg" style="font-size: 40px;" >LOGIN</p>
@@ -40,15 +34,15 @@
         <br>
         <form method="post" id="frmAcceso">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" id="logina" name="logina" placeholder="Username">
+            <input type="text" class="form-control" id="logina" name="logina" placeholder="Username" required >
             <span class="fa fa-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" id="clavea" name="clavea" class="form-control" placeholder="Password">
+            <input type="password" id="clavea" name="clavea" class="form-control" placeholder="Password" required>
             <span class="fa fa-key form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <select name="rol" id="rol"class="form-control"></select>
+            <select name="rol_idrol" id="rol_idrol"class="form-control"></select>
           </div>
           <div class="row">
             <div class="col-xs-8">

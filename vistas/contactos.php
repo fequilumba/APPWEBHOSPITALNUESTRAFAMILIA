@@ -1,5 +1,14 @@
 <?php
+//Activamos el almacenamiento en el buffer
+ob_start();
+session_start();
+if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. significa que no se ha logeado al sistema
+{
+  header("Location: login.php");
+}else
+{
   require 'header.php';
+  if ($_SESSION['contactos']==1) {
 ?>
 
 <div class="content-wrapper">
@@ -63,5 +72,13 @@
     </section>
 </div>
 <?php
+}
+else {
+  require 'noacceso.php';
+}
   require 'footer.php';
+?>
+<?php
+}
+ob_end_flush();
 ?>

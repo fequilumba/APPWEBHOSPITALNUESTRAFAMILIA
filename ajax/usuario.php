@@ -128,10 +128,11 @@ switch ($_GET["op"]){
 	case 'verificar':
 		$logina=$_POST['logina'];
 		$clavea=$_POST['clavea'];
+		$rol_idrol=$_POST['rol_idrol'];
 		//encriptar clave para comparar con la de la base de datos
 		//$clavehash=hash("SHA256",$clavea);
 		$clavehash=$clavea;
-		$rspta=$usuario->verificar($logina,$clavehash);
+		$rspta=$usuario->verificar($logina,$clavehash,$rol_idrol);
 
 		$fetch=$rspta->fetch_object();
 		if (isset($fetch)) { //si el objeti fetch no esta vacio
@@ -140,16 +141,17 @@ switch ($_GET["op"]){
 			$_SESSION['nombres']=$fetch->nombres;
 			$_SESSION['imagen']=$fetch->imagen;
 			$_SESSION['login']=$fetch->login;
-
+			$_SESSION['rol_idrol']=$fetch->rol_idrol;
+			
 			//obtener los permisos del usuaior
-			$marcados =$usuario->listaMarcados($fetch->$idusuario);
+			$marcados =$usuario->listaMarcados($fetch->$rol_idrol);
 			//array para almacenar los permisos marcados
 			$valores=array();
 			//almacernar los permisos en el array
 			while ($per = $marcados->fetch_object()) {
 				array_push($valores, $per->permiso_idpermiso);
 			}
-			//determinamos loa accesos del usuario
+			//determinamos los accesos del usuario
 			in_array(1,$valores)?$_SESSION['home']=1:$_SESSION['home']=0;
 			in_array(2,$valores)?$_SESSION['hospital']=1:$_SESSION['hospital']=0;
 			in_array(3,$valores)?$_SESSION['guiapaciente']=1:$_SESSION['guiapaciente']=0;
@@ -171,6 +173,14 @@ switch ($_GET["op"]){
                             .$reg->nombre.
                           '</option>';
                 }
+		break;
+	case 'salir':
+			//limpiamos las variables de sesion
+			session_unset();
+			//destruimos la sesion
+			session_destroy();
+			//redireccionamos al login
+			header("Location: ../index.php");
 		break;
 }
 ?>

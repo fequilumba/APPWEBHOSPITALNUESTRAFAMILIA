@@ -10,11 +10,11 @@ function init(){
 		guardaryeditar(e);	
     })
     
-	$("#imagenmuestra").hide();
+	/*$("#imagenmuestra").hide();
 	//mostrar permisos
 	$.post("../ajax/usuario.php?op=permisos&id=",function(r){
 		$("#permisos").html(r);
-	});
+	});*/
 }
 
 //Función limpiar

@@ -3,9 +3,10 @@ $("#frmAcceso").on('submit',function(e)
 	e.preventDefault();
     logina=$("#logina").val();
     clavea=$("#clavea").val();
+    rol_idrol=$("#rol_idrol").val();
 
     $.post("../ajax/usuario.php?op=verificar",
-        {"logina":logina,"clavea":clavea},
+        {"logina":logina,"clavea":clavea,"rol_idrol":rol_idrol},
         function(data)
     {
         if (data!="null")
