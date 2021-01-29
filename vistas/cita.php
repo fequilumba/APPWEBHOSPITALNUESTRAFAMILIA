@@ -8,7 +8,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 }else
 {
   require 'header.php';
-  if ($_SESSION['miagenda']==1) {
+  if ($_SESSION['rol_idrol']==2) {
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->

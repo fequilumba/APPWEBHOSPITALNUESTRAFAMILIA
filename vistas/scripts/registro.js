@@ -63,6 +63,10 @@
             }
         });
         limpiar();
+        bootbox.alert({
+            message: "Usuario registrado",
+            className: 'rubberBand animated'
+        });
         $(location).attr("href","login.php");
     }
 

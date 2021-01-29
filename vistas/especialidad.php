@@ -9,7 +9,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 {
   require 'header.php';
 
-  if ($_SESSION['guiamedico']==1) {
+  if ($_SESSION['rol_idrol']==1) {
     
 ?>
 <!--Contenido-->
