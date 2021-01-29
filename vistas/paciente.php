@@ -8,7 +8,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 }else
 {
   require 'header.php';
-  if ($_SESSION['guiapaciente']=1) {
+  if ($_SESSION['rol_idrol']==3||$_SESSION['rol_idrol']==1) {
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
@@ -63,7 +63,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="">Cédula</label>
                             <input type="hidden" name="idpersona" id="idpersona">
-                            <input type="text" name="cedula" id="cedula" class="form-control"  maxlength="45" placeholder="Cédula" required>
+                            <input type="text" name="cedula" id="cedula" class="form-control"  maxlength="10" placeholder="Cédula" required>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Nombres</label>

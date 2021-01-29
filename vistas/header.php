@@ -1,3 +1,8 @@
+<?php
+  if (strlen(session_id())<1) {
+    session_start();
+  }
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -68,15 +73,15 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="../public/dist/img/user2-160x160.png" class="user-image" alt="User Image">
-                  <span class="hidden-xs">Fausto Quilumba</span>
+                  <img src="../files/usuarios/<?php echo $_SESSION['imagen'] ?>" class="user-image" alt="User Image">
+                  <span class="hidden-xs"><?php echo $_SESSION['nombres'] ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="../public/dist/img/user2-160x160.png" class="img-circle" alt="User Image">
+                    <img src="../files/usuarios/<?php echo $_SESSION['imagen'] ?>" class="img-circle" alt="User Image">
                     <p>
-                      Admin: Fausto Quilumba
+                    <?php echo $_SESSION['nombres']?>
                     </p>
                   </li>
                   
@@ -102,12 +107,22 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header"></li>
-            <li>
+            
+            <?php
+            if ($_SESSION['rol_idrol']==1||$_SESSION['rol_idrol']==2||$_SESSION['rol_idrol']==3)
+            {
+              echo '<li>
               <a href="home.php">
                 <i class="fa fa-home"></i> <span>Home</span>
               </a>
-            </li>            
-            <li class="treeview">
+            </li> ';
+            }
+            ?>
+
+            <?php
+            if ($_SESSION['rol_idrol']==1||$_SESSION['rol_idrol']==2||$_SESSION['rol_idrol']==3)
+            {
+              echo '<li class="treeview">
               <a href="#">
                 <i class="fa fa-hospital-o"></i>
                 <span>Hospital</span>
@@ -117,8 +132,14 @@
                 <li><a href="historia.php"><i class="fa fa-circle-o"></i> Historia</a></li>
                 <li><a href="misionVision.php"><i class="fa fa-circle-o"></i> Misión/Visón</a></li>
               </ul>
-            </li>
-            <li class="treeview">
+            </li>';
+            }
+            ?>
+
+            <?php
+            if ($_SESSION['rol_idrol']==3||$_SESSION['rol_idrol']==1)
+            {
+              echo '<li class="treeview">
               <a href="#">
                 <i class="fa fa-users"></i>
                 <span>Guía del Paciente</span>
@@ -127,8 +148,14 @@
               <ul class="treeview-menu">
                 <li><a href="paciente.php"><i class="fa fa-circle-o"></i> Registrar</a></li>
               </ul>
-            </li>
-            <li class="treeview">
+            </li>';
+            }
+            ?>
+
+            <?php
+            if ($_SESSION['rol_idrol']==1)
+            {
+              echo '<li class="treeview">
               <a href="#">
                 <i class="fa fa-user-md"></i>
                 <span>Guía del Médico</span>
@@ -138,8 +165,14 @@
                 <li><a href="medico.php"><i class="fa fa-circle-o"></i> Registrar</a></li>
                 <li><a href="especialidad.php"><i class="fa fa-circle-o"></i> Especialidades</a></li>
               </ul>
-            </li>
-            <li class="treeview">
+            </li>';
+            }
+            ?>      
+            
+            <?php
+            if ($_SESSION['rol_idrol']==2)
+            {
+              echo '<li class="treeview">
               <a href="#">
                 <i class="fa fa-list-alt"></i>
                 <span>Mi Agenda</span>
@@ -150,40 +183,82 @@
                 <li><a href="#"><i class="fa fa-circle-o"></i> Exámenes</a></li>
                 <li><a href="receta.php"><i class="fa fa-circle-o"></i> Receta</a></li>
               </ul>
-            </li>                       
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-list-alt"></i> <span>Citas</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="calendario.php"><i class="fa fa-circle-o"></i> Agendar</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Cancelar</a></li>
-                
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-eye"></i> <span>Visualizar</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Historial Medico</a></li>
-                <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Recetas</a></li>
-                <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Examenes</a></li>                
-              </ul>
-            </li>
-            <li class="treeview">
+            </li>';
+            }
+            ?>  
+
+            <?php
+            if ($_SESSION['rol_idrol']==3)
+            {
+              
+                echo '<li class="treeview">
+                    <a href="#">
+                      <i class="fa fa-list-alt"></i> <span>Citas</span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="calendario.php"><i class="fa fa-circle-o"></i> Agendar</a></li>
+                    </ul>
+                  </li>';
+            
+            }
+            ?> 
+
+            <?php
+            if ($_SESSION['rol_idrol']==1)
+            {
+              
+                echo '<li class="treeview">
+                <a href="#">
+                  <i class="fa fa-list-alt"></i> <span>Citas</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="#"><i class="fa fa-circle-o"></i> Cancelar</a></li>
+                </ul>
+              </li>';
+            
+            }
+            ?> 
+            
+            <?php
+            if ($_SESSION['rol_idrol']==3)
+            {
+              
+                echo '<li class="treeview">
+                <a href="#">
+                  <i class="fa fa-eye"></i> <span>Visualizar</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Historial Medico</a></li>
+                  <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Recetas</a></li>
+                  <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Examenes</a></li>                
+                </ul>
+              </li>';
+            
+            }
+            ?> 
+
+            <?php
+            if ($_SESSION['rol_idrol']==1||$_SESSION['rol_idrol']==2||$_SESSION['rol_idrol']==3)
+            {
+              echo '<li class="treeview">
               <a href="contactos.php">
                 <i class="fa fa-phone"></i> <span>Contactos</span>
               </a>
-            </li>
+            </li>';
+            }
+            ?>
+
+            <!--
             <li>
               <a href="#">
                 <i class="fa fa-plus-square"></i> <span>Ayuda</span>
                 <small class="label pull-right bg-red">PDF</small>
               </a>
-            </li>                        
+            </li> 
+            -->
           </ul>
         </section>
         <!-- /.sidebar -->

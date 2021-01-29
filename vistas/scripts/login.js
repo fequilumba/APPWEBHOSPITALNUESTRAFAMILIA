@@ -11,11 +11,17 @@ $("#frmAcceso").on('submit',function(e)
     {
         if (data!="null")
         {
-            $(location).attr("href","home.php");            
+            
+            $(location).attr("href","home.php");
+               
         }
         else
         {
-            bootbox.alert("Usuario y/o Password incorrectos");
+           /* bootbox.alert("Usuario y/o Password incorrectos");*/
+            bootbox.alert({
+                message: "This is an alert with additional classes!",
+                className: 'rubberBand animated'
+            });
         }
     });
 })
