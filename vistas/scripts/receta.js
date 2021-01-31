@@ -7,45 +7,20 @@ function init() {
         guardaryeditar(e);
     });
 
-    //Cargamos los items al select Especialidad
-    $.post("../ajax/receta.php?op=selectEspecialidad",function(r)
+    //Cargamos los items al select de cita
+    $.post("../ajax/receta.php?op=selectCita",function(r)
         {        
             //console.log(data);
-            $("#especialidad_idespecialidad").html(r);
-            //$("#especialidad_idespecialidad").selectpicker('refresh');
+            $("#seleccita").html(r);
+            $("#seleccita").selectpicker('refresh');
             
         }
     );
-    //Cargamos los items al select Estado
-    $.post("../ajax/receta.php?op=selectEstado",function(r)
-        {        
-            //console.log(data);
-            $("#estado_idestado").html(r);
-            //$("#especialidad_idespecialidad").selectpicker('refresh');
-            
-        }
-    );
-    //Cargamos los items al select Paciente
-    $.post("../ajax/receta.php?op=selectPaciente",function(r)
-        {        
-            //console.log(data);
-            $("#persona_idpersona").html(r);
-            $("#persona_idpersona").selectpicker('refresh');
-            
-        }
-    );
-    $.post("../ajax/receta.php?op=selectHorario",function(r)
-        {        
-            //console.log(data);
-            $("#horario_idhorario").html(r);
-            //$("#especialidad_idespecialidad").selectpicker('refresh');
-            
-        }
-    ); 
 }
 //funcion limpiar
 function limpiar(){
-    $("#idrecera").val("");
+    $("#idreceta").val("");    
+    $("#seleccita").val("");
     $("#observaciones").val("");
     $("#medicamentos").val("");
     $("#especialidad").val("");
@@ -60,6 +35,7 @@ function mostrarform(flag){
     if(flag){
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
+        ocultarInput();
         $("#btnGuardar").prop("disabled",false);
         $("#btnagregar").hide();
     }else{
@@ -115,22 +91,25 @@ function guardaryeditar(e){
         processData: false,
 
         success: function(datos){
-            
             alert(datos);
             mostrarform(false);
-            //alertify.success('Cita registrada');
             tabla.ajax.reload();
         }
     });
     limpiar();
 }
 
-function mostrar(idcita_medica){
-    $.post("../ajax/receta.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status)
+function ver(idreceta){
+    $.post("../ajax/receta.php?op=ver",{idreceta : idreceta}, function(data, status)
     {
         data = JSON.parse(data);
-        mostrarform(true);
-        bloquear();
+        //mostrarform(true);
+        $("#listadoregistros").hide();
+        bloquearInput();
+        $("#formularioregistros").show();
+        $("#btnGuardar").hide();
+        $("#selectCita").hide();
+        $("#btnagregar").hide();
         $("#observaciones").val(data.observaciones); 
         $("#medicamentos").val(data.medicamentos);
         $("#especialidad").val(data.especialidad);
@@ -141,14 +120,66 @@ function mostrar(idcita_medica){
     });
 }
 
-function bloquear() {
-    $("#observaciones").prop('disabled', true); 
+function mostrar(idreceta){
+    $.post("../ajax/receta.php?op=mostrar",{idreceta : idreceta}, function(data, status)
+    {
+        data = JSON.parse(data);
+        $("#listadoregistros").hide();
+        $("#formularioregistros").show();
+        mostrarInput2();
+        $("#btnGuardar").prop("disabled",false);
+        $("#btnagregar").hide();
+        //mostrarform(true);
+        $("#idreceta").val(data.idreceta);
+        $("#seleccita").val(data.cita_medica_idcita_medica); 
+        $("#seleccita").selectpicker('refresh');        
+        $("#observaciones").val(data.observaciones); 
+        $("#medicamentos").val(data.medicamentos);
+        $("#especialidad").val(data.especialidad);
+        $("#paciente").val(data.paciente);
+        $("#fecha_cita").val(data.fecha_cita);
+        $("#hora_cita").val(data.hora_cita);
+    });
+}
+
+function bloquearInput() {
+        $("#observaciones").prop('disabled', true); 
         $("#medicamentos").prop('disabled', true);
         $("#especialidad").prop('disabled', true);
         $("#paciente").prop('disabled', true);
         $("#fecha_cita").prop('disabled', true);
         $("#hora_cita").prop('disabled', true);
         $("#idreceta").prop('disabled', true);
+        $("#divespecialidad").show();
+        $("#divpaciente").show();
+        $("#divfecha_cita").show();
+        $("#divhora_cita").show();
+}
+function ocultarInput(){
+        $("#btnGuardar").show();
+        $("#selectCita").show();
+        $("#observaciones").prop('disabled', false);
+        $("#medicamentos").prop('disabled', false);
+        $("#divespecialidad").hide();
+        $("#divpaciente").hide();
+        $("#divfecha_cita").hide();
+        $("#divhora_cita").hide();
+}
+function mostrarInput2(){
+    $("#btnGuardar").show();
+    $("#selectCita").hide();
+    $("#observaciones").prop('disabled', false);
+    $("#medicamentos").prop('disabled', false);
+    $("#divespecialidad").hide();
+    $("#divpaciente").hide();
+    $("#divfecha_cita").hide();
+    $("#divhora_cita").hide();
+}
+
+function mostrarInput(){
+        $("#observaciones").prop('disabled', false); 
+        $("#medicamentos").prop('disabled', false);
+        $("#btnGuardar").show();
 }
 
 /*function eliminar(idcita_medica)

@@ -20,7 +20,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Receta <!--<button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Proxima Cita</button>--></h1>
+                          <h1 class="box-title">Receta <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Receta</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -51,29 +51,34 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                     <div class="panel-body" id="formularioregistros">
                         <form name="formulariocita" id="formulariocita" method="POST">
 
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="selectCita">
+                              <label for="">Cita</label>
+                              <input type="hidden" name="idreceta" id="idreceta">
+                              <select name="seleccita" id="seleccita" class="form-control" data-live-search="true" data-live-search-style="startsWith" ></select>
+                            </div>
+
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Observaciones</label>
-                              <input type="hidden" name="idreceta" id="idreceta">
-                              <textarea name="observaciones" id="observaciones" class="form-control" cols="" rows="3"></textarea>
+                              <textarea name="observaciones" id="observaciones" class="form-control" cols="" rows="3" required></textarea>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Medicamentos</label>
-                              <textarea name="medicamentos" id="medicamentos" class="form-control" cols="" rows="3"></textarea>
+                              <textarea name="medicamentos" id="medicamentos" class="form-control" cols="" rows="3" required></textarea>
                             </div> 
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="divespecialidad">
                               <label for="">Especialidad</label>
                               <input type="text" name="especialidad" class="form-control" id="especialidad">
                             </div> 
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="divpaciente">
                               <label for="">Paciente</label>
                               <input type="text" name="paciente" class="form-control" id="paciente">
                             </div>
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="divfecha_cita">
                               <label for="">Fecha</label>
                               <input type="text" name="fecha_cita" class="form-control" id="fecha_cita">
                             </div> 
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="divhora_cita">
                               <label for="">Hora</label>
                               <input type="text" name="hora_cita" class="form-control" id="hora_cita">
                             </div>                        

@@ -74,7 +74,7 @@ function guardaryeditar(e){
         processData: false,
 
         success: function(datos){
-            bootbox.alert(datos);
+            alert(datos);
             mostrarform(false);
             tabla.ajax.reload();
         }

@@ -47,8 +47,7 @@ session_start();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                        "0"=> '<button class="btn btn-warning" onclick="mostrar('.$reg->idcita_medica.')"><li class="fa fa-pencil"></li></button>'.
-                            ' <button class="btn btn-info" onclick="agendar('.$reg->idcita_medica.')"><li class="fa fa-file-o"></li> Receta</button>',
+                        "0"=> '<button class="btn btn-warning" onclick="mostrar('.$reg->idcita_medica.')"><li class="fa fa-pencil"></li></button>',
                         "1"=>$reg->especialidad,
                         "2"=>$reg->nombre,
                         "3"=>$reg->telefono,
@@ -86,7 +85,7 @@ session_start();
                 }
             }else {
                 
-                $rspta = $paciente->selectPaciente($idusuario);
+                $rspta = $paciente->selectPaciente();
                 while ($reg = $rspta->fetch_object()) {
                     echo '<option value='.$reg->idpersona.'>'
                             .$reg->nombres.
