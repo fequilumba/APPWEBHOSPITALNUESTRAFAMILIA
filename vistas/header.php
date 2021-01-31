@@ -164,6 +164,8 @@
               <ul class="treeview-menu">
                 <li><a href="medico.php"><i class="fa fa-circle-o"></i> Registrar</a></li>
                 <li><a href="especialidad.php"><i class="fa fa-circle-o"></i> Especialidades</a></li>
+                <li><a href="examenImagen.php"><i class="fa fa-circle-o"></i> Exámen Imagen</a></li>
+                <li><a href="examenSangre.php"><i class="fa fa-circle-o"></i> Exámen Sangre</a></li>
               </ul>
             </li>';
             }
