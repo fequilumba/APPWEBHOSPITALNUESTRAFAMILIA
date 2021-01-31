@@ -7,11 +7,11 @@
 
      //Metodo para insertar registros
      public function insertar($cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                                    $ciudad_residencia, $fecha_nacimiento, $genero){
+                                    $ciudad_residencia, $fecha_nacimiento, $genero,$idasociado){
         $sql_persona= "INSERT INTO `persona` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
-                     `ciudad_residencia`, `fecha_nacimiento`, `genero`, `estado`) 
+                     `ciudad_residencia`, `fecha_nacimiento`, `genero`, `estado`,`idasociado`) 
                      VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia', 
-                                '$fecha_nacimiento', '$genero', 1)";
+                                '$fecha_nacimiento', '$genero',1,$idasociado)";
 
         $idpersonanew = ejecutarConsulta_retornarID($sql_persona);
 
@@ -52,15 +52,29 @@
         return ejecutarConsulta($sql);
     }
     //listar pacientes
-    public function listar(){
+    public function listar($idasociado){
         $sql= "SELECT p.`idpersona`, p.`cedula`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres,p.`email`, p.`telefono`,p.`direccion`,
-                        p.`ciudad_residencia`, p.`fecha_nacimiento`,p.`genero`, p.`estado` 
-                FROM `persona` p  
-                INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` AND pr.`rol_idrol`=4";
+        p.`ciudad_residencia`, p.`fecha_nacimiento`,p.`genero`, p.`estado` 
+        FROM `persona` p  
+        INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` AND pr.`rol_idrol`=4 AND p.`idasociado`='$idasociado'";
 
         return ejecutarConsulta($sql);
     }
-    public function selectPaciente(){
+    public function listarTodosPacientes(){
+        $sql= "SELECT p.`idpersona`, p.`cedula`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres,p.`email`, p.`telefono`,p.`direccion`,
+        p.`ciudad_residencia`, p.`fecha_nacimiento`,p.`genero`, p.`estado` 
+        FROM `persona` p  
+        INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` AND pr.`rol_idrol`=4";
+
+        return ejecutarConsulta($sql);
+    }
+    public function selectPaciente($idasociado){
+        $sql= "SELECT p.`idpersona`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres FROM `persona` p
+        INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` AND pr.`rol_idrol`=4 and p.estado=1 AND p.`idasociado`='$idasociado'";
+
+        return ejecutarConsulta($sql);
+    }
+    public function selectTodosPacientes(){
         $sql= "SELECT p.`idpersona`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres FROM `persona` p
         INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` AND pr.`rol_idrol`=4 and p.estado=1";
 

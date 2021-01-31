@@ -17,11 +17,7 @@ $("#frmAcceso").on('submit',function(e)
         }
         else
         {
-           /* bootbox.alert("Usuario y/o Password incorrectos");*/
-            bootbox.alert({
-                message: "This is an alert with additional classes!",
-                className: 'rubberBand animated'
-            });
+           bootbox.alert("Usuario y/o Password incorrectos");
         }
     });
 })

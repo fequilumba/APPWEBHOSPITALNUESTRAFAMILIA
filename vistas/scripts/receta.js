@@ -45,15 +45,14 @@ function init() {
 }
 //funcion limpiar
 function limpiar(){
-    $("#idcita_medica").val("");
-    $("#especialidad_idespecialidad").val("");
-    $("#persona_idpersona").val("");
+    $("#idrecera").val("");
+    $("#observaciones").val("");
+    $("#medicamentos").val("");
+    $("#especialidad").val("");
+    $("#paciente").val("");
     $("#fecha_cita").val("");
-    $("#diagnostico").val("");
-    $("#sintomas").val("");
-    $("#motivo_consulta").val("");
-    $("#horario_idhorario").val("");
-    $("#estado_idestado").val("");
+    $("#hora_cita").val("");
+
 }
 //mostrar formulario
 function mostrarform(flag){
@@ -131,15 +130,25 @@ function mostrar(idcita_medica){
     {
         data = JSON.parse(data);
         mostrarform(true);
-        $("#especialidad_idespecialidad").val(data.especialidad_idespecialidad);
-        $('#especialidad_idespecialidad').selectpicker('refresh');
-        $("#persona_idpersona").val(data.persona_idpersona);
-        $('#persona_idpersona').selectpicker('refresh');
-        $("#fecha_cita").val(data.start);
-        $("#observaciones").val(data.diagnostico);
-        $("#medicamentos").val(data.sintomas);
-        $("#idcita_medica").val(data.idcita_medica);
+        bloquear();
+        $("#observaciones").val(data.observaciones); 
+        $("#medicamentos").val(data.medicamentos);
+        $("#especialidad").val(data.especialidad);
+        $("#paciente").val(data.paciente);
+        $("#fecha_cita").val(data.fecha_cita);
+        $("#hora_cita").val(data.hora_cita);
+        $("#idreceta").val(data.idreceta);
     });
+}
+
+function bloquear() {
+    $("#observaciones").prop('disabled', true); 
+        $("#medicamentos").prop('disabled', true);
+        $("#especialidad").prop('disabled', true);
+        $("#paciente").prop('disabled', true);
+        $("#fecha_cita").prop('disabled', true);
+        $("#hora_cita").prop('disabled', true);
+        $("#idreceta").prop('disabled', true);
 }
 
 /*function eliminar(idcita_medica)

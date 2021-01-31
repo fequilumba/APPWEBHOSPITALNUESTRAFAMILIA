@@ -12,6 +12,10 @@
         $sql= "SELECT * FROM `rol` WHERE `idrol` != '2'";
         return ejecutarConsulta($sql);
      }
+     public function listarRolAcceso(){
+      $sql= "SELECT * FROM `rol` WHERE `idrol` != '4'";
+      return ejecutarConsulta($sql);
+   }
 
  }
 ?>

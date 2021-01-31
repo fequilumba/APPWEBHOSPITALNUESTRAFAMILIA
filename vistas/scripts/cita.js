@@ -10,12 +10,20 @@ function init() {
     //Cargamos los items al select Especialidad
     $.post("../ajax/cita.php?op=selectEspecialidad",function(r)
         {        
-            //console.log(data);
             $("#especialidad_idespecialidad").html(r);
-            //$("#especialidad_idespecialidad").selectpicker('refresh');
-
+            $("#especialidad_idespecialidad").selectpicker('refresh');
         }
     );
+    //recargamos la lsita de medicos segun la especialidad
+    $("#especialidad_idespecialidad").change(function(){
+        $("#especialidad_idespecialidad option:selected").each(function(){
+          idespecialidad= $(this).val();
+          $.post("../ajax/cita.php?op=selectMedico",{idespecialidad:idespecialidad},function(r){         
+            $("#personaMedico_idpersona").html(r);
+            //$("#personaMedico_idpersona").selectpicker('refresh');
+          });
+        });
+    });
     //Cargamos los items al select Estado
     $.post("../ajax/cita.php?op=selectEstado",function(r)
         {        
@@ -29,8 +37,8 @@ function init() {
     $.post("../ajax/cita.php?op=selectPaciente",function(r)
         {        
             //console.log(data);
-            $("#persona_idpersona").html(r);
-            $("#persona_idpersona").selectpicker('refresh');
+            $("#personaPaciente_idpersona").html(r);
+            $("#personaPaciente_idpersona").selectpicker('refresh');
             
         }
     );
@@ -38,8 +46,7 @@ function init() {
         {        
             //console.log(data);
             $("#horario_idhorario").html(r);
-            //$("#especialidad_idespecialidad").selectpicker('refresh');
-            
+            $("#horario_idhorario").selectpicker('refresh');
         }
     ); 
 }
@@ -47,13 +54,20 @@ function init() {
 function limpiar(){
     $("#idcita_medica").val("");
     $("#especialidad_idespecialidad").val("");
-    $("#persona_idpersona").val("");
+    $("#personaPaciente_idpersona").val("");
+    $("#personaMedico_idpersona").val("");
     $("#fecha_cita").val("");
     $("#diagnostico").val("");
     $("#sintomas").val("");
     $("#motivo_consulta").val("");
     $("#horario_idhorario").val("");
     $("#estado_idestado").val("");
+}
+function habilitar() {
+    $("#especialidad_idespecialidad").prop("disabled", false);
+    $("#personaPaciente_idpersona").removeAttr('disabled');
+    $("#medico").show();
+    $("#horario_idhorario").removeAttr('disabled');
 }
 //mostrar formulario
 function mostrarform(flag){
@@ -64,6 +78,7 @@ function mostrarform(flag){
         $("#btnGuardar").prop("disabled",false);
         $("#btnagregar").hide();
     }else{
+        //$("#formularioreceta").hide();
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
         $("#btnagregar").show();
@@ -73,6 +88,7 @@ function mostrarform(flag){
 //cancelar form
 function cancelarform(){
     limpiar();
+    habilitar();
     mostrarform(false);
 }
 //funcion listar
@@ -126,41 +142,34 @@ function guardaryeditar(e){
     limpiar();
 }
 
+
 function mostrar(idcita_medica){
     $.post("../ajax/cita.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status)
     {
         data = JSON.parse(data);
         mostrarform(true);
+
         $("#especialidad_idespecialidad").val(data.especialidad_idespecialidad);
-        //$('#especialidad_idespecialidad').selectpicker('refresh');
-        $("#persona_idpersona").val(data.persona_idpersona);
-        //$('#persona_idpersona').selectpicker('refresh');
+        $('#especialidad_idespecialidad').selectpicker('refresh');
+        $("#personaPaciente_idpersona").val(data.personaPaciente_idpersona);
+        $("#personaPaciente_idpersona").selectpicker('refresh');
+        $("#medico").hide();
+        //$("#personaMedico_idpersona").val(data.personaMedico_idpersona);
+        //$('#personaMedico_idpersona').selectpicker('refresh');
         $("#fecha_cita").val(data.fecha_cita);
         $("#diagnostico").val(data.diagnostico);
         $("#sintomas").val(data.sintomas);
         $("#motivo_consulta").val(data.motivo_consulta);
         $("#horario_idhorario").val(data.horario_idhorario);
+        $("#horario_idhorario").selectpicker('refresh');
         $("#estado_idestado").val(data.estado_idestado);
-        //$('#estado_idestado').selectpicker('refresh');
+        $("#estado_idestado").selectpicker('refresh');
         $("#idcita_medica").val(data.idcita_medica);
     });
 }
 
 function eliminar(idcita_medica)
-{
-   /*alertify.confirm("CITA","¿Estas seguro de eliminar la cita?",function(result){
-        if(result)
-        {
-            $.post(
-                "../ajax/cita.php?op=eliminar", {idcita_medica : idcita_medica},
-                function(e)
-                {
-                    bootbox.alert(e);
-                    tabla.ajax.reload();
-                }
-            );
-        }
-    });*/  
+{ 
     alertify.confirm("CITA","¿Estas seguro de eliminar la cita?",
         function(){
             $.post(

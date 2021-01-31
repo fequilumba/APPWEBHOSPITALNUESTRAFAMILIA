@@ -8,7 +8,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 }else
 {
   require 'header.php';
-  if ($_SESSION['rol_idrol']==3) {
+  if ($_SESSION['rol_idrol']==3||$_SESSION['rol_idrol']==1) {
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
@@ -32,36 +32,6 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
 
-<!-- The modal 
-<div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="titulo">CITA MÉDICA</h4>
-      </div>
-        <div class="modal-body">
-          <label for="">Paciente</label>
-            <select name="paciente" id="pacienteF" class="form-control selectpicker" data-live-search="true" data-live-search-style="startsWith"></select> <br>
-          <label for="">Especialidad</label>
-            <select name="especialidad" id="especialidadF" class="form-control"></select> <br>
-          <label for="">Fecha</label>
-            <input type="date" id="fechaF"class="form-control" disabled> <br>
-          <label for="">Motivo Cita</label>
-          <textarea name="motivo" id="motivoF" class="form-control" rows="3"></textarea><br>
-          <label for="">Horario</label>
-            <select name="hora" id="horaF" class="form-control"></select> <br>
-        </div>
-      <div class="modal-footer">
-      <button type="button" class="btn btn-info">Guardar</button>
-      <button type="button" class="btn btn-danger">Eliminar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-      </div>
-	  </div>
-  </div>
-</div>-->
 
 <!-- The modal CRUD -->
 
@@ -79,12 +49,13 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
         
           <label for="">Especialidad</label>
             <input type="hidden" name="idcita_medica" id="idcita_medica">
-            <select name="especialidad_idespecialidad" id="especialidad_idespecialidad" class="form-control"></select> <br>
+            <select name="especialidad_idespecialidad" id="especialidad_idespecialidad" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar"></select> <br>
           <label for="">Paciente</label>
-            <select name="persona_idpersona" id="persona_idpersona" class="form-control selectpicker" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar"></select> <br>
-          
+            <select name="personaPaciente_idpersona" id="personaPaciente_idpersona" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar"></select> <br>
+            <label for="">Medico</label>
+            <select name="personaMedico_idpersona" id="personaMedico_idpersona" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar"></select> <br>
           <label for="">Fecha</label>
-            <input type="date" name="fecha_cita" id="fecha_cita" class="form-control"> <br>
+            <input type="date" name="fecha_cita" id="fecha_cita" class="form-control" > <br>
           <label for="">Motivo Cita</label>
           <textarea name="motivo_consulta" id="motivo_consulta" class="form-control" rows="3"></textarea><br>
           <label for="">Horario</label>
@@ -93,7 +64,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
         </div>
       <div class="modal-footer">
           <button type="submit" id="btnAgregar" class="btn btn-info">Guardar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" id="btnCancelar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
       </div>
       </form>
 	  </div>

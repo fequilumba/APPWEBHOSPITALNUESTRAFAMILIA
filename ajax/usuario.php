@@ -142,24 +142,6 @@ switch ($_GET["op"]){
 			$_SESSION['imagen']=$fetch->imagen;
 			$_SESSION['login']=$fetch->login;
 			$_SESSION['rol_idrol']=$fetch->rol_idrol;
-			
-			/*//obtener los permisos del usuaior
-			$marcados =$usuario->listaMarcados($fetch->$rol_idrol);
-			//array para almacenar los permisos marcados
-			$valores=array();
-			//almacernar los permisos en el array
-			while ($per = $marcados->fetch_object()) {
-				array_push($valores, $per->permiso_idpermiso);
-			}
-			//determinamos los accesos del usuario
-			in_array(1,$valores)?$_SESSION['home']=1:$_SESSION['home']=0;
-			in_array(2,$valores)?$_SESSION['hospital']=1:$_SESSION['hospital']=0;
-			in_array(3,$valores)?$_SESSION['guiapaciente']=1:$_SESSION['guiapaciente']=0;
-			in_array(4,$valores)?$_SESSION['guiamedico']=1:$_SESSION['guiamedico']=0;
-			in_array(5,$valores)?$_SESSION['miagenda']=1:$_SESSION['miagenda']=0;
-			in_array(6,$valores)?$_SESSION['citas']=1:$_SESSION['citas']=0;
-			in_array(7,$valores)?$_SESSION['visualizar']=1:$_SESSION['visualizar']=0;
-			in_array(8,$valores)?$_SESSION['contactos']=1:$_SESSION['contactos']=0;*/
 
 		}
 		echo json_encode($fetch);
@@ -167,7 +149,7 @@ switch ($_GET["op"]){
 	case 'selectRol':
 			require_once "../modelos/Rol.php";
             $rol = new Rol();
-			$rspta = $rol->listarRol();
+			$rspta = $rol->listarRolAcceso();
                 while ($reg = $rspta->fetch_object()) {
                     echo '<option value='.$reg->idrol.'>'
                             .$reg->nombre.
