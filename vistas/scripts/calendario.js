@@ -6,38 +6,59 @@ function init() {
 
   });
   //Cargamos los items al select Especialidad
-  $.post("../ajax/cita.php?op=selectEspecialidad",function(r)
+  $.post("../ajax/calendario.php?op=selectEspecialidad",function(r)
   {        
       //console.log(data);
       $("#especialidad_idespecialidad").html(r);
-      //$("#especialidad_idespecialidad").selectpicker('refresh');
+      $("#especialidad_idespecialidad").selectpicker('refresh');
       
   });
-  $.post("../ajax/cita.php?op=selectPaciente",function(r)
+  $.post("../ajax/calendario.php?op=selectPaciente",function(r)
   {        
       //console.log(data);
-      $("#persona_idpersona").html(r);
-      $("#persona_idpersona").selectpicker('refresh');
+      $("#personaPaciente_idpersona").html(r);
+      $("#personaPaciente_idpersona").selectpicker('refresh');
       
   });
-  $.post("../ajax/cita.php?op=selectHorario",function(r)
+  $("#especialidad_idespecialidad").change(function(){
+      $("#especialidad_idespecialidad option:selected").each(function(){
+        idespecialidad= $(this).val();
+        $.post("../ajax/calendario.php?op=selectMedico",{idespecialidad:idespecialidad},function(r){         
+          $("#personaMedico_idpersona").html(r);
+          //$("#personaMedico_idpersona").selectpicker('refresh');
+        });
+      });
+  });
+
+  $.post("../ajax/calendario.php?op=selectHorario",function(r)
   {        
       //console.log(data);
       $("#horario_idhorario").html(r);
       //$("#especialidad_idespecialidad").selectpicker('refresh');
       
-  });       
-  
-  /*$('btnAgregar').click(function(){
-      var nuevaCita={
-        title:$('#paciente').val(),
-        start:$('#fecha').val()
-      };
-  
-  });*/
+  }); 
+  $("#btnCancelar").click(function(event) {
+    //$("#formCitas")[0].reset();
+    //limpiar();
+    $('#formCitas :input').not("[type=radio],[type=checkbox],[type=hidden],[readonly='readonly'],[style*='display: none'],.select2-offscreen,[class^='select2'],select").each(function(){
+      var name = $(this).attr('name');
+      console.log(name);
+      $(this).val('');
+  });
+  });     
 
 }//fin init
 
+//funcion limpiar
+function limpiar(){
+  $("#idcita_medica").val("");
+  $("#especialidad_idespecialidad").val("");
+  $("#personaPaciente_idpersona").val("");
+  $("#personaMedico_idpersona").val("");
+  $("#fecha_cita").val("");
+  $("#motivo_consulta").val("");
+  $("#horario_idhorario").val("");
+}
 
 function calendario() { 
 
@@ -51,7 +72,7 @@ function calendario() {
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
       },
-      events: '../ajax/cita.php?op=listarCitas'
+      events: '../ajax/calendario.php?op=listarCitas'
       ,
   
      /* eventClick:'../ajax/cita.php?op=mostrarCita', function (data,events) {
@@ -78,16 +99,18 @@ function calendario() {
         });
     },*/
       dateClick: function(info) {
-        //$("#fecha").val(info.dateStr);
-        /*$("#modalCitas").modal();*/
+        var actual = new Date();
+        if(info.date >= actual){
         $("#fecha_cita").val(info.dateStr);   
         $("#modalCitas").modal();
-        /*calendar.addEvent({
-          title:"prueba",
-          date:info.dateStr
-        });  */ 
+        //document.getElementById("dia").innerHTML= info.dateStr;
+        }else{
+          bootbox.alert({
+            message: "No se puede agendar citas en una fecha vencida"
+            });
+        }
       },
-      
+      hiddenDays: [0,6]
     });//fin eventListener
     calendar.render();
   });
@@ -100,22 +123,13 @@ function guardaryeditar(e){
   
   var formData = new FormData($("#formCitas")[0]);
   $.ajax({
-      url: "../ajax/cita.php?op=guardarCita",
+      url: "../ajax/calendario.php?op=guardarCita",
       type: "POST",
       data: formData,
       contentType: false,
       processData: false,
 
-      /*success: function(datos){      
-          bootbox.alert(datos);
-      }*/
-
   });
-
-
-  //fullCalendar('refetchEvents').FullCalendar;
-  //FullCalendar('refresh');
-  //$("#calendar").fullCalendar('rerenderEvents');
   alertify.success('Cita registrada');
   $("#modalCitas").modal('toggle');
 }

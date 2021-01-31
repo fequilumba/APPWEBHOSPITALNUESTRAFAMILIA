@@ -32,11 +32,9 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                           <thead>
                             <th>Opciones</th>
                             <th>Especialidad</th>
-                            <th>Nombre Completo</th>
-                            <th>Teléfono</th>
+                            <th>Paciente</th>
                             <th>Fecha</th>
                             <th>Hora</th>
-                            <th>Estado</th>
                           </thead>
                           <tbody>
 
@@ -44,43 +42,40 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                           <tfoot>
                             <th>Opciones</th>
                             <th>Especialidad</th>
-                            <th>Nombre Completo</th>
-                            <th>Teléfono</th>
+                            <th>Paciente</th>
                             <th>Fecha</th>
                             <th>Hora</th>
-                            <th>Estado</th>
                           </tfoot>
                         </table>
                     </div>
                     <div class="panel-body" id="formularioregistros">
                         <form name="formulariocita" id="formulariocita" method="POST">
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Especialidad</label>
-                              <input type="hidden" name="idreceta" id="idreceta">
-                              <input type="hidden" name="idcita_medica" id="idcita_medica">
-                              <select name="especialidad_idespecialidad" id="especialidad_idespecialidad"  class="form-control" placeholder="seleccionar" ></select>
-                            </div>
-
-
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Paciente</label>
-                              <select name="persona_idpersona" id="persona_idpersona" class="form-control selectpicker" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar"></select>
-                            </div>
-
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Fecha</label>
-                              <input type="date" name="fecha_cita" class="form-control" id="fecha_cita" required>
-                              <br>
-                            </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Observaciones</label>
+                              <input type="hidden" name="idreceta" id="idreceta">
                               <textarea name="observaciones" id="observaciones" class="form-control" cols="" rows="3"></textarea>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Medicamentos</label>
                               <textarea name="medicamentos" id="medicamentos" class="form-control" cols="" rows="3"></textarea>
+                            </div> 
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label for="">Especialidad</label>
+                              <input type="text" name="especialidad" class="form-control" id="especialidad">
+                            </div> 
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label for="">Paciente</label>
+                              <input type="text" name="paciente" class="form-control" id="paciente">
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label for="">Fecha</label>
+                              <input type="text" name="fecha_cita" class="form-control" id="fecha_cita">
+                            </div> 
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label for="">Hora</label>
+                              <input type="text" name="hora_cita" class="form-control" id="hora_cita">
                             </div>                        
                           
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

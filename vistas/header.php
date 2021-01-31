@@ -214,7 +214,8 @@
                   <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="#"><i class="fa fa-circle-o"></i> Cancelar</a></li>
+                  <li><a href="calendario.php"><i class="fa fa-circle-o"></i> Agendar</a></li>
+                  <li><a href="cancelarCita.php"><i class="fa fa-circle-o"></i> Cancelar</a></li>
                 </ul>
               </li>';
             
@@ -222,7 +223,7 @@
             ?> 
             
             <?php
-            if ($_SESSION['rol_idrol']==3)
+            if ($_SESSION['rol_idrol']==3||$_SESSION['rol_idrol']==1)
             {
               
                 echo '<li class="treeview">
@@ -231,9 +232,9 @@
                   <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Historial Medico</a></li>
-                  <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Recetas</a></li>
-                  <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Examenes</a></li>                
+                  <li><a href="#"><i class="fa fa-circle-o"></i> Historial Medico</a></li>
+                  <li><a href="#"><i class="fa fa-circle-o"></i> Recetas</a></li>
+                  <li><a href="#"><i class="fa fa-circle-o"></i> Examenes</a></li>                
                 </ul>
               </li>';
             

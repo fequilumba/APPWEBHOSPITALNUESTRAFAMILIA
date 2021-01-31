@@ -8,7 +8,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 }else
 {
   require 'header.php';
-  if ($_SESSION['rol_idrol']==2) {
+  if ($_SESSION['rol_idrol']==2||$_SESSION['rol_idrol']==1) {
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
@@ -32,7 +32,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                           <thead>
                             <th>Opciones</th>
                             <th>Especialidad</th>
-                            <th>Nombre Completo</th>
+                            <th>Paciente</th>
                             <th>Teléfono</th>
                             <th>Fecha</th>
                             <th>Hora</th>
@@ -44,7 +44,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                           <tfoot>
                             <th>Opciones</th>
                             <th>Especialidad</th>
-                            <th>Nombre Completo</th>
+                            <th>Paciente</th>
                             <th>Teléfono</th>
                             <th>Fecha</th>
                             <th>Hora</th>
@@ -57,13 +57,18 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Especialidad</label>
                               <input type="hidden" name="idcita_medica" id="idcita_medica">
-                              <select name="especialidad_idespecialidad" id="especialidad_idespecialidad"  class="form-control" placeholder="seleccionar" required></select>
+                              <select name="especialidad_idespecialidad" id="especialidad_idespecialidad"  class="form-control selectpicker " data-live-search="true" data-live-search-style="startsWith"requiered></select>
                             </div>
 
 
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" >
                               <label for="">Paciente</label>
-                              <select name="persona_idpersona" id="persona_idpersona" class="form-control selectpicker" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select>
+                              <select name="personaPaciente_idpersona" id="personaPaciente_idpersona" class="form-control selectpicker" data-live-search="true" data-live-search-style="startsWith" requiered></select>
+                            </div>
+
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="medico">
+                              <label for="">Médico</label>
+                              <select name="personaMedico_idpersona" id="personaMedico_idpersona" class="form-control"></select>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -88,11 +93,11 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             
                             <label for="">Hora</label>
-                              <select name="horario_idhorario" id="horario_idhorario" class="form-control"required ></select>
+                              <select name="horario_idhorario" id="horario_idhorario" class="form-control selectpicker" data-live-search="true" data-live-search-style="startsWith"></select>
                               </div>
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="estado">
                               <label for="">Estado</label>
-                              <select name="estado_idestado" id="estado_idestado"  class="form-control" placeholder="seleccionar" required></select>
+                              <select name="estado_idestado" id="estado_idestado"  class="form-control" requiered ></select>
                             </div>
                           
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

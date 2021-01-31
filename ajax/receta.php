@@ -1,66 +1,52 @@
 <?php
     require_once "../modelos/Receta.php";
-    $cita = new Receta();
+    $receta = new Receta();
 
     $idreceta = isset($_POST["idreceta"])? limpiarCadena($_POST["idreceta"]):"";
-    $idcita_medica = isset($_POST["idcita_medica"])? limpiarCadena($_POST["idcita_medica"]):""; 
-    $especialidad_idespecialidad = isset($_POST["especialidad_idespecialidad"])? limpiarCadena($_POST["especialidad_idespecialidad"]):""; 
-    $persona_idpersona= isset($_POST["persona_idpersona"])? limpiarCadena($_POST["persona_idpersona"]):"";
-    $fecha_cita= isset($_POST["fecha_cita"])? limpiarCadena($_POST["fecha_cita"]):"";
+    $idcita_medica = isset($_POST["idcita_medica"])? limpiarCadena($_POST["idcita_medica"]):"";
     $observaciones = isset($_POST["observaciones"])? limpiarCadena($_POST["observaciones"]):"";
     $medicamentos= isset($_POST["medicamentos"])? limpiarCadena($_POST["medicamentos"]):"";
+    $especialidad = isset($_POST["especialidad"])? limpiarCadena($_POST["especialidad"]):""; 
+    $paciente= isset($_POST["paciente"])? limpiarCadena($_POST["paciente"]):"";
+    $fecha_cita= isset($_POST["fecha_cita"])? limpiarCadena($_POST["fecha_cita"]):"";
+    $hora_cita= isset($_POST["hora_cita"])? limpiarCadena($_POST["hora_cita"]):"";
     
     switch ($_GET["op"]) {
         case 'guardaryeditar':
-            if (empty($idcita_medica)) {
-                $rspta=$cita->insertar($especialidad_idespecialidad,$persona_idpersona, 
+            if (empty($idreceta)) {
+                $rspta=$receta->insertar($especialidad_idespecialidad,$persona_idpersona, 
                 $fecha_cita, $diagnostico, $sintomas, $motivo_consulta, $horario_idhorario,$estado_idestado);
                 echo $rspta? "Cita registrada" : "La cita no se pudo registrar";
                 
 
             }else{
-                $rspta=$cita->editar($idcita_medica,$especialidad_idespecialidad,$persona_idpersona, 
+                $rspta=$receta->editar($idreceta,$especialidad_idespecialidad,$persona_idpersona, 
                 $fecha_cita, $diagnostico, $sintomas, $motivo_consulta, $horario_idhorario,$estado_idestado);
                 echo $rspta? "Cita actualizada" : "La cita no se pudo actualizar";
                                 
             }
             break;
-        /*case 'guardarCita':
-                if (empty($idcita_medica)) {
-                    $rspta=$cita->insertarCita($especialidad_idespecialidad,$persona_idpersona, 
-                    $fecha_cita, $motivo_consulta, $horario_idhorario);
-                    
-                    
-    
-                }else{
-                    $rspta=$cita->editarCita($idcita_medica,$especialidad_idespecialidad,$persona_idpersona, 
-                    $fecha_cita, $motivo_consulta, $horario_idhorario);
-                    echo $rspta? "Cita actualizada" : "La cita no se pudo actualizar";
-                                    
-                }
-                break;*/
         case 'mostrar':
-                    $rspta=$cita->mostrar($idcita_medica);
+                    $rspta=$receta->mostrar($idcita_medica);
                     echo json_encode($rspta);
                 break;
         /*case 'eliminar':
-                    $rspta=$cita->eliminarCita($idcita_medica);
+                    $rspta=$receta->eliminarCita($idreceta);
                      
                     //echo $rspta ? "Cita eliminada" : "No se pudo eliminar la cita";
                 break;*/
         case 'listar':
-            $rspta=$cita->listar();
+            $rspta=$receta->listar();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                        "0"=> '<button class="btn btn-info" onclick="mostrar('.$reg->idcita_medica.')"><li class="fa fa-file-o"></li></button>'.
-                            ' <button class="btn btn-warning" onclick="receta('.$reg->idcita_medica.')"><li class="fa fa-file-o"></li> Receta</button>',
+                        "0"=> '<button class="btn btn-success" onclick="guardaryeditar('.$reg->idcita_medica.')"><li class="fa fa-plus-circle"></li> Receta</button>'.
+                            ' <button class="btn btn-warning" onclick="mostrar('.$reg->idcita_medica.')"><li class="fa fa-eye"></li> </button>'.
+                            ' <button class="btn btn-warning" onclick="imprimir('.$reg->idcita_medica.')"><li class="fa fa-print"></li> </button>',
                         "1"=>$reg->especialidad,
-                        "2"=>$reg->nombre,
-                        "3"=>$reg->telefono,
-                        "4"=>$reg->fecha_cita,
-                        "5"=>$reg->hora_cita,
-                        "6"=>$reg->estado
+                        "2"=>$reg->paciente,
+                        "3"=>$reg->fecha_cita,
+                        "4"=>$reg->hora_cita,
                 );
             }
             $results = array(
@@ -70,32 +56,6 @@
                 "aaData"=>$data);    
                 echo json_encode($results);   
             break;
-        /*case 'listarCitas':
-                $rspta=$cita->listarCitas();
-                $data = Array();
-                while ($reg=$rspta->fetch_object()) {
-                    $data[]= array(
-                        "id"=>'<button onclick="mostrarCita('.$reg->idcita_medica.')"></button>',
-                        "title"=> $reg->title,
-                        "start"=>$reg->start
-                    );
-                }  
-                echo json_encode($data);   
-                break;
-        case 'mostrarCita':
-                    $rspta=$cita->mostrarCita($idcita_medica);
-                    echo json_encode($rspta);
-                break;*/
-       /* case 'selectEstado':
-                require_once "../modelos/Estado.php";
-                $estado = new Estado();
-                $rspta = $estado->selectEstado();
-                while ($reg = $rspta->fetch_object()) {
-                    echo '<option value='.$reg->idestado.'>'
-                            .$reg->nombre.
-                          '</option>';
-                }
-            break;*/
         case 'selectPaciente':
             require_once "../modelos/Paciente.php";
                 $paciente = new Paciente();
@@ -116,16 +76,6 @@
                           '</option>';
                 }
             break;
-        /*case 'selectHorario':
-                require_once "../modelos/Horario.php";
-                $horario = new Horario();
-                $rspta = $horario->selectHorario();
-                while ($reg = $rspta->fetch_object()) {
-                    echo '<option value='.$reg->idhorario.'>'
-                            .$reg->hora.
-                          '</option>';
-                }
-            break;*/
     }
 
 ?>
