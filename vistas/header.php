@@ -234,7 +234,7 @@
                 <ul class="treeview-menu">
                   <li><a href="historialmedico.php"><i class="fa fa-circle-o"></i> Historial Medico</a></li>
                   <li><a href="verreceta.php"><i class="fa fa-circle-o"></i> Recetas</a></li>
-                  <li><a href="#"><i class="fa fa-circle-o"></i> Examenes</a></li>                
+                  <li><a href="verexamen.php"><i class="fa fa-circle-o"></i> Examenes</a></li>                
                 </ul>
               </li>';
             

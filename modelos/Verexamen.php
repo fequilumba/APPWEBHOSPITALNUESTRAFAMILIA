@@ -1,34 +1,38 @@
 <?php
  require "../config/Conexion.php";
- class Verreceta{
+ class Verexamen{
      public function __construct(){
         
      }
      public function listar($idusuario){
-        $sql= "SELECT cm.idcita_medica, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
+        $sql= "SELECT te.idtipo_examen, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
         CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico, cm.`fecha_cita`, h.`hora` as hora_cita   
-        FROM `cita_medica` cm 
+        FROM `tipo_examen` te 
+        INNER JOIN `cita_medica_has_tipo_examen` ce ON ce.`tipo_examen_idtipo_examen`= te.`idtipo_examen`
+        INNER JOIN `cita_medica` cm ON cm.`idcita_medica`= ce.`cita_medica_idcita_medica` 
         INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
         INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
         INNER JOIN `persona` pm ON pm.`idpersona`=cm.`personaMedico_idpersona`
         INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario`
         AND p.`idasociado`='$idusuario'
-        ORDER BY cm.`idcita_medica` DESC";
+        ORDER BY te.`idtipo_examen` DESC";
         return ejecutarConsulta($sql);
      }
      
     //mostrar datos de una cita por id
-    public function mostrar($idcita_medica)
+    public function mostrar($idtipo_examen)
         {
-            $sql= "SELECT cm.`idcita_medica`, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
-            CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico, cm.`diagnostico`, r.`observaciones`, r.`medicamentos`  
-            FROM `cita_medica` cm 
-            INNER JOIN `receta` r ON r.`cita_medica_idcita_medica`= cm.`idcita_medica` 
+            $sql= "SELECT te.idtipo_examen, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
+            CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico, te.`nombre` as examen   
+            FROM `tipo_examen` te 
+            INNER JOIN `cita_medica_has_tipo_examen` ce ON ce.`tipo_examen_idtipo_examen`= te.`idtipo_examen`
+            INNER JOIN `cita_medica` cm ON cm.`idcita_medica`= ce.`cita_medica_idcita_medica` 
             INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
             INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
             INNER JOIN `persona` pm ON pm.`idpersona`=cm.`personaMedico_idpersona`
-            WHERE cm.`idcita_medica`='$idcita_medica'";
+            AND te.`idtipo_examen`='$idtipo_examen'";
             return ejecutarConsultaSimpleFila($sql);
         }
+
  }
 ?>
