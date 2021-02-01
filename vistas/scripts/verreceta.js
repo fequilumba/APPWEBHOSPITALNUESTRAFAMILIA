@@ -36,7 +36,7 @@ function listar(){
             'pdf',
         ],
         "ajax":{
-            url: '../ajax/historialmedico.php?op=listar',
+            url: '../ajax/verreceta.php?op=listar',
             type: "get",
             dataType: "json",
             error: function(e){
@@ -50,15 +50,16 @@ function listar(){
 }
 
 function mostrar(idcita_medica){
-    $.post("../ajax/historialmedico.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status)
+    $.post("../ajax/verreceta.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status)
     {
         data = JSON.parse(data);
         mostrarform(true);
-        $("#especialidad").val(data.especialidad)
-        $("#paciente").val(data.paciente)
-        $("#medico").val(data.medico)
-        $("#diagnostico").val(data.diagnostico)
-        $("#idcita_medica").val(data.idcita_medica)
+        $("#especialidad").val(data.especialidad);
+        $("#paciente").val(data.paciente);
+        $("#medico").val(data.medico);
+        $("#observaciones").val(data.observaciones);
+        $("#medicamentos").val(data.medicamentos)
+        $("#idcita_medica").val(data.idcita_medica);
 
     });
 }
