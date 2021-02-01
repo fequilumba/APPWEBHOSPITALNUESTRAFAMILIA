@@ -42,9 +42,9 @@
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                        "0"=> '<button class="btn btn-warning" onclick="mostrar('.$reg->idreceta.')"><li class="fa fa-pencil"></li> Receta</button>'.
-                            ' <button class="btn btn-primary" onclick="ver('.$reg->idreceta.')"><li class="fa fa-eye"></li> </button>'.
-                            ' <button class="btn btn-dark" onclick="imprimir('.$reg->idreceta.')"><li class="fa fa-print"></li> </button>',
+                        "0"=> '<button class="btn btn-warning" onclick="mostrar('.$reg->idreceta.')"><li class="fa fa-pencil"></li> </button>'.
+                            ' <button class="btn btn-primary" onclick="ver('.$reg->idreceta.')"><li class="fa fa-eye"></li> </button>'/*.
+                            ' <button class="btn btn-dark" onclick="imprimir('.$reg->idreceta.')"><li class="fa fa-print"></li> </button>'*/,
                         "1"=>$reg->especialidad,
                         "2"=>$reg->paciente,
                         "3"=>$reg->fecha_cita,
