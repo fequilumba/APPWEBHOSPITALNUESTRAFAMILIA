@@ -57,13 +57,17 @@
     
     
 }
-$sql= "SELECT r.`idreceta`, r.`obsevaciones`, r.`medicamentos`, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
-cm.`fecha_cita` , h.`hora` as hora_cita      
-FROM `receta` r 
-INNER JOIN `cita_medica` cm ON cm.`idcita_medica`= r.`cita_medica_idcita_medica`
-INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`= e.`idespecialidad` 
-INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
-INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario` AND`idreceta`=3";
+$sql= "SELECT te.`idtipo_examen`, CONCAT(e.`nombre`, ' - ' ,cm.`fecha_cita`, ' - ' ,p.`nombres`, ' - ' ,p.`apellidos`) as cita, 
+te.`nombre`
+FROM `tipo_examen` te
+INNER JOIN `cita_medica_has_tipo_examen` cme ON cme.`tipo_examen_idtipo_examen`= te.`idtipo_examen`
+INNER JOIN `cita_medica` cm ON cm.`idcita_medica`= cme.`cita_medica_idcita_medica`
+INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad`
+INNER JOIN `persona` p ON p.`idpersona`= cm.`personaPaciente_idpersona`
+INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona`
+AND pr.`rol_idrol`=4 and p.estado=1
+AND `idtipo_examen`=19"
+;
 
         $sql=ejecutarConsulta($sql);
         $resultado=$sql->fetch_object();
