@@ -49,17 +49,17 @@ function listar(){
     }).DataTable();
 }
 
-function mostrar(idcita_medica){
-    $.post("../ajax/verreceta.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status)
+function mostrar(idreceta){
+    $.post("../ajax/verreceta.php?op=mostrar",{idreceta : idreceta}, function(data, status)
     {
         data = JSON.parse(data);
         mostrarform(true);
+        $("#idreceta").val(data.idreceta);
         $("#especialidad").val(data.especialidad);
         $("#paciente").val(data.paciente);
         $("#medico").val(data.medico);
         $("#observaciones").val(data.observaciones);
-        $("#medicamentos").val(data.medicamentos)
-        $("#idcita_medica").val(data.idcita_medica);
+        $("#medicamentos").val(data.medicamentos);
 
     });
 }

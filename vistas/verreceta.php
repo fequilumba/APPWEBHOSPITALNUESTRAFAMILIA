@@ -54,7 +54,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                         <form name="formularioe" id="formularioe" method="POST">
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Especialidad</label>
-                              <input type="hidden" name="idcita_medica" id="idcita_medica">
+                              <input type="hidden" name="idreceta" id="idreceta">
                               <input type="text" name="especialidad" id="especialidad" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

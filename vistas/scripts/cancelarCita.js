@@ -1,15 +1,41 @@
 var tabla
 //ejecutar el inicio
 function init() {
+    mostrarform(false);
     listar();
+    $("#formularioe").on("submit",function(e){
+        guardaryeditar(e);
+    });
 
-     
+}
+//funcion limpiar
+function limpiar(){
+    $("#idcita_medica").val("");
+    $("#nombre").val("");
+}
+//mostrar formulario
+function mostrarform(flag){
+    limpiar();
+    if(flag){
+        $("#listadoregistros").hide();
+        $("#formularioregistros").show();
+        $("#btnGuardar").prop("disabled",false);
+        $("#btnagregar").hide();
+    }else{
+        $("#listadoregistros").show();
+        $("#formularioregistros").hide();
+        $("#btnagregar").show();
+    }
 }
 
+//funcion cancelar form
+function cancelarform(){
+    limpiar();
+    mostrarform(false);
+}
 //funcion listar
 function listar(){
-    $("#formularioatencion").hide();
-    tabla=$('#tbllistadocita').dataTable({
+    tabla=$('#tbllistadoe').dataTable({
         "aProcessing":true,//activar procesamiento del datatable
         "aServerSide": true,//paginacion y filtrado realizados por el servidor
         dom: 'Bfetip',//definir los parametro del control de tabla
@@ -24,7 +50,7 @@ function listar(){
         "ajax":{
             url: '../ajax/cancelarcita.php?op=listar',
             type: "get",
-            dataTyoe: "json",
+            dataType: "json",
             error: function(e){
                 console.log(e,responseText);
             }
@@ -35,22 +61,54 @@ function listar(){
     }).DataTable();
 }
 
-function eliminar(idcita_medica)
-{ 
-    alertify.confirm("CITA","¿Estas seguro de eliminar la cita?",
+//funcion guardar o editar
+function guardaryeditar(e){
+    e.preventDefault(); //no se activa la accion predeterminada del evento
+    $("#btnGuardar").prop("disabled",true);
+    var formData = new FormData($("#formularioe")[0]);
+    $.ajax({
+        url: "../ajax/especialidad.php?op=guardaryeditar",
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+
+        success: function(datos){
+            alert(datos);
+            mostrarform(false);
+            tabla.ajax.reload();
+        }
+    });
+    limpiar();
+}
+
+function mostrar(idcita_medica){
+    $.post("../ajax/especialidad.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status)
+    {
+        data = JSON.parse(data);
+        mostrarform(true);
+        $("#nombre").val(data.nombre)
+        $("#idcita_medica").val(data.idcita_medica)
+
+    });
+}
+
+
+function eliminarCita(idcita_medica)
+{
+    alertify.confirm("CITA MEDICA","¿Estas seguro de eliminae la Cita?",
         function(){
             $.post(
-                "../ajax/cancelarcita.php?op=eliminar", {idcita_medica : idcita_medica},
-                function(e)
+                "../ajax/cancelarcita.php?op=eliminar", {idcita_medica : idcita_medica}, function(e)
                 {
-                    //alertify.alert(e);
+                    alertify.alert(e);
                     tabla.ajax.reload();
-                    alertify.success('Cita eliminada');
-                }
-            );
+                    //alertify.success('CTAAAAA ELIMINADAAAA..........!!!!!!!!!!');
+        
+                });
         },
         function(){
-            alertify.error('Cancelado');
+            alertify.error('Canceladooooooooo');
         });
 }
 

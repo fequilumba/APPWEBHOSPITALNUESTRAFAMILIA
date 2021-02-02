@@ -182,21 +182,8 @@ function mostrarInput(){
         $("#btnGuardar").show();
 }
 
-/*function eliminar(idcita_medica)
+/*function eliminar(idreceta)
 {
-   /*alertify.confirm("CITA","¿Estas seguro de eliminar la cita?",function(result){
-        if(result)
-        {
-            $.post(
-                "../ajax/cita.php?op=eliminar", {idcita_medica : idcita_medica},
-                function(e)
-                {
-                    bootbox.alert(e);
-                    tabla.ajax.reload();
-                }
-            );
-        }
-    });
 
     alertify.confirm("receta","¿Estas seguro de eliminar la receta?",
         function(){

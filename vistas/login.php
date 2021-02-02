@@ -55,7 +55,7 @@
         </form>
 
         
-        <a href="#"> <u> Olvidé mi password</u></a><br>
+        <!--<a href="#"> <u> Olvidé mi password</u></a><br>-->
 
         <a href="registro.php">Crear Cuenta</a><br>
         

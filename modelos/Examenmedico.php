@@ -13,6 +13,7 @@
         INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`= e.`idespecialidad` 
         INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
         INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario`
+        and cm.`estado_idestado`=2
         AND cm.`personaMedico_idpersona`='$idusuario'";
         return ejecutarConsulta($sql);
      }

@@ -49,17 +49,17 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
         
           <label for="">Especialidad</label>
             <input type="hidden" name="idcita_medica" id="idcita_medica">
-            <select name="especialidad_idespecialidad" id="especialidad_idespecialidad" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar"></select> <br>
+            <select name="especialidad_idespecialidad" id="especialidad_idespecialidad" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select> <br>
           <label for="">Paciente</label>
-            <select name="personaPaciente_idpersona" id="personaPaciente_idpersona" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar"></select> <br>
+            <select name="personaPaciente_idpersona" id="personaPaciente_idpersona" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select> <br>
             <label for="">Medico</label>
-            <select name="personaMedico_idpersona" id="personaMedico_idpersona" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar"></select> <br>
+            <select name="personaMedico_idpersona" id="personaMedico_idpersona" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select> <br>
           <label for="">Fecha</label>
-            <input type="date" name="fecha_cita" id="fecha_cita" class="form-control" > <br>
+            <input type="date" name="fecha_cita" id="fecha_cita" class="form-control" disabled> <br>
           <label for="">Motivo Cita</label>
-          <textarea name="motivo_consulta" id="motivo_consulta" class="form-control" rows="3"></textarea><br>
+          <textarea name="motivo_consulta" id="motivo_consulta" class="form-control" rows="3" required></textarea><br>
           <label for="">Horario</label>
-            <select name="horario_idhorario" id="horario_idhorario" class="form-control"></select> <br>
+            <select name="horario_idhorario" id="horario_idhorario" class="form-control" required></select> <br>
             
         </div>
       <div class="modal-footer">

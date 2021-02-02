@@ -99,10 +99,13 @@
 
         $idpersonanew = ejecutarConsulta_retornarID($sql_persona);
 
-        $sql_detalle = "INSERT INTO `persona_has_rol` (`persona_idpersona`, `rol_idrol`) 
+        $sql_rol1 = "INSERT INTO `persona_has_rol` (`persona_idpersona`, `rol_idrol`) 
                         VALUES('$idpersonanew','3')";
-                //enviamos la variable.. true si es de manera correcta
-        return ejecutarConsulta($sql_detalle);
+        ejecutarConsulta($sql_rol1);
+        $sql_rol2 = "INSERT INTO `persona_has_rol` (`persona_idpersona`, `rol_idrol`) 
+                        VALUES('$idpersonanew','4')";
+
+        return ejecutarConsulta($sql_rol2);
     }
 
 }

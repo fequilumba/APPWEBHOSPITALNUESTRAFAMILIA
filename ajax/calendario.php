@@ -55,7 +55,7 @@ session_start();
             require_once "../modelos/Paciente.php";
                 $paciente = new Paciente();
 
-                if ($idasociado==1) {
+                /*if ($idasociado==1) {
                     $rspta = $paciente->selectTodosPacientes();
                     echo '<option value=0>Seleccionar</option>';
                     while ($reg = $rspta->fetch_object()) {
@@ -63,15 +63,15 @@ session_start();
                             .$reg->nombres.
                           '</option>';
                     }
-                }else {
+                }else {*/
                     $rspta = $paciente->selectPaciente($idasociado);
-                    echo '<option value=0>Seleccionar</option>';
+                    //echo '<option value=0>Seleccionar</option>';
                     while ($reg = $rspta->fetch_object()) {
                     echo '<option value='.$reg->idpersona.'>'
                             .$reg->nombres.
                           '</option>';
                     }
-                }
+                //}
             break;
         case 'selectMedico':
             $idespecialidad = $_POST['idespecialidad'];

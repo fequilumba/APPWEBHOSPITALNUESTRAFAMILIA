@@ -168,7 +168,7 @@ function mostrar(idcita_medica){
     });
 }
 
-function eliminar(idcita_medica)
+/*function eliminar(idcita_medica)
 { 
     alertify.confirm("CITA","¿Estas seguro de eliminar la cita?",
         function(){
@@ -185,6 +185,6 @@ function eliminar(idcita_medica)
         function(){
             alertify.error('Cancelado');
         });
-}
+}*/
 
 init();
