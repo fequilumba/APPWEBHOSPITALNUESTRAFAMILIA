@@ -37,11 +37,11 @@ session_start();
                     $rspta=$cita->mostrar($idcita_medica);
                     echo json_encode($rspta);
                 break;
-        case 'eliminar':
+        /*case 'eliminar':
                     $rspta=$cita->eliminarCita($idcita_medica);
                      
                     echo $rspta ? "Cita eliminada" : "No se pudo eliminar la cita";
-                break;
+                break;*/
         case 'listar':
             $rspta=$cita->listar($idusuario);
             $data = Array();

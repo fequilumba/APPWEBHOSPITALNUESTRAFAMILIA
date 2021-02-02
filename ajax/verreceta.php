@@ -3,7 +3,8 @@
     require_once "../modelos/Verreceta.php";
     $verreceta = new Verreceta();
     $idusuario=$_SESSION['idusuario'];
-    $idcita_medica = isset($_POST["idcita_medica"])? limpiarCadena($_POST["idcita_medica"]):""; 
+    $idreceta = isset($_POST["idreceta"])? limpiarCadena($_POST["idreceta"]):""; 
+    $especialidad= isset($_POST["especialidad"])? limpiarCadena($_POST["especialidad"]):"";
     $paciente= isset($_POST["paciente"])? limpiarCadena($_POST["paciente"]):"";
     $medico= isset($_POST["medico"])? limpiarCadena($_POST["medico"]):"";
     $observaciones= isset($_POST["observaciones"])? limpiarCadena($_POST["observaciones"]):"";
@@ -11,7 +12,7 @@
        
     switch ($_GET["op"]) {
         case 'mostrar':
-                $rspta=$verreceta->mostrar($idcita_medica);
+                $rspta=$verreceta->mostrar($idreceta);
                 echo json_encode($rspta);
             break;
         case 'listar':
@@ -19,7 +20,7 @@
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                    "0"=>'<button class="btn btn-primary" onclick="mostrar('.$reg->idcita_medica.')"><li class="fa fa-eye"></li></button>',
+                    "0"=>'<button class="btn btn-primary" onclick="mostrar('.$reg->idreceta.')"><li class="fa fa-eye"></li></button>',
                     
                     "1"=>$reg->especialidad,
                     "2"=>$reg->paciente,

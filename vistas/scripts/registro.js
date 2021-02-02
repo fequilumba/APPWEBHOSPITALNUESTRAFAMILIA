@@ -30,6 +30,7 @@
     function init() {
         $("#frmRegistro").on("submit",function(e){
             guardaryeditar(e);
+            bootbox.alert("Usuario registrado");
         });
     }
     function limpiar(){
@@ -63,10 +64,6 @@
             }
         });
         limpiar();
-        bootbox.alert({
-            message: "Usuario registrado",
-            className: 'rubberBand animated'
-        });
         $(location).attr("href","login.php");
     }
 

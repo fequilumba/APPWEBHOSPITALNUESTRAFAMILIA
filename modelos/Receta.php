@@ -31,7 +31,7 @@
             return ejecutarConsultaSimpleFila($sql);
         }
 
-        public function ver($idreceta)
+    public function ver($idreceta)
         {
             $sql= "SELECT r.`idreceta`, r.`observaciones`, r.`medicamentos`, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
             cm.`fecha_cita` , h.`hora` as hora_cita      
@@ -51,7 +51,9 @@
                 INNER JOIN `cita_medica` cm ON cm.`idcita_medica`= r.`cita_medica_idcita_medica`
                 INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`= e.`idespecialidad` 
                 INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
-                INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario` AND cm.`personaMedico_idpersona`='$idusuario'";
+                INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario` 
+                AND cm.`estado_idestado`=2
+                AND cm.`personaMedico_idpersona`='$idusuario'";
 
         return ejecutarConsulta($sql);
     }
@@ -64,7 +66,7 @@
         INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad`
         INNER JOIN `persona` p ON p.`idpersona`= cm.`personaPaciente_idpersona`
         INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona`
-        AND pr.`rol_idrol`=4 and p.estado=1
+        AND pr.`rol_idrol`=4 AND p.estado=1 AND cm.`estado_idestado`=2
         AND cm.`personaMedico_idpersona`='$idusuario'";
 
         return ejecutarConsulta($sql);
