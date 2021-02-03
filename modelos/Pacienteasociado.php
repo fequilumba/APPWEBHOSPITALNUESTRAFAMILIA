@@ -1,17 +1,17 @@
 <?php
  require "../config/Conexion.php";
- class Paciente{
+ class Pacienteasociado{
      public function __construct(){
         
      }
 
      //Metodo para insertar registros
      public function insertar($cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                                    $ciudad_residencia, $fecha_nacimiento, $genero,$idasociado){
+                                    $ciudad_residencia, $fecha_nacimiento, $genero,$cliente){
         $sql_persona= "INSERT INTO `persona` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
                      `ciudad_residencia`, `fecha_nacimiento`, `genero`, `estado`,`idasociado`) 
                      VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia', 
-                                '$fecha_nacimiento', '$genero',1,$idasociado)";
+                                '$fecha_nacimiento', '$genero',1,$cliente)";
 
         $idpersonanew = ejecutarConsulta_retornarID($sql_persona);
 
@@ -21,9 +21,10 @@
     }
      //metodo para editar registros
      public function editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                                $ciudad_residencia, $fecha_nacimiento, $genero){
+                                $ciudad_residencia, $fecha_nacimiento, $genero,$cliente){
         $sql= "UPDATE `persona` SET `cedula`='$cedula', `nombres`='$nombres', `apellidos`='$apellidos', `email`='$email', 
-        `telefono`='$telefono', `direccion`='$direccion', `ciudad_residencia`='$ciudad_residencia', `fecha_nacimiento`='$fecha_nacimiento', `genero`='$genero'
+        `telefono`='$telefono', `direccion`='$direccion', `ciudad_residencia`='$ciudad_residencia', `fecha_nacimiento`='$fecha_nacimiento', 
+        `genero`='$genero',`idasociado`='$cliente'
         WHERE `idpersona`='$idpersona'";
 
         return ejecutarConsulta($sql);
@@ -52,14 +53,14 @@
         return ejecutarConsulta($sql);
     }
     //listar pacientes
-    public function listar($idasociado){
+    /*public function listar($idasociado){
         $sql= "SELECT p.`idpersona`, p.`cedula`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres,p.`email`, p.`telefono`,p.`direccion`,
         p.`ciudad_residencia`, p.`fecha_nacimiento`,p.`genero`, p.`estado` 
         FROM `persona` p  
         INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` AND pr.`rol_idrol`=4 AND p.`idasociado`='$idasociado'";
 
         return ejecutarConsulta($sql);
-    }
+    }*/
     public function listarTodosPacientes(){
         $sql= "SELECT p.`idpersona`, p.`cedula`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres,p.`email`, p.`telefono`,p.`direccion`,
         p.`ciudad_residencia`, p.`fecha_nacimiento`,p.`genero`, p.`estado` 
@@ -68,7 +69,7 @@
 
         return ejecutarConsulta($sql);
     }
-    public function selectPaciente($idasociado){
+    /*public function selectPaciente($idasociado){
         $sql= "SELECT p.`idpersona`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres 
         FROM `persona` p
         INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` 
@@ -76,12 +77,11 @@
         AND p.`idasociado`='$idasociado'";
 
         return ejecutarConsulta($sql);
-    }
-    public function selectTodosPacientes(){
+    }*/
+    public function selectCliente(){
         $sql= "SELECT p.`idpersona`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres 
         FROM `persona` p
-        INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` 
-        AND pr.`rol_idrol`=4 and p.estado=1";
+        INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` AND pr.`rol_idrol`=3 and p.estado=1";
 
         return ejecutarConsulta($sql);
     }
