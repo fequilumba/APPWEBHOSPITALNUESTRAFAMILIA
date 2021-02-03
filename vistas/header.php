@@ -137,7 +137,7 @@
             ?>
 
             <?php
-            if ($_SESSION['rol_idrol']==3||$_SESSION['rol_idrol']==1)
+            if ($_SESSION['rol_idrol']==3)
             {
               echo '<li class="treeview">
               <a href="#">
@@ -147,6 +147,21 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="paciente.php"><i class="fa fa-circle-o"></i> Registrar</a></li>
+              </ul>
+            </li>';
+            }
+            ?>
+            <?php
+            if ($_SESSION['rol_idrol']==1)
+            {
+              echo '<li class="treeview">
+              <a href="#">
+                <i class="fa fa-users"></i>
+                <span>Guía del Paciente</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="pacienteasociado.php"><i class="fa fa-circle-o"></i> Registrar</a></li>
               </ul>
             </li>';
             }

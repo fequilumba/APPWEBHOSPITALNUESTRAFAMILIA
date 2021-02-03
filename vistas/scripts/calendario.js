@@ -100,7 +100,9 @@ function calendario() {
     },*/
       dateClick: function(info) {
         var actual = new Date();
-        if(info.date >= actual){
+        //var actual = new Date(dia_num,mes_num,año_num)
+        $fecha=info.date;
+        if($fecha >= actual){
         $("#fecha_cita").val(info.dateStr);   
         $("#modalCitas").modal();
         //document.getElementById("dia").innerHTML= info.dateStr;
