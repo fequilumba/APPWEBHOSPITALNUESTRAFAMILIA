@@ -1,6 +1,9 @@
 function init() {
 
     validar();
+    soloLetras(e);
+    limpia();
+    soloNumeros(e);
 }
 
 function validar() {
@@ -23,10 +26,54 @@ function validar() {
       total = total % 10 ? 10 - total % 10 : 0;
 
       if (cad.charAt(longitud-1) == total) {
-        document.getElementById("salida").innerHTML = ("Cedula Válida");
+        document.getElementById("cedula").innerHTML = ("Cedula Válida");
       }else{
-        document.getElementById("salida").innerHTML = ("Cedula Inválida");
+        document.getElementById("cedula").innerHTML = ("Cedula Inválida");
       }
     }
   }
+
+  function soloLetras(e) {
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toLowerCase();
+    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+    especiales = [8, 37, 39, 46];
+
+    tecla_especial = false
+    for(var i in especiales) {
+        if(key == especiales[i]) {
+            tecla_especial = true;
+            break;
+        }
+    }
+
+    if(letras.indexOf(tecla) == -1 && !tecla_especial)
+        return false;
+}
+function soloNumeros(e) {
+  key = e.keyCode || e.which;
+  tecla = String.fromCharCode(key).toLowerCase();
+  letras = "0123456789";
+  especiales = [8, 37, 39, 46];
+
+  tecla_especial = false
+  for(var i in especiales) {
+      if(key == especiales[i]) {
+          tecla_especial = true;
+          break;
+      }
+  }
+
+  if(letras.indexOf(tecla) == -1 && !tecla_especial)
+      return false;
+}
+
+function limpia() {
+    var val = document.getElementById("miInput").value;
+    var tam = val.length;
+    for(i = 0; i < tam; i++) {
+        if(!isNaN(val[i]))
+            document.getElementById("miInput").value = '';
+    }
+}
 init();
