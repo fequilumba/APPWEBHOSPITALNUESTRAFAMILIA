@@ -22,13 +22,25 @@
     switch ($_GET["op"]) {
         case 'guardaryeditar':
             if (empty($idpersona)) {
+                $pieces = explode(" ", $nombres); 
+                $str=""; 
+                foreach($pieces as $piece) 
+                { 
+                    $str.=$piece[0]; 
+                }  
+                $contrasenia= $cedula . $str;
+                $contraseniahash=hash("SHA256",$contrasenia);
                 $rspta=$medico->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
                 $direccion,$ciudad_residencia, $fecha_nacimiento, $genero, $_POST['especialidad'],$_POST['rol']);
                 require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
                 $rspta = $usuario->insertarUMedico($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$_POST['rol']);
-                echo $rspta? "Médico registrado" : "No se pudo registrar todos los datos del medico";
+                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$_POST['rol'],$contraseniahash);
+                echo $rspta? "Médico registrado " : "No se pudo registrar todos los datos del medico ";
+                /*************email *********************/
+                require_once "../modelos/Correo.php";
+                $correo = new Correo();
+                $rspta = $correo->enviar($cedula, $nombres, $apellidos, $email);
                 
 
             }else{

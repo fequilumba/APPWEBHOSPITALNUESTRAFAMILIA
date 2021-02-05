@@ -4,7 +4,7 @@ session_start();
     $paciente = new Paciente();
     $idasociado=$_SESSION['idusuario'];
     $idpersona = isset($_POST["idpersona"])? limpiarCadena($_POST["idpersona"]):""; 
-    $especialidad_idespecialidad = isset($_POST["especialidad_idespecialidad"])? limpiarCadena($_POST["especialidad_idespecialidad"]):""; 
+    //$especialidad_idespecialidad = isset($_POST["especialidad_idespecialidad"])? limpiarCadena($_POST["especialidad_idespecialidad"]):""; 
     $cedula= isset($_POST["cedula"])? limpiarCadena($_POST["cedula"]):"";
     $nombres= isset($_POST["nombres"])? limpiarCadena($_POST["nombres"]):"";
     $apellidos= isset($_POST["apellidos"])? limpiarCadena($_POST["apellidos"]):"";
@@ -20,13 +20,22 @@ session_start();
     switch ($_GET["op"]) {
         case 'guardaryeditar':
             if (empty($idpersona)) {
+                $pieces = explode(" ", $nombres); 
+                    $str=""; 
+                    foreach($pieces as $piece) 
+                    { 
+                        $str.=$piece[0]; 
+                    }  
+                    $contrasenia= $cedula . $str;
+                    $contraseniahash=hash("SHA256",$contrasenia);
                 $rspta=$paciente->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
                 $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$idasociado);
+                echo $rspta? "Paciente registrado" : "Paciente no se pudo registrar";
                 require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
-                $rspta = $usuario->insertarUPaciente($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen);
-                echo $rspta? "Paciente registrado" : "Paciente no se pudo registrar";
+                $rspta2 = $usuario->insertarUPaciente($cedula, $nombres, $apellidos, $email, $telefono, 
+                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$contraseniahash);
+                echo $rspta2? "Usuario registrado" : "Usuario no se pudo registrar";
                 
 
             }else{

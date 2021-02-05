@@ -55,7 +55,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
             <label for="">Medico</label>
             <select name="personaMedico_idpersona" id="personaMedico_idpersona" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select> <br>
           <label for="">Fecha</label>
-            <input type="date" name="fecha_cita" id="fecha_cita" class="form-control" disabled> <br>
+            <input type="date" name="fecha_cita" id="fecha_cita" class="form-control"> <br>
           <label for="">Motivo Cita</label>
           <textarea name="motivo_consulta" id="motivo_consulta" class="form-control" rows="3" required></textarea><br>
           <label for="">Horario</label>

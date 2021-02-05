@@ -21,13 +21,22 @@ session_start();
     switch ($_GET["op"]) {
         case 'guardaryeditar':
             if (empty($idpersona)) {
+                $pieces = explode(" ", $nombres); 
+                    $str=""; 
+                    foreach($pieces as $piece) 
+                    { 
+                        $str.=$piece[0]; 
+                    }  
+                    $contrasenia= $cedula . $str;
+                    $contraseniahash=hash("SHA256",$contrasenia);
                 $rspta=$paciente->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
                 $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$cliente);
+                echo $rspta? "Paciente registrado" : "Paciente no se pudo registrar";
                 require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
-                $rspta = $usuario->insertarUPaciente($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen);
-                echo $rspta? "Paciente registrado" : "Paciente no se pudo registrar";
+                $rspta2 = $usuario->insertarUPaciente($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
+                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$contraseniahash);
+                echo $rspta2? "Usuario registrado" : "Usuario no se pudo registrar";
                 
 
             }else{

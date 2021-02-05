@@ -89,7 +89,8 @@
         return ejecutarConsulta($sql);
     }
 
-    //registra persona desde el formulario de registro en linea
+    //registra persona rol cliente y paciente con su mismo id asociado
+    //desde el formulario de registro en linea
     public function clienteRegistro($cedula, $nombres, $apellidos, $email, $telefono, $direccion,
                                     $ciudad_residencia, $fecha_nacimiento, $genero){
         $sql_persona= "INSERT INTO `persona` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
@@ -98,6 +99,8 @@
                                 '$fecha_nacimiento', '$genero', '1')";
 
         $idpersonanew = ejecutarConsulta_retornarID($sql_persona);
+        $idasociado= "UPDATE `persona` SET `idasociado`='$idpersonanew' WHERE `idpersona`='$idpersonanew' ";
+        ejecutarConsulta($idasociado);
 
         $sql_rol1 = "INSERT INTO `persona_has_rol` (`persona_idpersona`, `rol_idrol`) 
                         VALUES('$idpersonanew','3')";

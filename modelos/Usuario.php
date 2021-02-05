@@ -6,45 +6,35 @@
      }
      //Metodo para insertar Clientes desde el form de registro
      public function insertar($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen){
+                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$contraseniahash){
         
-        $pieces = explode(" ", $nombres); 
-        $str=""; 
-        foreach($pieces as $piece) 
-        { 
-            $str.=$piece[0]; 
-        }  
-        
-        $contrasenia= $cedula . $str;
         $sql= "INSERT INTO `usuario` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
                 `ciudad_residencia`, `fecha_nacimiento`, `genero`,`login`, `contrasenia`,`imagen`,`estado`) 
         VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia',
-                '$fecha_nacimiento','$genero','$cedula','$contrasenia','$imagen','1')";
+                '$fecha_nacimiento','$genero','$cedula','$contraseniahash','$imagen','1')";
 
         //return ejecutarConsulta($sql);
 
         $idpersonanew = ejecutarConsulta_retornarID($sql);
-
+        //$idpersonanew =$rol;
         $sql_detalle = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
                         VALUES('$idpersonanew','3')";
-        return ejecutarConsulta($sql_detalle);
+
+        ejecutarConsulta($sql_detalle);
+        $sql_rol2 = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
+                        VALUES('$idpersonanew','4')";
+
+        return ejecutarConsulta($sql_rol2);
     }
     //insetar paciente en la tabla usuario y con el rol de usuario paciente
-    public function insertarUPaciente($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen){
+    public function insertarUPaciente($cedula, $nombres, $apellidos, $email, $telefono, 
+    $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$contraseniahash){
         
-        $pieces = explode(" ", $nombres); 
-        $str=""; 
-        foreach($pieces as $piece) 
-        { 
-            $str.=$piece[0]; 
-        }  
         
-        $contrasenia= $cedula . $str;
         $sql= "INSERT INTO `usuario` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
                 `ciudad_residencia`, `fecha_nacimiento`, `genero`,`login`, `contrasenia`,`imagen`,`estado`) 
         VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia',
-                '$fecha_nacimiento','$genero','$cedula','$contrasenia','$imagen','1')";
+                '$fecha_nacimiento','$genero','$cedula','$contraseniahash','$imagen','1')";
 
         $idpersonanew = ejecutarConsulta_retornarID($sql);
 
@@ -53,20 +43,12 @@
         return ejecutarConsulta($sql_detalle);
     }
     public function insertarUMedico($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$roles){
+                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$roles,$contraseniahash){
         
-        $pieces = explode(" ", $nombres); 
-        $str=""; 
-        foreach($pieces as $piece) 
-        { 
-            $str.=$piece[0]; 
-        }  
-        
-        $contrasenia= $cedula . $str;
         $sql= "INSERT INTO `usuario` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
                 `ciudad_residencia`, `fecha_nacimiento`, `genero`,`login`, `contrasenia`,`imagen`,`estado`) 
         VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia',
-                '$fecha_nacimiento','$genero','$cedula','$contrasenia','$imagen','1')";
+                '$fecha_nacimiento','$genero','$cedula','$contraseniahash','$imagen','1')";
 
         $idpersonanew = ejecutarConsulta_retornarID($sql);
         $num_elementos=0;
@@ -201,13 +183,13 @@
         return ejecutarConsulta($sql);
     }
     
-    public function verificar($login,$clave,$rol_idrol)
+    public function verificar($login,$clavehash,$rol_idrol)
     {
         $sql= "SELECT u.`idusuario`, u.`cedula`,u.`nombres`,u.`apellidos`,u.`email`, u.`telefono`, 
         u.`direccion`, u.`ciudad_residencia`, u.`fecha_nacimiento`, u.`genero`, u.`login`, u.`imagen`, u.`estado`, ur.`rol_idrol`
                 FROM `usuario` u 
                 INNER JOIN usuario_has_rol ur ON u.`idusuario`= ur.`usuario_idusuario`
-                WHERE u.`login`='$login' AND u.`contrasenia`='$clave' AND u.`estado`=1 AND ur.rol_idrol='$rol_idrol'";        
+                WHERE u.`login`='$login' AND u.`contrasenia`='$clavehash' AND u.`estado`=1 AND ur.rol_idrol='$rol_idrol'";        
         return ejecutarConsulta($sql);
     }
 

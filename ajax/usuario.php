@@ -35,15 +35,26 @@ switch ($_GET["op"]){
 			}
         }
         //hash SHA256 en la contrasenia
-       // $contraseniahash=hash("SHA256",$contrasenia);
+		$pieces = explode(" ", $nombres); 
+        $str=""; 
+        foreach($pieces as $piece) 
+        { 
+            $str.=$piece[0]; 
+        }  
+        $contrasenia= $cedula . $str;
+       	$contraseniahash=hash("SHA256",$contrasenia);
 		if (empty($idusuario)){
 			$rspta=$usuario->insertar($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-			$ciudad_residencia, $fecha_nacimiento, $genero,$imagen);
+			$ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$contraseniahash);
 			require_once "../modelos/Persona.php";
 			$persona = new Persona();
 			$rspta = $persona->clienteRegistro($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
 			$ciudad_residencia, $fecha_nacimiento, $genero);
 			echo $rspta ? "Usuario registrado" : "No se pudieron registrar todos los datos del usuario";
+			/*************email *********************/
+			require_once "../modelos/Correo.php";
+			$correo = new Correo();
+			$rspta = $correo->enviar($cedula, $nombres, $apellidos, $email);
 		}
 		else {
 			$rspta=$usuario->editar($idusuario,$username,$contraseniahash,$email,$imagen);
@@ -130,8 +141,8 @@ switch ($_GET["op"]){
 		$clavea=$_POST['clavea'];
 		$rol_idrol=$_POST['rol_idrol'];
 		//encriptar clave para comparar con la de la base de datos
-		//$clavehash=hash("SHA256",$clavea);
-		$clavehash=$clavea;
+		$clavehash=hash("SHA256",$clavea);
+		//$clavehash=$clavea;
 		$rspta=$usuario->verificar($logina,$clavehash,$rol_idrol);
 
 		$fetch=$rspta->fetch_object();

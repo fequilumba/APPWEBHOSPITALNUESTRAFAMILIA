@@ -82,7 +82,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Teléfono</label>
-                              <input type="text" name="telefono" id="telefono" class="form-control" onkeypress="return soloNumeros(event)" placeholder="Teléfono">
+                              <input type="text" name="telefono" id="telefono" maxlength="10" minlength="10" class="form-control" onkeypress="return soloNumeros(event)" placeholder="Teléfono">
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
