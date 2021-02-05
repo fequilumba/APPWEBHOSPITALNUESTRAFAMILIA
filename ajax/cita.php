@@ -85,7 +85,7 @@ session_start();
                 }
             }else {
                 
-                $rspta = $paciente->selectPaciente();
+                $rspta = $paciente->selectPacienteM();
                 while ($reg = $rspta->fetch_object()) {
                     echo '<option value='.$reg->idpersona.'>'
                             .$reg->nombres.

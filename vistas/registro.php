@@ -32,7 +32,7 @@
         <img src="../files/img/LOGO.png" height="50" width="90">
         </div>
         <br>
-        <form method="post" id="frmRegistro">
+        <form method='POST' action='' id="frmRegistro">
           <div class="form-group has-feedback">
             <label for="">Cédula</label>
             <input type="text" class="form-control" maxlength="10" minlength="10" id="cedula" name="cedula" onkeypress="return soloNumeros(event)" placeholder="Cédula" required>
@@ -94,7 +94,7 @@
 
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Registrarse</button>
+              <button type="submit"  onclick="correo()" class="btn btn-primary btn-block btn-flat">Registrarse</button>
             </div><!-- /.col -->
           </div>
         </form>
@@ -111,5 +111,6 @@
     <!-- Bootbox -->
     <script src="../public/js/bootbox.min.js"></script>
     <script type="text/javascript" src="scripts/registro.js"></script>
+    <script type="text/javascript" src="scripts/validar.js"></script>
   </body>
 </html>

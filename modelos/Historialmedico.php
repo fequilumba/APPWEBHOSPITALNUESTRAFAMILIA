@@ -13,7 +13,7 @@
         INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
         INNER JOIN `persona` pm ON pm.`idpersona`=cm.`personaMedico_idpersona`
         INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario`
-        AND p.`idasociado`='$idusuario'
+        AND p.`idasociado`='$idusuario' AND cm.`estado_idestado`=2
         ORDER BY cm.`idcita_medica` DESC";
         return ejecutarConsulta($sql);
      }
