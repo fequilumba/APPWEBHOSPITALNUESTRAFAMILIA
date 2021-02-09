@@ -12,7 +12,7 @@ session_start();
     $personaPaciente_idpersona= isset($_POST["personaPaciente_idpersona"])? limpiarCadena($_POST["personaPaciente_idpersona"]):"";
     $personaMedico_idpersona= isset($_POST["personaMedico_idpersona"])? limpiarCadena($_POST["personaMedico_idpersona"]):"";
     $fecha_cita= isset($_POST["fecha_cita"])? limpiarCadena($_POST["fecha_cita"]):"";
-    $hora_cita= isset($_POST["hora_cita"])? limpiarCadena($_POST["hora_cita"]):"";
+    //$hora_cita= isset($_POST["hora_cita"])? limpiarCadena($_POST["hora_cita"]):"";
     $diagnostico = isset($_POST["diagnostico"])? limpiarCadena($_POST["diagnostico"]):"";
     $sintomas= isset($_POST["sintomas"])? limpiarCadena($_POST["sintomas"]):"";
     $motivo_consulta= isset($_POST["motivo_consulta"])? limpiarCadena($_POST["motivo_consulta"]):"";
@@ -22,9 +22,13 @@ session_start();
     switch ($_GET["op"]) {
         case 'guardarCita':
             if (empty($idcita_medica)) {
+                $clavemedico= $personaMedico_idpersona."-".$fecha_cita."-".$horario_idhorario;
+                $clavepaciente= $personaPaciente_idpersona."-".$fecha_cita."-".$horario_idhorario;
+                $clavepacientemedico=$personaPaciente_idpersona."-".$personaMedico_idpersona."-".$fecha_cita."-".$horario_idhorario;
                 $rspta=$cita->insertarCita($especialidad_idespecialidad,$personaPaciente_idpersona,$personaMedico_idpersona, 
-                $fecha_cita, $motivo_consulta, $horario_idhorario);
-                echo $rspta? "Cita registrada" : "La cita no se pudo registrar";
+                                            $fecha_cita, $motivo_consulta, $horario_idhorario,
+                                            $clavemedico,$clavepaciente,$clavepacientemedico);
+                echo $rspta? "Cita registrada" : "La cita no se puede registrar con el mismo médico a la misma fecha y hora";
             }else{
                 $rspta=$cita->editarCita($idcita_medica,$especialidad_idespecialidad,$personaPaciente_idpersona,$personaMedico_idpersona, 
                 $fecha_cita, $motivo_consulta, $horario_idhorario);
@@ -46,8 +50,10 @@ session_start();
                 while ($reg=$rspta->fetch_object()) {
                     $data[]= array(
                         "id"=>$reg->idcita_medica,
-                        "title"=> $reg->title,
-                        "start"=>$reg->start
+                        "title"=> "No Disponible",
+                        "start"=>$reg->start,
+                        //"color"=> 'red', 
+                        "backgroundColor"=>"rgb(236, 112, 99)"
                     );
                 }  
                 echo json_encode($data);   
@@ -108,5 +114,4 @@ session_start();
                 }
             break;
     }
-
 ?>

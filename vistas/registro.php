@@ -94,7 +94,7 @@
 
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit"  onclick="correo()" class="btn btn-primary btn-block btn-flat">Registrarse</button>
+              <button type="submit" class="btn btn-primary btn-block btn-flat">Registrarse</button>
             </div><!-- /.col -->
           </div>
         </form>

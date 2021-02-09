@@ -2,7 +2,7 @@ function init() {
   calendario()
   $("#formCitas").on("submit",function(e){
     guardaryeditar(e);
-    location.reload();
+    //location.reload();
 
   });
   //Cargamos los items al select Especialidad
@@ -37,7 +37,7 @@ function init() {
       //$("#especialidad_idespecialidad").selectpicker('refresh');
       
   }); 
-  $("#btnCancelar").click(function(event) {
+  /*$("#btnCancelar").click(function(event) {
     //$("#formCitas")[0].reset();
     //limpiar();
     $('#formCitas :input').not("[type=radio],[type=checkbox],[type=hidden],[readonly='readonly'],[style*='display: none'],.select2-offscreen,[class^='select2'],select").each(function(){
@@ -45,7 +45,7 @@ function init() {
       console.log(name);
       $(this).val('');
   });
-  });     
+  }); */    
 
 }//fin init
 
@@ -70,7 +70,7 @@ function calendario() {
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
       events: '../ajax/calendario.php?op=listarCitas'
       ,
@@ -130,10 +130,21 @@ function guardaryeditar(e){
       data: formData,
       contentType: false,
       processData: false,
-
+      
+      success: function(datos){
+        alert(datos);
+        $("#modalCitas").modal('toggle');
+        location.reload();
+        //mostrarform(false);
+        //tabla.ajax.reload();
+    },
+    error:function(){
+      alert("errroooooorr....!!!!!")
+    }
+    
   });
-  alertify.success('Cita registrada');
-  $("#modalCitas").modal('toggle');
+  //alertify.success('Cita registrada');
+  //$("#modalCitas").modal('toggle');
 }
 
 init();

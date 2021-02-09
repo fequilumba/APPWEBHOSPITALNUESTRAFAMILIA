@@ -48,13 +48,13 @@ switch ($_GET["op"]){
 			$iduser=$rspta;
 			require_once "../modelos/Persona.php";
 			$persona = new Persona();
-			$rspta = $persona->clienteRegistro($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
+			$rspta2 = $persona->clienteRegistro($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
 			$ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$iduser);
 			/*************email *********************/
 			require_once "../modelos/Correo.php";
 			$correo = new Correo();
-			$rspta = $correo->enviar($cedula, $nombres, $apellidos, $email);
-			echo $rspta ? "Usuario registrado" : "No se pudieron registrar todos los datos del usuario";
+			$rspta3 = $correo->enviar($cedula, $nombres, $apellidos, $email);
+			echo $rspta2 ? "Usuario registrado " : "No se pudieron registrar todos los datos del usuario ";
 			
 		}
 		else {

@@ -31,6 +31,7 @@
         $("#frmRegistro").on("submit",function(e){
             guardaryeditar(e);
             //bootbox.alert("Usuario registrado");
+            //$(location).attr("href","login.php");
         });
     }
     function limpiar(){
@@ -59,12 +60,12 @@
     
             success: function(datos){
                 alert(datos);
-                mostrarform(false);
-                tabla.ajax.reload();
+                $("#frmRegistro").hide();
+                $(location).attr("href","login.php");
             }
         });
         limpiar();
-        $(location).attr("href","login.php");
+        
     }
 
 init();
