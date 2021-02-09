@@ -269,7 +269,7 @@
             if(mail($dest,$asunto,$cuerpo,$headers)){
                 echo 'Las credenciales de acceso han sido enviadas al correo el usuario registrado';
             }else{
-                echo 'Hubo un error al enviar el mensaje ';
+                echo 'Hubo un error al enviar las credenciales a su correo';
             }
      }
 

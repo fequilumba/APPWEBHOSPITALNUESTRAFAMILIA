@@ -53,11 +53,12 @@
         return ejecutarConsulta($sql);
     }
     public function insertarCita($especialidad_idespecialidad,$personaPaciente_idpersona,$personaMedico_idpersona, 
-    $fecha_cita, $motivo_consulta, $horario_idhorario){
+                                    $fecha_cita, $motivo_consulta, $horario_idhorario,$clavemedico,$clavepaciente,$clavepacientemedico){
         $sql= "INSERT INTO `cita_medica` (`especialidad_idespecialidad`, `personaPaciente_idpersona`,`personaMedico_idpersona`, `fecha_cita`, 
-                `diagnostico`, `sintomas`, `motivo_consulta`, `horario_idhorario`, `estado_idestado`) 
+                                            `diagnostico`, `sintomas`, `motivo_consulta`, `horario_idhorario`, `estado_idestado`,
+                                            `clavemedico`,`clavepaciente`,`clavepacientemedico`)
                 VALUES ('$especialidad_idespecialidad', '$personaPaciente_idpersona','$personaMedico_idpersona', '$fecha_cita', 
-                        '', '', '$motivo_consulta', '$horario_idhorario', '1')";
+                        '', '', '$motivo_consulta', '$horario_idhorario', '1','$clavemedico','$clavepaciente','$clavepacientemedico')";
         return ejecutarConsulta($sql);
     }
     public function editarCita($idcita_medica,$especialidad_idespecialidad,$personaPaciente_idpersona,$personaMedico_idpersona, 
@@ -68,13 +69,13 @@
 
         return ejecutarConsulta($sql);
     }
-    public function mostrarCita($idcita_medica)
+   /*public function mostrarCita($idcita_medica)
         {
             $sql= "SELECT `especialidad_idespecialidad`,`persona_idpersona`, `fecha_cita`,`motivo_consulta`,
             `horario_idhorario`
             FROM `cita_medica` 
             WHERE `idcita_medica`='$idcita_medica'";
             return ejecutarConsultaSimpleFila($sql);
-        }
+        }*/
 }
 ?>
