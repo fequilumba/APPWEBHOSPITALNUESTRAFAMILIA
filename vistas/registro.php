@@ -40,12 +40,12 @@
           </div>
           <div class="form-group has-feedback">
             <label for="">Nombres</label>
-            <input type="text" class="form-control" id="nombres" name="nombres" onkeypress="return soloLetras(event)" onblur="limpia()" placeholder="Nombres" required>
+            <input type="text" class="form-control" id="nombres" name="nombres" onkeypress="return soloLetras(event)"  placeholder="Nombres" required>
             <span class="form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
             <label for="">Apellidos</label>
-            <input type="text" class="form-control" id="apellidos" name="apellidos" onkeypress="return soloLetras(event)" onblur="limpia()" placeholder="Apellidos" required>
+            <input type="text" class="form-control" id="apellidos" name="apellidos" onkeypress="return soloLetras(event)" placeholder="Apellidos" required>
             <span class="form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
@@ -64,7 +64,7 @@
           </div>
           <div class="form-group has-feedback">
             <label for="">Ciudad de Residencia</label>
-            <input type="text" class="form-control" id="ciudad_residencia" onkeypress="return soloLetras(event)" onblur="limpia()" name="ciudad_residencia" placeholder="Ciudad" required>
+            <input type="text" class="form-control" id="ciudad_residencia" onkeypress="return soloLetras(event)"  name="ciudad_residencia" placeholder="Ciudad" required>
             <span class="form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
@@ -75,9 +75,9 @@
             <label for="">Género</label>
             <br>
             <label for="">Hombre </label>
-            <input type="radio" name="genero" value="M" id="masculino">
+            <input type="radio" name="genero" value="Masculino" id="masculino">
             <label for=""> Mujer</label>
-            <input type="radio" name="genero" value="F" id="femenino">
+            <input type="radio" name="genero" value="Femenino" id="femenino">
           </div>
           <div class="form-group has-feedback">
             <label>Imagen:</label>

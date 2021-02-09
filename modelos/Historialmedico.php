@@ -17,6 +17,19 @@
         ORDER BY cm.`idcita_medica` DESC";
         return ejecutarConsulta($sql);
      }
+     public function listarHistorial($idpersonam){
+        $sql= "SELECT cm.idcita_medica, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
+        CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico, cm.`fecha_cita`, h.`hora` as hora_cita   
+        FROM `cita_medica` cm 
+        INNER JOIN `estado` s ON cm.`estado_idestado`= s.`idestado`
+        INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
+        INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
+        INNER JOIN `persona` pm ON pm.`idpersona`=cm.`personaMedico_idpersona`
+        INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario`
+        AND cm.`personaMedico_idpersona`='$idpersonam' AND cm.`estado_idestado`=2
+        ORDER BY cm.`idcita_medica` DESC";
+        return ejecutarConsulta($sql);
+     }
      public function listarTodo(){
         $sql= "SELECT cm.idcita_medica, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
         CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico, cm.`fecha_cita`, h.`hora` as hora_cita   

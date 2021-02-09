@@ -1,7 +1,7 @@
 <?php
 session_start();
     require_once "../modelos/Pacienteasociado.php";
-    $paciente = new Pacienteasociado();
+    $pacientea = new Pacienteasociado();
     //$idasociado=$_SESSION['idusuario'];
     $idpersona = isset($_POST["idpersona"])? limpiarCadena($_POST["idpersona"]):""; 
     $especialidad_idespecialidad = isset($_POST["especialidad_idespecialidad"])? limpiarCadena($_POST["especialidad_idespecialidad"]):""; 
@@ -21,6 +21,20 @@ session_start();
     switch ($_GET["op"]) {
         case 'guardaryeditar':
             if (empty($idpersona)) {
+                if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
+                {
+                    $imagen=$_POST["imagenactual"];
+                }
+                else 
+                {
+                    $ext = explode(".", $_FILES["imagen"]["name"]);
+                    if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png")
+                    {
+                        $imagen = round(microtime(true)) . '.' . end($ext);
+                        move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/usuarios/" . $imagen);
+                    }
+                }
+                //hash SHA256 en la contrasenia
                 $pieces = explode(" ", $nombres); 
                     $str=""; 
                     foreach($pieces as $piece) 
@@ -29,43 +43,40 @@ session_start();
                     }  
                     $contrasenia= $cedula . $str;
                     $contraseniahash=hash("SHA256",$contrasenia);
-                $rspta=$paciente->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
-                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$cliente);
-                echo $rspta? "Paciente registrado" : "Paciente no se pudo registrar";
                 require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
-                $rspta2 = $usuario->insertarUPaciente($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$contraseniahash);
-                echo $rspta2? "Usuario registrado" : "Usuario no se pudo registrar";
+                $rspta = $usuario->insertar($cedula, $contraseniahash);
+                $iduser=$rspta;
+                echo $rspta? "Usuario registrado" : "Usuario no se pudo registrar ";
+                $rspta2=$pacientea->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
+                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$cliente,$imagen,$iduser);
+                echo $rspta2? "Paciente registrado" : "Paciente no se pudo registrar ";
+                
                 
 
             }else{
-                $rspta=$paciente->editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+                $rspta=$pacientea->editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
                 $ciudad_residencia, $fecha_nacimiento, $genero,$cliente);
-                require_once "../modelos/Usuario.php";
-                $usuario = new Usuario();
-                $rspta = $usuario->editarUsuario($idpersona,$cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen);
                 echo $rspta? "Paciente actualizado" : "Paciente no se pudo actualizar";
                                 
             }
             break;
         case 'desactivar':
-                $rspta=$paciente->desactivar($idpersona);
+                $rspta=$pacientea->desactivar($idpersona);
                 echo $rspta ? "Paciente desactivado" : "No se pudo desactivar al paciente";
     
                 break;
         case 'activar':
-                $rspta=$paciente->activar($idpersona);
+                $rspta=$pacientea->activar($idpersona);
                 echo $rspta ? "Paciente activado" : "No se pudo activar al paciente";
     
                 break;
         case 'mostrar':
-                    $rspta=$paciente->mostrar($idpersona);
+                    $rspta=$pacientea->mostrar($idpersona);
                     echo json_encode($rspta);
                 break;
         case 'listar':
-                $rspta=$paciente->listarTodosPacientes();
+                $rspta=$pacientea->listarTodosPacientes();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
@@ -100,7 +111,7 @@ session_start();
                 echo json_encode($results);   
             break;
         case 'selectCliente':
-                $rspta = $paciente->selectCliente();
+                $rspta = $pacientea->selectCliente();
                 while ($reg = $rspta->fetch_object()) {
                     echo '<option value='.$reg->idpersona.'>'
                             .$reg->nombres.

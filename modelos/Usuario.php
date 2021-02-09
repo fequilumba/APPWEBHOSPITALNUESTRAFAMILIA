@@ -5,64 +5,31 @@
         
      }
      //Metodo para insertar Clientes desde el form de registro
-     public function insertar($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$contraseniahash){
-        
-        $sql= "INSERT INTO `usuario` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
-                `ciudad_residencia`, `fecha_nacimiento`, `genero`,`login`, `contrasenia`,`imagen`,`estado`) 
-        VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia',
-                '$fecha_nacimiento','$genero','$cedula','$contraseniahash','$imagen','1')";
+     public function insertar($cedula,$contraseniahash){
 
-        //return ejecutarConsulta($sql);
+        $sql= "INSERT INTO `usuario` (`login`, `contrasenia`) 
+        VALUES ('$cedula','$contraseniahash')";
+        return ejecutarConsulta_retornarID($sql);
 
-        $idpersonanew = ejecutarConsulta_retornarID($sql);
-        //$idpersonanew =$rol;
-        $sql_detalle = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
-                        VALUES('$idpersonanew','3')";
-
-        ejecutarConsulta($sql_detalle);
-        $sql_rol2 = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
-                        VALUES('$idpersonanew','4')";
-
-        return ejecutarConsulta($sql_rol2);
     }
     //insetar paciente en la tabla usuario y con el rol de usuario paciente
-    public function insertarUPaciente($cedula, $nombres, $apellidos, $email, $telefono, 
-    $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$contraseniahash){
+    /*public function insertarUPaciente($cedula,$contraseniahash){
         
         
-        $sql= "INSERT INTO `usuario` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
-                `ciudad_residencia`, `fecha_nacimiento`, `genero`,`login`, `contrasenia`,`imagen`,`estado`) 
-        VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia',
-                '$fecha_nacimiento','$genero','$cedula','$contraseniahash','$imagen','1')";
+        $sql= "INSERT INTO `usuario` (`login`, `contrasenia`) 
+        VALUES ('$cedula','$contraseniahash')";
 
-        $idpersonanew = ejecutarConsulta_retornarID($sql);
-
-        $sql_detalle = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
-                        VALUES('$idpersonanew','4')";
-        return ejecutarConsulta($sql_detalle);
+        return ejecutarConsulta_retornarID($sql);
     }
-    public function insertarUMedico($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$roles,$contraseniahash){
+    
+    public function insertarUMedico($cedula,$contraseniahash){
         
-        $sql= "INSERT INTO `usuario` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
-                `ciudad_residencia`, `fecha_nacimiento`, `genero`,`login`, `contrasenia`,`imagen`,`estado`) 
-        VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia',
-                '$fecha_nacimiento','$genero','$cedula','$contraseniahash','$imagen','1')";
+        $sql= "INSERT INTO `usuario` (`login`, `contrasenia`) 
+        VALUES ('$cedula','$contraseniahash')";
 
-        $idpersonanew = ejecutarConsulta_retornarID($sql);
-        $num_elementos=0;
-        $sw=true;
-        while ($num_elementos < count($roles)) { //mientras que el numero de elementos sea menor que la cantidad de especialdiades escogidas
-            //insertamos cada uno de los permiso del usuario, cin wihle recorremo todos los permisos asigandos
-            $sql_rol = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
-                            VALUES('$idpersonanew','$roles[$num_elementos]')";
-                            //enviamos la variable.. true si es de manera correcta
-            ejecutarConsulta($sql_rol) or $sw = false;
-            $num_elementos  =$num_elementos +1;
-        }
-        return $sw;
-    }
+        return ejecutarConsulta_retornarID($sql);
+        
+    }*/
      //metodo para editar o actualizar un paciente 
      public function editar($idpersona,$cedula, $nombres, $apellidos, $email, $telefono, $direccion,
                             $ciudad_residencia, $fecha_nacimiento, $genero, $imagen){
@@ -99,7 +66,7 @@
         return $sw;
     }
 
-    public function editarUsuario($idpersona,$cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+    /*public function editarUsuario($idpersona,$cedula, $nombres, $apellidos, $email, $telefono, $direccion,
                             $ciudad_residencia, $fecha_nacimiento, $genero, $imagen){
         $pieces = explode(" ", $nombres); 
         $str=""; 
@@ -115,8 +82,8 @@
                 WHERE `idusuario`='$idpersona'";
         return ejecutarConsulta($sql);
         
-    }
-    public function editarUMedico($idpersona,$cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+    }*/
+    /*public function editarUMedico($idpersona,$cedula, $nombres, $apellidos, $email, $telefono, $direccion,
                             $ciudad_residencia, $fecha_nacimiento, $genero, $imagen,$roles){
         $pieces = explode(" ", $nombres); 
         $str=""; 
@@ -145,16 +112,16 @@
         }
         return $sw;
         
-    }
+    }*/
 
     //mostrar datos de un usuario especifico por id
-    public function mostrar($idusuario)
+    /*public function mostrar($idusuario)
         {
             $sql= "SELECT * FROM `usuario` WHERE `idusuario`='$idusuario'";
             return ejecutarConsultaSimpleFila($sql);
-        }
+        }*/
     //METODOS PARA ACTIVAR/DESACTIVAR USUARIOS
-    public function desactivar($idusuario)
+    /*public function desactivar($idusuario)
     {
         $sql= "UPDATE `usuario` SET `estado`='0' 
                WHERE `idusuario`='$idusuario'";
@@ -168,15 +135,15 @@
                WHERE `idusuario`='$idusuario'";
         
         return ejecutarConsulta($sql);
-    }
-    public function listar()
+    }*/
+    /*public function listar()
     {
         $sql= "SELECT u.`idusuario`, u.`cedula`, CONCAT(u.`nombres`, ' ' ,u.`apellidos`) as nombres, u.`email`, u.`telefono`, 
                     u.`direccion`, u.`ciudad_residencia`, u.`fecha_nacimiento`, u.`genero`, u.`login`, u.`imagen`, u.`estado`
                 FROM `usuario` u";
         
         return ejecutarConsulta($sql);
-    }
+    }*/
     public function listaMarcados($rol_idrol)
     {
         $sql= "SELECT * FROM `rol_has_permiso` WHERE `rol_idrol`='$rol_idrol' ";        
@@ -185,11 +152,11 @@
     
     public function verificar($login,$clavehash,$rol_idrol)
     {
-        $sql= "SELECT u.`idusuario`, u.`cedula`,u.`nombres`,u.`apellidos`,u.`email`, u.`telefono`, 
-        u.`direccion`, u.`ciudad_residencia`, u.`fecha_nacimiento`, u.`genero`, u.`login`, u.`imagen`, u.`estado`, ur.`rol_idrol`
+        $sql= "SELECT u.`idusuario`,p.`nombres`, p.`imagen`, u.`login`, ur.`rol_idrol`, p.`idpersona`
                 FROM `usuario` u 
                 INNER JOIN usuario_has_rol ur ON u.`idusuario`= ur.`usuario_idusuario`
-                WHERE u.`login`='$login' AND u.`contrasenia`='$clavehash' AND u.`estado`=1 AND ur.rol_idrol='$rol_idrol'";        
+                INNER JOIN persona p ON p.`usuario_idusuario`= u.`idusuario`
+                WHERE u.`login`='$login' AND u.`contrasenia`='$clavehash' AND p.`estado`=1 AND ur.rol_idrol='$rol_idrol'";        
         return ejecutarConsulta($sql);
     }
 

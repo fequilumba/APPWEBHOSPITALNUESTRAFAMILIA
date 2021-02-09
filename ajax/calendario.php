@@ -5,6 +5,7 @@ session_start();
     require_once "../modelos/Cita.php";
     $cita = new Cita();
     $idasociado=$_SESSION['idusuario'];
+    $rolusuario=$_SESSION['rol_idrol'];
     $idcita_medica = isset($_POST["idcita_medica"])? limpiarCadena($_POST["idcita_medica"]):""; 
     $especialidad_idespecialidad = isset($_POST["especialidad_idespecialidad"])? limpiarCadena($_POST["especialidad_idespecialidad"]):""; 
     //$persona_idpersona= isset($_POST["persona_idpersona"])? limpiarCadena($_POST["persona_idpersona"]):"";
@@ -55,7 +56,7 @@ session_start();
             require_once "../modelos/Paciente.php";
                 $paciente = new Paciente();
 
-                if ($idasociado==1) {
+                if ($rolusuario==1) {
                     $rspta = $paciente->selectTodosPacientes();
                     //echo '<option value=0>Seleccionar</option>';
                     while ($reg = $rspta->fetch_object()) {

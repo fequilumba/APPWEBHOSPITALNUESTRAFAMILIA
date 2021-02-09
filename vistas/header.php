@@ -238,7 +238,7 @@
             ?> 
             
             <?php
-            if ($_SESSION['rol_idrol']==3||$_SESSION['rol_idrol']==1)
+            if ($_SESSION['rol_idrol']==3||$_SESSION['rol_idrol']==1||$_SESSION['rol_idrol']==2)
             {
               
                 echo '<li class="treeview">

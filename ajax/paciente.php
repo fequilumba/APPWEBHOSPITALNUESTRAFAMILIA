@@ -2,7 +2,8 @@
 session_start();
     require_once "../modelos/Paciente.php";
     $paciente = new Paciente();
-    $idasociado=$_SESSION['idusuario'];
+    $idasociado=$_SESSION['idpersona'];
+    $iduserrol=$_SESSION['rol_idrol'];
     $idpersona = isset($_POST["idpersona"])? limpiarCadena($_POST["idpersona"]):""; 
     //$especialidad_idespecialidad = isset($_POST["especialidad_idespecialidad"])? limpiarCadena($_POST["especialidad_idespecialidad"]):""; 
     $cedula= isset($_POST["cedula"])? limpiarCadena($_POST["cedula"]):"";
@@ -20,6 +21,20 @@ session_start();
     switch ($_GET["op"]) {
         case 'guardaryeditar':
             if (empty($idpersona)) {
+                if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
+                {
+                    $imagen=$_POST["imagenactual"];
+                }
+                else 
+                {
+                    $ext = explode(".", $_FILES["imagen"]["name"]);
+                    if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png")
+                    {
+                        $imagen = round(microtime(true)) . '.' . end($ext);
+                        move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/usuarios/" . $imagen);
+                    }
+                }
+                //hash SHA256 en la contrasenia
                 $pieces = explode(" ", $nombres); 
                     $str=""; 
                     foreach($pieces as $piece) 
@@ -28,23 +43,18 @@ session_start();
                     }  
                     $contrasenia= $cedula . $str;
                     $contraseniahash=hash("SHA256",$contrasenia);
-                $rspta=$paciente->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
-                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$idasociado);
-                echo $rspta? "Paciente registrado" : "Paciente no se pudo registrar";
-                require_once "../modelos/Usuario.php";
+                    require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
-                $rspta2 = $usuario->insertarUPaciente($cedula, $nombres, $apellidos, $email, $telefono, 
-                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$contraseniahash);
-                echo $rspta2? "Usuario registrado" : "Usuario no se pudo registrar";
-                
+                $rspta = $usuario->insertar($cedula,$contraseniahash);
+                $iduser=$rspta;
+                echo $rspta? "Usuario registrado " : "Usuario no se pudo registrar ";
+                $rspta2=$paciente->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
+                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$idasociado,$imagen,$iduser);
+                echo $rspta2? "Paciente registrado " : "Paciente no se pudo registrar ";               
 
             }else{
                 $rspta=$paciente->editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
                 $ciudad_residencia, $fecha_nacimiento, $genero);
-                require_once "../modelos/Usuario.php";
-                $usuario = new Usuario();
-                $rspta = $usuario->editarUsuario($idpersona,$cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen);
                 echo $rspta? "Paciente actualizado" : "Paciente no se pudo actualizar";
                                 
             }
@@ -64,7 +74,7 @@ session_start();
                     echo json_encode($rspta);
                 break;
         case 'listar':
-            if ($idasociado==1) {
+            if ($iduserrol==1) {
                 $rspta=$paciente->listarTodosPacientes();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {

@@ -1,10 +1,3 @@
-function init() {
-
-    validar();
-    soloLetras(e);
-    limpia();
-    soloNumeros(e);
-}
 
 function validar() {
     var cad = document.getElementById("cedula").value.trim();
@@ -67,13 +60,3 @@ function soloNumeros(e) {
   if(letras.indexOf(tecla) == -1 && !tecla_especial)
       return false;
 }
-
-function limpia() {
-    var val = document.getElementById("miInput").value;
-    var tam = val.length;
-    for(i = 0; i < tam; i++) {
-        if(!isNaN(val[i]))
-            document.getElementById("miInput").value = '';
-    }
-}
-init();

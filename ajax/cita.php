@@ -4,7 +4,7 @@ lista de arreglos (Array)*/
 session_start();
     require_once "../modelos/Cita.php";
     $cita = new Cita();
-    $idusuario=$_SESSION['idusuario'];
+    $idusuario=$_SESSION['idpersona'];
     $idcita_medica = isset($_POST["idcita_medica"])? limpiarCadena($_POST["idcita_medica"]):""; 
     $especialidad_idespecialidad = isset($_POST["especialidad_idespecialidad"])? limpiarCadena($_POST["especialidad_idespecialidad"]):""; 
     //$persona_idpersona= isset($_POST["persona_idpersona"])? limpiarCadena($_POST["persona_idpersona"]):"";

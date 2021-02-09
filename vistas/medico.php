@@ -71,16 +71,17 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="">Cédula</label>
                             <input type="hidden" name="idpersona" id="idpersona">
+                            <input type="hidden" name="usuario_idusuario" id="usuario_idusuario">
                             <input type="text" name="cedula" id="cedula" maxlength="10" minlength="10" onkeypress="return soloNumeros(event)" placeholder="Cédula"class="form-control" required>
                           </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Nombres</label>
-                              <input type="text" name="nombres" id="nombres" maxlength="45" onkeypress="return soloLetras(event)" onblur="limpia()" placeholder="Nombres" class="form-control" required>
+                              <input type="text" name="nombres" id="nombres" maxlength="45" onkeypress="return soloLetras(event)"  placeholder="Nombres" class="form-control" required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Apellidos</label>
-                              <input type="text" name="apellidos" id="apellidos" maxlength="45" onkeypress="return soloLetras(event)" onblur="limpia()" placeholder="Apellidos" class="form-control" required>
+                              <input type="text" name="apellidos" id="apellidos" maxlength="45" onkeypress="return soloLetras(event)"  placeholder="Apellidos" class="form-control" required>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -111,11 +112,17 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Género</label>
                               <br>
-                              <label for="telefono">Hombre</label>
-                              <input type="radio" name="genero" value="M" id="masculino">
-                              
-                              <label for="correo">Mujer</label>
-                              <input type="radio" name="genero" value="F" id="femenino">
+                              <select class="form-control input-lg" name="genero" id="genero">
+                                <option>Seleccionar...</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                            </select>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label>Imagen:</label>
+                            <input type="file" class="form-control" name="imagen" id="imagen" accept="image/x-png,image/gif,image/jpeg">
+                            <input type="hidden" name="imagenactual" id="imagenactual">
+                            <img src="" width="150px" height="120px" id="imagenmuestra">
                             </div>
                             
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -130,6 +137,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 
                               </ul>
                             </div>
+                            
 
                             
                             <!--<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

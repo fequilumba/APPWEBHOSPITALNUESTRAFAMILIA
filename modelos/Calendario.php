@@ -57,16 +57,9 @@
     
     
 }
-$sql= "SELECT r.idreceta, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
-CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico, cm.`fecha_cita`, h.`hora` as hora_cita   
-FROM `receta` r
-INNER JOIN `cita_medica` cm ON cm.`idcita_medica`=r.`cita_medica_idcita_medica`
-INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
-INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
-INNER JOIN `persona` pm ON pm.`idpersona`=cm.`personaMedico_idpersona`
-INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario`
-AND p.`idasociado`=5
-ORDER BY r.`idreceta` DESC"
+$sql= "SELECT p.`idpersona`,p.`cedula`,p.`nombres`,p.`apellidos`, p.`email`,p.`telefono`, 
+p.`direccion`, p.`ciudad_residencia`, p.`fecha_nacimiento`,p.`genero`,p.`imagen`,p.`usuario_idusuario`  
+FROM `persona` p WHERE `idpersona`='11'"
 ;
 
         $sql=ejecutarConsulta($sql);
