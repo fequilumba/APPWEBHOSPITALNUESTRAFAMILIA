@@ -30,7 +30,7 @@
     function init() {
         $("#frmRegistro").on("submit",function(e){
             guardaryeditar(e);
-            bootbox.alert("Usuario registrado");
+            //bootbox.alert("Usuario registrado");
         });
     }
     function limpiar(){

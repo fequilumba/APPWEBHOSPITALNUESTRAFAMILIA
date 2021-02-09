@@ -44,32 +44,23 @@ switch ($_GET["op"]){
         $contrasenia= $cedula . $str;
        	$contraseniahash=hash("SHA256",$contrasenia);
 		if (empty($idusuario)){
-			$rspta=$usuario->insertar($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-			$ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$contraseniahash);
+			$rspta=$usuario->insertar($cedula,$contraseniahash);
+			$iduser=$rspta;
 			require_once "../modelos/Persona.php";
 			$persona = new Persona();
 			$rspta = $persona->clienteRegistro($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-			$ciudad_residencia, $fecha_nacimiento, $genero);
-			echo $rspta ? "Usuario registrado" : "No se pudieron registrar todos los datos del usuario";
+			$ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$iduser);
 			/*************email *********************/
 			require_once "../modelos/Correo.php";
 			$correo = new Correo();
 			$rspta = $correo->enviar($cedula, $nombres, $apellidos, $email);
+			echo $rspta ? "Usuario registrado" : "No se pudieron registrar todos los datos del usuario";
+			
 		}
 		else {
 			$rspta=$usuario->editar($idusuario,$username,$contraseniahash,$email,$imagen);
 			echo $rspta ? "Usuario actualizado" : "Usuario no se pudo actualizar";
 		}
-	break;
-
-	case 'desactivar':
-		$rspta=$usuario->desactivar($idusuario);
- 		echo $rspta ? "Usuario Desactivado" : "Usuario no se puede desactivar";
-	break;
-
-	case 'activar':
-		$rspta=$usuario->activar($idusuario);
- 		echo $rspta ? "Usuario activado" : "Usuario no se puede activar";
 	break;
 
 	case 'mostrar':
@@ -153,6 +144,7 @@ switch ($_GET["op"]){
 			$_SESSION['imagen']=$fetch->imagen;
 			$_SESSION['login']=$fetch->login;
 			$_SESSION['rol_idrol']=$fetch->rol_idrol;
+			$_SESSION['idpersona']=$fetch->idpersona;
 
 		}
 		echo json_encode($fetch);

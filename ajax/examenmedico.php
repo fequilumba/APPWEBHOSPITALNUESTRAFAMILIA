@@ -2,7 +2,7 @@
     session_start();
     require_once "../modelos/Examenmedico.php";
     $examenmedico = new Examenmedico();
-    $idusuario=$_SESSION['idusuario'];
+    $idusuario=$_SESSION['idpersona'];
     $idtipo_examen= isset($_POST["idtipo_examen"])? limpiarCadena($_POST["idtipo_examen"]):"";
     $seleccita = isset($_POST["seleccita"])? limpiarCadena($_POST["seleccita"]):""; 
     $nombre= isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";

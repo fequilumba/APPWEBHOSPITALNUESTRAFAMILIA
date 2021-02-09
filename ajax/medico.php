@@ -16,12 +16,27 @@
     $imagen=isset($_POST["imagen"])? limpiarCadena($_POST["imagen"]):"";
     $estado= isset($_POST["estado"])? limpiarCadena($_POST["estado"]):"";
     $idhorario= isset($_POST["idhorario"])? limpiarCadena($_POST["idhorario"]):"";
+    $usuario_idusuario= isset($_POST["usuario_idusuario"])? limpiarCadena($_POST["usuario_idusuario"]):"";
     $hora_inicio= isset($_POST["hora_inicio"])? limpiarCadena($_POST["hora_inicio"]):"";
     $hora_fin= isset($_POST["hora_fin"])? limpiarCadena($_POST["hora_fin"]):"";
 
     switch ($_GET["op"]) {
         case 'guardaryeditar':
             if (empty($idpersona)) {
+                if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
+                {
+                    $imagen=$_POST["imagenactual"];
+                }
+                else 
+                {
+                    $ext = explode(".", $_FILES["imagen"]["name"]);
+                    if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png")
+                    {
+                        $imagen = round(microtime(true)) . '.' . end($ext);
+                        move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/usuarios/" . $imagen);
+                    }
+                }
+                //hash SHA256 en la contrasenia
                 $pieces = explode(" ", $nombres); 
                 $str=""; 
                 foreach($pieces as $piece) 
@@ -30,13 +45,16 @@
                 }  
                 $contrasenia= $cedula . $str;
                 $contraseniahash=hash("SHA256",$contrasenia);
-                $rspta=$medico->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
-                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero, $_POST['especialidad'],$_POST['rol']);
+                //insertar usuario medico
                 require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
-                $rspta = $usuario->insertarUMedico($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$_POST['rol'],$contraseniahash);
-                echo $rspta? "Médico registrado " : "No se pudo registrar todos los datos del medico ";
+                $rspta = $usuario->insertar($cedula, $contraseniahash);
+                $iduser=$rspta;
+                echo $rspta? "Usuario registrado " : "No se pudo registrar el usuario ";
+                //insertar persona medico
+                $rspta2=$medico->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
+                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$iduser, $_POST['especialidad'],$_POST['rol']);
+                echo $rspta2? "Médico registrado " : "No se pudo registrar todos los datos del medico ";
                 /*************email *********************/
                 require_once "../modelos/Correo.php";
                 $correo = new Correo();
@@ -45,11 +63,7 @@
 
             }else{
                 $rspta=$medico->editar($idpersona,$cedula, $nombres, $apellidos, $email, $telefono, 
-                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$_POST['especialidad'],$_POST['rol']);
-                require_once "../modelos/Usuario.php";
-                $usuario = new Usuario();
-                $rspta = $usuario->editarUMedico($idpersona,$cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$_POST['rol']);
+                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$usuario_idusuario,$_POST['especialidad'],$_POST['rol']);
                 echo $rspta? "Médico actualizado" : "Médico no se pudo actualizar";
                                 
             }

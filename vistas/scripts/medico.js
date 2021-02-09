@@ -25,12 +25,13 @@ function init() {
         {   
             $("#especialidades").html(r);
         });
-    
+    $("#imagenmuestra").hide();
 
 }
 //funcion limpiar
 function limpiar(){
     $("#idpersona").val("");
+    $("#usuario_idusuario").val("");
     $("#especialidades").val("");
     $("#cedula").val("");
     $("#nombres").val("");
@@ -38,6 +39,10 @@ function limpiar(){
     $("#email").val("");
     $("#telefono").val("");
     $("#direccion").val("");
+    $("#roles").removeAttr('checked');
+    $("#especialidades").val("");
+	$("#imagenmuestra").attr("src","");
+	$("#imagenactual").val("");
     $("#ciudad_residencia").val("");
     $("#fecha_nacimiento").val("");
     $("#genero").val("");
@@ -125,6 +130,10 @@ function mostrar(idpersona){
         $("#ciudad_residencia").val(data.ciudad_residencia);
         $("#fecha_nacimiento").val(data.fecha_nacimiento);
         $("#genero").val(data.genero);
+        $("#imagenmuestra").show();
+		$("#imagenmuestra").attr("src","../files/usuarios/"+data.imagen);
+		$("#imagenactual").val(data.imagen);
+        $("#usuario_idusuario").val(data.usuario_idusuario)
         $("#idpersona").val(data.idpersona);
 
     });

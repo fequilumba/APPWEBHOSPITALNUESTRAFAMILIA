@@ -6,14 +6,17 @@
      }
 
      //Metodo para insertar registros
-     public function insertar($cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                                $ciudad_residencia, $fecha_nacimiento, $genero,$especialidades,$roles){
-        $sql= "INSERT INTO `persona` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, `ciudad_residencia`, `fecha_nacimiento`, `genero`, `estado`) 
-        VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion','$ciudad_residencia', '$fecha_nacimiento', '$genero', 1)";
+     public function insertar($cedula, $nombres, $apellidos, $email, $telefono, 
+     $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$iduser,$especialidades,$roles){
+        $sql= "INSERT INTO `persona` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, 
+        `ciudad_residencia`, `fecha_nacimiento`, `genero`, `estado`, `idasociado`, `imagen`, `usuario_idusuario`) 
+        VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion', '$ciudad_residencia', 
+                '$fecha_nacimiento', '$genero', '1', NULL, '$imagen', '$iduser')";
         
         $idpersonanew=ejecutarConsulta_retornarID($sql);
         $medico= new Medico();
-        $medico->rol($idpersonanew,$roles);
+        $medico->rolPersona($idpersonanew,$roles);
+        $medico->rolUsuario($iduser,$roles);
         $num_elementos=0;
         $sw=true;
 
@@ -27,8 +30,22 @@
         }
         return $sw;
     }
-
-    function rol($idpersonanew,$roles){
+    //insertar roles de usuario para el medico
+    function rolUsuario($iduser,$roles){
+        $num_elementos=0;
+        $sw=true;
+        while ($num_elementos < count($roles)) { //mientras que el numero de elementos sea menor que la cantidad de especialdiades escogidas
+            //insertamos cada uno de los permiso del usuario, cin wihle recorremo todos los permisos asigandos
+            $sql_rol = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
+                            VALUES('$iduser','$roles[$num_elementos]')";
+                            //enviamos la variable.. true si es de manera correcta
+            ejecutarConsulta($sql_rol) or $sw = false;
+            $num_elementos  =$num_elementos +1;
+        }
+        return $sw;
+    }
+    //insertar roles de persona para el medico
+    function rolPersona($idpersonanew,$roles){
         $num_elementos=0;
         $sw=true;
         while ($num_elementos < count($roles)) { //mientras que el numero de elementos sea menor que la cantidad de especialdiades escogidas
@@ -43,13 +60,15 @@
     }
      //metodo para editar registros
      public function editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                                $ciudad_residencia, $fecha_nacimiento, $genero,$especialidades,$roles){
+                                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$usuario_idusuario,$especialidades,$roles){
         $sql= "UPDATE `persona` SET `cedula`='$cedula', `nombres`='$nombres', `apellidos`='$apellidos', `email`='$email', 
-        `telefono`='$telefono', `direccion`='$direccion', `ciudad_residencia`='$ciudad_residencia', `fecha_nacimiento`='$fecha_nacimiento', `genero`='$genero'
+            `telefono`='$telefono', `direccion`='$direccion', `ciudad_residencia`='$ciudad_residencia', `fecha_nacimiento`='$fecha_nacimiento', 
+            `genero`='$genero',`imagen`='$imagen'
         WHERE `idpersona`='$idpersona'";
         ejecutarConsulta($sql);
         $medico= new Medico();
         $medico->editarRol($idpersona,$roles);
+        $medico->editarRolUsuarioMedico($usuario_idusuario,$roles);
         //eliminar todas las especialidades asignadas para volver a registrarlos
         $sqldel="DELETE FROM `persona_has_especialidad` WHERE `persona_idpersona`='$idpersona'";
         ejecutarConsulta($sqldel);
@@ -83,12 +102,31 @@
         }
         return $sw;
     }
-
+    /***************************************************************************************** */
+    public function editarRolUsuarioMedico($usuario_idusuario,$roles){
+        
+        $sqldel="DELETE FROM `usuario_has_rol` WHERE `usuario_idusuario`='$usuario_idusuario'";
+        ejecutarConsulta($sqldel);
+        $num_elementos=0;
+        $sw=true;
+        while ($num_elementos < count($roles)) { //mientras que el numero de elementos sea menor que la cantidad de especialdiades escogidas
+            //insertamos cada uno de los permiso del usuario, cin wihle recorremo todos los permisos asigandos
+            $sql_rol = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
+                            VALUES('$usuario_idusuario','$roles[$num_elementos]')";
+                            //enviamos la variable.. true si es de manera correcta
+            ejecutarConsulta($sql_rol) or $sw = false;
+            $num_elementos  =$num_elementos +1;
+        }
+        return $sw;
+        
+    }
     //mostrar un registro para editar
     public function mostrar($idpersona)
         {
-            $sql= "SELECT * FROM `persona` WHERE `idpersona`='$idpersona'";
-    
+           // $sql= "SELECT * FROM `persona` WHERE `idpersona`='$idpersona'";
+           $sql= "SELECT p.`idpersona`,p.`cedula`,p.`nombres`,p.`apellidos`, p.`email`,p.`telefono`, 
+           p.`direccion`, p.`ciudad_residencia`, p.`fecha_nacimiento`,p.`genero`, p.`imagen`,p.`usuario_idusuario`  
+           FROM `persona` p WHERE `idpersona`='$idpersona'";
             return ejecutarConsultaSimpleFila($sql);
         }
     //METODOS PARA ACTIVAR/DESACTIVAR MEDICO

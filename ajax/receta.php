@@ -2,7 +2,7 @@
     session_start();
     require_once "../modelos/Receta.php";
     $receta = new Receta();
-    $idusuario=$_SESSION['idusuario'];
+    $idusuario=$_SESSION['idpersona'];
     $idreceta = isset($_POST["idreceta"])? limpiarCadena($_POST["idreceta"]):"";
     $seleccita = isset($_POST["seleccita"])? limpiarCadena($_POST["seleccita"]):"";
     $observaciones = isset($_POST["observaciones"])? limpiarCadena($_POST["observaciones"]):"";
