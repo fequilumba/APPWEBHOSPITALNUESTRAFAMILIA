@@ -22,8 +22,7 @@
 
     switch ($_GET["op"]) {
         case 'guardaryeditar':
-            if (empty($idpersona)) {
-                if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
+            if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
                 {
                     $imagen=$_POST["imagenactual"];
                 }
@@ -36,6 +35,7 @@
                         move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/usuarios/" . $imagen);
                     }
                 }
+            if (empty($idpersona)) {
                 //hash SHA256 en la contrasenia
                 $pieces = explode(" ", $nombres); 
                 $str=""; 

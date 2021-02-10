@@ -22,7 +22,7 @@ public function eliminarCita($idcita_medica)
         {
             $sql= "DELETE FROM `cita_medica` WHERE `cita_medica`.`idcita_medica` = '$idcita_medica'";
     
-            return ejecutarConsultaSimpleFila($sql);
+            return ejecutarConsulta($sql);
         }
 }
 ?>

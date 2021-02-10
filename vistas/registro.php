@@ -34,45 +34,45 @@
         <br>
         <form method='POST' action='' id="frmRegistro">
           <div class="form-group has-feedback">
-            <label for="">Cédula</label>
+            <label for="">Cédula(*)</label>
             <input type="text" class="form-control" maxlength="10" minlength="10" id="cedula" name="cedula" onkeypress="return soloNumeros(event)" placeholder="Cédula" required>
             <span class="form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <label for="">Nombres</label>
+            <label for="">Nombres(*)</label>
             <input type="text" class="form-control" id="nombres" name="nombres" onkeypress="return soloLetras(event)"  placeholder="Nombres" required>
             <span class="form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <label for="">Apellidos</label>
+            <label for="">Apellidos(*)</label>
             <input type="text" class="form-control" id="apellidos" name="apellidos" onkeypress="return soloLetras(event)" placeholder="Apellidos" required>
             <span class="form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <label for="">Email</label>
+            <label for="">Email(*)</label>
             <input type="text" name="email" id="email" maxlength="45" class="form-control"  placeholder="email@address.com" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required>
             </div>                  
           <div class="form-group has-feedback">
-            <label for="">Teléfono</label>
+            <label for="">Teléfono(*)</label>
             <input type="text" class="form-control" id="telefono" name="telefono" onkeypress="return soloNumeros(event)" placeholder="Teléfono" required>
             <span class="form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <label for="">Dirección</label>
+            <label for="">Dirección(*)</label>
             <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección" required>
             <span class="form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <label for="">Ciudad de Residencia</label>
+            <label for="">Ciudad de Residencia(*)</label>
             <input type="text" class="form-control" id="ciudad_residencia" onkeypress="return soloLetras(event)"  name="ciudad_residencia" placeholder="Ciudad" required>
             <span class="form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <label for="">Fecha de nacimiento</label>
+            <label for="">Fecha de nacimiento(*)</label>
             <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
           </div>
           <div class="form-group has-feedback">
-            <label for="">Género</label>
+            <label for="">Género(*)</label>
             <br>
             <label for="">Hombre </label>
             <input type="radio" name="genero" value="Masculino" id="masculino">
@@ -84,11 +84,6 @@
             <input type="file" class="form-control" name="imagen" id="imagen" accept="image/x-png,image/gif,image/jpeg">
             <span class="fa fa-camera form-control-feedback"></span>
           </div>
-
-          <!--<div class="form-group has-feedback">
-            <input type="password" id="clavea" name="clavea" class="form-control" placeholder="Password">
-            <span class="fa fa-key form-control-feedback"></span>
-          </div>-->
           <div class="row">
             <div class="col-xs-8">
 

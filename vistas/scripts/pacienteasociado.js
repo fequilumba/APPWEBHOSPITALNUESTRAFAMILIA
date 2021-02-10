@@ -12,6 +12,7 @@ function init() {
             $("#cliente").selectpicker('refresh');
         }
     );
+    $("#imagenmuestra").hide();
 
 }
 //funcion limpiar
@@ -26,6 +27,8 @@ function limpiar(){
     $("#ciudad_residencia").val("");
     $("#fecha_nacimiento").val("");
     $("#genero").val("");
+	$("#imagenmuestra").attr("src","");
+	$("#imagenactual").val("");
 }
 //mostrar formulario
 function mostrarform(flag){
@@ -110,6 +113,9 @@ function mostrar(idpersona){
         $("#ciudad_residencia").val(data.ciudad_residencia);
         $("#fecha_nacimiento").val(data.fecha_nacimiento);
         $("#genero").val(data.genero);
+        $("#imagenmuestra").show();
+		$("#imagenmuestra").attr("src","../files/usuarios/"+data.imagen);
+		$("#imagenactual").val(data.imagen);
         $("#cliente").val(data.idasociado);
         $("#cliente").selectpicker('refresh');
         $("#idpersona").val(data.idpersona);

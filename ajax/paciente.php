@@ -20,8 +20,7 @@ session_start();
 
     switch ($_GET["op"]) {
         case 'guardaryeditar':
-            if (empty($idpersona)) {
-                if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
+            if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
                 {
                     $imagen=$_POST["imagenactual"];
                 }
@@ -34,6 +33,7 @@ session_start();
                         move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/usuarios/" . $imagen);
                     }
                 }
+            if (empty($idpersona)) {
                 //hash SHA256 en la contrasenia
                 $pieces = explode(" ", $nombres); 
                     $str=""; 
@@ -54,7 +54,7 @@ session_start();
 
             }else{
                 $rspta=$paciente->editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero);
+                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen);
                 echo $rspta? "Paciente actualizado" : "Paciente no se pudo actualizar";
                                 
             }
