@@ -24,9 +24,10 @@
     }
      //metodo para editar registros de un paciente registrado por un cliente
      public function editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                                $ciudad_residencia, $fecha_nacimiento, $genero){
+                                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen){
         $sql= "UPDATE `persona` SET `cedula`='$cedula', `nombres`='$nombres', `apellidos`='$apellidos', `email`='$email', 
-        `telefono`='$telefono', `direccion`='$direccion', `ciudad_residencia`='$ciudad_residencia', `fecha_nacimiento`='$fecha_nacimiento', `genero`='$genero'
+                    `telefono`='$telefono', `direccion`='$direccion', `ciudad_residencia`='$ciudad_residencia', `fecha_nacimiento`='$fecha_nacimiento', 
+                    `genero`='$genero', `imagen`='$imagen'
         WHERE `idpersona`='$idpersona'";
 
         return ejecutarConsulta($sql);
@@ -71,12 +72,12 @@
 
         return ejecutarConsulta($sql);
     }
-    public function selectPaciente($idasociado){
+    public function selectPaciente($idasociado2){
         $sql= "SELECT p.`idpersona`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres 
         FROM `persona` p
         INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` 
         AND pr.`rol_idrol`=4 and p.estado=1
-        AND p.`idasociado`='$idasociado'";
+        AND p.`idasociado`='$idasociado2'";
 
         return ejecutarConsulta($sql);
     }

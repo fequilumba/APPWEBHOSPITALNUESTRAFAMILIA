@@ -52,7 +52,7 @@ function mostrarform(flag){
     limpiar();
     if(flag){
         $("#listadoregistros").hide();
-        $("#formularioregistros").show();
+        $("#formularioregistros").show(); 
         $("#btnGuardar").prop("disabled",false);
         $("#btnagregar").hide();
     }else{

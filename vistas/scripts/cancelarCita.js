@@ -96,7 +96,7 @@ function mostrar(idcita_medica){
 
 function eliminarCita(idcita_medica)
 {
-    alertify.confirm("CITA MEDICA","¿Estas seguro de eliminae la Cita?",
+    alertify.confirm("CITA MEDICA","¿Estas seguro de eliminar la Cita?",
         function(){
             $.post(
                 "../ajax/cancelarcita.php?op=eliminar", {idcita_medica : idcita_medica}, function(e)
@@ -108,7 +108,7 @@ function eliminarCita(idcita_medica)
                 });
         },
         function(){
-            alertify.error('Canceladooooooooo');
+            alertify.error('Cancelado');
         });
 }
 

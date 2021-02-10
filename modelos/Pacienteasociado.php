@@ -25,10 +25,10 @@
     }
      //metodo para editar registros de un paciente desde el rol de administrador
      public function editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                                $ciudad_residencia, $fecha_nacimiento, $genero,$cliente){
+                                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$cliente){
         $sql= "UPDATE `persona` SET `cedula`='$cedula', `nombres`='$nombres', `apellidos`='$apellidos', `email`='$email', 
         `telefono`='$telefono', `direccion`='$direccion', `ciudad_residencia`='$ciudad_residencia', `fecha_nacimiento`='$fecha_nacimiento', 
-        `genero`='$genero',`idasociado`='$cliente'
+        `genero`='$genero',`imagen`='$imagen',`idasociado`='$cliente'
         WHERE `idpersona`='$idpersona'";
 
         return ejecutarConsulta($sql);
