@@ -78,12 +78,12 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Diagnóstico</label>
+                              <label for="">Diagnóstico(*)</label>
                               <textarea name="diagnostico" id="diagnostico" class="form-control" cols="" rows="3" required></textarea>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Síntomas</label>
+                              <label for="">Síntomas(*)</label>
                               <textarea name="sintomas" id="sintomas" class="form-control" cols="" rows="3" required></textarea>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
