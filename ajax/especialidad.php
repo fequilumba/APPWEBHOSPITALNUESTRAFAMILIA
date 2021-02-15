@@ -42,7 +42,6 @@
                         '<button class="btn btn-warning" onclick="mostrar('.$reg->idespecialidad.')"><li class="fa fa-pencil"></li></button>'.
                         ' <button class="btn btn-primary" onclick="activar('.$reg->idespecialidad.')"><li class="fa fa-check"></li></button>'
                         ,
-                    //"1"=>$reg->idespecialidad,
                     "1"=>$reg->nombre,
                     "2"=>$reg->estado ?
                     '<span class="label bg-green">Activado</span>'

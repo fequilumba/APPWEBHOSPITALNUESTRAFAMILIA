@@ -22,7 +22,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Examenes <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Nuevo Examen</button></h1>
+                          <h1 class="box-title">Tipo Exámenes <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Nuevo Tipo Examen</button></h1>
                         <div class="box-tools pull-right"></div>
                     </div>
                     <!-- /.box-header -->
@@ -32,12 +32,16 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                           <thead>
                             <th>Opciones</th>
                             <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Estado</th>
                           </thead>
                           <tbody>
                           </tbody>
                           <tfoot>
                             <th>Opciones</th>
                             <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Estado</th>
                           </tfoot>
                         </table>
                     </div>
@@ -45,9 +49,13 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                     <div class="panel-body"  id="formularioregistros">
                         <form name="formularioe" id="formularioe" method="POST">
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Exámen de Imágen</label>
+                              <label for="">Tipo de Examen</label>
                               <input type="hidden" name="idtipo_examen" id="idtipo_examen">
-                              <input type="text" name="nombre" id="nombre" class="form-control" maxlength="45" placeholder="Nombre especialidad" required>
+                              <input type="text" name="nombre" id="nombre" class="form-control" maxlength="100" placeholder="Nombre examen" required>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label for="">Descripción</label>
+                              <textarea name="descripcion" id="descripcion" class="form-control" maxlength="255" cols="" rows="6" required></textarea>
                             </div>
                           
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -73,7 +81,7 @@ else {
 }
   require 'footer.php';
 ?>
-<script type="text/javascript" src="scripts/examenImagen.js"></script>
+<script type="text/javascript" src="scripts/examentipo.js"></script>
 <?php
 }
 ob_end_flush();

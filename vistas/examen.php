@@ -22,7 +22,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Examenes <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Nuevo Examen</button></h1>
+                          <h1 class="box-title">Examen <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Nuevo Examen</button></h1>
                         <div class="box-tools pull-right"></div>
                     </div>
                     <!-- /.box-header -->
@@ -32,12 +32,14 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                           <thead>
                             <th>Opciones</th>
                             <th>Nombre</th>
+                            <th>Tipo</th>
                           </thead>
                           <tbody>
                           </tbody>
                           <tfoot>
                             <th>Opciones</th>
                             <th>Nombre</th>
+                            <th>Tipo</th>
                           </tfoot>
                         </table>
                     </div>
@@ -45,9 +47,13 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                     <div class="panel-body"  id="formularioregistros">
                         <form name="formularioe" id="formularioe" method="POST">
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Exámen de Sangre</label>
-                              <input type="hidden" name="idtipo_examen" id="idtipo_examen">
-                              <input type="text" name="nombre" id="nombre" class="form-control" maxlength="45" placeholder="Nombre especialidad" required>
+                              <label for="">Tipo de Examen</label>
+                              <input type="hidden" name="idexamen" id="idexamen">
+                              <select name="tipo_examen_idtipo_examen" id="tipo_examen_idtipo_examen" data-live-search="true" data-live-search-style="startsWith" class="form-control" required></select>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label for="">Nombre</label>
+                              <input type="text" name="nombree" id="nombree" class="form-control" maxlength="50" placeholder="Nombre examen" required>
                             </div>
                           
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -73,7 +79,7 @@ else {
 }
   require 'footer.php';
 ?>
-<script type="text/javascript" src="scripts/examenSangre.js"></script>
+<script type="text/javascript" src="scripts/examen.js"></script>
 <?php
 }
 ob_end_flush();

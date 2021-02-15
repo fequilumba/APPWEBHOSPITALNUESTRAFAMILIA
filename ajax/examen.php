@@ -1,33 +1,47 @@
 <?php
     require_once "../modelos/Examen.php";
-    $examenimagen = new Examen();
+    $examentipo = new Examen();
     $idtipo_examen = isset($_POST["idtipo_examen"])? limpiarCadena($_POST["idtipo_examen"]):""; 
+    $idexamen = isset($_POST["idexamen"])? limpiarCadena($_POST["idexamen"]):""; 
     $nombre= isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
+    $nombree= isset($_POST["nombree"])? limpiarCadena($_POST["nombree"]):"";
+    $descripcion= isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):"";
+    $tipo_examen_idtipo_examen= isset($_POST["tipo_examen_idtipo_examen"])? limpiarCadena($_POST["tipo_examen_idtipo_examen"]):"";
+
     switch ($_GET["op"]) {
-        /*examenes de imagen */
-        case 'guardaryeditarExamenImagen':
+        /*Operaciones de tipo de examen */
+        case 'guardaryeditarExamenTipo':
                 if (empty($idtipo_examen)) {
-                    $rspta=$examenimagen->insertarExamenImagen($nombre);
+                    $rspta=$examentipo->insertarExamenTipo($nombre,$descripcion);
                     echo $rspta ? "Examen registrado" : "No se pudo registrar el examen";
                     
                 }else{
-                    $rspta=$examenimagen->editarExamenImagen($idtipo_examen, $nombre);
+                    $rspta=$examentipo->editarExamenTipo($idtipo_examen, $nombre,$descripcion);
                     echo $rspta ? "Examen actualizado" : "No se pudo actualizar el examen";                
                 }
             break;
-        case 'mostrarExamenImagen':
-                $rspta=$examenimagen->mostrarExamenImagen($idtipo_examen);
+        case 'mostrarExamenTipo':
+                $rspta=$examentipo->mostrarExamenTipo($idtipo_examen);
                 echo json_encode($rspta);
             break;
-        case 'listarExamenImagen':
-            $rspta=$examenimagen->listarExamenImagen();
+        case 'listarExamenTipo':
+            $rspta=$examentipo->listarExamenTipo();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                    "0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idtipo_examen.')"><li class="fa fa-pencil"></li></button>'.
-                        ' <button class="btn btn-danger" onclick="eliminar('.$reg->idtipo_examen.')"><li class="fa fa-close"></li></button>',
-                        
-                    "1"=>$reg->nombre
+                    "0"=> ($reg->estado) ? 
+                    '<button class="btn btn-warning" onclick="mostrar('.$reg->idtipo_examen.')"><li class="fa fa-pencil"></li></button>'.
+                    ' <button class="btn btn-danger" onclick="desactivar('.$reg->idtipo_examen.')"><li class="fa fa-close"></li></button>'
+                    :
+                    '<button class="btn btn-warning" onclick="mostrar('.$reg->idtipo_examen.')"><li class="fa fa-pencil"></li></button>'.
+                    ' <button class="btn btn-primary" onclick="activar('.$reg->idtipo_examen.')"><li class="fa fa-check"></li></button>'
+                    ,
+                    "1"=>$reg->nombre,
+                    "2"=>$reg->descripcion,
+                    "3"=>$reg->estado?
+                    '<span class="label bg-green">Activado</span>'
+                    :      
+                    '<span class="label bg-red">Desactivado</span>'
                 );
             }
             $results = array(
@@ -37,36 +51,50 @@
                 "aaData"=>$data);    
                 echo json_encode($results);   
             break;
-            case 'eliminarExamenImagen':
+            /*case 'eliminarExamenImagen':
                 $rspta=$examenimagen->eliminarExamenImagen($idtipo_examen);
                 echo $rspta ? "Cita eliminada" : "No se pudo eliminar la cita";
-            break;
+            break;*/
+            case 'desactivar':
+                $rspta=$examentipo->desactivarExamenTipo($idtipo_examen);
+                echo $rspta ? "Tipo de examen desactivado" : "No se pudo desactivar el tipo de examen";
+    
+                break;
+            case 'activar':
+                $rspta=$examentipo->activarExamenTipo($idtipo_examen);
+                echo $rspta ? "Tipo de examen activado" : "No se pudo activar el tipo de examen";
+    
+                break;
 
-
-            /*examenes de sangre */
-            case 'guardaryeditarExamenSangre':
-                if (empty($idtipo_examen)) {
-                    $rspta=$examenimagen->insertarExamenSangre($nombre);
+            /***********************
+             * *                        * *
+             * *CRUD examen             * *
+             * *                        * *
+             * *************************/
+            case 'guardaryeditarExamen':
+                if (empty($idexamen)) {
+                    $rspta=$examentipo->insertarExamen($nombree,$tipo_examen_idtipo_examen);
                     echo $rspta ? "Examen registrado" : "No se pudo registrar el examen";
                     
                 }else{
-                    $rspta=$examenimagen->editarExamenSangre($idtipo_examen, $nombre);
+                    $rspta=$examentipo->editarExamen($idexamen, $nombree,$tipo_examen_idtipo_examen);
                     echo $rspta ? "Examen actualizado" : "No se pudo actualizar el examen";                
                 }
             break;
-        case 'mostrarExamenSangre':
-                $rspta=$examenimagen->mostrarExamenSangre($idtipo_examen);
+        case 'mostrarExamen':
+                $rspta=$examentipo->mostrarExamen($idexamen);
                 echo json_encode($rspta);
             break;
-        case 'listarExamenSangre':
-            $rspta=$examenimagen->listarExamenSangre();
+        case 'listarExamen':
+            $rspta=$examentipo->listarExamen();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                    "0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idtipo_examen.')"><li class="fa fa-pencil"></li></button>'.
-                        ' <button class="btn btn-danger" onclick="eliminar('.$reg->idtipo_examen.')"><li class="fa fa-close"></li></button>',
+                    "0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idexamen.')"><li class="fa fa-pencil"></li></button>'/*.
+                        ' <button class="btn btn-danger" onclick="eliminar('.$reg->idexamen.')"><li class="fa fa-close"></li></button>'*/,
                         
-                    "1"=>$reg->nombre
+                    "1"=>$reg->nombre,
+                    "2"=>$reg->tipo
                 );
             }
             $results = array(
@@ -76,10 +104,19 @@
                 "aaData"=>$data);    
                 echo json_encode($results);   
             break;
-            case 'eliminarExamenSangre':
+
+            case 'selectExamenTipo':
+                $rspta = $examentipo->selectExamenTipo();
+                while ($reg = $rspta->fetch_object()) {
+                    echo '<option value='.$reg->idtipo_examen.'>'
+                            .$reg->nombre.
+                          '</option>';
+                }
+                break;
+            /*case 'eliminarExamenSangre':
                 $rspta=$examenimagen->eliminarExamenSangre($idtipo_examen);
                 echo $rspta ? "Cita eliminada" : "No se pudo eliminar la cita";
-            break;
+            break;*/
     }
 
 ?>
