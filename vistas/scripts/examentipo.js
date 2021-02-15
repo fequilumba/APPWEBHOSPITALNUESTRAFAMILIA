@@ -12,6 +12,7 @@ function init() {
 function limpiar(){
     $("#idtipo_examen").val("");
     $("#nombre").val("");
+    $("#descripcion").val("");
 }
 //mostrar formulario
 function mostrarform(flag){
@@ -48,7 +49,7 @@ function listar(){
             'pdf',
         ],
         "ajax":{
-            url: '../ajax/examen.php?op=listarExamenSangre',
+            url: '../ajax/examen.php?op=listarExamenTipo',
             type: "get",
             dataType: "json",
             error: function(e){
@@ -67,7 +68,7 @@ function guardaryeditar(e){
     $("#btnGuardar").prop("disabled",true);
     var formData = new FormData($("#formularioe")[0]);
     $.ajax({
-        url: "../ajax/examen.php?op=guardaryeditarExamenSangre",
+        url: "../ajax/examen.php?op=guardaryeditarExamenTipo",
         type: "POST",
         data: formData,
         contentType: false,
@@ -83,27 +84,28 @@ function guardaryeditar(e){
 }
 
 function mostrar(idtipo_examen){
-    $.post("../ajax/examen.php?op=mostrarExamenSangre",{idtipo_examen : idtipo_examen}, function(data, status)
+    $.post("../ajax/examen.php?op=mostrarExamenTipo",{idtipo_examen : idtipo_examen}, function(data, status)
     {
         data = JSON.parse(data);
         mostrarform(true);
-        $("#nombre").val(data.nombre)
-        $("#idtipo_examen").val(data.idtipo_examen)
+        $("#nombre").val(data.nombre);
+        $("#descripcion").val(data.descripcion);
+        $("#idtipo_examen").val(data.idtipo_examen);
 
     });
 }
 
-//funcion para descativar especialidades
-/*function desactivar(idespecialidad)
+//funcion para descativar examenes
+function desactivar(idtipo_examen)
 {
-    alertify.confirm("Especialidad","¿Estas seguro de desactivar la Especialidad?",
+    alertify.confirm("Tipo Examen","¿Estas seguro de desactivar el tipo de examen?",
         function(){
             $.post(
-                "../ajax/examen.php?op=desactivar", {idespecialidad : idespecialidad}, function(e)
+                "../ajax/examen.php?op=desactivar", {idtipo_examen : idtipo_examen}, function(e)
                 {
                     //alertify.alert(e);
                     tabla.ajax.reload();
-                    alertify.success('Especialidad desactivada');
+                    alertify.success('Tipo Examen desactivado');
         
                 });
         },
@@ -111,25 +113,25 @@ function mostrar(idtipo_examen){
             alertify.error('Cancelado');
         });
 }
-
-function activar(idespecialidad)
+//funcion para ativar examenes
+function activar(idtipo_examen)
 {
-    alertify.confirm("Especialidad","¿Estas seguro de activar la Especialidad?",
+    alertify.confirm("Tipo Examen","¿Estas seguro de activar el tipo de examen?",
         function(){
             $.post(
-                "../ajax/especialidad.php?op=activar", {idespecialidad : idespecialidad}, function(e)
+                "../ajax/examen.php?op=activar", {idtipo_examen : idtipo_examen}, function(e)
                 {
                     //alertify.alert(e);
                     tabla.ajax.reload();
-                    alertify.success('Especialidad activada');
+                    alertify.success('Tipo Examen activado');
         
                 });
         },
         function(){
             alertify.error('Cancelado');
         });
-}*/
-function eliminar(idtipo_examen)
+}
+/*function eliminar(idtipo_examen)
 { 
     alertify.confirm("Exámen","¿Estas seguro de eliminar el examen de tipo Imágen?",
         function(){
@@ -146,6 +148,6 @@ function eliminar(idtipo_examen)
         function(){
             alertify.error('Cancelado');
         });
-}
+}*/
 
 init();

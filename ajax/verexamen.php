@@ -21,7 +21,7 @@
                 $rspta=$verexamen->listarTodo();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
-                $url='../reportes/reportes.php?id=';
+                $url='../reportes/examen.php?id=';
                 $data[]= array(
                     "0"=>'<button class="btn btn-primary" onclick="mostrar('.$reg->idtipo_examen.')"><li class="fa fa-eye"></li></button>'.
                     ' <a href="'.$url.$reg->idtipo_examen.'" target="_blank"> <button class="btn btn-warning"><li class="fa fa-print"></li></button> </a>',
