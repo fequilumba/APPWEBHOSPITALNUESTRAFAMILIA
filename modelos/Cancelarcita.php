@@ -13,7 +13,8 @@ public function listarCitaCancelar()
                 INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
                 INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
                 INNER JOIN `persona` m ON m.`idpersona`=cm.`personaMedico_idpersona`
-                INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario`";
+                INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario`
+                WHERE cm.`estado_idestado`=1";
         return ejecutarConsulta($sql);
     }
 

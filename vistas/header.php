@@ -181,6 +181,7 @@
                 <li><a href="especialidad.php"><i class="fa fa-circle-o"></i> Especialidades</a></li>
                 <li><a href="examentipo.php"><i class="fa fa-circle-o"></i> Tipo Examen</a></li>
                 <li><a href="examen.php"><i class="fa fa-circle-o"></i> Examen</a></li>
+                <li><a href="medicamento.php"><i class="fa fa-circle-o"></i> Medicamento</a></li>
               </ul>
             </li>';
             }
