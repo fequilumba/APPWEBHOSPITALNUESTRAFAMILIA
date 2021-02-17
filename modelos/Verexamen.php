@@ -5,63 +5,70 @@
         
      }
      public function listar($idusuario){
-        $sql= "SELECT te.idtipo_examen, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
+        $sql= "SELECT pe.idpedido_examen, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
         CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico, cm.`fecha_cita`, h.`hora` as hora_cita   
-        FROM `tipo_examen` te 
-        INNER JOIN `cita_medica_has_tipo_examen` ce ON ce.`tipo_examen_idtipo_examen`= te.`idtipo_examen`
-        INNER JOIN `cita_medica` cm ON cm.`idcita_medica`= ce.`cita_medica_idcita_medica` 
+        FROM `pedido_examen` pe
+        INNER JOIN `cita_medica` cm ON cm.`idcita_medica`=pe.`cita_medica_idcita_medica`
         INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
         INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
         INNER JOIN `persona` pm ON pm.`idpersona`=cm.`personaMedico_idpersona`
         INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario`
         AND p.`idasociado`='$idusuario'
-        ORDER BY te.`idtipo_examen` DESC";
+        ORDER BY pe.`idpedido_examen` DESC";
         return ejecutarConsulta($sql);
      }
 
      public function listarExamenMedico($idpersonam){
-        $sql= "SELECT te.idtipo_examen, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
+        $sql= "SELECT pe.idpedido_examen, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
         CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico, cm.`fecha_cita`, h.`hora` as hora_cita   
-        FROM `tipo_examen` te 
-        INNER JOIN `cita_medica_has_tipo_examen` ce ON ce.`tipo_examen_idtipo_examen`= te.`idtipo_examen`
-        INNER JOIN `cita_medica` cm ON cm.`idcita_medica`= ce.`cita_medica_idcita_medica` 
+        FROM `pedido_examen` pe
+        INNER JOIN `cita_medica` cm ON cm.`idcita_medica`=pe.`cita_medica_idcita_medica`
         INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
         INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
         INNER JOIN `persona` pm ON pm.`idpersona`=cm.`personaMedico_idpersona`
         INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario`
         AND cm.`personaMedico_idpersona`='$idpersonam'
-        ORDER BY te.`idtipo_examen` DESC";
+        ORDER BY pe.`idpedido_examen` DESC";
         return ejecutarConsulta($sql);
      }
 
      public function listarTodo(){
-        $sql= "SELECT te.idtipo_examen, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
+        $sql= "SELECT pe.idpedido_examen, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
         CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico, cm.`fecha_cita`, h.`hora` as hora_cita   
-        FROM `tipo_examen` te 
-        INNER JOIN `cita_medica_has_tipo_examen` ce ON ce.`tipo_examen_idtipo_examen`= te.`idtipo_examen`
-        INNER JOIN `cita_medica` cm ON cm.`idcita_medica`= ce.`cita_medica_idcita_medica` 
+        FROM `pedido_examen` pe
+        INNER JOIN `cita_medica` cm ON cm.`idcita_medica`=pe.`cita_medica_idcita_medica`
         INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
         INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
         INNER JOIN `persona` pm ON pm.`idpersona`=cm.`personaMedico_idpersona`
         INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario`
-        ORDER BY te.`idtipo_examen` DESC";
+        ORDER BY pe.`idpedido_examen` DESC";
         return ejecutarConsulta($sql);
      }
      
     //mostrar datos de una examen por id
-    public function mostrar($idtipo_examen)
+    public function mostrar($idpedido_examen)
         {
-            $sql= "SELECT te.idtipo_examen, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
-            CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico, te.`nombre` as examen   
-            FROM `tipo_examen` te 
-            INNER JOIN `cita_medica_has_tipo_examen` ce ON ce.`tipo_examen_idtipo_examen`= te.`idtipo_examen`
-            INNER JOIN `cita_medica` cm ON cm.`idcita_medica`= ce.`cita_medica_idcita_medica` 
+            $sql= "SELECT pe.idpedido_examen, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
+            CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico  
+            FROM `pedido_examen` pe 
+            INNER JOIN `cita_medica` cm ON cm.`idcita_medica`= pe.`cita_medica_idcita_medica` 
             INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
             INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
             INNER JOIN `persona` pm ON pm.`idpersona`=cm.`personaMedico_idpersona`
-            AND te.`idtipo_examen`='$idtipo_examen'";
+            AND pe.`idpedido_examen`='$idpedido_examen'";
             return ejecutarConsultaSimpleFila($sql);
         }
+   //listar los detalles de un pedido de examenes
+   public function listarDetalle($idpedido_examen)
+   {
+      $sql= "SELECT pe.`pedido_examen_idpedido_examen`, e.`nombre`, te.`nombre` as tipo
+            FROM `examen_has_pedido_examen` pe
+            INNER JOIN `pedido_examen` p ON p.`idpedido_examen`= pe.`pedido_examen_idpedido_examen`
+            INNER JOIN `examen` e ON e.`idexamen`= pe.`examen_idexamen` 
+            INNER JOIN `tipo_examen` te ON te.`idtipo_examen`= e.`tipo_examen_idtipo_examen` 
+            WHERE p.`idpedido_examen`='$idpedido_examen'";
+            return ejecutarConsulta($sql);
+   }
 
    public function examencabecera($idtipo_examen)
    {

@@ -93,6 +93,14 @@
         return ejecutarConsulta($sql);
     }
 
+    public function listarExamenesActivos(){
+        $sql= "SELECT e.`idexamen`, e.`nombre`, te.`nombre` as tipo
+        FROM `examen` e
+        INNER JOIN `tipo_examen` te ON te.`idtipo_examen`=e.`tipo_examen_idtipo_examen`
+        WHERE te.`estado`=1";
+        return ejecutarConsulta($sql);
+     }
+
     /*public function eliminarExamenSangre($idtipo_examen)
     {
         $sql= "DELETE FROM `tipo_examen` WHERE `tipo_examen`.`idtipo_examen` = '$idtipo_examen'";

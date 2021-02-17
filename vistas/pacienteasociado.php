@@ -104,7 +104,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                               <label for="">Género(*)</label>
                               <br>
                               <select class="form-control" name="genero" id="genero" required >
-                              <option value="" disabled selected hidden>Selecciona una opción</option>
+                                <option value="" disabled selected hidden>Selecciona una opción</option>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Femenino">Femenino</option>
                             </select>

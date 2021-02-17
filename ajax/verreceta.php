@@ -17,6 +17,24 @@
                 $rspta=$verreceta->mostrar($idreceta);
                 echo json_encode($rspta);
             break;
+        case 'listarDetalle':
+            //recibimos id receta
+            $id=$_GET['id'];
+
+            echo '<thead style="background-color:#A9D0F5">
+                                    <th>Opciones</th>
+                                    <th>Medicamento</th>
+                                    <th>Descripción</th>
+                                    <th>Cantidad</th>
+                                    <th>Indicaciones</th>
+                                </thead>';
+                $rspta=$verreceta->listarDetalle($id);
+                while ($reg=$rspta->fetch_object()) {
+                    echo '<tr><td></td><td>'.$reg->nombre.'</td><td>'.$reg->descripcion.'</td>
+                                        <td>'.$reg->cantidad.'</td><td>'.$reg->observaciones.'</td></tr>';
+                }
+                
+            break;
         case 'listar':
             if ($rolusuario==1) {
                 $rspta=$verreceta->listarTodo();

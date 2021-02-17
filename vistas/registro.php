@@ -82,6 +82,7 @@
           <div class="form-group has-feedback">
             <label>Imagen:</label>
             <input type="file" class="form-control" name="imagen" id="imagen" accept="image/x-png,image/gif,image/jpeg">
+            <input type="hidden" class="form-control" name="imagenactual" id="imagenactual" accept="image/x-png,image/gif,image/jpeg">
             <span class="fa fa-camera form-control-feedback"></span>
           </div>
           <div class="row">

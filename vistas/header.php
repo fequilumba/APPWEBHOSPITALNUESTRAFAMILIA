@@ -197,9 +197,8 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="cita.php"><i class="fa fa-circle-o"></i> ver Agenda</a></li>
-                <li><a href="examenmedico.php"><i class="fa fa-circle-o"></i> Exámenes</a></li>
-                <li><a href="receta.php"><i class="fa fa-circle-o"></i> Receta</a></li>
+                <li><a href="cita.php"><i class="fa fa-circle-o"></i> Ver Agenda</a></li>
+                <li><a href="citaatendida.php"><i class="fa fa-circle-o"></i> Citas Atendidas</a></li>
               </ul>
             </li>';
             }

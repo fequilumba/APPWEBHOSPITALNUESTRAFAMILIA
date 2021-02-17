@@ -7,11 +7,10 @@
 
      //Metodo para insertar registros
      public function insertar($especialidad_idespecialidad,$persona_idpersona, 
-     $fecha_cita, $hora_cita, $diagnostico, $sintomas, 
-     $motivo_consulta,$estado_idestado){
+     $fecha_cita, $hora_cita, $motivo_consulta,$estado_idestado){
         $sql= "INSERT INTO `cita_medica` (`especialidad_idespecialidad`,`persona_idpersona`, `fecha_cita`, `hora_cita`, `diagnostico`, 
         `sintomas`, `motivo_consulta`, `estado_idestado`) 
-        VALUES ('$especialidad_idespecialidad','$persona_idpersona', '$fecha_cita', '$hora_cita', '$diagnostico', '$sintomas', 
+        VALUES ('$especialidad_idespecialidad','$persona_idpersona', '$fecha_cita', '$hora_cita', '', '', 
         '$motivo_consulta','$estado_idestado')";
         return ejecutarConsulta($sql);
     }
@@ -57,12 +56,14 @@
     
     
 }
-$sql= "SELECT p.`idpersona`,p.`cedula`,p.`nombres`,p.`apellidos`, p.`email`,p.`telefono`, 
-p.`direccion`, p.`ciudad_residencia`, p.`fecha_nacimiento`,p.`genero`,p.`imagen`,p.`usuario_idusuario`  
-FROM `persona` p WHERE `idpersona`='11'"
+$sql= "SELECT mr.`medicamento_idmedicamento`, m.`nombre`, m.`descripcion`, mr.`cantidad`, mr.`observaciones`
+FROM `medicamento_has_receta` mr
+INNER JOIN `receta` r ON r.`idreceta`= mr.`receta_idreceta` 
+INNER JOIN `medicamento` m ON m.`idmedicamento`= mr.`medicamento_idmedicamento` 
+WHERE r.`idreceta`=4"
 ;
 
-        $sql=ejecutarConsulta($sql);
-        $resultado=$sql->fetch_object();
-        echo json_encode($resultado);
+        $sql=ejecutarConsultaSimpleFila($sql);
+        //$resultado=$sql->fetch_object();
+        echo json_encode($sql);
 ?>

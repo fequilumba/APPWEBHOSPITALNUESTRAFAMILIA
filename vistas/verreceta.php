@@ -65,14 +65,21 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                               <label for="">Médico</label>
                               <input type="text" name="medico" id="medico" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
                             </div>
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Observaciones</label>
-                              <textarea name="observaciones" id="observaciones" class="form-control" rows="3" disabled></textarea>
-                            </div>
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Medicamentos</label>
-                              <textarea name="medicamentos" id="medicamentos" class="form-control" rows="3" disabled></textarea>
-                            </div>
+
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                              <table id="medicamentos" class="table table-striped table-bordered table-condensed table-hover">
+                                <thead style="background-color:#A9D0F5">
+                                  <th>Opciones</th>
+                                  <th>Medicamento</th>
+                                  <th>Descripción</th>
+                                  <th>Cantidad</th>
+                                  <th>Indicaciones</th>
+                                </thead>
+                                <tbody>
+                                
+                                </tbody>
+                              </table>
+                          </div>
                           
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <button class="btn btn-danger" onclick="cancelarform()"

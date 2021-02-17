@@ -1,7 +1,7 @@
 <?php
     session_start();
-    require_once "../modelos/Examenmedico.php";
-    $examenmedico = new Examenmedico();
+    require_once "../modelos/Citaatendida.php";
+    $citaatendida = new Citaatendida();
     $idusuario=$_SESSION['idpersona'];
     $idtipo_examen= isset($_POST["idtipo_examen"])? limpiarCadena($_POST["idtipo_examen"]):"";
     $seleccita = isset($_POST["seleccita"])? limpiarCadena($_POST["seleccita"]):""; 
@@ -9,7 +9,7 @@
     
     
     switch ($_GET["op"]) {
-        case 'guardaryeditar':
+        /*case 'guardaryeditar':
                 if (empty($idtipo_examen)) {
                     $rspta=$examenmedico->insertar($seleccita,$nombre);
                     echo $rspta ? "Exámen registrado" : "No se pudo registrar los exámenes";
@@ -18,7 +18,7 @@
                     $rspta=$examenmedico->editar($idtipo_examen, $nombre);
                     echo $rspta ? "Exámen actualizado" : "No se pudo actualizar los exámenes";                
                 }
-            break;
+            break;*/
         /*case 'desactivar':
             $rspta=$especialidad->desactivar($idespecialidad);
             echo $rspta ? "Especialidad desactivada" : "No se pudo desactivar la especialidad";
@@ -30,19 +30,21 @@
 
             break;*/
         case 'mostrar':
-                $rspta=$examenmedico->mostrar($idtipo_examen);
+                $rspta=$citaatendida->mostrar($idcita_medica);
                 echo json_encode($rspta);
             break;
         case 'listar':
-            $rspta=$examenmedico->listar($idusuario);
+            $rspta=$citaatendida->listar($idusuario);
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                        "0"=> '<button class="btn btn-warning" onclick="mostrar('.$reg->idtipo_examen.')"><li class="fa fa-pencil"></li> </button>',
+                        "0"=>$reg->idcita_medica,
                         "1"=>$reg->especialidad,
-                        "2"=>$reg->paciente,
-                        "3"=>$reg->fecha_cita,
-                        "4"=>$reg->hora_cita,
+                        "2"=>$reg->nombre,
+                        "3"=>$reg->telefono,
+                        "4"=>$reg->fecha_cita,
+                        "5"=>$reg->hora_cita,
+                        "6"=>$reg->estado
                 );
             }
             $results = array(
