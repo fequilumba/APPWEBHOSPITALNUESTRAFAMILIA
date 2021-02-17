@@ -14,7 +14,7 @@
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="../public/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../public/css/font-awesome.css">
+    <link rel="stylesheet" href="../public/fontawesome/css/all.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../public/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -124,13 +124,13 @@
             {
               echo '<li class="treeview">
               <a href="#">
-                <i class="fa fa-hospital-o"></i>
+                <i class="fa fa-hospital"></i>
                 <span>Hospital</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="historia.php"><i class="fa fa-history"></i> Historia</a></li>
-                <li><a href="misionVision.php"><i class="fa fa-comment"></i> Misión/Visón</a></li>
+                <li><a href="misionVision.php"><i class="fa fa-bullseye"></i> Misión/Visón</a></li>
               </ul>
             </li>';
             }
@@ -146,7 +146,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="paciente.php"><i class="fa fa-user-plus"></i> Registrar Paciente</a></li>
+                <li><a href="paciente.php"><i class="fa fa-user-injured"></i> Registrar Paciente</a></li>
               </ul>
             </li>';
             }
@@ -162,7 +162,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="cliente.php"><i class="fa fa-user-plus"></i> Registrar Cliente</a></li>
-                <li><a href="pacienteasociado.php"><i class="fa fa-user-plus"></i> Registrar Paciente</a></li>
+                <li><a href="pacienteasociado.php"><i class="fa fa-user-injured"></i> Registrar Paciente</a></li>
               </ul>
             </li>';
             }
@@ -178,10 +178,10 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="medico.php"><i class="fa fa-user-md"></i> Registrar Médico</a></li>
-                <li><a href="especialidad.php"><i class="fa fa-circle-o"></i> Especialidades</a></li>
-                <li><a href="examentipo.php"><i class="fa fa-circle-o"></i> Tipo Examen</a></li>
-                <li><a href="examen.php"><i class="fa fa-circle-o"></i> Examen</a></li>
+                <li><a href="medico.php"><i class="fa fa-stethoscope"></i> Registrar Médico</a></li>
+                <li><a href="especialidad.php"><i class="fa fa-hand-holding-medical"></i> Especialidades</a></li>
+                <li><a href="examentipo.php"><i class="fa fa-microscope"></i> Tipo Examen</a></li>
+                <li><a href="examen.php"><i class="fa fa-syringe"></i> Examen</a></li>
                 <li><a href="medicamento.php"><i class="fa fa-pills"></i> Medicamento</a></li>
               </ul>
             </li>';
@@ -198,8 +198,8 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="cita.php"><i class="fa fa-circle-o"></i> Ver Agenda</a></li>
-                <li><a href="citaatendida.php"><i class="fa fa-circle-o"></i> Citas Atendidas</a></li>
+                <li><a href="cita.php"><i class="fa fa-book-medical"></i> Ver Agenda</a></li>
+                <li><a href="citaatendida.php"><i class="fa fa-calendar-check"></i> Citas Atendidas</a></li>
               </ul>
             </li>';
             }
@@ -250,9 +250,9 @@
                   <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="historialmedico.php"><i class="fa fa-folder-open"></i> Historial Medico</a></li>
-                  <li><a href="verreceta.php"><i class="fa fa-file"></i> Recetas</a></li>
-                  <li><a href="verexamen.php"><i class="fa fa-diagnoses"></i> Examenes</a></li>                
+                  <li><a href="historialmedico.php"><i class="fa fa-notes-medical"></i> Historial Medico</a></li>
+                  <li><a href="verreceta.php"><i class="fa fa-file-prescription"></i> Recetas</a></li>
+                  <li><a href="verexamen.php"><i class="fa fa-microscope"></i> Examenes</a></li>                
                 </ul>
               </li>';
             

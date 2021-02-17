@@ -44,7 +44,7 @@ session_start();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                        "0"=> '<button class="btn btn-warning" onclick="mostrar('.$reg->idcita_medica.')"><li class="fa fa-pencil"></li> Atender</button>',
+                        "0"=> '<button class="btn btn-warning" onclick="mostrar('.$reg->idcita_medica.')"><li class="fa fa-edit"></li> Atender</button>',
                         "1"=>$reg->especialidad,
                         "2"=>$reg->nombre,
                         "3"=>$reg->telefono,
