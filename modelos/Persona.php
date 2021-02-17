@@ -27,14 +27,14 @@
         
     }
      //metodo para editar registros
-     public function editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                                $ciudad_residencia, $fecha_nacimiento, $genero,$roles){
+     public function editarCliente($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+                                    $ciudad_residencia, $fecha_nacimiento, $genero,$imagen){
         $sql= "UPDATE `persona` SET `cedula`='$cedula', `nombres`='$nombres', `apellidos`='$apellidos', `email`='$email', 
         `telefono`='$telefono', `direccion`='$direccion', `ciudad_residencia`='$ciudad_residencia', `fecha_nacimiento`='$fecha_nacimiento', `genero`='$genero'
         WHERE `idpersona`='$idpersona'";
 
-        ejecutarConsulta($sql);
-        //Eliminamos todos los roles asignados para volverlos a registrar
+        return ejecutarConsulta($sql);
+        /*//Eliminamos todos los roles asignados para volverlos a registrar
         $sqldel="DELETE FROM `persona_has_rol` WHERE `persona_idpersona`='$idpersona'";
         ejecutarConsulta($sqldel);
 
@@ -49,7 +49,7 @@
             ejecutarConsulta($sql_detalle) or $sw = false;
             $num_elementos=$num_elementos +1;
         }
-        return $sw;
+        return $sw;*/
     }
     //mostrar un registro para editar
     public function mostrar($idpersona)
@@ -76,7 +76,7 @@
     }
     //listar pacientes
     public function listar(){
-        $sql= "SELECT p.`idpersona`, p.`cedula`, p.`nombres`,p.`apellidos`,p.`email`, p.`telefono`,p.`direccion`,
+        $sql= "SELECT p.`idpersona`, p.`cedula`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres,p.`email`, p.`telefono`,p.`direccion`,
                         p.`ciudad_residencia`, p.`fecha_nacimiento`,p.`genero`, p.`estado` 
                 FROM `persona` p  
                 INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` AND pr.`rol_idrol`=3";

@@ -146,7 +146,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="paciente.php"><i class="fa fa-circle-o"></i> Registrar</a></li>
+                <li><a href="paciente.php"><i class="fa fa-circle-o"></i> Registrar Paciente</a></li>
               </ul>
             </li>';
             }
@@ -161,7 +161,8 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="pacienteasociado.php"><i class="fa fa-circle-o"></i> Registrar</a></li>
+                <li><a href="cliente.php"><i class="fa fa-circle-o"></i> Registrar Cliente</a></li>
+                <li><a href="pacienteasociado.php"><i class="fa fa-circle-o"></i> Registrar Paciente</a></li>
               </ul>
             </li>';
             }
@@ -177,7 +178,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="medico.php"><i class="fa fa-circle-o"></i> Registrar</a></li>
+                <li><a href="medico.php"><i class="fa fa-circle-o"></i> Registrar Médico</a></li>
                 <li><a href="especialidad.php"><i class="fa fa-circle-o"></i> Especialidades</a></li>
                 <li><a href="examentipo.php"><i class="fa fa-circle-o"></i> Tipo Examen</a></li>
                 <li><a href="examen.php"><i class="fa fa-circle-o"></i> Examen</a></li>
