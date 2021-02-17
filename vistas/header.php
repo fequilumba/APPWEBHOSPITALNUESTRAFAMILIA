@@ -129,8 +129,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="historia.php"><i class="fa fa-circle-o"></i> Historia</a></li>
-                <li><a href="misionVision.php"><i class="fa fa-circle-o"></i> Misión/Visón</a></li>
+                <li><a href="historia.php"><i class="fa fa-history"></i> Historia</a></li>
+                <li><a href="misionVision.php"><i class="fa fa-comment"></i> Misión/Visón</a></li>
               </ul>
             </li>';
             }
@@ -146,7 +146,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="paciente.php"><i class="fa fa-circle-o"></i> Registrar Paciente</a></li>
+                <li><a href="paciente.php"><i class="fa fa-user-plus"></i> Registrar Paciente</a></li>
               </ul>
             </li>';
             }
@@ -161,8 +161,8 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="cliente.php"><i class="fa fa-circle-o"></i> Registrar Cliente</a></li>
-                <li><a href="pacienteasociado.php"><i class="fa fa-circle-o"></i> Registrar Paciente</a></li>
+                <li><a href="cliente.php"><i class="fa fa-user-plus"></i> Registrar Cliente</a></li>
+                <li><a href="pacienteasociado.php"><i class="fa fa-user-plus"></i> Registrar Paciente</a></li>
               </ul>
             </li>';
             }
@@ -178,11 +178,11 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="medico.php"><i class="fa fa-circle-o"></i> Registrar Médico</a></li>
+                <li><a href="medico.php"><i class="fa fa-user-md"></i> Registrar Médico</a></li>
                 <li><a href="especialidad.php"><i class="fa fa-circle-o"></i> Especialidades</a></li>
                 <li><a href="examentipo.php"><i class="fa fa-circle-o"></i> Tipo Examen</a></li>
                 <li><a href="examen.php"><i class="fa fa-circle-o"></i> Examen</a></li>
-                <li><a href="medicamento.php"><i class="fa fa-circle-o"></i> Medicamento</a></li>
+                <li><a href="medicamento.php"><i class="fa fa-pills"></i> Medicamento</a></li>
               </ul>
             </li>';
             }
@@ -215,7 +215,7 @@
                       <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="calendario.php"><i class="fa fa-circle-o"></i> Agendar</a></li>
+                      <li><a href="calendario.php"><i class="fa fa-calendar"></i> Agendar</a></li>
                     </ul>
                   </li>';
             
@@ -232,8 +232,8 @@
                   <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="calendario.php"><i class="fa fa-circle-o"></i> Agendar</a></li>
-                  <li><a href="cancelarCita.php"><i class="fa fa-circle-o"></i> Cancelar</a></li>
+                  <li><a href="calendario.php"><i class="fa fa-calendar"></i> Agendar</a></li>
+                  <li><a href="cancelarCita.php"><i class="fa fa-times-circle"></i> Cancelar</a></li>
                 </ul>
               </li>';
             
@@ -250,9 +250,9 @@
                   <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="historialmedico.php"><i class="fa fa-circle-o"></i> Historial Medico</a></li>
-                  <li><a href="verreceta.php"><i class="fa fa-circle-o"></i> Recetas</a></li>
-                  <li><a href="verexamen.php"><i class="fa fa-circle-o"></i> Examenes</a></li>                
+                  <li><a href="historialmedico.php"><i class="fa fa-folder-open"></i> Historial Medico</a></li>
+                  <li><a href="verreceta.php"><i class="fa fa-file"></i> Recetas</a></li>
+                  <li><a href="verexamen.php"><i class="fa fa-diagnoses"></i> Examenes</a></li>                
                 </ul>
               </li>';
             
