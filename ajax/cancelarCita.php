@@ -20,7 +20,7 @@
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                        "0"=>' <button class="btn btn-danger" onclick="eliminarCita('.$reg->idcita_medica.')"><li class="fa fa-close"></li> Cancelar</button>',
+                        "0"=>' <button class="btn btn-danger" onclick="eliminarCita('.$reg->idcita_medica.')"><li class="fa fa-times"></li> Cancelar</button>',
                         "1"=>$reg->especialidad,
                         "2"=>$reg->paciente,
                         "3"=>$reg->medico,

@@ -30,10 +30,10 @@
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
                     "0"=> ($reg->estado) ? 
-                    '<button class="btn btn-warning" onclick="mostrar('.$reg->idtipo_examen.')"><li class="fa fa-pencil"></li></button>'.
-                    ' <button class="btn btn-danger" onclick="desactivar('.$reg->idtipo_examen.')"><li class="fa fa-close"></li></button>'
+                    '<button class="btn btn-warning" onclick="mostrar('.$reg->idtipo_examen.')"><li class="fa fa-pencil-alt"></li></button>'.
+                    ' <button class="btn btn-danger" onclick="desactivar('.$reg->idtipo_examen.')"><li class="fa fa-times"></li></button>'
                     :
-                    '<button class="btn btn-warning" onclick="mostrar('.$reg->idtipo_examen.')"><li class="fa fa-pencil"></li></button>'.
+                    '<button class="btn btn-warning" onclick="mostrar('.$reg->idtipo_examen.')"><li class="fa fa-pencil-alt"></li></button>'.
                     ' <button class="btn btn-primary" onclick="activar('.$reg->idtipo_examen.')"><li class="fa fa-check"></li></button>'
                     ,
                     "1"=>$reg->nombre,
@@ -90,8 +90,8 @@
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                    "0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idexamen.')"><li class="fa fa-pencil"></li></button>'/*.
-                        ' <button class="btn btn-danger" onclick="eliminar('.$reg->idexamen.')"><li class="fa fa-close"></li></button>'*/,
+                    "0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idexamen.')"><li class="fa fa-pencil-alt"></li></button>'/*.
+                        ' <button class="btn btn-danger" onclick="eliminar('.$reg->idexamen.')"><li class="fa fa-times"></li></button>'*/,
                         
                     "1"=>$reg->nombre,
                     "2"=>$reg->tipo
