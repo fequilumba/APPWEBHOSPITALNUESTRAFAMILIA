@@ -139,7 +139,7 @@ function guardaryeditar(e){
         //tabla.ajax.reload();
     },
     error:function(){
-      alert("errroooooorr....!!!!!")
+      alert("error..!!")
     }
     
   });

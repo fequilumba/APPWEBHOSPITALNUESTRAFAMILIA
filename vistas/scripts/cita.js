@@ -95,7 +95,7 @@ function guardaryeditar(e){
             alert(datos);
             mostrarform(false);
             //alertify.success('Cita registrada');
-            tabla.ajax.reload();
+            location.reload();
         }
     });
     limpiar();
