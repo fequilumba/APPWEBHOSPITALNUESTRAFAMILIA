@@ -17,6 +17,7 @@ $genero= isset($_POST["genero"])? limpiarCadena($_POST["genero"]):"";
 $login=isset($_POST["username"])? limpiarCadena($_POST["username"]):"";
 $contrasenia=isset($_POST["contrasenia"])? limpiarCadena($_POST["contrasenia"]):"";
 $imagen=isset($_POST["imagen"])? limpiarCadena($_POST["imagen"]):"";
+$imagenactual=isset($_POST["imagenactual"])? limpiarCadena($_POST["imagenactual"]):"";
 
 switch ($_GET["op"]){
 	case 'guardaryeditar':

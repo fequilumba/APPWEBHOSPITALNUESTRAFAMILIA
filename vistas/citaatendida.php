@@ -20,7 +20,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Exámen <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Exámen</button></h1>
+                          <h1 class="box-title">Citas Atendidas <!--<button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Exámen</button>--></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -30,11 +30,13 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                         <table id="tbllistadocita" class="table table-striped
                         table-bordered table-condensed table-hover">
                           <thead>
-                            <th>Opciones</th>
+                          <th>Opciones</th>
                             <th>Especialidad</th>
                             <th>Paciente</th>
+                            <th>Teléfono</th>
                             <th>Fecha</th>
                             <th>Hora</th>
+                            <th>Estado</th>
                           </thead>
                           <tbody>
 
@@ -43,36 +45,15 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                             <th>Opciones</th>
                             <th>Especialidad</th>
                             <th>Paciente</th>
+                            <th>Teléfono</th>
                             <th>Fecha</th>
                             <th>Hora</th>
+                            <th>Estado</th>
                           </tfoot>
                         </table>
                     </div>
                     <div class="panel-body" id="formularioregistros">
-                        <form name="formularioexamen" id="formularioexamen" method="POST">
-
-                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="selectCita">
-                              <label for="">Cita</label>
-                              <input type="hidden" name="idtipo_examen" id="idtipo_examen">
-                              <select name="seleccita" id="seleccita" class="form-control" data-live-search="true" data-live-search-style="startsWith" ></select>
-                            </div>
-
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Exámenes</label>
-                              <textarea name="nombre" id="nombre" class="form-control" rows="3"></textarea>
-                            </div>   
-                                               
-                          
-                          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <button class="btn btn-primary" type="submit"  
-                            id="btnGuardar"><i class="fa fa-save"> Guardar</i></button>
-
-                            <button class="btn btn-danger" onclick="cancelarform()"
-                            type="button"><i class="fa fa-arrow-circle-left"> Cancelar</i></button>
-
-                          </div>
-                          </div>
-                        </form>
+                        
                     </div>
                     <!--Fin centro -->
                   </div><!-- /.box -->
@@ -89,7 +70,7 @@ else {
 }
   require 'footer.php';
 ?>
-<script type="text/javascript" src="scripts/examenmedico.js"></script>
+<script type="text/javascript" src="scripts/citaatendida.js"></script>
 <?php
 }
 ob_end_flush();

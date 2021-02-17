@@ -49,18 +49,20 @@ function listar(){
     }).DataTable();
 }
 
-function mostrar(idtipo_examen){
-    $.post("../ajax/verexamen.php?op=mostrar",{idtipo_examen : idtipo_examen}, function(data, status)
+function mostrar(idpedido_examen){
+    $.post("../ajax/verexamen.php?op=mostrar",{idpedido_examen : idpedido_examen}, function(data, status)
     {
         data = JSON.parse(data);
         mostrarform(true);
         $("#especialidad").val(data.especialidad);
         $("#paciente").val(data.paciente);
         $("#medico").val(data.medico);
-        $("#examen").val(data.examen);
-        $("#idtipo_examen").val(data.idtipo_examen);
+        $("#idpedido_examen").val(data.idpedido_examen);
 
     });
+    $.post("../ajax/verexamen.php?op=listarDetalle&id="+idpedido_examen,function(r){
+        $("#examenes").html(r);
+});
 }
 
 init();

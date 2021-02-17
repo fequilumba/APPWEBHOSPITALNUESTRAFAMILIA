@@ -5,25 +5,31 @@ function init() {
     listar();
 
 }
+//funcion limpiar
+function limpiar(){
+    $("#idtipo_examen").val("");
+    $("#seleccita").val("");
+    $("#nombre").val("");
+}
 //mostrar formulario
 function mostrarform(flag){
+    limpiar();
     if(flag){
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
+        $("#btnGuardar").prop("disabled",false);
+        $("#btnagregar").hide();
     }else{
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
-        
+        $("#btnagregar").show();
     }
 }
 
-//funcion cancelar form
-function cancelarform(){
-    mostrarform(false);
-}
+
 //funcion listar
 function listar(){
-    tabla=$('#tbllistadoe').dataTable({
+    tabla=$('#tbllistadocita').dataTable({
         "aProcessing":true,//activar procesamiento del datatable
         "aServerSide": true,//paginacion y filtrado realizados por el servidor
         dom: 'Bfetip',//definir los parametro del control de tabla
@@ -36,7 +42,7 @@ function listar(){
             'pdf',
         ],
         "ajax":{
-            url: '../ajax/verreceta.php?op=listar',
+            url: '../ajax/citaatendida.php?op=listar',
             type: "get",
             dataType: "json",
             error: function(e){
@@ -49,20 +55,19 @@ function listar(){
     }).DataTable();
 }
 
-function mostrar(idreceta){
-    $.post("../ajax/verreceta.php?op=mostrar",{idreceta : idreceta}, function(data, status)
+
+function mostrar(idtipo_examen){
+    $.post("../ajax/examenmedico.php?op=mostrar",{idtipo_examen : idtipo_examen}, function(data, status)
     {
         data = JSON.parse(data);
         mostrarform(true);
-        $("#idreceta").val(data.idreceta);
-        $("#especialidad").val(data.especialidad);
-        $("#paciente").val(data.paciente);
-        $("#medico").val(data.medico);
+        $("#seleccita").val(data.cita); 
+        $("#seleccita").selectpicker('refresh');
+        $("#nombre").val(data.nombre);
+        $("#idtipo_examen").val(data.idtipo_examen)
 
     });
-    $.post("../ajax/verreceta.php?op=listarDetalle&id="+idreceta,function(r){
-        $("#medicamentos").html(r);
-});
 }
+
 
 init();

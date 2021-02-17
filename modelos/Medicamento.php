@@ -28,7 +28,6 @@
         $sql= "SELECT * FROM `medicamento` WHERE `idmedicamento`='$idmedicamento'";
         return ejecutarConsultaSimpleFila($sql);
     }
-
     //METODOS PARA ACTIVAR/DESACTIVAR TIPO DE EXAMEN
     public function desactivar($idmedicamento)
     {
@@ -45,7 +44,13 @@
         
         return ejecutarConsulta($sql);
     }
-    
+    //listar medicamentos activos para el modal
+    public function listarMedicamentosActivos(){
+        $sql= "SELECT m.`idmedicamento`, m.`nombre`, m.`descripcion` 
+        FROM `medicamento` m
+        WHERE m.`estado`=1";
+        return ejecutarConsulta($sql);
+     }
     /*public function eliminarExamenImagen($idtipo_examen)
     {
         $sql= "DELETE FROM `tipo_examen` WHERE `tipo_examen`.`idtipo_examen` = '$idtipo_examen'";

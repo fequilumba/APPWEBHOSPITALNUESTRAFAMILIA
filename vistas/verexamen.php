@@ -22,7 +22,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Examenes <!--<button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i></button>--></h1>
+                          <h1 class="box-title">Exámenes <!--<button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i></button>--></h1>
                         <div class="box-tools pull-right"></div>
                     </div>
                     <!-- /.box-header -->
@@ -54,7 +54,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                         <form name="formularioe" id="formularioe" method="POST">
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Especialidad</label>
-                              <input type="hidden" name="idcita_medica" id="idcita_medica">
+                              <input type="hidden" name="idpedido_examen" id="idpedido_examen">
                               <input type="text" name="especialidad" id="especialidad" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -65,9 +65,17 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                               <label for="">Médico</label>
                               <input type="text" name="medico" id="medico" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
                             </div>
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Exámenes</label>
-                              <textarea name="examen" id="examen" class="form-control" rows="3" disabled></textarea>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                              <table id="examenes" class="table table-striped table-bordered table-condensed table-hover">
+                                <thead style="background-color:#A9D0F5">
+                                  <th>Opciones</th>
+                                  <th>Nombre</th>
+                                  <th>Tipo</th>
+                                </thead>
+                                <tbody>
+                                
+                                </tbody>
+                              </table>
                             </div>
                           
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

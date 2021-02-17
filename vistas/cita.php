@@ -20,7 +20,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Cita <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Proxima Cita</button></h1>
+                          <h1 class="box-title">Atención Médica <!--<button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Proxima Cita</button>--></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -57,24 +57,17 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <label for="">Especialidad</label>
                               <input type="hidden" name="idcita_medica" id="idcita_medica">
-                              <select name="especialidad_idespecialidad" id="especialidad_idespecialidad"  class="form-control selectpicker " data-live-search="true" data-live-search-style="startsWith"requiered></select>
+                              <input type="text" name="especialidad_idespecialidad" id="especialidad_idespecialidad" class="form-control" disabled>
+                              <!--<select name="especialidad_idespecialidad" id="especialidad_idespecialidad"  class="form-control selectpicker " data-live-search="true" data-live-search-style="startsWith" disabled></select>-->
                             </div>
-
-
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" >
                               <label for="">Paciente</label>
-                              <select name="personaPaciente_idpersona" id="personaPaciente_idpersona" class="form-control selectpicker" data-live-search="true" data-live-search-style="startsWith" requiered></select>
+                              <input type="text" name="personaPaciente_idpersona" id="personaPaciente_idpersona" class="form-control" disabled>
+                              <!--<select name="personaPaciente_idpersona" id="personaPaciente_idpersona" class="form-control selectpicker" data-live-search="true" data-live-search-style="startsWith" disabled></select>-->
                             </div>
-
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="medico">
-                              <label for="">Médico</label>
-                              <select name="personaMedico_idpersona" id="personaMedico_idpersona" class="form-control"></select>
-                            </div>
-
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Fecha</label>
-                              <input type="date" name="fecha_cita" id="fecha_cita" class="form-control"  required>
-                              <br>
+                              <label for="">Motivo</label>
+                              <textarea name="motivo_consulta" id="motivo_consulta" class="form-control" cols="" rows="3" disabled></textarea>
                             </div>
 
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -86,25 +79,65 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                               <label for="">Síntomas(*)</label>
                               <textarea name="sintomas" id="sintomas" class="form-control" cols="" rows="3" required></textarea>
                             </div>
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label for="">Motivo</label>
-                              <textarea name="motivo_consulta" id="motivo_consulta" class="form-control" cols="" rows="3" required></textarea>
-                            </div>
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             
-                            <label for="">Hora</label>
-                              <select name="horario_idhorario" id="horario_idhorario" class="form-control selectpicker" data-live-search="true" data-live-search-style="startsWith"></select>
-                              </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="estado">
-                              <label for="">Estado</label>
+                              <label for="">Estado(*)</label>
                               <select name="estado_idestado" id="estado_idestado"  class="form-control" requiered ></select>
                             </div>
-                          
+
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                              <h2>Receta</h2>
+                          </div>
+
+                          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                              <a data-toggle="modal" href="#myModal">
+                              <button id="btnAgregarMedi" type="button" class="btn btn-primary">
+                              <span class="fa fa-plus"></span> Agregar Medicamentos</button>
+                              </a>
+                          </div>
+                          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                              <table id="medicamentos" class="table table-striped table-bordered table-condensed table-hover">
+                                <thead style="background-color:#A9D0F5">
+                                  <th>Opciones</th>
+                                  <th>Medicamento</th>
+                                  <th>Descripción</th>
+                                  <th>Cantidad</th>
+                                  <th>Indicaciones</th>
+                                </thead>
+                                <tbody>
+                                
+                                </tbody>
+                              </table>
+                          </div>
+
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                              <h2>Exámenes</h2>
+                          </div>
+
+                          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                              <a data-toggle="modal" href="#myModal2">
+                              <button id="btnAgregarExa" type="button" class="btn btn-primary">
+                              <span class="fa fa-plus"></span> Agregar Exámenes</button>
+                              </a>
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                              <table id="examenes" class="table table-striped table-bordered table-condensed table-hover">
+                                <thead style="background-color:#A9D0F5">
+                                  <th>Opciones</th>
+                                  <th>Nombre</th>
+                                  <th>Tipo</th>
+                                </thead>
+                                <tbody>
+                                
+                                </tbody>
+                              </table>
+                            </div>
+                          
+                          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="guardar">
                             <button class="btn btn-primary" type="submit"  
                             id="btnGuardar"><i class="fa fa-save"> Guardar</i></button>
 
-                            <button class="btn btn-danger" onclick="cancelarform()"
+                            <button id="btnCancelar"class="btn btn-danger" onclick="cancelarform()"
                             type="button"><i class="fa fa-arrow-circle-left"> Cancelar</i></button>
 
                           </div>
@@ -119,6 +152,75 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
+
+  <!--Modal receta-->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Seleccione un Medicamento</h4>
+        </div>
+        <div class="modal-body table-responsive">
+          <table id="tblmedicamentos" class="table table-striped table-bordered table-condensed table-hover">
+            <thead>
+                <th>Opciones</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+            </thead>
+            <tbody>
+              
+            </tbody>
+            <tfoot>
+              <th>Opciones</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+            </tfoot>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>        
+      </div>
+    </div>
+  </div> 
+
+  <!--Fin Modal receta-->
+
+
+  <!--Modal examen-->
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Seleccione un Examen</h4>
+        </div>
+        <div class="modal-body table-responsive">
+          <table id="tblexamenes" class="table table-striped table-bordered table-condensed table-hover">
+            <thead>
+                <th>Opciones</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+            </thead>
+            <tbody>
+              
+            </tbody>
+            <tfoot>
+              <th>Opciones</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+            </tfoot>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>        
+      </div>
+    </div>
+  </div> 
+
+  <!--Fin Modal examen-->
 <?php
 }
 else {

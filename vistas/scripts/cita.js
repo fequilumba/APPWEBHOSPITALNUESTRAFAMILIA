@@ -7,67 +7,26 @@ function init() {
         guardaryeditar(e);
     });
 
-    //Cargamos los items al select Especialidad
-    $.post("../ajax/cita.php?op=selectEspecialidad",function(r)
-        {        
-            $("#especialidad_idespecialidad").html(r);
-            $("#especialidad_idespecialidad").selectpicker('refresh');
-        }
-    );
-    //recargamos la lsita de medicos segun la especialidad
-    $("#especialidad_idespecialidad").change(function(){
-        $("#especialidad_idespecialidad option:selected").each(function(){
-          idespecialidad= $(this).val();
-          $.post("../ajax/cita.php?op=selectMedico",{idespecialidad:idespecialidad},function(r){         
-            $("#personaMedico_idpersona").html(r);
-            //$("#personaMedico_idpersona").selectpicker('refresh');
-          });
-        });
-    });
     //Cargamos los items al select Estado
     $.post("../ajax/cita.php?op=selectEstado",function(r)
         {        
             //console.log(data);
             $("#estado_idestado").html(r);
-            //$("#especialidad_idespecialidad").selectpicker('refresh');
+            $("#estado_idestado").selectpicker('refresh');
             
         }
     );
-    //Cargamos los items al select Paciente
-    $.post("../ajax/cita.php?op=selectPaciente",function(r)
-        {        
-            //console.log(data);
-            $("#personaPaciente_idpersona").html(r);
-            $("#personaPaciente_idpersona").selectpicker('refresh');
-            
-        }
-    );
-    $.post("../ajax/cita.php?op=selectHorario",function(r)
-        {        
-            //console.log(data);
-            $("#horario_idhorario").html(r);
-            $("#horario_idhorario").selectpicker('refresh');
-        }
-    ); 
 }
 //funcion limpiar
 function limpiar(){
     $("#idcita_medica").val("");
     $("#especialidad_idespecialidad").val("");
     $("#personaPaciente_idpersona").val("");
-    $("#personaMedico_idpersona").val("");
-    $("#fecha_cita").val("");
     $("#diagnostico").val("");
     $("#sintomas").val("");
     $("#motivo_consulta").val("");
-    $("#horario_idhorario").val("");
     $("#estado_idestado").val("");
-}
-function habilitar() {
-    $("#especialidad_idespecialidad").prop("disabled", false);
-    $("#personaPaciente_idpersona").removeAttr('disabled');
-    $("#medico").show();
-    $("#horario_idhorario").removeAttr('disabled');
+    $(".filas").remove();
 }
 //mostrar formulario
 function mostrarform(flag){
@@ -77,8 +36,9 @@ function mostrarform(flag){
         $("#formularioregistros").show();
         $("#btnGuardar").prop("disabled",false);
         $("#btnagregar").hide();
+        listarMedicamento();
+        listarExamen();
     }else{
-        //$("#formularioreceta").hide();
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
         $("#btnagregar").show();
@@ -88,7 +48,6 @@ function mostrarform(flag){
 //cancelar form
 function cancelarform(){
     limpiar();
-    habilitar();
     mostrarform(false);
 }
 //funcion listar
@@ -150,41 +109,116 @@ function mostrar(idcita_medica){
         mostrarform(true);
 
         $("#especialidad_idespecialidad").val(data.especialidad_idespecialidad);
-        $('#especialidad_idespecialidad').selectpicker('refresh');
         $("#personaPaciente_idpersona").val(data.personaPaciente_idpersona);
-        $("#personaPaciente_idpersona").selectpicker('refresh');
-        $("#medico").hide();
-        //$("#personaMedico_idpersona").val(data.personaMedico_idpersona);
-        //$('#personaMedico_idpersona').selectpicker('refresh');
-        $("#fecha_cita").val(data.fecha_cita);
         $("#diagnostico").val(data.diagnostico);
         $("#sintomas").val(data.sintomas);
         $("#motivo_consulta").val(data.motivo_consulta);
-        $("#horario_idhorario").val(data.horario_idhorario);
-        $("#horario_idhorario").selectpicker('refresh');
         $("#estado_idestado").val(data.estado_idestado);
         $("#estado_idestado").selectpicker('refresh');
         $("#idcita_medica").val(data.idcita_medica);
     });
 }
-
-/*function eliminar(idcita_medica)
-{ 
-    alertify.confirm("CITA","¿Estas seguro de eliminar la cita?",
-        function(){
-            $.post(
-                "../ajax/cita.php?op=eliminar", {idcita_medica : idcita_medica},
-                function(e)
-                {
-                    //alertify.alert(e);
-                    tabla.ajax.reload();
-                    alertify.success('Cita eliminada');
-                }
-            );
+//listar medicamentos
+function listarMedicamento() {
+    tabla=$('#tblmedicamentos').dataTable({
+        "aProcessing":true,//activar procesamiento del datatable
+        "aServerSide": true,//paginacion y filtrado realizados por el servidor
+        dom: 'Bfetip',//definir los parametro del control de tabla
+        
+        //botones para copiar los registros en diferentes formatos
+        buttons:[
+        ],
+        "ajax":{
+            url: '../ajax/cita.php?op=listarMedicamentos',
+            type: "get",
+            dataTyoe: "json",
+            error: function(e){
+                console.log(e,responseText);
+            }
         },
-        function(){
-            alertify.error('Cancelado');
-        });
-}*/
+        "bDestroy":true,
+        "iDisplayLength": 5, //paginacion--> cada 5 registros
+        "order": [[0, "desc" ]]//ordenar (columna)
+    }).DataTable();
+}
+
+var cont=0;
+var detalles=0;
+function agregarMedicamento(idmedicamento,nombre,descripcion) {
+    var cantidad=1;
+    var observaciones="";
+    if (idmedicamento!="") {
+        var fila='<tr class="filas" id="fila'+cont+'">'+
+        '<td> <button type="button" class="btn btn-danger" onclick="eliminarMedicamento('+cont+')">X</button></td>'+
+        '<td><input type="hidden" name="idmedicamento[]" value="'+idmedicamento+'">'+nombre+'</td>'+
+        '<td><input type="hidden" name="descripcion[]" value="">'+descripcion+'</td>'+
+        '<td><input type="number" maxlength="3" minlength="1" name="cantidad[]" id="cantidad[]" value="'+cantidad+'"></td>'+
+        '<td><input type="text" name="observaciones[]" id="observaciones[]" value="'+observaciones+'"></td>'
+        //<textarea name="observaciones[]" id="observaciones[]" rows="2"></textarea>
+        '</tr>';
+        cont++;
+        detalles= detalles+1;
+        $('#medicamentos').append(fila);
+    }else{
+        alert("Error al ingresar el medicamento")
+    }
+}
+
+function eliminarMedicamento(indice) {
+    $("#fila" + indice).remove();
+  	detalles=detalles-1;
+}
+
+/****************************************
+ * 
+ * 
+ * Lista de examenes 
+ * 
+ * 
+ * 
+ * ****************************************/
+function listarExamen() {
+    tabla=$('#tblexamenes').dataTable({
+        "aProcessing":true,//activar procesamiento del datatable
+        "aServerSide": true,//paginacion y filtrado realizados por el servidor
+        dom: 'Bfetip',//definir los parametro del control de tabla
+        
+        //botones para copiar los registros en diferentes formatos
+        buttons:[
+        ],
+        "ajax":{
+            url: '../ajax/cita.php?op=listarExamenes',
+            type: "get",
+            dataTyoe: "json",
+            error: function(e){
+                console.log(e,responseText);
+            }
+        },
+        "bDestroy":true,
+        "iDisplayLength": 5, //paginacion--> cada 5 registros
+        "order": [[0, "desc" ]]//ordenar (columna)
+    }).DataTable();
+}
+
+var cont2=0;
+var detalles2=0;
+function agregarExamen(idexamen,nombre,tipo) {
+    if (idexamen!="") {
+        var fila='<tr class="filas" id="fila2'+cont2+'">'+
+        '<td> <button type="button" class="btn btn-danger" onclick="eliminarExamen('+cont2+')">X</button></td>'+
+        '<td><input type="hidden" name="idexamen[]" value="'+idexamen+'">'+nombre+'</td>'+
+        '<td><input type="hidden" name="tipo[]" value="">'+tipo+'</td>'
+        '</tr>';
+        cont2++;
+        detalles2= detalles2+1;
+        $('#examenes').append(fila);
+    }else{
+        alert("Error al ingresar el medicamento")
+    }
+}
+function eliminarExamen(indice) {
+    $("#fila2" + indice).remove();
+  	detalles=detalles-1;
+}
 
 init();
