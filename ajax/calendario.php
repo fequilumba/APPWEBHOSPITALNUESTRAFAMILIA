@@ -42,17 +42,32 @@ session_start();
                     //echo $rspta ? "Cita eliminada" : "No se pudo eliminar la cita";
                 break;
         case 'listarCitas':
+            if ($rolusuario==1) {
                 $rspta=$cita->listarCitas();
                 $data = Array();
                 while ($reg=$rspta->fetch_object()) {
                     $data[]= array(
                         "id"=>$reg->idcita_medica,
-                        "title"=> "No Disponible",
+                        "title"=> 'No Disponible-'.$reg->especialidad.'',
                         "start"=>$reg->start,
                         //"color"=> 'red', 
                         "backgroundColor"=>"rgb(236, 112, 99)"
                     );
-                }  
+                } 
+            }else {
+                $rspta=$cita->listarCitasAsociadas($idasociado);
+                $data = Array();
+                while ($reg=$rspta->fetch_object()) {
+                    $data[]= array(
+                        "id"=>$reg->idcita_medica,
+                        "title"=> $reg->especialidad.'-'.$reg->title.'',
+                        "start"=>$reg->start,
+                        //"color"=> 'red', 
+                        "backgroundColor"=>"rgb(236, 112, 99)"
+                    );
+                } 
+            }
+                 
                 echo json_encode($data);   
                 break;
         case 'selectPaciente':

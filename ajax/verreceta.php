@@ -22,7 +22,6 @@
             $id=$_GET['id'];
 
             echo '<thead style="background-color:#A9D0F5">
-                                    <th>Opciones</th>
                                     <th>Medicamento</th>
                                     <th>Descripción</th>
                                     <th>Cantidad</th>
@@ -30,7 +29,7 @@
                                 </thead>';
                 $rspta=$verreceta->listarDetalle($id);
                 while ($reg=$rspta->fetch_object()) {
-                    echo '<tr><td></td><td>'.$reg->nombre.'</td><td>'.$reg->descripcion.'</td>
+                    echo '<tr><td>'.$reg->nombre.'</td><td>'.$reg->descripcion.'</td>
                                         <td>'.$reg->cantidad.'</td><td>'.$reg->observaciones.'</td></tr>';
                 }
                 
@@ -40,8 +39,10 @@
                 $rspta=$verreceta->listarTodo();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
+                $url='../reportes/receta.php?id=';
                 $data[]= array(
-                    "0"=>'<button class="btn btn-primary" onclick="mostrar('.$reg->idreceta.')"><li class="fa fa-eye"></li></button>',
+                    "0"=>'<button class="btn btn-primary" onclick="mostrar('.$reg->idreceta.')"><li class="fa fa-eye"></li></button>'.
+                    ' <a href="'.$url.$reg->idreceta.'" target="_blank"> <button class="btn btn-info"><li class="fa fa-print"></li></button> </a>',
                     
                     "1"=>$reg->especialidad,
                     "2"=>$reg->paciente,
@@ -59,8 +60,10 @@
                 $rspta=$verreceta->listarRecetaMedica($idpersonam);
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
+                $url='../reportes/receta.php?id=';
                 $data[]= array(
-                    "0"=>'<button class="btn btn-primary" onclick="mostrar('.$reg->idreceta.')"><li class="fa fa-eye"></li></button>',
+                    "0"=>'<button class="btn btn-primary" onclick="mostrar('.$reg->idreceta.')"><li class="fa fa-eye"></li></button>'.
+                    ' <a href="'.$url.$reg->idreceta.'" target="_blank"> <button class="btn btn-info"><li class="fa fa-print"></li></button> </a>',
                     
                     "1"=>$reg->especialidad,
                     "2"=>$reg->paciente,
@@ -79,8 +82,10 @@
                 $rspta=$verreceta->listar($idusuario);
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
+                $url='../reportes/receta.php?id=';
                 $data[]= array(
-                    "0"=>'<button class="btn btn-primary" onclick="mostrar('.$reg->idreceta.')"><li class="fa fa-eye"></li></button>',
+                    "0"=>'<button class="btn btn-primary" onclick="mostrar('.$reg->idreceta.')"><li class="fa fa-eye"></li></button>'.
+                    ' <a href="'.$url.$reg->idreceta.'" target="_blank"> <button class="btn btn-info"><li class="fa fa-print"></li></button> </a>',
                     
                     "1"=>$reg->especialidad,
                     "2"=>$reg->paciente,

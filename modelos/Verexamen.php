@@ -70,17 +70,17 @@
             return ejecutarConsulta($sql);
    }
 
-   public function examencabecera($idtipo_examen)
+   public function examencabecera($idpedido_examen)
    {
       $sql= "SELECT e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
-            CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico, te.`nombre` as examen, cm.`fecha_cita` 
-            FROM `tipo_examen` te 
-            INNER JOIN `cita_medica_has_tipo_examen` ce ON ce.`tipo_examen_idtipo_examen`= te.`idtipo_examen`
-            INNER JOIN `cita_medica` cm ON cm.`idcita_medica`= ce.`cita_medica_idcita_medica` 
-            INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
-            INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
-            INNER JOIN `persona` pm ON pm.`idpersona`=cm.`personaMedico_idpersona`
-            WHERE te.`idtipo_examen`='$idtipo_examen'";
+               CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico, cm.`fecha_cita`, p.email, p.genero   
+               FROM `pedido_examen` pe
+               INNER JOIN `cita_medica` cm ON cm.`idcita_medica`=pe.`cita_medica_idcita_medica`
+               INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
+               INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
+               INNER JOIN `persona` pm ON pm.`idpersona`=cm.`personaMedico_idpersona`
+               INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario`
+               WHERE pe.`idpedido_examen`='$idpedido_examen'";
             return ejecutarConsulta($sql);
    }
 

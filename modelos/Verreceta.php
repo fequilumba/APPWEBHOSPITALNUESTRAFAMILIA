@@ -66,5 +66,17 @@
                WHERE r.`idreceta`='$idreceta'";
             return ejecutarConsulta($sql);
    }
+   public function recetacabecera($idreceta)
+   {
+      $sql= "SELECT e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
+            CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico, cm.`fecha_cita`, p.email, p.genero
+            FROM `receta` r 
+            INNER JOIN `cita_medica` cm ON cm.`idcita_medica`= r.`cita_medica_idcita_medica` 
+            INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
+            INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
+            INNER JOIN `persona` pm ON pm.`idpersona`=cm.`personaMedico_idpersona`
+            WHERE r.`idreceta`='$idreceta'";
+            return ejecutarConsulta($sql);
+   }
  }
 ?>
