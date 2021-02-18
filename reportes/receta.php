@@ -8,17 +8,18 @@ $textypos = 5;
 $pdf->setY(12);
 $pdf->setX(10);
 //traer datos del examen
-require "../modelos/Verexamen.php";
-$examen = new Verexamen();
-$rspta = $examen->examencabecera($_GET["id"]);
+require "../modelos/Verreceta.php";
+$receta = new Verreceta();
+$rspta = $receta->recetacabecera($_GET["id"]);
 $reg=$rspta->fetch_object();
+
 
 // Agregamos los datos del consultorio medico
 $pdf->Image('../files/img/LOGO.png',160,8,33);
-$pdf->Cell(5,$textypos,utf8_decode("PEDIDO DE EXÁMENES"));
+$pdf->Cell(5,$textypos,utf8_decode("RECETA MÉDICA"));
 $pdf->SetFont('Arial','B',8);    
 $pdf->setY(21);$pdf->setX(10);
-$pdf->Cell(5,$textypos,utf8_decode("Dirección: Malimpia 445, Quito 170131"));
+$pdf->Cell(5,$textypos,"Direccion: Malimpia 445, Quito 170131");
 $pdf->setY(24);$pdf->setX(10);
 $pdf->Cell(5,$textypos,utf8_decode("Teléfono: (+593) 979589877"));
 $pdf->setY(27);$pdf->setX(10);
@@ -45,21 +46,24 @@ $pdf->SetTextColor(255,255,255);
 $pdf->SetDrawColor(97, 106, 107 );
 
 $pdf->Cell(40,12,utf8_decode("NOMBRE"),0,0,'c',1);
-$pdf->Cell(70,12,utf8_decode("TIPO"),0,0,'c',1);
+$pdf->Cell(70,12,utf8_decode("DESCRIPCIÓN"),0,0,'c',1);
+$pdf->Cell(13,12,utf8_decode("CANT."),0,0,'c',1);
+$pdf->Cell(70,12,utf8_decode("INDICACIONES"),0,0,'c',1);
 
 $pdf->SetTextColor(23, 32, 42);
 $pdf->Ln(12);
 
-$rsptad = $examen->listarDetalle($_GET["id"]);
-//recorremos la lista de pedidos de examenes
+$rsptad = $receta->listarDetalle($_GET["id"]);
+//recorremos la lsita de medicamentos 
 while ($mostrar = $rsptad->fetch_object()) {
 
     //$pdf->Cell(70,6,utf8_decode("$mostrar->medicamento_idmedicamento"),1,0,'c',0);
     $pdf->Cell(40,10,utf8_decode("$mostrar->nombre"),1,0,'c',0);
-    $pdf->Cell(70,10,utf8_decode("$mostrar->tipo"),1,1,'c',0);
+    $pdf->Cell(70,10,utf8_decode("$mostrar->descripcion"),1,0,'c',0);
+    $pdf->Cell(13,10,$mostrar->cantidad,1,0,'c',0);
+    $pdf->Cell(70,10,utf8_decode("$mostrar->observaciones"),1,1,'c',0);
 
   }
-
 
 $pdf->SetFont('Arial','B',10);    
 
