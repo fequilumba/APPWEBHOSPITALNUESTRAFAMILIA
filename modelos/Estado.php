@@ -7,7 +7,7 @@
 
      //Metodo para listar estados
      public function selectEstado(){
-        $sql= "SELECT * FROM `estado` ";
+        $sql= "SELECT * FROM `estado` e WHERE e.`idestado`>=2 ";
         return ejecutarConsulta($sql);
      }
 }
