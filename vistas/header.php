@@ -54,7 +54,7 @@
         <!-- Logo -->
         <a href="index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>H</b>NF</span>
+          <span class="logo-mini"><b>HNF</b></span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>Hospital</b></span>
         </a>
@@ -64,7 +64,7 @@
           <!-- Sidebar toggle button-->
           <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Navegación</span>
-          </a>
+          <i class="fa fa-home"></i></a>
           <!-- Navbar Right Menu -->
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
@@ -89,7 +89,10 @@
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      <a href="../ajax/usuario.php?op=salir" class="btn btn-warning ">Cerrar Sesión</a>
+                      <a href="../ajax/usuario.php?op=salir" class="btn btn-warning ">Cerrar Sesión</a> 
+                    </div>
+                    <div class="pull-left">
+                      <a href="miperfil.php" class="btn btn-info ">Mi perfil</a>
                     </div>
                   </li>
                 </ul>

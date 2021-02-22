@@ -64,8 +64,6 @@ session_start();
                 require_once "../modelos/Estado.php";
                 $estado = new Estado();
                 $rspta = $estado->selectEstado();
-                echo '<option value="">
-                          Seleccionar...</option>';
                 while ($reg = $rspta->fetch_object()) {
                     echo '<option value='.$reg->idestado.'>'
                             .$reg->nombre.
