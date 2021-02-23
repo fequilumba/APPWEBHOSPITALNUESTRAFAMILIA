@@ -28,7 +28,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">
                         <table id="tbllistadocita" class="table table-striped
-                        table-bordered table-condensed table-hover">
+                        table-bordered table-condensed table-hover dt-responsive DT">
                           <thead>
                             <th>Opciones</th>
                             <th>Especialidad</th>
@@ -79,11 +79,6 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                               <label for="">Síntomas(*)</label>
                               <textarea name="sintomas" id="sintomas" class="form-control" cols="" rows="3" required></textarea>
                             </div>
-                            
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="estado">
-                              <label for="">Estado(*)</label>
-                              <select name="estado_idestado" id="estado_idestado"  class="form-control" requiered ></select>
-                            </div>
 
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                               <h2>Receta</h2>
@@ -92,7 +87,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
                               <a data-toggle="modal" href="#myModal">
                               <button id="btnAgregarMedi" type="button" class="btn btn-primary">
-                              <span class="fa fa-plus"></span> Agregar Medicamentos</button>
+                              <span class="fa fa-plus"></span> Agregar Medicamentos <span class="fa fa-pills"></span></button>
                               </a>
                           </div>
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
@@ -117,7 +112,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                               <a data-toggle="modal" href="#myModal2">
                               <button id="btnAgregarExa" type="button" class="btn btn-primary">
-                              <span class="fa fa-plus"></span> Agregar Exámenes</button>
+                              <span class="fa fa-plus"></span> Agregar Exámenes <span class="fa fa-microscope"></button>
                               </a>
                             </div>
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
@@ -131,6 +126,11 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                                 
                                 </tbody>
                               </table>
+                            </div>
+                          
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="estado">
+                              <label for="">Estado(*)</label>
+                              <select name="estado_idestado" id="estado_idestado"  class="form-control" requiered ></select>
                             </div>
                           
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="guardar">

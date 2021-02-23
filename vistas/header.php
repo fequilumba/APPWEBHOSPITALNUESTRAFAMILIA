@@ -1,286 +1,449 @@
-<?php
-  if (strlen(session_id())<1) {
-    session_start();
-  }
-?>
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>HOSPITAL NUESTRA FAMILIA</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../public/fontawesome/css/all.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../public/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="../public/css/_all-skins.min.css">
-    <link rel="icon" href="../public/img/apple-touch-icon.png">
-    <link rel="shortcut icon" href="../public/img/favicon.ico">
-    
-    <!--full calendar-->
-    <link href='../public/plugins/calendario/lib/main.css' rel='stylesheet'/>
-    
-    <!--<script src= '../public/plugins/calendario/lib/locales/es.js'></script>-->
-    
-    <script href="../public/bootstrap/css/bootstrap.css"></script>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Dashboard</title>
 
-    <!--DATA TABLES-->
-    <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="../public/datatables/buttons.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="../public/datatables/responsive.dataTables.min.css">
-
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../public/AdminLTE/plugins/fontawesome-free/css/all.min.css">
+  <!--DATA TABLES-->
+  <link rel="stylesheet" type="text/css" href="../public/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../public/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../public/AdminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-select.min.css">
-    <!--mis estilos personalizados-->
-    
-    
-    <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">
-    <!--clockpicker-->
-    <link rel="stylesheet" type="text/css" href="../public/css/clockpicker.css">
+    <!-- fullCalendar 
+  <link rel="stylesheet" href="../public/AdminLTE/plugins/fullcalendar/main.min.css">
+  <link rel="stylesheet" href="../public/AdminLTE/plugins/fullcalendar-interaction/main.min.css">
+  <link rel="stylesheet" href="../public/AdminLTE/plugins/fullcalendar-daygrid/main.min.css">
+  <link rel="stylesheet" href="../public/AdminLTE/plugins/fullcalendar-timegrid/main.min.css">
+  <link rel="stylesheet" href="../public/AdminLTE/plugins/fullcalendar-bootstrap/main.min.css">-->
+  <link href='../public/AdminLTE/plugins/fullcalendar/main.css' rel='stylesheet'/>
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="../public/AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../public/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="../public/AdminLTE/plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../public/AdminLTE/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../public/AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="../public/AdminLTE/plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="../public/AdminLTE/plugins/summernote/summernote-bs4.min.css">
+  <!--mis estilos personalizados-->    
+  <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">
     <!--alertify-->
     <link rel="stylesheet" type="text/css" href="../public/css/alertify.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
 
-  </head>
-  <body class="hold-transition skin-blue-light sidebar-mini">
-    <div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-lightblue navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
 
-      <header class="main-header">
 
-        <!-- Logo -->
-        <a href="index2.html" class="logo">
-          <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>H</b>NF</span>
-          <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Hospital</b></span>
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto navbar-custom-menu">
+      <!-- Messages Dropdown Menu -->
+      <!-- Notifications Dropdown Menu -->
+      
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
         </a>
-
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top" role="navigation">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Navegación</span>
-          </a>
-          <!-- Navbar Right Menu -->
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-              <!-- Messages: style can be found in dropdown.less-->
-              
-              <!-- User Account: style can be found in dropdown.less -->
-              <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      </li>
+      </ul>
+      <ul class="navbar-nav ml-auto navbar-custom-menu">
+      <!-- User Account: style can be found in dropdown.less -->
+      <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="../files/usuarios/<?php echo $_SESSION['imagen'] ?>" class="user-image" alt="User Image">
-                  <span class="hidden-xs"><?php echo $_SESSION['nombres'] ?></span>
+                  <span class="hidden-xs" style="color: #ffffff"><?php echo $_SESSION['nombres'] ?></span>
                 </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
                     <img src="../files/usuarios/<?php echo $_SESSION['imagen'] ?>" class="img-circle" alt="User Image">
                     <p>
-                    <?php echo $_SESSION['nombres']?>
+                    <?php echo $_SESSION['nombres']?><br>
+                    <?php echo $_SESSION['apellidos']?>
                     </p>
                   </li>
-                  
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    
-                    <div class="pull-right">
-                      <a href="../ajax/usuario.php?op=salir" class="btn btn-warning ">Cerrar Sesión</a>
-                    </div>
-                  </li>
-                </ul>
+              <!-- Menu Body -->
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="text-center">
+                
+                  <a href="miperfil.php" class="btn btn-info btn-flat">
+                  <i class="nav-sidebar far fa-id-badge"></i>
+                     Mi Perfil</a>
+                </div><br>
+                <div class="text-center">
+                  <a href="../ajax/usuario.php?op=salir" class="btn btn-danger btn-flat"> 
+                  <i class="fas fa-sign-out-alt"></i>
+                  Cerrar Sesión</a>
+                </div>
+                <div class="p3 control-sidebar-content">
+                  <div class="mb-4">
+                    <input type="checkbox" value="1" class="mr-1">
+                    <span>DARK MODE</span>
+                  </div>
+                </div>
               </li>
-              
             </ul>
-          </div>
+    </li>
+          <!-- Control Sidebar Toggle Button -->
+          
+          </ul>
+    
+  </nav>
+  <!-- /.navbar -->
 
-        </nav>
-      </header>
-      <!-- Left side column. contains the logo and sidebar -->
-      <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">       
-          <!-- sidebar menu: : style can be found in sidebar.less -->
-          <ul class="sidebar-menu">
-            <li class="header"></li>
-            
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-light-dark elevation-4">
+    <!-- Brand Logo -->
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="../files/img/LOGO.png" class="user-image" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">HOSPITAL NUESTRA <br> FAMILIA</a>
+        </div>
+    </div>
+
+    
+
+    <!--menu usuario-->
+    
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               
             <?php
             if ($_SESSION['rol_idrol']==1||$_SESSION['rol_idrol']==2||$_SESSION['rol_idrol']==3)
             {
-              echo '<li>
-              <a href="home.php">
-                <i class="fa fa-home"></i> <span>Home</span>
-              </a>
-            </li> ';
+              echo '<li class="nav-item">
+                <a href="home.php" class="nav-link">
+                  <i class="nav-sidebar  fa fa-home"></i>
+                  <p>
+                    Home
+                  </p>
+                </a>
+              </li>';
             }
             ?>
 
-            <?php
+          <?php
             if ($_SESSION['rol_idrol']==1||$_SESSION['rol_idrol']==2||$_SESSION['rol_idrol']==3)
             {
-              echo '<li class="treeview">
-              <a href="#">
-                <i class="fa fa-hospital"></i>
-                <span>Hospital</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="historia.php"><i class="fa fa-history"></i> Historia</a></li>
-                <li><a href="misionVision.php"><i class="fa fa-bullseye"></i> Misión/Visón</a></li>
-              </ul>
-            </li>';
-            }
-            ?>
-
-            <?php
+              echo '<li class="nav-item">
+            <a href="#" class="nav-link ">
+              <i class="nav-sidebar far fa-hospital"></i>
+              <p>
+                Hospital
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="historia.php" class="nav-link">
+                  <i class="fa fa-history nav-icon"></i>
+                  <p>Historia</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="misionVision.php" class="nav-link">
+                  <i class="fa fa-bullseye nav-icon"></i>
+                  <p>Misión/Visón</p>
+                </a>
+              </li>
+            </ul>
+          </li>';
+        }
+        ?>
+          
+          
+          <?php
             if ($_SESSION['rol_idrol']==3)
             {
-              echo '<li class="treeview">
-              <a href="#">
-                <i class="fa fa-users"></i>
-                <span>Guía del Paciente</span>
-                 <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="paciente.php"><i class="fa fa-user-injured"></i> Registrar Paciente</a></li>
-              </ul>
-            </li>';
-            }
-            ?>
-            <?php
-            if ($_SESSION['rol_idrol']==1)
-            {
-              echo '<li class="treeview">
-              <a href="#">
-                <i class="fa fa-users"></i>
-                <span>Guía del Paciente</span>
-                 <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="cliente.php"><i class="fa fa-user-plus"></i> Registrar Cliente</a></li>
-                <li><a href="pacienteasociado.php"><i class="fa fa-user-injured"></i> Registrar Paciente</a></li>
-              </ul>
-            </li>';
-            }
-            ?>
+              echo '<li class="nav-item ">
+            <a href="#" class="nav-link ">
+              <i class="nav-sidebar fa fa-users"></i>
+              <p>
+                Guía del Paciente
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="paciente.php" class="nav-link ">
+                  <i class="fa fa-user-injured nav-icon"></i>
+                  <p> Registrar Paciente</p>
+                </a>
+              </li>
+            </ul>
+          </li>';
+        }
+        ?>
+          
 
-            <?php
+          <?php
             if ($_SESSION['rol_idrol']==1)
             {
-              echo '<li class="treeview">
-              <a href="#">
-                <i class="fa fa-user-md"></i>
-                <span>Guía del Médico</span>
-                 <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="medico.php"><i class="fa fa-stethoscope"></i> Registrar Médico</a></li>
-                <li><a href="especialidad.php"><i class="fa fa-hand-holding-medical"></i> Especialidades</a></li>
-                <li><a href="examentipo.php"><i class="fa fa-microscope"></i> Tipo Examen</a></li>
-                <li><a href="examen.php"><i class="fa fa-syringe"></i> Examen</a></li>
-                <li><a href="medicamento.php"><i class="fa fa-pills"></i> Medicamento</a></li>
-              </ul>
-            </li>';
-            }
-            ?>      
-            
-            <?php
+              echo '<li class="nav-item ">
+            <a href="#" class="nav-link ">
+              <i class="nav-sidebar fa fa-users"></i>
+              <p>
+                Guía del Paciente
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="cliente.php" class="nav-link ">
+                  <i class="fa fa-user-plus nav-icon"></i>
+                  <p> Registrar Cliente</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pacienteasociado.php" class="nav-link ">
+                  <i class="fa fa-user-injured nav-icon"></i>
+                  <p> Registrar Paciente</p>
+                </a>
+              </li>
+            </ul>
+          </li>';
+        }
+        ?>
+
+
+
+          <?php
+            if ($_SESSION['rol_idrol']==1)
+            {
+              echo '<li class="nav-item ">
+            <a href="#" class="nav-link ">
+              <i class="nav-sidebar fa fa-user-md"></i>
+              <p>
+                Guía del Médico
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="medico.php" class="nav-link ">
+                  <i class="fa fa-stethoscope nav-icon"></i>
+                  <p> Registrar Médico</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="especialidad.php" class="nav-link ">
+                  <i class="fa fa-hand-holding-medical nav-icon"></i>
+                  <p> Especialidades</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="examentipo.php" class="nav-link ">
+                  <i class="fa fa-microscope nav-icon"></i>
+                  <p> Tipo Examen</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="examen.php" class="nav-link ">
+                  <i class="fa fa-syringe nav-icon"></i>
+                  <p> Examen</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="medicamento.php" class="nav-link ">
+                  <i class="fa fa-pills nav-icon"></i>
+                  <p> Medicamentos</p>
+                </a>
+              </li>
+            </ul>
+          </li>';
+        }
+        ?> 
+
+          
+
+          <?php
             if ($_SESSION['rol_idrol']==2)
             {
-              echo '<li class="treeview">
-              <a href="#">
-                <i class="fa fa-list-alt"></i>
-                <span>Mi Agenda</span>
-                 <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="cita.php"><i class="fa fa-book-medical"></i> Ver Agenda</a></li>
-                <li><a href="citaatendida.php"><i class="fa fa-calendar-check"></i> Citas Atendidas</a></li>
-              </ul>
-            </li>';
-            }
-            ?>  
+              echo '<li class="nav-item ">
+            <a href="#" class="nav-link ">
+              <i class="nav-sidebar fa fa-list-alt"></i>
+              <p>
+                Mi Agenda
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="cita.php" class="nav-link ">
+                  <i class="fa fa-book-medical nav-icon"></i>
+                  <p> Ver Agenda</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="citaatendida.php" class="nav-link ">
+                  <i class="far fa-calendar-check nav-icon"></i>
+                  <p> Citas Atendidase</p>
+                </a>
+              </li>
+            </ul>
+          </li>';
+        }
+        ?> 
 
-            <?php
+
+          <?php
             if ($_SESSION['rol_idrol']==3)
             {
               
-                echo '<li class="treeview">
-                    <a href="#">
-                      <i class="fa fa-list-alt"></i> <span>Citas</span>
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li><a href="calendario.php"><i class="fa fa-calendar"></i> Agendar</a></li>
-                    </ul>
-                  </li>';
+                echo '<li class="nav-item ">
+            <a href="#" class="nav-link ">
+              <i class="nav-sidebar far fa-calendar-alt"></i>
+              <p>
+                Citas
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="calendario.php" class="nav-link ">
+                  <i class="fas fa-calendar-day nav-icon"></i>
+                  <p> Agendar</p>
+                </a>
+              </li>
+            </ul>
+          </li>';
             
-            }
-            ?> 
+        }
+        ?> 
 
-            <?php
+          <?php
             if ($_SESSION['rol_idrol']==1)
             {
               
-                echo '<li class="treeview">
-                <a href="#">
-                  <i class="fa fa-list-alt"></i> <span>Citas</span>
-                  <i class="fa fa-angle-left pull-right"></i>
+                echo '
+          <li class="nav-item ">
+            <a href="#" class="nav-link ">
+              <i class="nav-sidebar far fa-calendar-alt"></i>
+              <p>
+                Citas
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="calendario.php" class="nav-link ">
+                  <i class="fas fa-calendar-day nav-icon"></i>
+                  <p> Agendar</p>
                 </a>
-                <ul class="treeview-menu">
-                  <li><a href="calendario.php"><i class="fa fa-calendar"></i> Agendar</a></li>
-                  <li><a href="cancelarCita.php"><i class="fa fa-times-circle"></i> Cancelar</a></li>
-                </ul>
-              </li>';
-            
-            }
-            ?> 
-            
-            <?php
-            if ($_SESSION['rol_idrol']==3||$_SESSION['rol_idrol']==1||$_SESSION['rol_idrol']==2)
-            {
-              
-                echo '<li class="treeview">
-                <a href="#">
-                  <i class="fa fa-eye"></i> <span>Visualizar</span>
-                  <i class="fa fa-angle-left pull-right"></i>
+              </li>
+              <li class="nav-item">
+                <a href="cancelarCita.php" class="nav-link ">
+                  <i class="far fa-calendar-times nav-icon"></i>
+                  <p> Cancelar</p>
                 </a>
-                <ul class="treeview-menu">
-                  <li><a href="historialmedico.php"><i class="fa fa-notes-medical"></i> Historial Medico</a></li>
-                  <li><a href="verreceta.php"><i class="fa fa-file-prescription"></i> Recetas</a></li>
-                  <li><a href="verexamen.php"><i class="fa fa-microscope"></i> Examenes</a></li>                
-                </ul>
-              </li>';
+              </li>
+            </ul>
+          </li>';
             
-            }
-            ?> 
+        }
+        ?> 
 
-            <?php
+
+
+          <?php
             if ($_SESSION['rol_idrol']==1||$_SESSION['rol_idrol']==2||$_SESSION['rol_idrol']==3)
             {
-              echo '<li class="treeview">
-              <a href="contactos.php">
-                <i class="fa fa-phone"></i> <span>Contactos</span>
-              </a>
-            </li>';
-            }
-            ?>
+              
+                echo '<li class="nav-item ">
+            <a href="#" class="nav-link ">
+              <i class="nav-sidebar fa fa-eye"></i>
+              <p>
+                Visualizar
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="historialmedico.php" class="nav-link ">
+                  <i class="fa fa-notes-medical nav-icon"></i>
+                  <p> Historial</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="verreceta.php" class="nav-link ">
+                  <i class="fa fa-file-prescription nav-icon"></i>
+                  <p> Recetas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="verexamen.php" class="nav-link ">
+                  <i class="fa fa-microscope nav-icon"></i>
+                  <p> Examenes</p>
+                </a>
+              </li>
+            </ul>
+          </li>';
+            
+        }
+        ?> 
 
-            <!--
-            <li>
-              <a href="#">
-                <i class="fa fa-plus-square"></i> <span>Ayuda</span>
-                <small class="label pull-right bg-red">PDF</small>
-              </a>
-            </li> 
-            -->
-          </ul>
-        </section>
-        <!-- /.sidebar -->
-      </aside>
-</body>
-</html>
+
+        <?php
+            if ($_SESSION['rol_idrol']==1||$_SESSION['rol_idrol']==2||$_SESSION['rol_idrol']==3)
+            {
+              echo '<li class="nav-item ">
+            <a href="contactos.php" class="nav-link ">
+              <i class="nav-sidebar fa fa-phone"></i>
+              <p>
+                Contactos
+              </p>
+            </a>
+          </li>';
+        }
+        ?>
+
+
+          
+        
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  
+ 
+
+  
+</div>
+<!-- ./wrapper -->
+
+

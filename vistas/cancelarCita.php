@@ -22,13 +22,13 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Cancelar Citas <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Nueva Especialidad</button></h1>
+                          <h1 class="box-title">Cancelar Citas </h1>
                         <div class="box-tools pull-right"></div>
                     </div>
                     <!-- /.box-header -->
                     <!-- centro style="height: 400px;" -->
                     <div class="panel-body table-responsive" id="listadoregistros">
-                        <table id="tbllistadoe" class="table table-striped table-bordered table-condensed table-hover">
+                        <table id="tbllistadoe" class="table table-striped table-bordered table-condensed table-hover dt-responsive DT">
                           <thead>
                           <th>Opciones</th>
                             <th>Especialidad</th>

@@ -113,8 +113,8 @@ function mostrar(idcita_medica){
         $("#diagnostico").val(data.diagnostico);
         $("#sintomas").val(data.sintomas);
         $("#motivo_consulta").val(data.motivo_consulta);
-        $("#estado_idestado").val(data.estado_idestado);
-        $("#estado_idestado").selectpicker('refresh');
+        //$("#estado_idestado").val(data.estado_idestado);
+        //$("#estado_idestado").selectpicker('refresh');
         $("#idcita_medica").val(data.idcita_medica);
     });
 }

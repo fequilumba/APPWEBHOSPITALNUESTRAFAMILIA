@@ -142,6 +142,7 @@ switch ($_GET["op"]){
 			//declaramos las variables de sesion
 			$_SESSION['idusuario']=$fetch->idusuario;
 			$_SESSION['nombres']=$fetch->nombres;
+			$_SESSION['apellidos']=$fetch->apellidos;
 			$_SESSION['imagen']=$fetch->imagen;
 			$_SESSION['login']=$fetch->login;
 			$_SESSION['rol_idrol']=$fetch->rol_idrol;
