@@ -17,7 +17,9 @@ $("#frmAcceso").on('submit',function(e)
         }
         else
         {
-           bootbox.alert("Usuario y/o Password incorrectos");
+           //bootbox.alert("Usuario y/o Password incorrectos");
+           alert("Usuario y/o Password incorrectos");
+           //$(location).attr("href","login.php");
         }
     });
 })

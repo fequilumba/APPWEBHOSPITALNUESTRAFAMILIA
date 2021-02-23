@@ -152,7 +152,7 @@
     
     public function verificar($login,$clavehash,$rol_idrol)
     {
-        $sql= "SELECT u.`idusuario`,p.`nombres`, p.`imagen`, u.`login`, ur.`rol_idrol`, p.`idpersona`
+        $sql= "SELECT u.`idusuario`,p.`nombres`, p.`imagen`, u.`login`, ur.`rol_idrol`, p.`idpersona`,p.`apellidos`
                 FROM `usuario` u 
                 INNER JOIN usuario_has_rol ur ON u.`idusuario`= ur.`usuario_idusuario`
                 INNER JOIN persona p ON p.`usuario_idusuario`= u.`idusuario`
