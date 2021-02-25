@@ -13,6 +13,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 
 <div class="content-wrapper">
   <section class="content">
+    <br>
     <div style="text-align:center;">
       <img src="../files/img/LOGO.png" alt="Imagen Logo" height="150px" width="250px">
     </div>
