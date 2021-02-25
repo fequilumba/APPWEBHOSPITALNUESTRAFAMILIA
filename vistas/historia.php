@@ -14,29 +14,39 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
   <section class="content">
     <h1 class="titulo">"HOSPITAL NUESTRA FAMILIA"</h1>
     
-    <div class="col-md-10 col-md-offset-1">
-      <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel">
-        <div class="carousel-inner">
-            
-          <div class="item active">
-            <div class=""><a href="#"><img src="../public/img/ecografia.jpg" class=""height="450px" ></a></div>
-          </div>
-            
-          <div class="item">
-            <div class=""><a href="#"><img src="../public/img/radiologia.jpg" class=""height="450px" ></a></div>
-          </div>
-            
-          <div class="item">
-            <div class=""><a href="#"><img src="../public/img/imagenologia.jpg" class=""height="450px" ></a></div>
-          </div>
-    
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="../public/img/ecografia.jpg" height=450px alt="First slide">
         </div>
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon-chevron-left"></i></a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon-chevron-right"></i></a>
-        <br>
-      </div> <!--Cierre clase carousel-->
+
+        <div class="carousel-item">
+          <img class="d-block w-100" src="../public/img/radiologia.jpg" height=450px alt="Second slide">
+        </div>
+
+        <div class="carousel-item">
+          <img class="d-block w-100" src="../public/img/imagenologia.jpg" height=450px alt="Third slide">
+        </div>
+      </div>
+
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-     
+    
+    <br>
     <div>
       <h2 class="titulo">Historia</h2>
       
