@@ -2,13 +2,14 @@
 
 
  <!-- /.content-wrapper -->
+<div>
  <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
     <strong>Copyright &copy; 2020 <a href="www.hospital.com">Fausto Quilumba</a>.</strong> All rights reserved.
-</footer> 
-
+  </footer> 
+</div>
 <!-- jQuery -->
 <script src="../public/AdminLTE/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
