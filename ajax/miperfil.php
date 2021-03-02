@@ -11,10 +11,10 @@ session_start();
     $telefono= isset($_POST["telefono"])? limpiarCadena($_POST["telefono"]):"";
     $direccion= isset($_POST["direccion"])? limpiarCadena($_POST["direccion"]):"";
     $ciudad_residencia= isset($_POST["ciudad_residencia"])? limpiarCadena($_POST["ciudad_residencia"]):"";
-    $fecha_nacimiento= isset($_POST["fecha_nacimiento"])? limpiarCadena($_POST["fecha_nacimiento"]):""; 
-    $genero= isset($_POST["genero"])? limpiarCadena($_POST["genero"]):"";
     $imagen=isset($_POST["imagen"])? limpiarCadena($_POST["imagen"]):"";
     $estado= isset($_POST["estado"])? limpiarCadena($_POST["estado"]):"";
+    $contrasenia= isset($_POST["contrasenia"])? limpiarCadena($_POST["contrasenia"]):"";
+    $confircontrasenia= isset($_POST["confircontrasenia"])? limpiarCadena($_POST["confircontrasenia"]):"";
 
     switch ($_GET["op"]) {
         case 'guardaryeditar':
@@ -33,27 +33,29 @@ session_start();
                 }
             if (empty($idpersona)) {
                 //hash SHA256 en la contrasenia
-                $pieces = explode(" ", $nombres); 
-                    $str=""; 
-                    foreach($pieces as $piece) 
-                    { 
-                        $str.=$piece[0]; 
-                    }  
-                    $contrasenia= $cedula . $str;
                     $contraseniahash=hash("SHA256",$contrasenia);
-                    require_once "../modelos/Usuario.php";
-                $usuario = new Usuario();
-                $rspta = $usuario->insertar($cedula,$contraseniahash);
-                $iduser=$rspta;
-                echo $rspta? "Usuario registrado " : "Usuario no se pudo registrar ";
-                $rspta2=$perfil->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
-                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$idasociado,$imagen,$iduser);
                 echo $rspta2? "Usuairo registrado " : "Usuario no se pudo registrar ";               
 
             }else{
-                $rspta=$perfil->editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen);
-                echo $rspta? "Usuario actualizado" : "No se pudo actualizar lo datos del Usuario";
+                if ($contrasenia==$confircontrasenia && !empty($contrasenia) && !empty($confircontrasenia)) {
+                     /*************email *********************/
+                    require_once "../modelos/Correo.php";
+                    $correo = new Correo();
+                    $rspta3 = $correo->cambiarContrasenia($cedula,$contrasenia, $nombres, $apellidos, $email);
+                    $contraseniahash=hash("SHA256",$contrasenia);
+                    $rspta=$perfil->editar($idpersona, $nombres, $apellidos, $email, $telefono, $direccion,
+                    $ciudad_residencia,$imagen);
+                    $rspta2=$perfil->editarCredenciales($contraseniahash,$idusuario);
+
+                    echo $rspta2? " Datos actualizados" : " No se pudo actualizar los datos del Usuario";
+                }elseif (empty($contrasenia) && empty($confircontrasenia) ){
+                    $rspta=$perfil->editar($idpersona, $nombres, $apellidos, $email, $telefono, $direccion,
+                    $ciudad_residencia,$imagen);
+                    echo $rspta? " Datos actualizados" : " No se pudo actualizar los datos del Usuario";
+                
+                }else {
+                    echo "Las contraseñas no coinciden";
+                }
                                 
             }
             break;

@@ -96,12 +96,6 @@
                   <i class="fas fa-sign-out-alt"></i>
                   Cerrar Sesión</a>
                 </div>
-                <div class="p3 control-sidebar-content">
-                  <div class="mb-4">
-                    <input type="checkbox" value="1" class="mr-1">
-                    <span>DARK MODE</span>
-                  </div>
-                </div>
               </li>
             </ul>
     </li>

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../public/css/centrar.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../public/AdminLTE/dist/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="../public/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link rel="shortcut icon" href="../files/img/LOGO.png">
@@ -23,47 +24,6 @@
       <div class="login-logo">
         <b class="estilo">HOSPITAL NUESTRA FAMILIA</b>
       </div>
-    <!--<div class="card-header">
-      <div class="login-logo">
-        <b class="estilo">HOSPITAL NUESTRA FAMILIA</b>
-      </div>
-      <div class="card-body">
-        
-        <p class="card-msg" style="font-size: 40px;" >LOGIN</p>
-        <div class="container-img">
-       
-        </div>
-        <br>
-          <form method="post" id="frmAcceso">
-          <div class="form-group has-feedback">
-            <input type="text" class="form-control" id="logina" name="logina" placeholder="Username" required >
-            <span class="fa fa-user form-control-feedback"></span>
-          </div>
-          <div class="form-group has-feedback">
-            <input type="password" id="clavea" name="clavea" class="form-control" placeholder="Password" required>
-            <span class="fa fa-key form-control-feedback"></span>
-          </div>
-          <div class="form-group has-feedback">
-          </div>
-          <div class="row">
-            <div class="col-xs-8">
-
-            </div>
-            <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
-            </div>
-          </div>
-        </form>
-
-        <a href="registro.php">Crear Cuenta</a><br>
-        
-
-      </div>
-    </div>/.login-box -->
-
-
-
-
     <!-- Horizontal Form -->
             <div class="card card-info">
               <div class="card-header">
@@ -78,18 +38,20 @@
                 <div class="card-body">
                   <div class="form-group row">
                     <label for="" class="col-sm-5 col-form-label">Usuario</label> <br>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 inner-addon left-addon">
+                      <i class="glyphicon fas fa-user"></i>
                       <input type="text" class="form-control" id="logina" name="logina" placeholder="usuario" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="" class="col-sm-5 col-form-label">Contraseña</label>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 inner-addon left-addon">
+                      <i class="glyphicon fas fa-key"></i>
                       <input type="password" id="clavea" name="clavea" class="form-control"placeholder="Contraseña" required>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="" class="col-sm-5 col-form-label">Rol</label>
+                    <label for="" class="col-sm-5 col-form-label"><i class="fas fa-user-tag"></i> Rol</label>
                     <div class="col-sm-12">
                       <select name="rol_idrol" id="rol_idrol"class="form-control"></select>
                     </div>

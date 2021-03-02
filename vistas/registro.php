@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../public/css/centrar.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../public/AdminLTE/dist/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="../public/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link rel="shortcut icon" href="../files/img/LOGO.png">
@@ -108,7 +109,11 @@
 
             <div class="form-group row">
               <label for="" class="col-sm-5 col-form-label">Imagen:</label>
-                <input type="file" class="form-control" name="imagen" id="imagen" accept="image/x-png,image/gif,image/jpeg">
+                    <div class="file-select inner-addon left-addon" id="src-file1" >
+                            <i class="glyphicon fas fa-camera-retro"></i>
+                            <input type="file" class="" name="imagen" id="imagen" accept="image/x-png,image/gif,image/jpeg">
+                            </div>
+                            <br>
                 <input type="hidden" class="form-control" name="imagenactual" id="imagenactual" accept="image/x-png,image/gif,image/jpeg">
             </div>
           </div><!-- /.card-body -->

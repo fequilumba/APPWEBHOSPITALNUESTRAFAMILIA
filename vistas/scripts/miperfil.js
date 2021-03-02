@@ -1,6 +1,7 @@
 var tabla
 //ejecutar el inicio
 function init() {
+    contrasenia()
     mostrarform(false);
     listar();
     $("#formulario").on("submit",function(e){
@@ -8,6 +9,24 @@ function init() {
     });
     $("#imagenmuestra").hide();
 
+}
+
+//funcion contrasenia
+function contrasenia() {  
+    $('#confircontrasenia').keyup(function() {
+
+		var pass1 = $("#contrasenia").val();;
+		var pass2 = $("#confircontrasenia").val();;
+
+		if ( pass1 == pass2 ) {
+			$('#error2').css("background", "url(../public/img/check.png)");
+            $('#text').html('<label> Correcto</label>');
+		} else {
+			$('#error2').css("background", "url(../public/img/check2.png)");
+            $('#text').html('<label> Las contraseñas no coinciden</label>');
+		}
+
+	});
 }
 //funcion limpiar
 function limpiar(){
@@ -23,6 +42,8 @@ function limpiar(){
     $("#genero").val("");
 	$("#imagenmuestra").attr("src","");
 	$("#imagenactual").val("");
+    $("#contrasenia").val("");
+    $("#confircontrasenia").val("");
 }
 //mostrar formulario
 function mostrarform(flag){
@@ -78,7 +99,7 @@ function guardaryeditar(e){
     $("#btnGuardar").prop("disabled",true);
     var formData = new FormData($("#formulario")[0]);
     $.ajax({
-        url: "../ajax/paciente.php?op=guardaryeditar",
+        url: "../ajax/miperfil.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,

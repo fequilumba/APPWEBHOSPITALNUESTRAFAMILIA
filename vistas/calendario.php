@@ -39,10 +39,10 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h4 class="modal-title" id="titulo">CITA MÉDICA</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="titulo">CITA MÉDICA</h4>
       </div>
       <form id="formCitas"  method="POST">
         <div class="modal-body">
@@ -52,7 +52,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
             <select name="especialidad_idespecialidad" id="especialidad_idespecialidad" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select> <br>
           <label for="">Paciente</label>
             <select name="personaPaciente_idpersona" id="personaPaciente_idpersona" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select> <br>
-            <label for="">Medico</label>
+            <label for="">Médico</label>
             <select name="personaMedico_idpersona" id="personaMedico_idpersona" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select> <br>
           <label for="">Fecha</label>
             <input type="date" name="fecha_cita" id="fecha_cita" class="form-control"> <br>
