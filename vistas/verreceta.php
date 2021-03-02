@@ -33,7 +33,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                             <th>Opciones</th>
                             <th>Especialidad</th>
                             <th>Paciente</th>
-                            <th>Medico</th>
+                            <th>Médico</th>
                             <th>Fecha</th>
                             <th>Hora</th>
                           </thead>
@@ -43,7 +43,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                             <th>Opciones</th>
                             <th>Especialidad</th>
                             <th>Paciente</th>
-                            <th>Medico</th>
+                            <th>Médico</th>
                             <th>Fecha</th>
                             <th>Hora</th>
                           </tfoot>
