@@ -25,7 +25,7 @@ session_start();
                 $rspta=$cita->insertarCita($especialidad_idespecialidad,$personaPaciente_idpersona,$personaMedico_idpersona, 
                                             $fecha_cita, $motivo_consulta, $horario_idhorario,
                                             $clavemedico,$clavepaciente,$clavepacientemedico);
-                echo $rspta? "Cita registrada" : "La cita no se puede registrar con el mismo médico a la misma fecha y hora";
+                echo $rspta? "true" : "false";
             }else{
                 $rspta=$cita->editarCita($idcita_medica,$especialidad_idespecialidad,$personaPaciente_idpersona,$personaMedico_idpersona, 
                 $fecha_cita, $motivo_consulta, $horario_idhorario);

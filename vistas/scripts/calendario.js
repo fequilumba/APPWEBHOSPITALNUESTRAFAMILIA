@@ -36,16 +36,7 @@ function init() {
       $("#horario_idhorario").html(r);
       //$("#especialidad_idespecialidad").selectpicker('refresh');
       
-  }); 
-  /*$("#btnCancelar").click(function(event) {
-    //$("#formCitas")[0].reset();
-    //limpiar();
-    $('#formCitas :input').not("[type=radio],[type=checkbox],[type=hidden],[readonly='readonly'],[style*='display: none'],.select2-offscreen,[class^='select2'],select").each(function(){
-      var name = $(this).attr('name');
-      console.log(name);
-      $(this).val('');
-  });
-  }); */    
+  });     
 
 }//fin init
 
@@ -131,20 +122,33 @@ function guardaryeditar(e){
       contentType: false,
       processData: false,
       
-      success: function(datos){
-        alert(datos);
-        $("#modalCitas").modal('toggle');
-        location.reload();
-        //mostrarform(false);
-        //tabla.ajax.reload();
+      success: function(rspta){
+        //alert(datos);
+        if(rspta == "true"){
+          Swal.fire({
+            icon: 'success',
+            title: 'Cita Agendada',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          $("#modalCitas").modal('toggle');
+          location.reload();
+          
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'No se puedo agendar la cita',
+            text: 'La cita no se puede registrar con el mismo médico a la misma fecha y hora!',
+            showConfirmButton: false,
+            timer: 4000
+          })
+        }
     },
     error:function(){
       alert("error..!!")
     }
     
   });
-  //alertify.success('Cita registrada');
-  //$("#modalCitas").modal('toggle');
 }
 
 init();

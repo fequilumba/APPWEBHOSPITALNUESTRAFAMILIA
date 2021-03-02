@@ -1,3 +1,5 @@
+
+
 $("#frmAcceso").on('submit',function(e)
 {
 	e.preventDefault();
@@ -17,8 +19,9 @@ $("#frmAcceso").on('submit',function(e)
         }
         else
         {
+            Swal.fire('Usuario y/o Password incorrectos')
            //bootbox.alert("Usuario y/o Password incorrectos");
-           alert("Usuario y/o Password incorrectos");
+           //alert("Usuario y/o Password incorrectos");
            //$(location).attr("href","login.php");
         }
     });

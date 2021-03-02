@@ -33,7 +33,7 @@
         <div class="card-header">
           <h3 class="card-title">REGISTRO</h3>
           <div class="text-right">
-            <img src="../files/img/LOGO.png" height="40" width="70">
+            <img src="../files/img/LOGO.png" height="40" width="65">
           </div>
         </div>  <!-- /.card-header -->
              
@@ -119,7 +119,7 @@
           
           <div class="card-footer">
             <button type="submit" class="btn btn-info float-right">Registrarse</button>
-            <a href="login.php" class="float-left">Login</a><br>
+            <button class="btn btn-outline-info float-left"  OnClick="location.href=`login.php`">Login</button><br>
           </div>   
         </form><!-- /.form-registro -->  
       </div> <!-- /.card card-info -->
