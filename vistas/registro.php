@@ -113,7 +113,6 @@
                             <i class="glyphicon fas fa-camera-retro"></i>
                             <input type="file" class="" name="imagen" id="imagen" accept="image/x-png,image/gif,image/jpeg">
                             </div>
-                            <br>
                 <input type="hidden" class="form-control" name="imagenactual" id="imagenactual" accept="image/x-png,image/gif,image/jpeg">
             </div>
           </div><!-- /.card-body -->

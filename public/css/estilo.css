@@ -19,7 +19,18 @@ select:focus{
 outline: none;
 }
 
-
+.container-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fondo{
+  background-image: url("../img/portada-login.jpg");
+  background-color: #cccccc;
+ }
+.estilo{
+  color: #19a0bb;
+}
 .caja::after{
 content:"\025be";
 display:table-cell;
@@ -150,7 +161,19 @@ div#error2 {
 #src-file1::before {
   content: 'Seleccionar Foto';
 }
-#boton{
+#spanMostrar {
+  bottom: 16px;
   cursor: pointer;
-  width: 30px;
+  height: 25px;
+  position: absolute;
+  right: 10px;
+  width: 25px;
+  z-index: 10;
+}
+
+.form-clear .material-icons {
+  font-size: 24px;
+  position:absolute;
+  top:0px;
+  right:0px!important;
 }
