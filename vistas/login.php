@@ -6,12 +6,13 @@
     <title>Hospital Nuestra Familia</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
+    
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="../public/AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../public/AdminLTE/plugins/fontawesome-free/css/all.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="../public/css/blue.css">
-    <link rel="stylesheet" href="../public/css/centrar.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../public/AdminLTE/dist/css/adminlte.min.css">
     <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">
@@ -37,23 +38,35 @@
               <form class="form-horizontal" method="post" id="frmAcceso">
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="" class="col-sm-5 col-form-label">Usuario</label> <br>
-                    <div class="col-sm-12 inner-addon left-addon">
-                      <i class="glyphicon fas fa-user"></i>
+                    <label for="" class="col-sm-5 col-form-label"><i class="glyphicon fas fa-user"></i> Usuario</label> <br>
+                    <div class="col-sm-12 ">
                       <input type="text" class="form-control" id="logina" name="logina" placeholder="Usuario" required>
                     </div>
                   </div>
-                  <div class="form-group row">
+                 <!-- <div class="form-group row">
                     <label for="" class="col-sm-12 col-form-label">Contraseña</label>
                     
                       <div class="col-sm-10 inner-addon left-addon">
                         <i class="glyphicon fas fa-key"></i>
                         <input type="password" id="clavea" name="clavea" class="form-control"placeholder="Contraseña" required>
+                        <span id="spanMostrar" class="form-clear d-none"><i id="iconMostrar" class="material-icons mdc-text-field__icon">visibility</i></span>
+
                         
                       </div>
                       <div class="col-sm-2">
                         
                       <img src="../public/img/mostrar.png" id="boton">                        
+                      </div>
+                  </div>-->
+                  <div class="form-group row">
+                    <label for="" class="col-sm-12 col-form-label"><i class="glyphicon fas fa-key"></i> Contraseña</label>
+                    
+                      <div class="col-sm-12 input-group">
+                        
+                        <input id="clavea" name="clavea" type="password" Class="form-control" placeholder="Contraseña" required>
+                      <div class="input-group-append">
+                            <button id="show_password" class="btn btn-info" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
+                      </div>
                       </div>
                   </div>
                   <div class="form-group row">
@@ -73,25 +86,16 @@
             </div>
             <!-- /.card -->
     <script>
-      var boton = document.getElementById('boton');
-      var input = document.getElementById('clavea');
-
-      boton.addEventListener('click', mostrarContrasenia)
-
-      function mostrarContrasenia() {
-        if (input.type == "password") {
-          input.type = "text"; 
-          boton.src = "../public/img/ocultar.png";
-          setTimeout("ocultar()",3000);
+      function mostrarPassword(){
+        var cambio = document.getElementById("clavea");
+        if(cambio.type == "password"){
+          cambio.type = "text";
+          $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
         }else{
-          input.type = "password"; 
-          boton.src = "../public/img/mostrar.png";
+          cambio.type = "password";
+          $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
         }
-      }
-      function ocultar() {  
-        input.type = "password"; 
-        boton.src = "../public/img/mostrar.png";
-      }
+      } 
 
     </script>
     <!-- jQuery -->
