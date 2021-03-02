@@ -150,3 +150,7 @@ div#error2 {
 #src-file1::before {
   content: 'Seleccionar Foto';
 }
+#boton{
+  cursor: pointer;
+  width: 30px;
+}

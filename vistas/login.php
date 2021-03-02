@@ -40,15 +40,21 @@
                     <label for="" class="col-sm-5 col-form-label">Usuario</label> <br>
                     <div class="col-sm-12 inner-addon left-addon">
                       <i class="glyphicon fas fa-user"></i>
-                      <input type="text" class="form-control" id="logina" name="logina" placeholder="usuario" required>
+                      <input type="text" class="form-control" id="logina" name="logina" placeholder="Usuario" required>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="" class="col-sm-5 col-form-label">Contraseña</label>
-                    <div class="col-sm-12 inner-addon left-addon">
-                      <i class="glyphicon fas fa-key"></i>
-                      <input type="password" id="clavea" name="clavea" class="form-control"placeholder="Contraseña" required>
-                    </div>
+                    <label for="" class="col-sm-12 col-form-label">Contraseña</label>
+                    
+                      <div class="col-sm-10 inner-addon left-addon">
+                        <i class="glyphicon fas fa-key"></i>
+                        <input type="password" id="clavea" name="clavea" class="form-control"placeholder="Contraseña" required>
+                        
+                      </div>
+                      <div class="col-sm-2">
+                        
+                      <img src="../public/img/mostrar.png" id="boton">                        
+                      </div>
                   </div>
                   <div class="form-group row">
                     <label for="" class="col-sm-5 col-form-label"><i class="fas fa-user-tag"></i> Rol</label>
@@ -66,7 +72,28 @@
               </form>
             </div>
             <!-- /.card -->
-    
+    <script>
+      var boton = document.getElementById('boton');
+      var input = document.getElementById('clavea');
+
+      boton.addEventListener('click', mostrarContrasenia)
+
+      function mostrarContrasenia() {
+        if (input.type == "password") {
+          input.type = "text"; 
+          boton.src = "../public/img/ocultar.png";
+          setTimeout("ocultar()",3000);
+        }else{
+          input.type = "password"; 
+          boton.src = "../public/img/mostrar.png";
+        }
+      }
+      function ocultar() {  
+        input.type = "password"; 
+        boton.src = "../public/img/mostrar.png";
+      }
+
+    </script>
     <!-- jQuery -->
     <script src="../public/AdminLTE/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
