@@ -19,18 +19,19 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="../public/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link rel="shortcut icon" href="../files/img/LOGO.png">
+    <!--alertify-->
+    <link rel="stylesheet" type="text/css" href="../public/css/alertify.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-select.min.css">
 
   </head>
   <body class="hold-transition login-page fondo">
-      <div class="login-logo">
-        <b class="estilo">HOSPITAL NUESTRA FAMILIA</b>
-      </div>
+      <br><br><br><br><br>
     <!-- Horizontal Form -->
             <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title">LOGIN</h3>
                 <div class="text-right">
-                    <img src="../files/img/LOGO.png" height="40" width="70">
+                    <img src="../files/img/LOGO.png" height="40" width="65">
                   </div>
               </div>
               <!-- /.card-header -->
@@ -43,23 +44,8 @@
                       <input type="text" class="form-control" id="logina" name="logina" placeholder="Usuario" required>
                     </div>
                   </div>
-                 <!-- <div class="form-group row">
-                    <label for="" class="col-sm-12 col-form-label">Contraseña</label>
-                    
-                      <div class="col-sm-10 inner-addon left-addon">
-                        <i class="glyphicon fas fa-key"></i>
-                        <input type="password" id="clavea" name="clavea" class="form-control"placeholder="Contraseña" required>
-                        <span id="spanMostrar" class="form-clear d-none"><i id="iconMostrar" class="material-icons mdc-text-field__icon">visibility</i></span>
-
-                        
-                      </div>
-                      <div class="col-sm-2">
-                        
-                      <img src="../public/img/mostrar.png" id="boton">                        
-                      </div>
-                  </div>-->
                   <div class="form-group row">
-                    <label for="" class="col-sm-12 col-form-label"><i class="glyphicon fas fa-key"></i> Contraseña</label>
+                    <label for="" class="col-sm-5 col-form-label"><i class="glyphicon fas fa-key"></i> Contraseña</label>
                     
                       <div class="col-sm-12 input-group">
                         
@@ -79,7 +65,8 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-info float-right">Ingresar</button>
-                  <a href="registro.php" class="float-left">Crear Cuenta</a><br>
+                  <button class="btn btn-outline-info float-left"  OnClick="location.href=`registro.php`">Crear Cuenta</button><br>
+                
                 </div>
                 <!-- /.card-footer -->
               </form>
@@ -98,16 +85,21 @@
       } 
 
     </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <!-- jQuery -->
     <script src="../public/AdminLTE/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="../public/AdminLTE/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="../public/js/bootstrap.min.js"></script>
+    
+    <!-- Bootbox -->
+    <script src="../public/js/bootbox.all.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="../public/AdminLTE/plugins/moment/moment.min.js"></script>
+    <script src="../public/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="../public/AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../public/AdminLTE/dist/js/adminlte.min.js"></script>
-    <!-- Bootbox -->
-    <script src="../public/js/bootbox.min.js"></script>
     <script type="text/javascript" src="scripts/login.js"></script>
     <script type="text/javascript" src="scripts/rol.js"></script>
     </body>

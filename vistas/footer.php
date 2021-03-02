@@ -10,6 +10,7 @@
     <strong>Copyright &copy; 2020 <a href="www.hospital.com">Fausto Quilumba</a>.</strong> All rights reserved.
   </footer> 
 </div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!-- jQuery -->
 <script src="../public/AdminLTE/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

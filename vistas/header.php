@@ -66,9 +66,24 @@
         </a>
       </li>
       </ul>
+
+
+     <!-- <ul class="navbar-nav ml-auto navbar-custom-menu">
+      
+      <li class="nav-item">
+        <a >
+                  <button class="switch" id="switch">
+                  <span><i class="fas fa-sun"></i></span>
+                  <span><i class="fas fa-moon"></i></span>
+                  </button>
+                </a>
+      </li>
+      </ul>-->
+
       <ul class="navbar-nav ml-auto navbar-custom-menu">
       <!-- User Account: style can be found in dropdown.less -->
       <li class="dropdown user user-menu">
+                
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="../files/usuarios/<?php echo $_SESSION['imagen'] ?>" class="user-image" alt="User Image">
                   <span class="hidden-xs" style="color: #ffffff"><?php echo $_SESSION['nombres'] ?></span>

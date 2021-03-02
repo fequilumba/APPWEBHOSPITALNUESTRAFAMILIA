@@ -20,7 +20,7 @@
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                        "0"=>' <button class="btn btn-danger" onclick="eliminarCita('.$reg->idcita_medica.')"><li class="fa fa-times"></li> Cancelar</button>',
+                        "0"=>' <button class="btn btn-danger" onclick="alerEliminar('.$reg->idcita_medica.')"><li class="fa fa-times"></li> Cancelar</button>',
                         "1"=>$reg->especialidad,
                         "2"=>$reg->paciente,
                         "3"=>$reg->medico,
@@ -39,7 +39,7 @@
             
         case 'eliminar':
             $rspta=$cancelarcita->eliminarCita($idcita_medica);
-            echo $rspta? "Cita eliminada" : "No se pudo eliminar la cita";
+            //echo $rspta? "Cita eliminada" : "No se pudo eliminar la cita";
             break;
     }
 

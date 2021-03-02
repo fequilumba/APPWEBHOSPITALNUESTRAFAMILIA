@@ -114,7 +114,7 @@ function mostrar(idpersona){
 
     });
 }
-//funcion para descativar especialidades
+//funcion para desactivar Clientes
 function desactivar(idpersona)
 {
     alertify.confirm("Cliente","¿Estas seguro de desactivar al Cliente?",
@@ -132,7 +132,7 @@ function desactivar(idpersona)
             alertify.error('Cancelado');
         });
 }
-
+//funcion para activar Clientes
 function activar(idpersona)
 {
     alertify.confirm("Cliente","¿Estas seguro de activar al Cliente?",
