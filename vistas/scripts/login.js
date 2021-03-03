@@ -13,16 +13,17 @@ $("#frmAcceso").on('submit',function(e)
     {
         if (data!="null")
         {
-            
-            $(location).attr("href","home.php");
-               
+            $(location).attr("href","home.php");               
         }
         else
         {
-            Swal.fire('Usuario y/o Password incorrectos')
-           //bootbox.alert("Usuario y/o Password incorrectos");
-           //alert("Usuario y/o Password incorrectos");
-           //$(location).attr("href","login.php");
+            Swal.fire({
+                icon: 'error',
+                title: 'ERROR',
+                text: 'Usuario y/o Password incorrectos!',
+                showConfirmButton: false,
+                timer: 2500
+              });
         }
     });
 })
