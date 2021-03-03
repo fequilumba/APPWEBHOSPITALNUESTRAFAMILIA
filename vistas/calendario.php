@@ -8,7 +8,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 }else
 {
   require 'header.php';
-  if ($_SESSION['rol_idrol']==3||$_SESSION['rol_idrol']==1) {
+  if ($_SESSION['rol_idrol']==3 ||$_SESSION['rol_idrol']==1) {
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
@@ -62,10 +62,11 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
             <select name="horario_idhorario" id="horario_idhorario" class="form-control" required></select> <br>
             
         </div>
-      <div class="modal-footer">
-          <button type="submit" id="btnAgregar" class="btn btn-info">Guardar</button>
-          <button type="button" id="btnCancelar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-      </div>
+
+        <div class="modal-footer">
+            <button type="submit" id="btnAgregar" class="btn btn-info">Guardar</button>
+            <button type="button" id="btnCancelar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </div>
       </form>
 	  </div>
   </div>
