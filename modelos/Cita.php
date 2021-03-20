@@ -90,27 +90,6 @@
         return ejecutarConsulta($sql);
     }
     
-    public function listarCitas(){
-        $sql= "SELECT cm.idcita_medica, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as title , CONCAT(cm.fecha_cita,' ',h.hora) as start 
-                        , e.nombre as especialidad
-        FROM `cita_medica` cm
-        INNER JOIN `horario` h ON h.`idhorario`=cm.`horario_idhorario`
-        INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
-        INNER JOIN `especialidad` e ON e.`idespecialidad`=cm.`especialidad_idespecialidad`";
-
-        return ejecutarConsulta($sql);
-    }
-    public function listarCitasAsociadas($idasociado){
-        $sql= "SELECT cm.idcita_medica, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as title , CONCAT(cm.fecha_cita,' ',h.hora) as start 
-                        , e.nombre as especialidad
-        FROM `cita_medica` cm
-        INNER JOIN `horario` h ON h.`idhorario`=cm.`horario_idhorario`
-        INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
-        INNER JOIN `especialidad` e ON e.`idespecialidad`=cm.`especialidad_idespecialidad`
-        where p.idasociado='$idasociado'";
-
-        return ejecutarConsulta($sql);
-    }
     public function insertarCita($especialidad_idespecialidad,$personaPaciente_idpersona,$personaMedico_idpersona, 
                                     $fecha_cita, $motivo_consulta, $horario_idhorario,$clavemedico,$clavepaciente,$clavepacientemedico){
         $sql= "INSERT INTO `cita_medica` (`especialidad_idespecialidad`, `personaPaciente_idpersona`,`personaMedico_idpersona`, `fecha_cita`, 

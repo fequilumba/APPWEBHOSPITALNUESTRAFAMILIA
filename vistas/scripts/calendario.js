@@ -1,10 +1,44 @@
 function init() {
   calendario()
+  fecha_cita.min = new Date().toISOString().split("T")[0];
   $("#formCitas").on("submit",function(e){
     guardaryeditar(e);
-    //location.reload();
-
   });
+
+  $("#btnHora").click(function(e){
+    e.preventDefault();
+    especialidad=$("#especialidad_idespecialidad").val();
+    personaMedico=$("#personaMedico_idpersona").val();
+    fecha=$("#fecha_cita").val();
+
+    $.post("../ajax/calendario.php?op=selecthora",
+    {"especialidad_idespecialidad":especialidad,
+    "personaMedico_idpersona":personaMedico,
+    "fecha_cita":fecha},
+    function(data)
+{
+    if (data!="null")
+    {
+        $("#idcita_medica").html(data);
+       // $("#hora").selectpicker('refresh');     
+        
+      
+    }
+    else
+    {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Disponibilidad',
+            text: 'No existen horarios disponibles es esa fecha',
+            showConfirmButton: false,
+            timer: 2500
+          });
+    }
+  });
+
+});
+
+
   //Cargamos los items al select Especialidad
   $.post("../ajax/calendario.php?op=selectEspecialidad",function(r)
   {        
@@ -32,13 +66,7 @@ function init() {
       });
   });
 
-  $.post("../ajax/calendario.php?op=selectHorario",function(r)
-  {        
-      //console.log(data);
-      $("#horario_idhorario").html(r);
-      //$("#especialidad_idespecialidad").selectpicker('refresh');
       
-  });     
 
 }//fin init
 
@@ -92,7 +120,7 @@ function calendario() {
         });
     },*/
       dateClick: function(info) {
-        var actual = new Date();
+        /*var actual = new Date();
         //var actual = new Date(dia_num,mes_num,año_num)
         $fecha=info.date;
         if($fecha >= actual){
@@ -103,8 +131,24 @@ function calendario() {
           bootbox.alert({
             message: "No se puede agendar citas en una fecha vencida"
             });
-        }
+        }*/
+        var date = new Date(info.date);
+        var hoy = new Date();
+        var ayer = new Date(hoy - 24 * 60 * 60 * 1000);
+
+                    if (date > ayer) {
+                      $("#fecha_cita").val(info.dateStr);   
+                      $("#modalCitas").modal();
+                    }
+                    else{
+                      bootbox.alert({
+                        message: "No se puede agendar citas en una fecha vencida"
+                        });
+                    }
+    
       },
+
+
       hiddenDays: [0,6]
     });//fin eventListener
     calendar.render();
@@ -124,30 +168,9 @@ function guardaryeditar(e){
       contentType: false,
       processData: false,
       
-      success: function(rspta){
-        //alert(datos);
-        if(rspta == "true"){
-          Swal.fire({
-            icon: 'success',
-            title: 'Cita Agendada',
-            showConfirmButton: false,
-            timer: 1500
-          })
-          $("#modalCitas").modal('toggle');
-          location.reload();
-          
-        }else{
-          Swal.fire({
-            icon: 'error',
-            title: 'No se puedo agendar la cita',
-            text: 'La cita no se puede registrar con el mismo médico a la misma fecha y hora!',
-            showConfirmButton: false,
-            timer: 4000
-          })
-        }
-    },
-    error:function(){
-      alert("error..!!")
+      success: function(datos){
+        alert(datos);
+        location.reload();
     }
     
   });
