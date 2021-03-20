@@ -347,7 +347,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="agendar.php" class="nav-link ">
+                <a href="calendario.php" class="nav-link ">
                   <i class="fas fa-calendar-day nav-icon"></i>
                   <p> Agendar</p>
                 </a>
@@ -373,7 +373,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="agendar.php" class="nav-link ">
+                <a href="calendario.php" class="nav-link ">
                   <i class="fas fa-calendar-day nav-icon"></i>
                   <p> Agendar</p>
                 </a>
