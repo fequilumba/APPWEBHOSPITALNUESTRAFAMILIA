@@ -101,38 +101,23 @@ function eliminarCita(idcita_medica)
         {
             tabla.ajax.reload();
             Swal.fire(
-                'Eliminado!',
-                'La cita fue eliminada correctamente.',
+                'Cancelada!',
+                'La cita fue cancelada correctamente.',
                 'success'
               )
-            //alertify.success('CTAAAAA ELIMINADAAAA..........!!!!!!!!!!');
 
         });
-    /*alertify.confirm("CITA MEDICA","¿Estas seguro de eliminar la Cita?",
-        function(){
-            $.post(
-                "../ajax/cancelarcita.php?op=eliminar", {idcita_medica : idcita_medica}, function(e)
-                {
-                    alertify.alert(e);
-                    tabla.ajax.reload();
-                    //alertify.success('CTAAAAA ELIMINADAAAA..........!!!!!!!!!!');
-        
-                });
-        },
-        function(){
-            alertify.error('Cancelado');
-        });*/
 }
 
 function alerEliminar(idcita_medica) {
     Swal.fire({
-        title: 'Estas seguro de eliminar?',
-        text: "No volveras a agendar esta cita",
+        title: 'Estas seguro de cancelar?',
+        text: "El horario de esta cita estará disponible para otro paciente",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, Eliminar!'
+        confirmButtonText: 'Si, Cancelar!'
       }).then((result) => {
         if (result.isConfirmed) {
             eliminarCita(idcita_medica);

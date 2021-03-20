@@ -175,7 +175,7 @@
     //select medico
     public  function selectMedico($idespecialidad)
     {
-        $sql= "SELECT p.`idpersona`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres 
+        $sql= "SELECT p.`idpersona`, CONCAT(p.`cedula`, ' - ', p.`nombres`, ' ' ,p.`apellidos`) as nombres 
 		FROM `persona` p
         INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` 
         INNER JOIN `persona_has_especialidad` pe ON p.`idpersona`=pe.`persona_idpersona`
