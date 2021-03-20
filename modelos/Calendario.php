@@ -46,24 +46,29 @@
 
         return ejecutarConsulta($sql);
     }
-    public function listarCitas(){
-        $sql= "SELECT * FROM `cita_medica`";
-
-        $sql=ejecutarConsulta($sql);
-        $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($resultado);
-    }
     
     
 }
-$sql= "SELECT mr.`medicamento_idmedicamento`, m.`nombre`, m.`descripcion`, mr.`cantidad`, mr.`observaciones`
-FROM `medicamento_has_receta` mr
-INNER JOIN `receta` r ON r.`idreceta`= mr.`receta_idreceta` 
-INNER JOIN `medicamento` m ON m.`idmedicamento`= mr.`medicamento_idmedicamento` 
-WHERE r.`idreceta`=4"
-;
+date_default_timezone_set("America/Guayaquil");
+        echo ("\n");
+        $fechasistema= date("Y-m-d");
+        echo ($fechasistema);
+        $horasistema = date("H:i:s");
+        echo ($horasistema);
 
-        $sql=ejecutarConsultaSimpleFila($sql);
-        //$resultado=$sql->fetch_object();
-        echo json_encode($sql);
+    $sql= "SELECT cm.idcita_medica, CONCAT(cm.`fecha_cita`, ' ' ,h.`hora`) as fecha
+        FROM `cita_medica` cm 
+        INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
+        INNER JOIN `persona` p ON p.`idpersona`=cm.`personaMedico_idpersona`
+	    INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario`
+        WHERE cm.`estado_idestado`=4 AND cm.`personaMedico_idpersona`=6 
+        	AND cm.`especialidad_idespecialidad`=3 AND cm.`fecha_cita`>='$fechasistema'
+            AND h.`hora`>= '$horasistema'";
+
+        $resp=ejecutarConsultaSimpleFila($sql);
+        
+        echo json_encode($resp);
+
+        
+
 ?>

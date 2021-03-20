@@ -21,7 +21,11 @@ public function listarCitaCancelar()
 
 public function eliminarCita($idcita_medica)
         {
-            $sql= "DELETE FROM `cita_medica` WHERE `cita_medica`.`idcita_medica` = '$idcita_medica'";
+            $sql= "UPDATE `cita_medica` 
+            SET `personaPaciente_idpersona` = NULL,
+            `motivo_consulta` = NULL,
+            `estado_idestado`=4
+            WHERE `idcita_medica` = '$idcita_medica'";
     
             return ejecutarConsulta($sql);
         }

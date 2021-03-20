@@ -13,6 +13,7 @@ function init() {
       $("#especialidad_idespecialidad").selectpicker('refresh');
       
   });
+  
   $.post("../ajax/calendario.php?op=selectPaciente",function(r)
   {        
       //console.log(data);
@@ -20,6 +21,7 @@ function init() {
       $("#personaPaciente_idpersona").selectpicker('refresh');
       
   });
+
   $("#especialidad_idespecialidad").change(function(){
       $("#especialidad_idespecialidad option:selected").each(function(){
         idespecialidad= $(this).val();
