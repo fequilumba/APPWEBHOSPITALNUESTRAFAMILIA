@@ -7,7 +7,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2020 <a href="www.hospital.com">Fausto Quilumba</a>.</strong> All rights reserved.
+    <strong>Copyright <?php echo date('Y')?> &copy;<a href="www.hospital.com"> Fausto Quilumba</a>.</strong> Todos los derechos Reservados.
   </footer> 
 </div>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>

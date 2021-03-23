@@ -12,17 +12,14 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 ?>
 
 <div class="content-wrapper">
-    <section class="content">
-        
+    <section class="content">   
         <div class="img">
             <h1 class="titulo">CONTACTOS</h1>
             <img src="../files/img/LOGO.png" alt="Imagen Logo">
         </div>
-
         
         <br>
-        <div class="row">
-            
+        <div class="row">   
             <aside class="col-md-4">
                 <br>
                 <div class="img">
@@ -62,15 +59,15 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                     <p>Malimpia 445, Quito 170131</p>
                 </div>
             </aside>
-        </div>
+        </div> <!-- .row -->
 
         <br>
         <div class="google-maps">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14955.01096747024!2d-78.55059576253925!3d-0.2700112320026364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x233538c4d1964cf7!2sHospitales%20publicos!5e0!3m2!1ses-419!2sec!4v1611204078448!5m2!1ses-419!2sec" frameborder="0"></iframe>
-        </div>
-        
-    </section>
-</div>
+        </div>    
+    </section> <!-- .content -->
+</div> <!-- .content-wrapper -->
+
 <?php
 }
 else {
