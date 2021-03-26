@@ -25,6 +25,7 @@ function limpiar(){
     $("#genero").val("");
     $("#administrador").val("");
     $("#cliente").val("");
+    $('#cedula').css("background-color", "#FFFFFF");
 }
 //mostrar formulario
 function mostrarform(flag){

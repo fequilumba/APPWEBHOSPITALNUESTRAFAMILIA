@@ -1,7 +1,7 @@
 var tabla
 //ejecutar el inicio
 function init() {
-    contrasenia()
+    contrasenia();
     mostrarform(false);
     listar();
     $("#formulario").on("submit",function(e){
@@ -15,8 +15,8 @@ function init() {
 function contrasenia() {  
     $('#confircontrasenia').keyup(function() {
 
-		var pass1 = $("#contrasenia").val();;
-		var pass2 = $("#confircontrasenia").val();;
+		var pass1 = $("#contrasenia").val();
+		var pass2 = $("#confircontrasenia").val();
 
 		if ( pass1 == pass2 ) {
 			$('#error2').css("background", "url(../public/img/check.png)");

@@ -18,11 +18,12 @@ function limpiar(){
     $("#email").val("");
     $("#telefono").val("");
     $("#direccion").val("");
-    $("#ciudad_residencia").val("");
+    $("#ciudad_residencia").val("");    
     $("#fecha_nacimiento").val("");
     $("#genero").val("");
 	$("#imagenmuestra").attr("src","");
 	$("#imagenactual").val("");
+    $('#cedula').css("background-color", "#FFFFFF");
 }
 //mostrar formulario
 function mostrarform(flag){

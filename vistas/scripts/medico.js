@@ -46,6 +46,7 @@ function limpiar(){
     $("#ciudad_residencia").val("");
     $("#fecha_nacimiento").val("");
     $("#genero").val("");
+    $('#cedula').css("background-color", "#FFFFFF");
 }
 //mostrar formulario
 function mostrarform(flag){

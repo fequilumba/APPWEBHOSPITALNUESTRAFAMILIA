@@ -110,8 +110,6 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                   <label for="">Confirmar Contraseña</label>
                   <input type="password" name="confircontrasenia" id="confircontrasenia" class="form-control" minlength="8" placeholder="********">
                 </div>
-
-                <div id="error2"></div>
                 <div id="text"></div>
               </div><!-- /.form-row -->
 

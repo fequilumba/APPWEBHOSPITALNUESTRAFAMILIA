@@ -29,6 +29,7 @@ function limpiar(){
     $("#genero").val("");
 	$("#imagenmuestra").attr("src","");
 	$("#imagenactual").val("");
+    $('#cedula').css("background-color", "#FFFFFF");
 }
 //mostrar formulario
 function mostrarform(flag){

@@ -17,6 +17,7 @@
         $("#fecha_nacimiento").val("");
         $("#genero").val("");
         $("#imagen").val("");
+        $('#cedula').css("background-color", "#FFFFFF");
     }
     function guardaryeditar(e){
         e.preventDefault();
