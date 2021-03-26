@@ -12,68 +12,66 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
   if ($_SESSION['rol_idrol']==1) {
     
 ?>
-<!--Contenido-->
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        
-        <!-- Main content -->
-        <section class="content">
-            <div class="row">
-              <div class="col-md-12">
-                  <div class="box">
-                    <div class="box-header with-border">
-                          <h1 class="box-title">Cancelar Citas </h1>
-                        <div class="box-tools pull-right"></div>
-                    </div>
-                    <!-- /.box-header -->
-                    <!-- centro style="height: 400px;" -->
-                    <div class="panel-body table-responsive" id="listadoregistros">
-                        <table id="tbllistadoe" class="table table-striped table-bordered table-condensed table-hover dt-responsive DT">
-                          <thead>
-                          <th>Opciones</th>
-                            <th>Especialidad</th>
-                            <th>Paciente</th>
-                            <th>Médico</th>
-                            <th>Teléfono</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                          </thead>
-                          <tbody>
-                          </tbody>
-                          <tfoot>
-                            <th>Opciones</th>
-                            <th>Especialidad</th>
-                            <th>Paciente</th>
-                            <th>Médico</th>
-                            <th>Teléfono</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                          </tfoot>
-                        </table>
-                    </div>
 
-                    <div class="panel-body"  id="formularioregistros">
-                        <form name="formularioe" id="formularioe" method="POST">
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <input type="hidden" name="idcita_medica" id="idcita_medica">
-                            </div>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">  
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <div class="box-header with-border">
+            <h1 class="box-title">Cancelar Citas </h1>
+            <div class="box-tools pull-right"></div>
+          </div> <!-- /.box-header -->
+                    
+          <!-- centro style="height: 400px;" -->
+          <div class="panel-body table-responsive" id="listadoregistros">
+            <table id="tbllistadoe" class="table table-striped table-bordered table-condensed table-hover dt-responsive DT">
+              <thead>
+                <th>Opciones</th>
+                <th>Especialidad</th>
+                <th>Paciente</th>
+                <th>Médico</th>
+                <th>Teléfono</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+              </thead>
+
+              <tbody>
+              </tbody>
+
+              <tfoot>
+                <th>Opciones</th>
+                <th>Especialidad</th>
+                <th>Paciente</th>
+                <th>Médico</th>
+                <th>Teléfono</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+              </tfoot>
+            </table> <!-- .tbllistadoe-->
+          </div> <!-- .panel-body-->
+
+          <div class="panel-body"  id="formularioregistros">
+            <form name="formularioe" id="formularioe" method="POST">
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <input type="hidden" name="idcita_medica" id="idcita_medica">
+              </div>
                           
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <button class="btn btn-primary" type="submit" 
-                                id="btnGuardar"><i class="fa fa-save"> Guardar</i></button>
-                                <button class="btn btn-danger" onclick="cancelarform()"
-                                type="button"><i class="fa fa-arrow-circle-left"> Cancelar</i></button>
-                            </div>
-                        </form>
-                    </div>
-                    <!--Fin centro -->
-                  </div><!-- /.box -->
-              </div><!-- /.col -->
-          </div><!-- /.row -->
-      </section><!-- /.content -->
-
-    </div><!-- /.content-wrapper -->
-  <!--Fin-Contenido-->
+              <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"> Guardar</i></button>
+                <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"> Cancelar</i></button>
+              </div>
+            </form> <!-- .formularioe-->
+          </div> <!-- .panel-body-->
+          <!--Fin centro -->
+        </div><!-- .box -->
+      </div><!-- .col -->
+    </div><!-- .row -->
+  </section><!-- .content -->
+</div><!-- /.content-wrapper -->
+<!--Fin-Contenido-->
 <?php
 }
 else {
