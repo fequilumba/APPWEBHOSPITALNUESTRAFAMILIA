@@ -10,11 +10,6 @@ function init(){
 		guardaryeditar(e);	
     })
     
-	/*$("#imagenmuestra").hide();
-	//mostrar permisos
-	$.post("../ajax/usuario.php?op=permisos&id=",function(r){
-		$("#permisos").html(r);
-	});*/
 }
 
 //Función limpiar
@@ -60,7 +55,9 @@ function listar(){
         "aProcessing":true,//activar procesamiento del datatable
         "aServerSide": true,//paginacion y filtrado realizados por el servidor
         dom: 'Bfetip',//definir los parametro del control de tabla
-        
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        },
         //botones para copiar los registros en diferentes formatos
         buttons:[
             'copyHtml5',
