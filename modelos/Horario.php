@@ -22,9 +22,9 @@
         $clavemedico= $personaMedico_idpersona."-".$fecha_cita."-".$horarios[$num_elementos];
         
         $sql= "INSERT INTO `cita_medica` (`especialidad_idespecialidad`, `personaPaciente_idpersona`, `personaMedico_idpersona`, 
-            `fecha_cita`, `diagnostico`, `sintomas`, `motivo_consulta`, `horario_idhorario`, `estado_idestado`, `clavemedico`, `clavepaciente`, `clavepacientemedico`) 
+            `fecha_cita`, `diagnostico`, `sintomas`, `motivo_consulta`, `horario_idhorario`, `estado_idestado`, `clavemedico`) 
             VALUES ($especialidad_idespecialidad, NULL, '$personaMedico_idpersona', '$fecha_cita', NULL, NULL, NULL, '$horarios[$num_elementos]', '4', 
-            '$clavemedico', NULL, NULL)";
+            '$clavemedico')";
                         ejecutarConsulta($sql) or $sw = false;
                         $num_elementos=$num_elementos +1;
             }
