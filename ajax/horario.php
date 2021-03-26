@@ -9,15 +9,15 @@
 
     switch ($_GET["op"]) {
         case 'guardaryeditar':
-                if (empty($idcita_medica)) {
-                    $rspta=$horario->insertar($especialidad_idespecialidad,$personaMedico_idpersona, $fecha_cita,$_POST['horarioc']);
-                    echo $rspta ? "Horarios registrados" : "No se pudo registrar los horarios";
+            if (empty($idcita_medica)) {
+                $rspta=$horario->insertar($especialidad_idespecialidad,$personaMedico_idpersona, $fecha_cita,$_POST['horarioc']);
+                echo $rspta ? "Horarios registrados" : "No se pudo registrar los horarios";
                     
-                }else{
-                    
-                    echo "La disponibilidad no se puede editar";                
-                }
-            break;
+            } else {
+                echo "La disponibilidad no se puede editar";                
+            }
+        break;
+
         case 'listar':
             $rspta=$horario->listar();
             $data = Array();
@@ -36,7 +36,7 @@
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data);    
                 echo json_encode($results);   
-            break;
+        break;
         
         case 'selectEspecialidad':
             require_once "../modelos/Especialidad.php";             

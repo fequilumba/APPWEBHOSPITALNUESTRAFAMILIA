@@ -26,7 +26,10 @@ outline: none;
 }
 .fondo{
   background-image: url("../img/portada-login.jpg");
-  background-color: #cccccc;
+  height: 40rem;
+  
+  background-size: cover;
+  background-repeat: no-repeat;
  }
 .estilo{
   color: #19a0bb;
@@ -47,15 +50,16 @@ pointer-events: none;
 
 /* ESTILOS PARA IMAGENES */
 .img{
-text-align: center;
+  max-width: 100%;
+  text-align: center;
 }
 
 .img-especialidades{
-width: 350px;
-height: 200px;
+width: 300px;
+height: 150px;
 }
 
-/* ESTILOS PARA LOS TITULOS */
+/* ESTILOS  GLOBALES PARA LOS TITULOS */
 .titulo{
   font-size: 40px;
   text-align: center;
@@ -63,7 +67,7 @@ height: 200px;
 }
 
 .titulo1{
-  font-size: 30px;
+  font-size: 25px;
   text-align: center;
 }
 
@@ -81,9 +85,9 @@ p{
 
 /* ESTILOS PARA LOS PARRAFOS Y COLUMNAS */
 .parrafo{
-   font-size: 21px;
-   text-align: justify;
-   line-height: normal;
+  font-size: 21px;
+  text-align: justify;
+  line-height: normal;
 }
 
 /* ESTILOS GOOGLE-MAPS */
