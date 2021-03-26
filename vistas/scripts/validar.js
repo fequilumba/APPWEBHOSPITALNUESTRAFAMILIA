@@ -1,6 +1,13 @@
 
+function init() {
+  validar();
+  soloLetras();
+  soloNumeros();
+}
+
 function validar() {
-    var cad = document.getElementById("cedula").value.trim();
+  $('#cedula').keyup(function() {
+    var cad = $("#cedula").val();
     var total = 0;
     var longitud = cad.length;
     var longcheck = longitud - 1;
@@ -19,14 +26,18 @@ function validar() {
       total = total % 10 ? 10 - total % 10 : 0;
 
       if (cad.charAt(longitud-1) == total) {
-        document.getElementById("cedula").innerHTML = ("Cedula Válida");
+        $('#cedula').css("background-color", "#D8F6CE");
+        //$('#text').html('<label> Cédula válida</label>');
       }else{
-        document.getElementById("cedula").innerHTML = ("Cedula Inválida");
+        $('#cedula').css("background-color", "#F8E0E6");
+        //$('#text').html('<label> Cédula no válida</label>');
       }
     }
+  });
+
   }
 
-  function soloLetras(e) {
+function soloLetras(e) {
     key = e.keyCode || e.which;
     tecla = String.fromCharCode(key).toLowerCase();
     letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
@@ -60,3 +71,4 @@ function soloNumeros(e) {
   if(letras.indexOf(tecla) == -1 && !tecla_especial)
       return false;
 }
+init();

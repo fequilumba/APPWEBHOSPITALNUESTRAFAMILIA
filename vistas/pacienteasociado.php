@@ -70,8 +70,8 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                       <label for="">Cédula(*)</label>
                       <input type="hidden" name="idpersona" id="idpersona">
                       <input type="text" name="cedula" maxlength="10" minlength="10" id="cedula" class="form-control" onkeypress="return soloNumeros(event)" maxlength="10" placeholder="Cédula" required>
+                    <div id="text"></div>
                     </div>
-                
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                       <label for="">Nombres(*)</label>
                       <input type="text" name="nombres" id="nombres" class="form-control" onkeypress="return soloLetras(event)" maxlength="45" placeholder="Nombres" required  >
