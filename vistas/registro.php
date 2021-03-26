@@ -5,29 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hospital Nuestra Familia</title>
     <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    
+    <meta content="width=device-width, initial-scale=2, maximum-scale=2, user-scalable=no" name="viewport"> 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../public/AdminLTE/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../public/plugins/fontawesome-free/css/all.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="../public/css/blue.css">
     <link rel="stylesheet" href="../public/css/centrar.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../public/AdminLTE/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../public/dist/css/adminlte.min.css">
     <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="../public/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="../public/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link rel="shortcut icon" href="../files/img/LOGO.png">
-
   </head>
 
   <body class="hold-transition login-page fondo">
     <div class="login-box">
-      <div class="login-logo">
-        <!--<b class="estilo">HOSPITAL NUESTRA FAMILIA</b>-->
-      </div><!-- /.login-logo -->
-      
       <!-- Horizontal Form -->
       <div class="card card-info">
         <div class="card-header">
@@ -126,13 +119,13 @@
     </div><!-- /.login-box -->
     <br>
     <!-- jQuery -->
-    <script src="../public/AdminLTE/plugins/jquery/jquery.min.js"></script>
+    <script src="../public/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="../public/AdminLTE/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="../public/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../public/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="../public/AdminLTE/dist/js/adminlte.min.js"></script>
+    <script src="../public/dist/js/adminlte.min.js"></script>
     <!-- Bootbox -->
     <script src="../public/js/bootbox.min.js"></script>
     <script type="text/javascript" src="scripts/registro.js"></script>

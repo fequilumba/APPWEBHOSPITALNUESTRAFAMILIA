@@ -8,40 +8,35 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../public/AdminLTE/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../public/plugins/fontawesome-free/css/all.min.css">
   <!--DATA TABLES-->
-  <link rel="stylesheet" type="text/css" href="../public/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="../public/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="../public/AdminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-select.min.css">
-    <!-- fullCalendar 
-  <link rel="stylesheet" href="../public/AdminLTE/plugins/fullcalendar/main.min.css">
-  <link rel="stylesheet" href="../public/AdminLTE/plugins/fullcalendar-interaction/main.min.css">
-  <link rel="stylesheet" href="../public/AdminLTE/plugins/fullcalendar-daygrid/main.min.css">
-  <link rel="stylesheet" href="../public/AdminLTE/plugins/fullcalendar-timegrid/main.min.css">
-  <link rel="stylesheet" href="../public/AdminLTE/plugins/fullcalendar-bootstrap/main.min.css">-->
-  <link href='../public/AdminLTE/plugins/fullcalendar/main.css' rel='stylesheet'/>
+  <link rel="stylesheet" type="text/css" href="../public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="../public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="../public/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-select.min.css">
+  <!-- fullCalendar -->
+  <link href='../public/plugins/fullcalendar/main.css' rel='stylesheet'/>
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="../public/AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="../public/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="../public/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="../public/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="shortcut icon" href="../files/img/LOGO.png">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="../public/AdminLTE/plugins/jqvmap/jqvmap.min.css">
+  <link rel="stylesheet" href="../public/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../public/AdminLTE/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../public/dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="../public/AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="../public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="../public/AdminLTE/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="../public/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
-  <link rel="stylesheet" href="../public/AdminLTE/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="../public/plugins/summernote/summernote-bs4.min.css">
   <!--mis estilos personalizados-->    
   <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">
-    <!--alertify-->
-    <link rel="stylesheet" type="text/css" href="../public/css/alertify.css">
+  <!--alertify-->
+  <link rel="stylesheet" type="text/css" href="../public/css/alertify.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed"></body>
@@ -64,15 +59,6 @@
         </a>
       </li>
     </ul>
-
-    <!--<ul class="navbar-nav ml-auto navbar-custom-menu">  
-      <li class="nav-item">
-        <a >
-          <button class="switch" id="switch"><span><i class="fas fa-sun"></i></span>
-          <span><i class="fas fa-moon"></i></span></button>
-        </a>
-      </li>
-    </ul>-->
 
     <ul class="navbar-nav ml-auto navbar-custom-menu">
       <!-- User Account: style can be found in dropdown.less -->
@@ -112,7 +98,6 @@
   </nav> <!-- /.navbar -->
 
   <aside class="main-sidebar sidebar-light-dark elevation-4"> <!-- Main Sidebar Container -->
-
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -306,7 +291,7 @@
                   <li class="nav-item">
                     <a href="citaatendida.php" class="nav-link ">
                       <i class="far fa-calendar-check nav-icon"></i>
-                      <p> Citas Atendidase</p>
+                      <p> Citas Atendidas</p>
                     </a>
                   </li>
                 </ul>
