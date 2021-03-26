@@ -1,16 +1,13 @@
 <?php
-//Activamos el almacenamiento en el buffer
-ob_start();
-session_start();
-if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. significa que no se ha logeado al sistema
-{
-  header("Location: login.php");
-}else
-{
-  require 'header.php';
+  //Activamos el almacenamiento en el buffer
+  ob_start();
+  session_start();
+  if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. significa que no se ha logeado al sistema
+    header("Location: login.php");
+  } else {
+    require 'header.php';
 
-  if ($_SESSION['rol_idrol']==3||$_SESSION['rol_idrol']==1||$_SESSION['rol_idrol']==2) {
-    
+    if ($_SESSION['rol_idrol']==3||$_SESSION['rol_idrol']==1||$_SESSION['rol_idrol']==2) {   
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -21,7 +18,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">                    
-          <h1 class="box-title">Recetas <!--<button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i></button>--></h1>
+          <h1 class="box-title">Recetas</h1>
         </div>
       </div>
     </div> <!-- /.container-fluid -->
@@ -93,9 +90,12 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                   </div>
                 </form> <!-- /.formularioe -->
               </div> <!-- /.panel-body -->
+              
             </div><!-- /.card-body -->
-          </div><!-- /.col -->
+          </div><!-- /.card -->
+        </div><!-- /.col-12 -->
       </div><!-- /.row -->
+    </div> <!-- /.container-fluid -->
   </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 <!--Fin-Contenido-->
