@@ -11,7 +11,7 @@
         case 'guardaryeditar':
                 if (empty($idcita_medica)) {
                     $rspta=$horario->insertar($especialidad_idespecialidad,$personaMedico_idpersona, $fecha_cita,$_POST['horarioc']);
-                    echo $rspta ? "Horarios registradaos" : "No se pudo registrar los horarios";
+                    echo $rspta ? "Horarios registrados" : "No se pudo registrar los horarios";
                     
                 }else{
                     
