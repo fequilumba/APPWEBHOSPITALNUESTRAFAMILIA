@@ -28,7 +28,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
             </div>
                     
             <div class="panel-body table-responsive" id="listadoregistros">
-              <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover dt-responsive DT">
+              <table id="tbllistado" class="table table-striped table-bordered table-hover dt-responsive DT nowrap">
                 <thead>
                   <th>Opciones</th>
                   <th>Área</th>
