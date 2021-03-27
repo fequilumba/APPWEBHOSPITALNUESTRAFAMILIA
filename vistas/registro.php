@@ -118,6 +118,7 @@
       </div> <!-- /.card card-info -->
     </div><!-- /.login-box -->
     <br>
+    
     <!-- jQuery -->
     <script src="../public/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
