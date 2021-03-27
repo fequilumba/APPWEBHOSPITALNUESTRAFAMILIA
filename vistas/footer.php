@@ -10,6 +10,7 @@
       </footer> 
     </div>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <!-- jQuery -->
     <script src="../public/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
