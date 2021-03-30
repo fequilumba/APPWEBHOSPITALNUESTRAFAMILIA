@@ -1,20 +1,24 @@
 var tabla
-//ejecutar el inicio
+
+//FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
     mostrarform(false);
     listar();
-    $("#formularioe").on("submit",function(e){
+    $("#formularioe").on("submit", function(e) {
         guardaryeditar(e);
     });
-
 }
-//funcion limpiar
+
+
+//FUNCIÓN LIMPIAR
 function limpiar(){
     $("#idmedicamento").val("");
     $("#nombre").val("");
     $("#descripcion").val("");
 }
-//mostrar formulario
+
+
+//FUNCIÓN MOSTRAR FORMULARIO
 function mostrarform(flag){
     limpiar();
     if(flag){
@@ -29,21 +33,24 @@ function mostrarform(flag){
     }
 }
 
-//funcion cancelar form
+
+//FUNCIÓN CANCELAR FORM
 function cancelarform(){
     limpiar();
     mostrarform(false);
 }
-//funcion listar
+
+
+//FUNCIÓN LISTAR MEDICAMENTOS
 function listar(){
     tabla=$('#tbllistadoe').dataTable({
-        "aProcessing":true,//activar procesamiento del datatable
-        "aServerSide": true,//paginacion y filtrado realizados por el servidor
-        dom: 'Bfetip',//definir los parametro del control de tabla
+        "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
+        "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
+        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
-        //botones para copiar los registros en diferentes formatos
+        //BOTONES PARA COPIAR LOS REGISTROS EN DIFERENTES FORMATOS
         buttons:[
             'copyHtml5',
             'excelHtml5',
@@ -64,9 +71,9 @@ function listar(){
     }).DataTable();
 }
 
-//funcion guardar o editar
+//FUNCIÓN GUARDAR O EDITAR MEDICAMENTO
 function guardaryeditar(e){
-    e.preventDefault(); //no se activa la accion predeterminada del evento
+    e.preventDefault(); //NO SE ACTIVA LA ACCIÓN PREDETERMINADA DEL EVENTO
     $("#btnGuardar").prop("disabled",true);
     var formData = new FormData($("#formularioe")[0]);
     $.ajax({
@@ -85,54 +92,48 @@ function guardaryeditar(e){
     limpiar();
 }
 
+
+//FUNCIÓN MOSTRAR MEDICAMENTOS
 function mostrar(idmedicamento){
-    $.post("../ajax/medicamento.php?op=mostrar",{idmedicamento : idmedicamento}, function(data, status)
-    {
+    $.post("../ajax/medicamento.php?op=mostrar",{idmedicamento : idmedicamento}, function(data, status) {
         data = JSON.parse(data);
         mostrarform(true);
         $("#nombre").val(data.nombre);
         $("#descripcion").val(data.descripcion);
         $("#idmedicamento").val(data.idmedicamento);
-
     });
 }
 
-//funcion para descativar examenes
-function desactivar(idmedicamento)
-{
-    alertify.confirm("Medicamento","¿Estas seguro de desactivar el tipo medicamento?",
-        function(){
-            $.post(
-                "../ajax/medicamento.php?op=desactivar", {idmedicamento : idmedicamento}, function(e)
-                {
-                    //alertify.alert(e);
-                    tabla.ajax.reload();
-                    alertify.success('Medicamento desactivado');
-        
-                });
-        },
-        function(){
-            alertify.error('Cancelado');
+
+//FUNCIÓN PARA DESACTIVAR MEDICAMENTO
+function desactivar(idmedicamento) {
+    alertify.confirm("Medicamento","¿Estas seguro de desactivar el tipo medicamento?", function() {
+        $.post("../ajax/medicamento.php?op=desactivar", {idmedicamento : idmedicamento}, function(e) {
+            //alertify.alert(e);
+            tabla.ajax.reload();
+            alertify.success('Medicamento desactivado');
         });
+    },
+    function(){
+        alertify.error('Cancelado');
+    });
 }
-//funcion para ativar examenes
-function activar(idmedicamento)
-{
-    alertify.confirm("Medicamento","¿Estas seguro de activar el medicamento?",
-        function(){
-            $.post(
-                "../ajax/medicamento.php?op=activar", {idmedicamento : idmedicamento}, function(e)
-                {
-                    //alertify.alert(e);
-                    tabla.ajax.reload();
-                    alertify.success('Medicamento activado');
-        
-                });
-        },
-        function(){
-            alertify.error('Cancelado');
+
+
+//FUNCIÓN PARA ACTIVAR MEDICAMENTO
+function activar(idmedicamento) {
+    alertify.confirm("Medicamento","¿Estas seguro de activar el medicamento?", function() {
+        $.post("../ajax/medicamento.php?op=activar", {idmedicamento : idmedicamento}, function(e) {
+            //alertify.alert(e);
+            tabla.ajax.reload();
+            alertify.success('Medicamento activado');
         });
+    },
+    function(){
+        alertify.error('Cancelado');
+    });
 }
+
 /*function eliminar(idtipo_examen)
 { 
     alertify.confirm("Exámen","¿Estas seguro de eliminar el examen de tipo Imágen?",

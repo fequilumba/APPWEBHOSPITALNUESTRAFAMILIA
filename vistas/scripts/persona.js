@@ -1,18 +1,22 @@
-var tabla
-//ejecutar el inicio
+var tabla;
+
+//FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
     mostrarform(false);
+
     listar();
     $("#formulario").on("submit",function(e){
         guardaryeditar(e);
     });
-    //mostrar roles
+
+    // MOSTRAR ROLES
 	$.post("../ajax/persona.php?op=roles&id=",function(r){
 		$("#roles").html(r);
 	});
 }
-//funcion limpiar
-function limpiar(){
+
+// FUNCIÓN LIMPIAR
+function limpiar() {
     $("#idpersona").val("");
     $("#cedula").val("");
     $("#nombres").val("");
@@ -27,43 +31,46 @@ function limpiar(){
     $("#cliente").val("");
     $('#cedula').css("background-color", "#FFFFFF");
 }
-//mostrar formulario
-function mostrarform(flag){
+
+// FUNCIÓN MOSTRAR FORMULARIO
+function mostrarform(flag) {  // LA VARIABLE FLAG SI RECIBE TRUE MUESTRA FORMULARIO Y OCULTAR EL LISTADO Y SI RECIBE UN FALSE OCULTA EL FORMULARIO Y MOSTRAR EL LISTADO
     limpiar();
     if(flag){
-        $("#listadoregistros").hide();
-        $("#formularioregistros").show();
+        $("#listadoregistros").hide(); // EL LISTADO REGISTROS ESTARA OCULTO (HIDE)
+        $("#formularioregistros").show(); // EL FORMULARIO VA ESTAR VISIBLE (SHOW) 
         $("#btnGuardar").prop("disabled",false);
         $("#btnagregar").hide();
-    }else{
-        $("#listadoregistros").show();
-        $("#formularioregistros").hide();
+    } else {
+        $("#listadoregistros").show(); // EL LISTADO VA ESTAR VISIBLE (SHOW)
+        $("#formularioregistros").hide(); // EL FORMULARIO ESTARA OCULTO (HIDE)
         $("#btnagregar").show();
     }
 }
 
-//cancelar form
+// FUNCIÓN CARCELAR FORM
 function cancelarform(){
     limpiar();
     mostrarform(false);
 }
-//funcion listar
-function listar(){
+
+//FUNCIÓN LISTAR
+function listar() {
     tabla=$('#tbllistado').dataTable({
-        "aProcessing":true,//activar procesamiento del datatable
-        "aServerSide": true,//paginacion y filtrado realizados por el servidor
-        dom: 'Bfetip',//definir los parametro del control de tabla
+        "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
+        "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
+        dom: 'Bfetip', // DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
-        //botones para copiar los registros en diferentes formatos
+        // BOTONES PARA COPIAR LOS REGISTROS EN DIFERENTES FORMATOS
         buttons:[
             'copyHtml5',
             'excelHtml5',
             'csvHtml5',
             'pdf',
         ],
-        "ajax":{
+
+        "ajax": {
             url: '../ajax/persona.php?op=listar',
             type: "get",
             dataType: "json",
@@ -72,14 +79,14 @@ function listar(){
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 5, //paginacion--> cada 5 registros
-        "order": [[0, "desc" ]]//ordenar (columna)
+        "iDisplayLength": 5, // PAGINACIÓN --> CADA 5 REGISTROS
+        "order": [[0, "desc" ]] // ORDENAR (COLUMNA, ORDEN)
     }).DataTable();
 }
 
-//funcion guardar o editar
+// FUNCIÓN GUARDAR O EDITAR
 function guardaryeditar(e){
-    e.preventDefault();
+    e.preventDefault(); // NO SE ACTIVA LA ACCIÓN PREDETERMINADA DEL EVENTO
     $("#btnGuardar").prop("disabled",true);
     var formData = new FormData($("#formulario")[0]);
     $.ajax({
@@ -98,6 +105,7 @@ function guardaryeditar(e){
     limpiar();
 }
 
+// FUNCIÓN MOSTRAR PERSONA
 function mostrar(idpersona){
     $.post("../ajax/persona.php?op=mostrar",{idpersona : idpersona}, function(data, status)
     {
@@ -119,25 +127,23 @@ function mostrar(idpersona){
 		$("#roles").html(r);
 	});
 }
-//funcion para descativar especialidades
+
+// FUNCIÓN PARA DESACTIVAR CLIENTE
 function desactivar(idpersona)
 {
-    alertify.confirm("Cliente","¿Estas seguro de desactivar al Cliente?",
-        function(){
-            $.post(
-                "../ajax/persona.php?op=desactivar", {idpersona : idpersona}, function(e)
-                {
-                    //alertify.alert(e);
-                    tabla.ajax.reload();
-                    alertify.success('Cliente desactivado');
-        
-                });
+    alertify.confirm("Cliente","¿Estas seguro de desactivar al Cliente?", function() {
+        $.post("../ajax/persona.php?op=desactivar", {idpersona : idpersona}, function(e) {
+            //alertify.alert(e);
+            tabla.ajax.reload();
+            alertify.success('Cliente desactivado');
+            });
         },
         function(){
             alertify.error('Cancelado');
         });
 }
 
+// FUNCIÓN PARA ACTIVAR CLIENTE
 function activar(idpersona)
 {
     alertify.confirm("Cliente","¿Estas seguro de activar al Cliente?",

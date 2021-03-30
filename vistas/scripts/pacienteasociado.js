@@ -1,21 +1,22 @@
 var tabla
-//ejecutar el inicio
+
+//FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
     mostrarform(false);
     listar();
-    $("#formulario").on("submit",function(e){
+    $("#formulario").on("submit", function(e) {
         guardaryeditar(e);
     });
-    $.post("../ajax/pacienteasociado.php?op=selectCliente",function(r)
-        {        
-            $("#cliente").html(r);
-            $("#cliente").selectpicker('refresh');
-        }
-    );
-    $("#imagenmuestra").hide();
+    $.post("../ajax/pacienteasociado.php?op=selectCliente", function(r) {        
+        $("#cliente").html(r);
+        $("#cliente").selectpicker('refresh');
+    });
 
+    $("#imagenmuestra").hide();
 }
-//funcion limpiar
+
+
+//FUNCIÓN LIMPIAR
 function limpiar(){
     $("#idpersona").val("");
     $("#cedula").val("");
@@ -31,7 +32,9 @@ function limpiar(){
 	$("#imagenactual").val("");
     $('#cedula').css("background-color", "#FFFFFF");
 }
-//mostrar formulario
+
+
+//FUNCIÓN MOSTRAR FORMULARIO
 function mostrarform(flag){
     limpiar();
     if(flag){
@@ -46,21 +49,24 @@ function mostrarform(flag){
     }
 }
 
-//cancelar form
+
+//FUNCIÓN CANCELAR FORM
 function cancelarform(){
     limpiar();
     mostrarform(false);
 }
-//funcion listar
+
+
+//FUNCIÓN LISTAR PACIENTE ASOCIADO
 function listar(){
     tabla=$('#tbllistado').dataTable({
-        "aProcessing":true,//activar procesamiento del datatable
-        "aServerSide": true,//paginacion y filtrado realizados por el servidor
-        dom: 'Bfetip',//definir los parametro del control de tabla
+        "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
+        "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
+        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
-        //botones para copiar los registros en diferentes formatos
+        //BOTONES PARA COPIAR LOS REGISTROS EN DIFERENTES FORMATOS
         buttons:[
             'copyHtml5',
             'excelHtml5',
@@ -76,14 +82,15 @@ function listar(){
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 5, //paginacion--> cada 5 registros
-        "order": [[0, "desc" ]]//ordenar (columna)
+        "iDisplayLength": 5, //PAGINACIÓN --> CADA 5 REGISTROS
+        "order": [[0, "desc" ]] //ORDENAR (COLUMNA, ORDEN)
     }).DataTable();
 }
 
-//funcion guardar o editar
+
+//FUNCIÓN GUARDAR O EDITAR PACIENTE ASOCIADO
 function guardaryeditar(e){
-    e.preventDefault();
+    e.preventDefault(); //NO SE ACTIVA LA ACCIÓN PREDETERMINADA DEL EVENTO
     $("#btnGuardar").prop("disabled",true);
     var formData = new FormData($("#formulario")[0]);
     $.ajax({
@@ -102,9 +109,10 @@ function guardaryeditar(e){
     limpiar();
 }
 
+
+//FUNCIÓN MOSTRAR PACIENTE ASOCIADO
 function mostrar(idpersona){
-    $.post("../ajax/pacienteasociado.php?op=mostrar",{idpersona : idpersona}, function(data, status)
-    {
+    $.post("../ajax/pacienteasociado.php?op=mostrar",{idpersona : idpersona}, function(data, status) {
         data = JSON.parse(data);
         mostrarform(true);
         $("#cedula").val(data.cedula);
@@ -122,44 +130,37 @@ function mostrar(idpersona){
         $("#cliente").val(data.idasociado);
         $("#cliente").selectpicker('refresh');
         $("#idpersona").val(data.idpersona);
-
     });
 }
-//funcion para descativar especialidades
-function desactivar(idpersona)
-{
-    alertify.confirm("Paciente","¿Estas seguro de desactivar al Paciente?",
-        function(){
-            $.post(
-                "../ajax/pacienteasociado.php?op=desactivar", {idpersona : idpersona}, function(e)
-                {
-                    //alertify.alert(e);
-                    tabla.ajax.reload();
-                    alertify.success('Paciente desactivado');
-        
-                });
-        },
-        function(){
-            alertify.error('Cancelado');
+
+
+//FUNCIÓN PARA DESACTIVAR AL PACIENTE ASOCIADO 
+function desactivar(idpersona) {
+    alertify.confirm("Paciente","¿Estas seguro de desactivar al Paciente?", function() {
+        $.post("../ajax/pacienteasociado.php?op=desactivar", {idpersona : idpersona}, function(e) {
+            //alertify.alert(e);
+            tabla.ajax.reload();
+            alertify.success('Paciente desactivado');
         });
+    },
+    function(){
+        alertify.error('Cancelado');
+    });
 }
 
-function activar(idpersona)
-{
-    alertify.confirm("Paciente","¿Estas seguro de activar al Paciente?",
-        function(){
-            $.post(
-                "../ajax/pacienteasociado.php?op=activar", {idpersona : idpersona}, function(e)
-                {
-                    //alertify.alert(e);
-                    tabla.ajax.reload();
-                    alertify.success('Paciente activado');
-        
-                });
-        },
-        function(){
-            alertify.error('Cancelado');
+
+//FUNCIÓN PARA ACTIVAR AL PACIENTE ASOCIADO
+function activar(idpersona) {
+    alertify.confirm("Paciente","¿Estas seguro de activar al Paciente?", function() {
+        $.post("../ajax/pacienteasociado.php?op=activar", {idpersona : idpersona}, function(e) {
+            //alertify.alert(e);
+            tabla.ajax.reload();
+            alertify.success('Paciente activado');
         });
+    },
+    function(){
+        alertify.error('Cancelado');
+    });
 }
 
 init();

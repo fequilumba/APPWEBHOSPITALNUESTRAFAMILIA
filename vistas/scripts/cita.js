@@ -1,23 +1,23 @@
-var tabla
-//ejecutar el inicio
+var tabla;
+
+//FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
     mostrarform(false);
     listar();
-    $("#formulariocita").on("submit",function(e){
+    $("#formulariocita").on("submit",function(e) {
         guardaryeditar(e);
     });
 
-    //Cargamos los items al select Estado
-    $.post("../ajax/cita.php?op=selectEstado",function(r)
-        {        
-            //console.log(data);
-            $("#estado_idestado").html(r);
-            $("#estado_idestado").selectpicker('refresh');
-            
-        }
-    );
+    //CARGAMOS LOS ITEMS AL SELECT ESTADO
+    $.post("../ajax/cita.php?op=selectEstado",function(r) {        
+        //console.log(data);
+        $("#estado_idestado").html(r);
+        $("#estado_idestado").selectpicker('refresh');
+    });
 }
-//funcion limpiar
+
+
+//FUNCIÓN LIMPIAR
 function limpiar(){
     $("#idcita_medica").val("");
     $("#especialidad_idespecialidad").val("");
@@ -28,38 +28,43 @@ function limpiar(){
     $("#estado_idestado").val("");
     $(".filas").remove();
 }
-//mostrar formulario
+
+
+//FUNCIÓN MOSTRAR FORMULARIO
 function mostrarform(flag){
     limpiar();
-    if(flag){
+    if(flag) {
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
         $("#btnGuardar").prop("disabled",false);
         $("#btnagregar").hide();
         listarMedicamento();
         listarExamen();
-    }else{
+    } else {
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
         $("#btnagregar").show();
     }
 }
 
-//cancelar form
+
+//FUNCIÓN CANCELAR FORM
 function cancelarform(){
     limpiar();
     mostrarform(false);
 }
-//funcion listar
+
+
+//FUNCIÓN LISTAR CITA
 function listar(){
     tabla=$('#tbllistadocita').dataTable({
-        "aProcessing":true,//activar procesamiento del datatable
-        "aServerSide": true,//paginacion y filtrado realizados por el servidor
-        dom: 'Bfetip',//definir los parametro del control de tabla
+        "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
+        "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
+        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
-        //botones para copiar los registros en diferentes formatos
+        //BOTONES PARA COPIAR LOS REGISTROS EN DIFERENTES FORMATOS
         buttons:[
             'copyHtml5',
             'excelHtml5',
@@ -75,14 +80,15 @@ function listar(){
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 5, //paginacion--> cada 5 registros
-        "order": [[0, "desc" ]]//ordenar (columna)
+        "iDisplayLength": 5, //PAGINACIÓN --> CADA 5 REGISTROS
+        "order": [[0, "desc" ]] //ORDENAR (COLUMNA, ORDEN)
     }).DataTable();
 }
 
-//funcion guardar o editar
-function guardaryeditar(e){
-    e.preventDefault();
+
+//FUNCIÓN GUARDAR O EDITAR CITA
+function guardaryeditar(e) {
+    e.preventDefault(); //NO SE ACTIVA LA ACCIÓN PREDETERMINADA DEL EVENTO
     $("#btnGuardar").prop("disabled",true);
     var formData = new FormData($("#formulariocita")[0]);
     $.ajax({
@@ -104,6 +110,7 @@ function guardaryeditar(e){
 }
 
 
+//FUNCIÓN MOSTRAR CITA
 function mostrar(idcita_medica){
     $.post("../ajax/cita.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status)
     {
@@ -120,14 +127,21 @@ function mostrar(idcita_medica){
         $("#idcita_medica").val(data.idcita_medica);
     });
 }
-//listar medicamentos
+
+/****************************************
+ *  
+ * LISTA DE MEDICAMENTOS
+ * 
+ * ****************************************/
+
+// LISTAR MEDICAMENTOS
 function listarMedicamento() {
     tabla=$('#tblmedicamentos').dataTable({
-        "aProcessing":true,//activar procesamiento del datatable
-        "aServerSide": true,//paginacion y filtrado realizados por el servidor
-        dom: 'Bfetip',//definir los parametro del control de tabla
+        "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
+        "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
+        dom: 'Bfetip', // DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         
-        //botones para copiar los registros en diferentes formatos
+        // BOTONES PARA COPIAR LOS REGISTROS EN DIFERENTES FORMATOS
         buttons:[
         ],
         "ajax":{
@@ -139,11 +153,13 @@ function listarMedicamento() {
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 5, //paginacion--> cada 5 registros
-        "order": [[0, "desc" ]]//ordenar (columna)
+        "iDisplayLength": 5, //// PAGINACIÓN --> CADA 5 REGISTROS
+        "order": [[0, "desc" ]] // ORDENAR (COLUMNA, ORDEN)
     }).DataTable();
 }
 
+
+// FUNCIÓN AGREGAR MEDICAMENTOS
 var cont=0;
 var detalles=0;
 function agregarMedicamento(idmedicamento,nombre,descripcion) {
@@ -161,31 +177,32 @@ function agregarMedicamento(idmedicamento,nombre,descripcion) {
         cont++;
         detalles= detalles+1;
         $('#medicamentos').append(fila);
-    }else{
+    } else {
         alert("Error al ingresar el medicamento")
     }
 }
 
+
+// FUNCIÓN ELIMINAR MEDICAMENTOS
 function eliminarMedicamento(indice) {
     $("#fila" + indice).remove();
   	detalles=detalles-1;
 }
 
 /****************************************
- * 
- * 
- * Lista de examenes 
- * 
- * 
+ *  
+ * LISTA DE EXÁMENES 
  * 
  * ****************************************/
+
+//FUNCIÓN LISTAR EXAMEN
 function listarExamen() {
     tabla=$('#tblexamenes').dataTable({
-        "aProcessing":true,//activar procesamiento del datatable
-        "aServerSide": true,//paginacion y filtrado realizados por el servidor
-        dom: 'Bfetip',//definir los parametro del control de tabla
+        "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
+        "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
+        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         
-        //botones para copiar los registros en diferentes formatos
+        // BOTONES PARA COPIAR LOS REGISTROS EN DIFERENTES FORMATOS
         buttons:[
         ],
         "ajax":{
@@ -197,11 +214,13 @@ function listarExamen() {
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 5, //paginacion--> cada 5 registros
-        "order": [[0, "desc" ]]//ordenar (columna)
+        "iDisplayLength": 5, //PAGINACIÓN --> CADA 5 REGISTROS
+        "order": [[0, "desc" ]] //ORDENAR (COLUMNA, ORDEN)
     }).DataTable();
 }
 
+
+// FUNCIÓN AGREGAR EXAMEN
 var cont2=0;
 var detalles2=0;
 function agregarExamen(idexamen,nombre,tipo) {
@@ -214,10 +233,13 @@ function agregarExamen(idexamen,nombre,tipo) {
         cont2++;
         detalles2= detalles2+1;
         $('#examenes').append(fila);
-    }else{
+    } else {
         alert("Error al ingresar el medicamento")
     }
 }
+
+
+// FUNCIÓN ELIMINAR EXAMEN
 function eliminarExamen(indice) {
     $("#fila2" + indice).remove();
   	detalles=detalles-1;

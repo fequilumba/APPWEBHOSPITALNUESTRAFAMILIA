@@ -1,20 +1,24 @@
 var tabla
-//ejecutar el inicio
+
+//FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
     mostrarform(false);
     listar();
     $("#formularioe").on("submit",function(e){
         guardaryeditar(e);
     });
-
 }
-//funcion limpiar
+
+
+//FUNCIÓN LIMPIAR
 function limpiar(){
     $("#idespecialidad").val("");
     $("#nombre").val("");
 }
-//mostrar formulario
-function mostrarform(flag){
+
+
+//FUNCIÓN MOSTRAR FORMULARIO
+function mostrarform(flag) {
     limpiar();
     if(flag){
         $("#listadoregistros").hide();
@@ -28,21 +32,24 @@ function mostrarform(flag){
     }
 }
 
-//funcion cancelar form
-function cancelarform(){
+
+//FUNCIÓN CANCELAR FORM
+function cancelarform() {
     limpiar();
     mostrarform(false);
 }
-//funcion listar
-function listar(){
+
+
+// FUNCIÓN LISTAR
+function listar() {
     tabla=$('#tbllistadoe').dataTable({
-        "aProcessing":true,//activar procesamiento del datatable
-        "aServerSide": true,//paginacion y filtrado realizados por el servidor
-        dom: 'Bfetip',//definir los parametro del control de tabla
+        "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
+        "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
+        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
-        //botones para copiar los registros en diferentes formatos
+        //BOTONES PARA COPIAR LOS REGISTROS EN DIFERENTES FORMATOS
         buttons:[
             'copyHtml5',
             'excelHtml5',
@@ -58,14 +65,14 @@ function listar(){
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 5, //paginacion--> cada 5 registros
-        "order": [[0, "desc" ]]//ordenar (columna)
+        "iDisplayLength": 5, //PAGINACIÓN --> CADA 5 REGISTROS
+        "order": [[0, "desc" ]] //ORDENAR (COLUMNA, ORDEN)
     }).DataTable();
 }
 
-//funcion guardar o editar
-function guardaryeditar(e){
-    e.preventDefault(); //no se activa la accion predeterminada del evento
+//FUNCIÓN GUARDAR O EDITAR
+function guardaryeditar(e) {
+    e.preventDefault(); //NO SE ACTIVA LA ACCIÓN PREDETERMINADA DEL EVENTO
     $("#btnGuardar").prop("disabled",true);
     var formData = new FormData($("#formularioe")[0]);
     $.ajax({
@@ -84,51 +91,46 @@ function guardaryeditar(e){
     limpiar();
 }
 
-function mostrar(idespecialidad){
-    $.post("../ajax/especialidad.php?op=mostrar",{idespecialidad : idespecialidad}, function(data, status)
-    {
+
+// FUNCIÓN MOSTRAR ESPECIALIDAD
+function mostrar(idespecialidad) {
+    $.post("../ajax/especialidad.php?op=mostrar",{idespecialidad : idespecialidad}, function(data, status) {
         data = JSON.parse(data);
         mostrarform(true);
         $("#nombre").val(data.nombre)
         $("#idespecialidad").val(data.idespecialidad)
-
     });
 }
-//funcion para descativar especialidades
-function desactivar(idespecialidad)
-{
-    alertify.confirm("Especialidad","¿Estas seguro de desactivar la Especialidad?",
-        function(){
-            $.post(
-                "../ajax/especialidad.php?op=desactivar", {idespecialidad : idespecialidad}, function(e)
-                {
-                    //alertify.alert(e);
-                    tabla.ajax.reload();
-                    alertify.success('Especialidad desactivada');
-        
-                });
-        },
-        function(){
-            alertify.error('Cancelado');
+
+
+//FUNCIÓN DESACTIVAR ESPECIALIDAD
+function desactivar(idespecialidad) {
+    alertify.confirm("Especialidad","¿Estas seguro de desactivar la Especialidad?", function() {
+        $.post("../ajax/especialidad.php?op=desactivar", {idespecialidad : idespecialidad}, function(e) {
+            //alertify.alert(e);
+            tabla.ajax.reload();
+            alertify.success('Especialidad desactivada');
         });
+    },
+    function() {
+        alertify.error('Cancelado');
+    });
 }
 
+
+//FUNCIÓN ACTIVAR ESPECIALIDAD
 function activar(idespecialidad)
 {
-    alertify.confirm("Especialidad","¿Estas seguro de activar la Especialidad?",
-        function(){
-            $.post(
-                "../ajax/especialidad.php?op=activar", {idespecialidad : idespecialidad}, function(e)
-                {
-                    //alertify.alert(e);
-                    tabla.ajax.reload();
-                    alertify.success('Especialidad activada');
-        
-                });
-        },
-        function(){
-            alertify.error('Cancelado');
+    alertify.confirm("Especialidad","¿Estas seguro de activar la Especialidad?", function(){
+        $.post("../ajax/especialidad.php?op=activar", {idespecialidad : idespecialidad}, function(e) {
+            //alertify.alert(e);
+            tabla.ajax.reload();
+            alertify.success('Especialidad activada');
         });
+    },
+    function(){
+        alertify.error('Cancelado');
+    });
 }
 
 init();
