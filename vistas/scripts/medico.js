@@ -1,5 +1,6 @@
 var tabla
-//ejecutar el inicio
+
+//FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
     mostrarform(false);
     listar();
@@ -7,28 +8,28 @@ function init() {
         guardaryeditar(e);
     });
 
-    //Cargamos los items al select especialidad
-    $.post("../ajax/medico.php?op=selectEspecialidad",function(r)
-        {        
-            //console.log(data);
-            $("#especialidad_idespecialidad").html(r);
-            //$("#especialidad_idespecialidad").selectpicker('refresh');
-            
-        }
-    );
-    //mostrar roles
-	$.post("../ajax/medico.php?op=roles&id2=",function(r){
+    //CARGAMOS LOS ITEMS AL SELECT ESPECIALIDAD
+    $.post("../ajax/medico.php?op=selectEspecialidad", function(r) {        
+        //console.log(data);
+        $("#especialidad_idespecialidad").html(r);
+        //$("#especialidad_idespecialidad").selectpicker('refresh');    
+    });
+
+    //MOSTRAR ROLES
+	$.post("../ajax/medico.php?op=roles&id2=", function(r) {
 		$("#roles").html(r);
 	});
-    //mostrar especialidades
-    $.post("../ajax/medico.php?op=especialidades&id=",function(r)
-        {   
-            $("#especialidades").html(r);
-        });
-    $("#imagenmuestra").hide();
 
+    //MOSTRAR ESPECIALIDADES
+    $.post("../ajax/medico.php?op=especialidades&id=",function(r) {   
+        $("#especialidades").html(r);
+    });
+
+    $("#imagenmuestra").hide();
 }
-//funcion limpiar
+
+
+//FUNCIÓN LIMPIAR
 function limpiar(){
     $("#idpersona").val("");
     $("#usuario_idusuario").val("");
@@ -48,7 +49,9 @@ function limpiar(){
     $("#genero").val("");
     $('#cedula').css("background-color", "#FFFFFF");
 }
-//mostrar formulario
+
+
+//FUNCIÓN MOSTRAR FORMULARIO
 function mostrarform(flag){
     limpiar();
     if(flag){
@@ -63,21 +66,24 @@ function mostrarform(flag){
     }
 }
 
-//cancelar form
+
+//FUNCIÓN CANCELAR FORM
 function cancelarform(){
     limpiar();
     mostrarform(false);
 }
-//funcion listar
+
+
+//FUNCIÓN LISTAR MÉDICO
 function listar(){
     tabla=$('#tbllistado').dataTable({
-        "aProcessing":true,//activar procesamiento del datatable
-        "aServerSide": true,//paginacion y filtrado realizados por el servidor
-        dom: 'Bfetip',//definir los parametro del control de tabla
+        "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
+        "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
+        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
-        //botones para copiar los registros en diferentes formatos
+        //BOTONES PARA COPIAR LOS REGISTROS EN DIFERENTES FORMATOS
         buttons:[
             'copyHtml5',
             'excelHtml5',
@@ -93,12 +99,13 @@ function listar(){
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 5, //paginacion--> cada 5 registros
-        "order": [[0, "desc" ]]//ordenar (columna)
+        "iDisplayLength": 5, //PAGINACIÓN --> CADA 5 REGISTROS
+        "order": [[0, "desc" ]] //ORDENAR (COLUMNA, ORDEN)
     }).DataTable();
 }
 
-//funcion guardar o editar
+
+//FUNCIÓN GUARDAR O EDITAR MÉDICO
 function guardaryeditar(e){
     e.preventDefault();
     $("#btnGuardar").prop("disabled",true);
@@ -119,9 +126,10 @@ function guardaryeditar(e){
     limpiar();
 }
 
+
+//FUNCIÓN MOSTRAR MÉDICO
 function mostrar(idpersona){
-    $.post("../ajax/medico.php?op=mostrar",{idpersona : idpersona}, function(data, status)
-    {
+    $.post("../ajax/medico.php?op=mostrar",{idpersona : idpersona}, function(data, status) {
         data = JSON.parse(data);
         mostrarform(true);
         $("#cedula").val(data.cedula);
@@ -140,50 +148,45 @@ function mostrar(idpersona){
         $("#idpersona").val(data.idpersona);
 
     });
-    $.post("../ajax/medico.php?op=roles&id2="+idpersona,function(r){
+
+    $.post("../ajax/medico.php?op=roles&id2="+idpersona, function(r) {
 		$("#roles").html(r);
 	});
-    $.post("../ajax/medico.php?op=especialidades&id="+idpersona,function(r){
+
+    $.post("../ajax/medico.php?op=especialidades&id="+idpersona, function(r) {
 		$("#especialidades").html(r);
     });
     
 }
-//funcion para descativar medicos
-function desactivar(idpersona)
-{
 
-    alertify.confirm("Médico","¿Estas seguro de desactivar al Médico?",
-        function(){
-            $.post(
-                "../ajax/medico.php?op=desactivar", {idpersona : idpersona}, function(e)
-                {
-                    //alertify.alert(e);
-                    tabla.ajax.reload();
-                    alertify.success('Médico desactivado');
-        
-                });
-        },
-        function(){
-            alertify.error('Cancelado');
+
+//FUNCIÓN PARA DESACTIVAR MÉDICO
+function desactivar(idpersona) {
+    alertify.confirm("Médico","¿Estas seguro de desactivar al Médico?", function() {
+        $.post("../ajax/medico.php?op=desactivar", {idpersona : idpersona}, function(e) {
+            //alertify.alert(e);
+            tabla.ajax.reload();
+            alertify.success('Médico desactivado');
         });
+    },
+    function(){
+        alertify.error('Cancelado');
+    });
 }
 
-function activar(idpersona)
-{
-    alertify.confirm("Médico","¿Estas seguro de activar al Médico?",
-        function(){
-            $.post(
-                "../ajax/medico.php?op=activar", {idpersona : idpersona}, function(e)
-                {
-                    //alertify.alert(e);
-                    tabla.ajax.reload();
-                    alertify.success('Médico activado');
-        
-                });
-        },
-        function(){
-            alertify.error('Cancelado');
+
+//FUNCIÓN PARA ACTIVAR MÉDICO
+function activar(idpersona) {
+    alertify.confirm("Médico","¿Estas seguro de activar al Médico?", function() {
+        $.post("../ajax/medico.php?op=activar", {idpersona : idpersona}, function(e) {
+            //alertify.alert(e);
+            tabla.ajax.reload();
+            alertify.success('Médico activado');
         });
+    },
+    function(){
+        alertify.error('Cancelado');
+    });
 }
 
 init();

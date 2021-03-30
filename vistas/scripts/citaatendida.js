@@ -1,17 +1,22 @@
 var tabla
-//ejecutar el inicio
+
+//FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
     mostrarform(false);
     listar();
 
 }
-//funcion limpiar
+
+
+//FUNCIÓN LIMPIAR
 function limpiar(){
     $("#idtipo_examen").val("");
     $("#seleccita").val("");
     $("#nombre").val("");
 }
-//mostrar formulario
+
+
+//FUNCIÓN MOSTRAR FORMULARIO
 function mostrarform(flag){
     limpiar();
     if(flag){
@@ -27,16 +32,16 @@ function mostrarform(flag){
 }
 
 
-//funcion listar
+//FUNCIÓN LISTAR
 function listar(){
     tabla=$('#tbllistadocita').dataTable({
-        "aProcessing":true,//activar procesamiento del datatable
-        "aServerSide": true,//paginacion y filtrado realizados por el servidor
-        dom: 'Bfetip',//definir los parametro del control de tabla
+        "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
+        "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
+        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
-        //botones para copiar los registros en diferentes formatos
+        //BOTONES PARA COPIAR LOS REGISTROS EN DIFERENTES FORMATOS
         buttons:[
             'copyHtml5',
             'excelHtml5',
@@ -52,12 +57,13 @@ function listar(){
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 5, //paginacion--> cada 5 registros
-        "order": [[0, "desc" ]]//ordenar (columna)
+        "iDisplayLength": 5, //PAGINACIÓN --> CADA 5 REGISTROS
+        "order": [[0, "desc" ]] //ORDENAR (COLUMNA, ORDEN)
     }).DataTable();
 }
 
 
+//FUNCIÓN MOSTRAR TIPO DE EXAMEN
 function mostrar(idtipo_examen){
     $.post("../ajax/examenmedico.php?op=mostrar",{idtipo_examen : idtipo_examen}, function(data, status)
     {

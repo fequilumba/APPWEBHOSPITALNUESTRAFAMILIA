@@ -1,5 +1,6 @@
 var tabla
-//ejecutar el inicio
+
+//FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
     mostrarform(false);
     listar();
@@ -7,40 +8,39 @@ function init() {
         guardaryeditar(e);
     });
 
-    //Cargamos los items al select Especialidad
-    $.post("../ajax/horario.php?op=selectEspecialidad",function(r)
-    {        
+    //CARGAMOS LOS ITEMS AL SELECT ESPECIALIDAD
+    $.post("../ajax/horario.php?op=selectEspecialidad",function(r) {        
         //console.log(data);
         $("#especialidad_idespecialidad").html(r);
-        $("#especialidad_idespecialidad").selectpicker('refresh');
-        
+        $("#especialidad_idespecialidad").selectpicker('refresh');    
     });
 
-    $("#especialidad_idespecialidad").change(function(){
-    $("#especialidad_idespecialidad option:selected").each(function(){
-        idespecialidad= $(this).val();
-        $.post("../ajax/horario.php?op=selectMedico",{idespecialidad:idespecialidad},function(r){         
-        $("#personaMedico_idpersona").html(r);
-        //$("#personaMedico_idpersona").selectpicker('refresh');
+    $("#especialidad_idespecialidad").change(function() {
+        $("#especialidad_idespecialidad option:selected").each(function() {
+            idespecialidad= $(this).val();
+            $.post("../ajax/horario.php?op=selectMedico",{idespecialidad:idespecialidad}, function(r){         
+            $("#personaMedico_idpersona").html(r);
+            //$("#personaMedico_idpersona").selectpicker('refresh');
+            });
         });
     });
-    });
 
-
-    //mostrar horarios
-    $.post("../ajax/horario.php?op=selectHorario&id=",function(r)
-    {   
+    //MOSTRAR HORARIOS
+    $.post("../ajax/horario.php?op=selectHorario&id=", function(r) {   
         $("#horarios").html(r);
     });
     fecha_cita.min = new Date().toISOString().split("T")[0];
-
 }
-//funcion limpiar
+
+
+//FUNCIÓN LIMPIAR
 function limpiar(){
     $("#idespecialidad").val("");
     $("#nombre").val("");
 }
-//mostrar formulario
+
+
+//FUNCIÓN MOSTRAR FORMULARIO
 function mostrarform(flag){
     limpiar();
     if(flag){
@@ -55,21 +55,24 @@ function mostrarform(flag){
     }
 }
 
-//funcion cancelar form
+
+//FUNCIÓN CANCELAR FORM
 function cancelarform(){
     limpiar();
     mostrarform(false);
 }
-//funcion listar
+
+
+//FUNCIÓN LISTAR HORARIO
 function listar(){
     tabla=$('#tbllistadoe').dataTable({
-        "aProcessing":true,//activar procesamiento del datatable
-        "aServerSide": true,//paginacion y filtrado realizados por el servidor
-        dom: 'Bfetip',//definir los parametro del control de tabla
+        "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
+        "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
+        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
-        //botones para copiar los registros en diferentes formatos
+        // BOTONES PARA COPIAR LOS REGISTROS EN DIFERENTES FORMATOS
         buttons:[
             'copyHtml5',
             'excelHtml5',
@@ -85,12 +88,13 @@ function listar(){
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 10, //paginacion--> cada 5 registros
-        "order": [[0, "desc" ]]//ordenar (columna)
+        "iDisplayLength": 10, //PAGINACIÓN --> CADA 5 REGISTROS
+        "order": [[0, "desc" ]] //ORDENAR (COLUMNA, ORDEN)
     }).DataTable();
 }
 
-//funcion guardar o editar
+
+//FUNCIÓN GUARDAR Y EDITAR HORARIO
 function guardaryeditar(e){
     e.preventDefault(); //no se activa la accion predeterminada del evento
     $("#btnGuardar").prop("disabled",true);
@@ -111,22 +115,21 @@ function guardaryeditar(e){
     limpiar();
 }
 
-//funcion para eliminar horarios disponibles
-function eliminarHora(idcita_medica)
-{
-    $.post(
-        "../ajax/horario.php?op=eliminar", {idcita_medica : idcita_medica}, function(e)
-        {
-            tabla.ajax.reload();
-            Swal.fire(
-                'Eliminado!',
-                'La cita fue eliminada correctamente.',
-                'success'
-              )
 
-        });
+//FUNCIÓN PARA ELIMINAR HORARIOS DISPONIBLES
+function eliminarHora(idcita_medica) {
+    $.post("../ajax/horario.php?op=eliminar", {idcita_medica : idcita_medica}, function(e) {
+        tabla.ajax.reload();
+        Swal.fire(
+        'Eliminado!',
+        'La cita fue eliminada correctamente.',
+        'success'
+        )
+    });
 }
-//Alerta para eliminar horarios disponibles
+
+
+//FUNCIÓN ALERTA PARA ELIMINAR HORARIOS DISPONIBLES
 function alerEliminar(idcita_medica) {
     Swal.fire({
         title: 'Estas seguro de eliminar?',
@@ -136,11 +139,11 @@ function alerEliminar(idcita_medica) {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Si, Eliminar!'
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
             eliminarHora(idcita_medica);
         }
-      })
+    })
 }
 
 init();

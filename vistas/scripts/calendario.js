@@ -1,3 +1,4 @@
+//FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
   calendario()
   fecha_cita.min = new Date().toISOString().split("T")[0];
@@ -15,62 +16,50 @@ function init() {
     {"especialidad_idespecialidad":especialidad,
     "personaMedico_idpersona":personaMedico,
     "fecha_cita":fecha},
-    function(data)
-{
-    if (data!="null")
-    {
+
+    function(data) {
+      if (data!="null") {
         $("#idcita_medica").html(data);
-       // $("#hora").selectpicker('refresh');     
-        
-      
-    }
-    else
-    {
+       // $("#hora").selectpicker('refresh');         
+      } else {
         Swal.fire({
-            icon: 'warning',
-            title: 'Disponibilidad',
-            text: 'No existen horarios disponibles es esa fecha',
-            showConfirmButton: false,
-            timer: 2500
-          });
-    }
+          icon: 'warning',
+          title: 'Disponibilidad',
+          text: 'No existen horarios disponibles es esa fecha',
+          showConfirmButton: false,
+          timer: 2500
+        });
+      }
+    });
   });
 
-});
 
-
-  //Cargamos los items al select Especialidad
-  $.post("../ajax/calendario.php?op=selectEspecialidad",function(r)
-  {        
-      //console.log(data);
-      $("#especialidad_idespecialidad").html(r);
-      $("#especialidad_idespecialidad").selectpicker('refresh');
-      
+  // CARGAMOS LOS ITEMS AL SELECT ESPECIALIDAD
+  $.post("../ajax/calendario.php?op=selectEspecialidad",function(r) {
+    //console.log(data);
+    $("#especialidad_idespecialidad").html(r);
+    $("#especialidad_idespecialidad").selectpicker('refresh');
   });
   
-  $.post("../ajax/calendario.php?op=selectPaciente",function(r)
-  {        
-      //console.log(data);
-      $("#personaPaciente_idpersona").html(r);
-      $("#personaPaciente_idpersona").selectpicker('refresh');
-      
+  $.post("../ajax/calendario.php?op=selectPaciente",function(r) {        
+    //console.log(data);
+    $("#personaPaciente_idpersona").html(r);
+    $("#personaPaciente_idpersona").selectpicker('refresh');    
   });
 
-  $("#especialidad_idespecialidad").change(function(){
-      $("#especialidad_idespecialidad option:selected").each(function(){
-        idespecialidad= $(this).val();
-        $.post("../ajax/calendario.php?op=selectMedico",{idespecialidad:idespecialidad},function(r){         
-          $("#personaMedico_idpersona").html(r);
-          //$("#personaMedico_idpersona").selectpicker('refresh');
-        });
+  $("#especialidad_idespecialidad").change(function() {
+    $("#especialidad_idespecialidad option:selected").each(function() {
+      idespecialidad= $(this).val();
+      $.post("../ajax/calendario.php?op=selectMedico",{idespecialidad:idespecialidad},function(r) {         
+        $("#personaMedico_idpersona").html(r);
+        //$("#personaMedico_idpersona").selectpicker('refresh');
       });
-  });
+    });
+  });      
 
-      
+} //FIN INIT
 
-}//fin init
-
-//funcion limpiar
+// FUNCIÓN LIMPIAR CITAS
 function limpiar(){
   $("#idcita_medica").val("");
   $("#especialidad_idespecialidad").val("");
@@ -81,6 +70,7 @@ function limpiar(){
   $("#horario_idhorario").val("");
 }
 
+// FUNCIÓN CALENDARIO CITAS
 function calendario() { 
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -136,43 +126,40 @@ function calendario() {
         var hoy = new Date();
         var ayer = new Date(hoy - 24 * 60 * 60 * 1000);
 
-                    if (date > ayer) {
-                      $("#fecha_cita").val(info.dateStr);   
-                      $("#modalCitas").modal();
-                    }
-                    else{
-                      bootbox.alert({
-                        message: "No se puede agendar citas en una fecha vencida"
-                        });
-                    }
+        if (date > ayer) {
+          $("#fecha_cita").val(info.dateStr);   
+          $("#modalCitas").modal();
+        } else {
+          bootbox.alert({
+            message: "No se puede agendar citas en una fecha vencida"
+          });
+        }
     
       },
 
-
       hiddenDays: [0,6]
-    });//fin eventListener
+    }); // FIN EVENLISTENER
     calendar.render();
   });
- }//fin funcion calendario
+} // FIN FUNCIÓN CALENDARIO
 
 
-
+// FUNCIÓN GUARDAR Y EDITAR CITAS
 function guardaryeditar(e){
-  e.preventDefault(); //no se activa la accion predeterminada del evento
+  e.preventDefault(); // NO SE ACTIVA LA ACCIÓN PREDETERMINADA DEL EVENTO
   
   var formData = new FormData($("#formCitas")[0]);
   $.ajax({
-      url: "../ajax/calendario.php?op=guardarCita",
-      type: "POST",
-      data: formData,
-      contentType: false,
-      processData: false,
+    url: "../ajax/calendario.php?op=guardarCita",
+    type: "POST",
+    data: formData,
+    contentType: false,
+    processData: false,
       
-      success: function(datos){
-        alert(datos);
-        location.reload();
-    }
-    
+    success: function(datos){
+      alert(datos);
+      location.reload();
+    }   
   });
 }
 

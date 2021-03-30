@@ -136,6 +136,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
   </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 <!--Fin-Contenido-->
+
 <?php
   require 'footer.php';
 ?>

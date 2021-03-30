@@ -1,5 +1,6 @@
 var tabla
-//ejecutar el inicio
+
+//FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
     mostrarform(false);
     listar();
@@ -7,10 +8,11 @@ function init() {
         guardaryeditar(e);
     });
     $("#imagenmuestra").hide();
-
 }
-//funcion limpiar
-function limpiar(){
+
+
+//FUNCIÓN LIMPIAR
+function limpiar() {
     $("#idpersona").val("");
     $("#cedula").val("");
     $("#nombres").val("");
@@ -25,36 +27,41 @@ function limpiar(){
 	$("#imagenactual").val("");
     $('#cedula').css("background-color", "#FFFFFF");
 }
-//mostrar formulario
-function mostrarform(flag){
+
+
+//FUNCIÓN MOSTRAR FORMULARIO
+function mostrarform(flag) {
     limpiar();
-    if(flag){
+    if(flag) {
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
         $("#btnGuardar").prop("disabled",false);
         $("#btnagregar").hide();
-    }else{
+    } else {
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
         $("#btnagregar").show();
     }
 }
 
-//cancelar form
+
+//FUNCIÓN CANCELAR FORMULARIO
 function cancelarform(){
     limpiar();
     mostrarform(false);
 }
-//funcion listar
+
+
+//FUNCIÓN LISTAR CLIENTE
 function listar(){
     tabla=$('#tbllistado').dataTable({
-        "aProcessing":true,//activar procesamiento del datatable
-        "aServerSide": true,//paginacion y filtrado realizados por el servidor
-        dom: 'Bfetip',//definir los parametro del control de tabla
+        "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
+        "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
+        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
-        //botones para copiar los registros en diferentes formatos
+        //BOTONES PARA COPIAR LOS REGISTROS EN DIFERENTES FORMATOS
         buttons:[
             'copyHtml5',
             'excelHtml5',
@@ -70,12 +77,13 @@ function listar(){
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 5, //paginacion--> cada 5 registros
-        "order": [[0, "desc" ]]//ordenar (columna)
+        "iDisplayLength": 5, //PAGINACIÓN --> CADA 5 REGISTROS
+        "order": [[0, "desc" ]] //ORDENAR (COLUMNA, ORDEN)
     }).DataTable();
 }
 
-//funcion guardar o editar
+
+//FUNCIÓN GUARDAR O EDITAR CLIENTE
 function guardaryeditar(e){
     e.preventDefault();
     $("#btnGuardar").prop("disabled",true);
@@ -96,9 +104,10 @@ function guardaryeditar(e){
     limpiar();
 }
 
+
+//FUNCIÓN MOSTRAR CLIENTE
 function mostrar(idpersona){
-    $.post("../ajax/cliente.php?op=mostrar",{idpersona : idpersona}, function(data, status)
-    {
+    $.post("../ajax/cliente.php?op=mostrar",{idpersona : idpersona}, function(data, status) {
         data = JSON.parse(data);
         mostrarform(true);
         $("#cedula").val(data.cedula);
@@ -117,37 +126,31 @@ function mostrar(idpersona){
 
     });
 }
-//funcion para desactivar Clientes
-function desactivar(idpersona)
-{
-    alertify.confirm("Cliente","¿Estas seguro de desactivar al Cliente?",
-        function(){
-            $.post(
-                "../ajax/cliente.php?op=desactivar", {idpersona : idpersona}, function(e)
-                {
-                    //alertify.alert(e);
-                    tabla.ajax.reload();
-                    alertify.success('Cliente desactivado');
-        
-                });
+
+
+//FUNCIÓN PARA DESACTIVAR CLIENTES
+function desactivar(idpersona) {
+    alertify.confirm("Cliente","¿Estas seguro de desactivar al Cliente?", function() {
+        $.post("../ajax/cliente.php?op=desactivar", {idpersona : idpersona}, function(e) {
+            //alertify.alert(e);
+            tabla.ajax.reload();
+            alertify.success('Cliente desactivado');
+        });
         },
         function(){
             alertify.error('Cancelado');
-        });
+    });
 }
-//funcion para activar Clientes
-function activar(idpersona)
-{
-    alertify.confirm("Cliente","¿Estas seguro de activar al Cliente?",
-        function(){
-            $.post(
-                "../ajax/cliente.php?op=activar", {idpersona : idpersona}, function(e)
-                {
-                    //alertify.alert(e);
-                    tabla.ajax.reload();
-                    alertify.success('Cliente activado');
-        
-                });
+
+
+//FUNCIÓN PARA ACTIVAR CLIENTES
+function activar(idpersona) {
+    alertify.confirm("Cliente","¿Estas seguro de activar al Cliente?", function() {
+        $.post("../ajax/cliente.php?op=activar", {idpersona : idpersona}, function(e) {
+            //alertify.alert(e);
+            tabla.ajax.reload();
+            alertify.success('Cliente activado');
+        });
         },
         function(){
             alertify.error('Cancelado');

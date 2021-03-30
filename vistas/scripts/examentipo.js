@@ -1,5 +1,6 @@
 var tabla
-//ejecutar el inicio
+
+//FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
     mostrarform(false);
     listar();
@@ -8,13 +9,17 @@ function init() {
     });
 
 }
-//funcion limpiar
+
+
+//FUNCIÓN LIMPIAR
 function limpiar(){
     $("#idtipo_examen").val("");
     $("#nombre").val("");
     $("#descripcion").val("");
 }
-//mostrar formulario
+
+
+//FUNCIÓN MOSTRAR FORMULARIO
 function mostrarform(flag){
     limpiar();
     if(flag){
@@ -29,21 +34,24 @@ function mostrarform(flag){
     }
 }
 
-//funcion cancelar form
+
+//FUNCIÓN CANCELAR FORM
 function cancelarform(){
     limpiar();
     mostrarform(false);
 }
-//funcion listar
+
+
+//FUNCIÓN LISTAR TIPO EXAMEN
 function listar(){
     tabla=$('#tbllistadoe').dataTable({
-        "aProcessing":true,//activar procesamiento del datatable
-        "aServerSide": true,//paginacion y filtrado realizados por el servidor
-        dom: 'Bfetip',//definir los parametro del control de tabla
+        "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
+        "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
+        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
-        //botones para copiar los registros en diferentes formatos
+        //BOTONES PARA COPIAR LOS REGISTROS EN DIFERENTES FORMATOS
         buttons:[
             'copyHtml5',
             'excelHtml5',
@@ -60,11 +68,12 @@ function listar(){
         },
         "bDestroy":true,
         "iDisplayLength": 6, //paginacion--> cada 6 registros
-        "order": [[0, "desc" ]]//ordenar (columna)
+        "order": [[0, "desc" ]] //ORDENAR (COLUMNA, ORDEN)
     }).DataTable();
 }
 
-//funcion guardar o editar
+
+//FUNCIÓN GUARDAR O EDITAR TIPO EXAMEN
 function guardaryeditar(e){
     e.preventDefault(); //no se activa la accion predeterminada del evento
     $("#btnGuardar").prop("disabled",true);
@@ -85,6 +94,8 @@ function guardaryeditar(e){
     limpiar();
 }
 
+
+//FUNCIÓN MOSTRAR TIPO EXAMEN
 function mostrar(idtipo_examen){
     $.post("../ajax/examen.php?op=mostrarExamenTipo",{idtipo_examen : idtipo_examen}, function(data, status)
     {
@@ -97,7 +108,8 @@ function mostrar(idtipo_examen){
     });
 }
 
-//funcion para descativar examenes
+
+//FUNCIÓN DESACTIVAR TIPO EXAMEN
 function desactivar(idtipo_examen)
 {
     alertify.confirm("Tipo Examen","¿Estas seguro de desactivar el tipo de examen?",
@@ -115,24 +127,23 @@ function desactivar(idtipo_examen)
             alertify.error('Cancelado');
         });
 }
-//funcion para ativar examenes
-function activar(idtipo_examen)
-{
-    alertify.confirm("Tipo Examen","¿Estas seguro de activar el tipo de examen?",
-        function(){
-            $.post(
-                "../ajax/examen.php?op=activar", {idtipo_examen : idtipo_examen}, function(e)
-                {
-                    //alertify.alert(e);
-                    tabla.ajax.reload();
-                    alertify.success('Tipo Examen activado');
-        
-                });
-        },
-        function(){
-            alertify.error('Cancelado');
+
+
+//FUNCIÓN ACTIVAR TIPO EXAMEN
+function activar(idtipo_examen) {
+    alertify.confirm("Tipo Examen","¿Estas seguro de activar el tipo de examen?", function() {
+        $.post("../ajax/examen.php?op=activar", {idtipo_examen : idtipo_examen}, function(e) {
+            //alertify.alert(e);
+            tabla.ajax.reload();
+            alertify.success('Tipo Examen activado');
         });
+    },
+    function(){
+        alertify.error('Cancelado');
+    });
 }
+
+
 /*function eliminar(idtipo_examen)
 { 
     alertify.confirm("Exámen","¿Estas seguro de eliminar el examen de tipo Imágen?",

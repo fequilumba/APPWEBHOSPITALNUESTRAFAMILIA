@@ -1,36 +1,40 @@
 var tabla
-//ejecutar el inicio
+
+//FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
     mostrarform(false);
     listar();
-
 }
-//mostrar formulario
+
+
+//FUNCIÓN MOSTRAR FORMULARIO
 function mostrarform(flag){
     if(flag){
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
     }else{
         $("#listadoregistros").show();
-        $("#formularioregistros").hide();
-        
+        $("#formularioregistros").hide();     
     }
 }
 
-//funcion cancelar form
+
+//FUNCIÓN CANCELAR FORM
 function cancelarform(){
     mostrarform(false);
 }
-//funcion listar
+
+
+//FUNCIÓN LISTAR CITA
 function listar(){
     tabla=$('#tbllistadoe').dataTable({
-        "aProcessing":true,//activar procesamiento del datatable
-        "aServerSide": true,//paginacion y filtrado realizados por el servidor
-        dom: 'Bfetip',//definir los parametro del control de tabla
+        "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
+        "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
+        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
-        //botones para copiar los registros en diferentes formatos
+        //BOTONES PARA COPIAR LOS REGISTROS EN DIFERENTES FORMATOS
         buttons:[
             'copyHtml5',
             'excelHtml5',
@@ -46,14 +50,15 @@ function listar(){
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 5, //paginacion--> cada 5 registros
-        "order": [[0, "desc" ]]//ordenar (columna)
+        "iDisplayLength": 5, //PAGINACIÓN --> CADA 5 REGISTROS
+        "order": [[0, "desc" ]] //ORDENAR (COLUMNA, ORDEN)
     }).DataTable();
 }
 
+
+//FUNCIÓN MOSTRAR HISTORIAL MÉDICO
 function mostrar(idcita_medica){
-    $.post("../ajax/historialmedico.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status)
-    {
+    $.post("../ajax/historialmedico.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status) {
         data = JSON.parse(data);
         mostrarform(true);
         $("#especialidad").val(data.especialidad)
@@ -61,7 +66,6 @@ function mostrar(idcita_medica){
         $("#medico").val(data.medico)
         $("#diagnostico").val(data.diagnostico)
         $("#idcita_medica").val(data.idcita_medica)
-
     });
 }
 

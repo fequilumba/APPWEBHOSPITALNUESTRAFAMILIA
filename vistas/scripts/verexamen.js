@@ -1,36 +1,40 @@
 var tabla
-//ejecutar el inicio
+
+//FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
     mostrarform(false);
     listar();
-
 }
-//mostrar formulario
+
+
+//FUNCIÓN MOSTRAR FORMULARIO
 function mostrarform(flag){
     if(flag){
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
     }else{
         $("#listadoregistros").show();
-        $("#formularioregistros").hide();
-        
+        $("#formularioregistros").hide();       
     }
 }
 
-//funcion cancelar form
+
+//FUNCIÓN CANCELAR FORM
 function cancelarform(){
     mostrarform(false);
 }
-//funcion listar
+
+
+//FUNCIÓN LISTAR VER EXÁMENES
 function listar(){
     tabla=$('#tbllistadoe').dataTable({
-        "aProcessing":true,//activar procesamiento del datatable
-        "aServerSide": true,//paginacion y filtrado realizados por el servidor
-        dom: 'Bfetip',//definir los parametro del control de tabla
+        "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
+        "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
+        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
-        //botones para copiar los registros en diferentes formatos
+        //BOTONES PARA COPIAR LOS REGISTROS EN DIFERENTES FORMATOS
         buttons:[
             'copyHtml5',
             'excelHtml5',
@@ -46,14 +50,15 @@ function listar(){
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 5, //paginacion--> cada 5 registros
-        "order": [[0, "desc" ]]//ordenar (columna)
+        "iDisplayLength": 5, //PAGINACIÓN --> CADA 5 REGISTROS
+        "order": [[0, "desc" ]] //ORDENAR (COLUMNA, ORDEN)
     }).DataTable();
 }
 
+
+//FUNCIÓN MOSTRAR VER EXÁMENES
 function mostrar(idpedido_examen){
-    $.post("../ajax/verexamen.php?op=mostrar",{idpedido_examen : idpedido_examen}, function(data, status)
-    {
+    $.post("../ajax/verexamen.php?op=mostrar",{idpedido_examen : idpedido_examen}, function(data, status) {
         data = JSON.parse(data);
         mostrarform(true);
         $("#especialidad").val(data.especialidad);
@@ -62,9 +67,9 @@ function mostrar(idpedido_examen){
         $("#idpedido_examen").val(data.idpedido_examen);
 
     });
-    $.post("../ajax/verexamen.php?op=listarDetalle&id="+idpedido_examen,function(r){
+    $.post("../ajax/verexamen.php?op=listarDetalle&id="+idpedido_examen, function(r) {
         $("#examenes").html(r);
-});
+    });
 }
 
 init();
