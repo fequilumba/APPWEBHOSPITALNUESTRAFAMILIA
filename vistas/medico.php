@@ -25,6 +25,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
     </div> <!-- /.container-fluid -->
   </section> <!-- /.content-header -->
 
+  <!-- centro -->
   <section class="content">
     <div class="container-fluid">
       <div class="row">

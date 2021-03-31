@@ -21,7 +21,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6"> 
-          <h1 class="box-title">Exámenes <!--<button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i></button>--></h1>
+          <h1 class="box-title">Exámenes</h1>
         </div>
       </div>      
     </div> <!-- /.container-fluid -->
@@ -58,21 +58,23 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 
               <div class="panel-body"  id="formularioregistros">
                 <form name="formularioe" id="formularioe" method="POST">
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="">Especialidad</label>
-                    <input type="hidden" name="idpedido_examen" id="idpedido_examen">
-                    <input type="text" name="especialidad" id="especialidad" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
-                  </div>
-                  
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="">Paciente</label>
-                    <input type="text" name="paciente" id="paciente" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
-                  </div>
-                  
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="">Médico</label>
-                    <input type="text" name="medico" id="medico" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
-                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <label for="">Especialidad</label>
+                      <input type="hidden" name="idpedido_examen" id="idpedido_examen">
+                      <input type="text" name="especialidad" id="especialidad" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
+                    </div>
+                    
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <label for="">Paciente</label>
+                      <input type="text" name="paciente" id="paciente" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
+                    </div>
+                    
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <label for="">Médico</label>
+                      <input type="text" name="medico" id="medico" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
+                    </div>
+                  </div> <!-- .form-row -->
                   
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
                     <table id="examenes" class="table table-striped table-bordered table-hover nowrap">
@@ -91,6 +93,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                   </div>
                 </form> <!-- /.formularioe -->
               </div> <!-- /.panel-body -->
+              
             </div> <!-- /.card-body -->
           </div> <!-- /.card --> <!--Fin centro -->
         </div> <!-- /.col-12 -->
