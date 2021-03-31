@@ -34,7 +34,7 @@
             <div class="card-body">
 
               <div class="panel-body" id="listadoregistros">
-                <table id="tbllistadoe" class="table table-striped table-bordered table-hover dt-responsive DT nowrap" style="width:100%">
+                <table id="tbllistadoe" class="table table-striped table-bordered table-hover dt-responsive DT nowrap">
                   <thead>
                     <th>Opciones</th>
                     <th>Nombre</th>
@@ -56,10 +56,11 @@
 
               <div class="panel-body"  id="formularioregistros">
                 <form name="formularioe" id="formularioe" method="POST">
+                  
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label for="">Nombre</label>
                     <input type="hidden" name="idmedicamento" id="idmedicamento">
-                    <input type="text" name="nombre" id="nombre" class="form-control" maxlength="50" placeholder="Nombre especialidad" required>
+                    <input type="text" name="nombre" id="nombre" class="form-control" maxlength="50" placeholder="Nombre medicamento" required>
                   </div> <!-- .form-group-->
 
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

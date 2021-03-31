@@ -55,21 +55,23 @@
 
               <div class="panel-body"  id="formularioregistros">
                 <form name="formularioe" id="formularioe" method="POST">
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="">Especialidad</label>
-                    <input type="hidden" name="idreceta" id="idreceta">
-                    <input type="text" name="especialidad" id="especialidad" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
-                  </div>
+                  <div class="form row">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <label for="">Especialidad</label>
+                      <input type="hidden" name="idreceta" id="idreceta">
+                      <input type="text" name="especialidad" id="especialidad" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
+                    </div>
 
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="">Paciente</label>
-                    <input type="text" name="paciente" id="paciente" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
-                  </div>
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <label for="">Paciente</label>
+                      <input type="text" name="paciente" id="paciente" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
+                    </div>
 
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="">Médico</label>
-                    <input type="text" name="medico" id="medico" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
-                  </div>
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <label for="">Médico</label>
+                      <input type="text" name="medico" id="medico" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
+                    </div>
+                  </div> <!-- .form-row -->
 
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
                     <table id="medicamentos" class="table table-striped table-bordered table-condensed table-hover">
