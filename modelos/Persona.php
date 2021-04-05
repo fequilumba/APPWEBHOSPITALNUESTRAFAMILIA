@@ -76,12 +76,12 @@
         // METODO PARA ACTIVAR CLIENTES
         public function activar($idpersona) {
             $sql= " UPDATE `persona` SET `estado` = '1' 
-                WHERE `idpersona` = '$idpersona'";
+            WHERE `idpersona` = '$idpersona'";
             return ejecutarConsulta($sql);
         }
 
         
-        // MÉTODO PARA LISTAR PACIENTES
+        // MÉTODO PARA LISTAR CLIENTES
         public function listar() {
             $sql= "SELECT p.`idpersona`, p.`cedula`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres, p.`email`, p.`telefono`, p.`direccion`,
                 p.`ciudad_residencia`, p.`fecha_nacimiento`, p.`genero`, p.`estado` 
@@ -102,32 +102,30 @@
         //DESDE EL FORMULARIO DE REGISTRO EN LÍNEA
         public function clienteRegistro ($cedula, $nombres, $apellidos, $email, $telefono, $direccion, $ciudad_residencia, $fecha_nacimiento, $genero, $imagen, $iduser) {                 
             $sqlp= "INSERT INTO `persona` (`cedula`, `nombres`, `apellidos`, `email`, `telefono`, `direccion`, `ciudad_residencia`, `fecha_nacimiento`, `genero`, `estado`, `idasociado`, `imagen`, `usuario_idusuario`) 
-                VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion', '$ciudad_residencia', '$fecha_nacimiento', '$genero', 1, 0, '$imagen', $iduser)";
+            VALUES ('$cedula', '$nombres', '$apellidos', '$email', '$telefono', '$direccion', '$ciudad_residencia', '$fecha_nacimiento', '$genero', 1, 0, '$imagen', $iduser)";
 
             $idpersonanew = ejecutarConsulta_retornarID($sqlp);
             $idasociado= "UPDATE `persona` SET `idasociado`='$idpersonanew' WHERE `idpersona`='$idpersonanew' ";
             ejecutarConsulta($idasociado);
 
 
-            //ROLES DE USUARIO
+            //ROLES DE ASOCIACIÓN ENTRE CLIENTE Y PACIENTE
             $sql_rol1 = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
-                    VALUES ('$iduser','3')";
-
+                VALUES ('$iduser','3')";
             ejecutarConsulta($sql_rol1);
 
             $sql_rol2 = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
-                    VALUES ('$iduser','4')";
-
+                VALUES ('$iduser','4')";
             ejecutarConsulta($sql_rol2);
             
 
             //ROLES DE PERSONA
             $sql_rol3 = "INSERT INTO `persona_has_rol` (`persona_idpersona`, `rol_idrol`) 
-                    VALUES ('$idpersonanew','3')";
+                VALUES ('$idpersonanew','3')";
             ejecutarConsulta($sql_rol3);
 
             $sql_rol4 = "INSERT INTO `persona_has_rol` (`persona_idpersona`, `rol_idrol`) 
-                    VALUES ('$idpersonanew','4')";
+                VALUES ('$idpersonanew','4')";
             return ejecutarConsulta($sql_rol4);
         }
 

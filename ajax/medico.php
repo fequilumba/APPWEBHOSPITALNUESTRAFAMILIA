@@ -1,4 +1,5 @@
 <?php
+
     require_once "../modelos/Medico.php";
     $medico = new Medico();
 
@@ -22,39 +23,39 @@
 
     switch ($_GET["op"]) {
         case 'guardaryeditar':
-            if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
-                {
-                    $imagen=$_POST["imagenactual"];
+            if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name'])) {
+                $imagen=$_POST["imagenactual"];
+            } else {
+                $ext = explode(".", $_FILES["imagen"]["name"]);
+                if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png") {
+                    $imagen = round(microtime(true)) . '.' . end($ext);
+                    move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/usuarios/" . $imagen);
                 }
-                else 
-                {
-                    $ext = explode(".", $_FILES["imagen"]["name"]);
-                    if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png")
-                    {
-                        $imagen = round(microtime(true)) . '.' . end($ext);
-                        move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/usuarios/" . $imagen);
-                    }
-                }
+            }
+
             if (empty($idpersona)) {
                 //hash SHA256 en la contrasenia
                 $pieces = explode(" ", $nombres); 
                 $str=""; 
-                foreach($pieces as $piece) 
-                { 
+                foreach($pieces as $piece) { 
                     $str.=$piece[0]; 
-                }  
+                }
+
                 $contrasenia= $cedula . $str;
                 $contraseniahash=hash("SHA256",$contrasenia);
+                
                 //insertar usuario medico
                 require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
                 $rspta = $usuario->insertar($cedula, $contraseniahash);
                 $iduser=$rspta;
-                echo $rspta? "Usuario registrado " : "No se pudo registrar el usuario ";
+                echo $rspta? "Usuario registrado " : "No se pudo registrar el Usuario ";
+                
                 //insertar persona medico
                 $rspta2=$medico->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
                 $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$iduser, $_POST['especialidad'],$_POST['rol']);
-                echo $rspta2? "Médico registrado " : "No se pudo registrar todos los datos del medico ";
+                echo $rspta2? "Médico registrado" : "No se pudo registrar el Médico ";
+                
                 /*************email *********************/
                 require_once "../modelos/Correo.php";
                 $correo = new Correo();
@@ -67,21 +68,23 @@
                 echo $rspta? "Médico actualizado" : "Médico no se pudo actualizar";
                                 
             }
-            break;
+        break;
+
         case 'desactivar':
-                $rspta=$medico->desactivar($idpersona);
-                echo $rspta ? "Médico desactivado" : "No se pudo desactivar al Médico";
-    
-                break;
+            $rspta=$medico->desactivar($idpersona);
+            echo $rspta ? "Médico desactivado" : "No se pudo desactivar al Médico";   
+        break;
+
         case 'activar':
-                $rspta=$medico->activar($idpersona);
-                echo $rspta ? "Médico activado" : "No se pudo activar al Médico";
-    
-                break;
+            $rspta=$medico->activar($idpersona);
+            echo $rspta ? "Médico activado" : "No se pudo activar al Médico";
+        break;
+
         case 'mostrar':
-                    $rspta=$medico->mostrar($idpersona);
-                    echo json_encode($rspta);
-                break;
+            $rspta=$medico->mostrar($idpersona);
+            echo json_encode($rspta);
+        break;
+
         case 'listar':
             $rspta=$medico->listar();
             $data = Array();
@@ -89,11 +92,9 @@
                 $data[]= array(
                     "0"=>($reg->estado)?
                         '<button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-pencil-alt"></li></button>'.
-                        ' <button class="btn btn-danger" onclick="desactivar('.$reg->idpersona.')"><li class="fa fa-times"></li></button>'
-                        :
+                        ' <button class="btn btn-danger" onclick="desactivar('.$reg->idpersona.')"><li class="fa fa-times"></li></button>':
                         '<button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-pencil-alt"></li></button>'.
-                        ' <button class="btn btn-primary" onclick="activar('.$reg->idpersona.')"><li class="fa fa-check"></li></button>'
-                        ,
+                        ' <button class="btn btn-primary" onclick="activar('.$reg->idpersona.')"><li class="fa fa-check"></li></button>',
                         "1"=>$reg->nombre,
                         "2"=>$reg->cedula,
                         "3"=>$reg->nombres,
@@ -104,8 +105,7 @@
                         "8"=>$reg->fecha_nacimiento,
                         "9"=>$reg->genero,
                         "10"=>$reg->estado ?
-                    '<span class="label bg-green">Activado</span>'
-                    :      
+                    '<span class="label bg-green">Activado</span>':      
                     '<span class="label bg-red">Desactivado</span>'
                 );
             }
@@ -115,54 +115,56 @@
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data);    
                 echo json_encode($results);   
-            break;
+        break;
         
         case 'especialidades':
-                require_once "../modelos/Especialidad.php";
-                $especialidad=new Especialidad();
-                $rspta = $especialidad->listarEspecialidad();
-                //obtener las especialidades asiganadas a un medico
-                $id=$_GET['id'];
-                $marcados = $medico->listaMarcados($id);
-                //array para almacenar todas las especialidades marcadas
-                $valores=array();
-                //almacenar las especialdiades al usuario en el array
-                while ($per =$marcados->fetch_object()) {
-                    array_push($valores, $per->especialidad_idespecialidad);
-                }
-                //Mostrar una lista de especialidades en la vista de registro de medicos y si estan o no marcados 
-                while ($reg = $rspta->fetch_object()) 
-                {
-                    $sw=in_array($reg->idespecialidad,$valores)?'checked':'';
-                    echo '<li> <input type="checkbox" '.$sw.'  name="especialidad[]" value="'.$reg->idespecialidad.'">'.$reg->nombre.'</li>';
-                }
-
-                break;
+            require_once "../modelos/Especialidad.php";
+            $especialidad=new Especialidad();
+            $rspta = $especialidad->listarEspecialidad();
+            
+            //obtener las especialidades asiganadas a un medico
+            $id=$_GET['id'];
+            $marcados = $medico->listaMarcados($id);
+            
+            //array para almacenar todas las especialidades marcadas
+            $valores=array();
+            
+            //almacenar las especialidades al usuario en el array
+            while ($per =$marcados->fetch_object()) {
+                array_push($valores, $per->especialidad_idespecialidad);
+            }
+            
+            //Mostrar una lista de especialidades en la vista de registro de medicos y si estan o no marcados 
+            while ($reg = $rspta->fetch_object()) {
+                $sw=in_array($reg->idespecialidad,$valores)?'checked':'';
+                echo '<li> <input type="checkbox" '.$sw.'  name="especialidad[]" value="'.$reg->idespecialidad.'">'.$reg->nombre.'</li>';
+            }
+        break;
+        
         case 'roles':
-                require_once "../modelos/Rol.php";
-                $rol=new Rol();
-                $rspta = $rol->listarRol();
-                //Obtener los roles asignados al cleinte
-                $id=$_GET['id2'];
-                $marcados = $medico->listaMarcadosRol($id);
-                //Declaramos el array para almacenar todos los roles marcados
-                $valores=array();
+            require_once "../modelos/Rol.php";
+            $rol=new Rol();
+            $rspta = $rol->listarRol();
+                
+            //Obtener los roles asignados al cleinte
+            $id=$_GET['id2'];
+            $marcados = $medico->listaMarcadosRol($id);
+                
+            //Declaramos el array para almacenar todos los roles marcados
+            $valores=array();
         
-                //Almacenar los roles asignados al cliente en el array
-                while ($per = $marcados->fetch_object())
-                    {
-                        array_push($valores, $per->rol_idrol);
-                    }
+            //Almacenar los roles asignados al cliente en el array
+            while ($per = $marcados->fetch_object()) {
+                array_push($valores, $per->rol_idrol);
+            }
         
-                //Mostramos la lista de permisos en la vista y si están o no marcados
-                while ($reg = $rspta->fetch_object())
-                        {
-                        $sw=in_array($reg->idrol,$valores)?'checked':'';
-                        echo '<li> <input type="checkbox" '.$sw.'  name="rol[]" value="'.$reg->idrol.'">'.$reg->nombre.'</li>';
-                        //echo '<li> <input type="checkbox" name="rol[]" value="'.$reg->idrol.'">'.$reg->nombre.'</li>';
-                } 
-    
-                break;
+            //Mostramos la lista de permisos en la vista y si están o no marcados
+            while ($reg = $rspta->fetch_object()) {
+                $sw=in_array($reg->idrol,$valores)?'checked':'';
+                echo '<li> <input type="checkbox" '.$sw.'  name="rol[]" value="'.$reg->idrol.'">'.$reg->nombre.'</li>';
+                //echo '<li> <input type="checkbox" name="rol[]" value="'.$reg->idrol.'">'.$reg->nombre.'</li>';
+            } 
+        break;
     }
 
 ?>
