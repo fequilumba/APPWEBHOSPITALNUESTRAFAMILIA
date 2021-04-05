@@ -166,9 +166,10 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
+      
         <div class="modal-header">
+          <h4 class="modal-title">Seleccione un medicamento</h4>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Seleccione un Medicamento</h4>
         </div>
 
         <div class="modal-body table-responsive">
@@ -203,9 +204,10 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title">Seleccione un Examen</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
+        
         <div class="modal-body table-responsive">
           <table id="tblexamenes" class="table table-striped table-bordered table-condensed table-hover">
             <thead>
