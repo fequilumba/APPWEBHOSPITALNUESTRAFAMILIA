@@ -103,14 +103,14 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                       <label for="">Dirección(*)</label>
-                      <input type="text" name="direccion" id="direccion" class="form-control" maxlength="45" placeholder="Dirección"required>
+                      <input type="text" name="direccion" id="direccion" class="form-control" maxlength="45" placeholder="Dirección" required>
                     </div>
                   </div><!-- /.form-row -->
                         
                   <div class="form-row">
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                       <label for="">Ciudad(*)</label>
-                      <input type="text" name="ciudad_residencia" onkeypress="return soloLetras(event)" id="ciudad_residencia" class="form-control" maxlength="45" placeholder="Ciudad"required>
+                      <input type="text" name="ciudad_residencia" onkeypress="return soloLetras(event)" id="ciudad_residencia" class="form-control" maxlength="45" placeholder="Ciudad" required>
                     </div>
 
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -140,29 +140,19 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                     </div>
                                 
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label for="">Roles(*)</label>
+                      <label for="">Roles (*)</label>
                       <ul style="list-style: none;" id="roles" >
 
                       </ul>
                     </div>
                             
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label for="">Especialidades(*)</label>
+                      <label for="">Especialidades (*)</label>
                       <ul style="list-style: none;" id="especialidades" >
 
                       </ul>
                     </div>
-                  </div><!-- /.form-row -->   
-
-                            
-                  <!--<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="">Hora inicio</label>
-                    <input type="time" name="hora_inicio" id="hora_inicio" class="form-control" required>
-                  </div>
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="">Hora Fin</label>
-                    <input type="time" name="hora_fin" id="hora_fin" class="form-control" required>
-                  </div>-->
+                  </div><!-- /.form-row -->
                           
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"> Guardar</i></button>

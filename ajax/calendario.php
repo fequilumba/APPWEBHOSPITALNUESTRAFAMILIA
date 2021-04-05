@@ -14,6 +14,7 @@ session_start();
     $personaMedico_idpersona= isset($_POST["personaMedico_idpersona"])? limpiarCadena($_POST["personaMedico_idpersona"]):"";
     $fecha_cita= isset($_POST["fecha_cita"])? limpiarCadena($_POST["fecha_cita"]):"";
     $motivo_consulta= isset($_POST["motivo_consulta"])? limpiarCadena($_POST["motivo_consulta"]):"";
+
     switch ($_GET["op"]) {
         case 'guardarCita':
             if (empty($idcita_medica)) {
@@ -58,8 +59,8 @@ session_start();
                 } 
             }
                  
-                echo json_encode($data);   
-                break;
+            echo json_encode($data);   
+        break;
         case 'selectPaciente':
             require_once "../modelos/Paciente.php";
                 $paciente = new Paciente();
@@ -103,18 +104,19 @@ session_start();
                             .$reg->nombre.
                           '</option>';
                 }
-            break;
+        break;
         case 'selecthora':
-                $especialidad=$_POST['especialidad_idespecialidad'];
-                $personaMedico=$_POST['personaMedico_idpersona'];
-                $fecha=$_POST['fecha_cita'];
-                        $rspta = $calendario->selecthora($especialidad,$personaMedico,$fecha);
-                        //echo '<option value=>Seleccionar</option>';
-                        while ($reg = $rspta->fetch_object()) {
-                            echo '<option value='.$reg->idcita_medica.'>'
-                                    .$reg->fecha.
-                                  '</option>';
-                        }
-                    break;
+            $especialidad=$_POST['especialidad_idespecialidad'];
+            $personaMedico=$_POST['personaMedico_idpersona'];
+            $fecha=$_POST['fecha_cita'];
+            
+            $rspta = $calendario->selecthora($especialidad,$personaMedico,$fecha);
+            //echo '<option value=>Seleccionar</option>';
+            while ($reg = $rspta->fetch_object()) {
+                echo '<option value='.$reg->idcita_medica.'>'
+                .$reg->fecha.
+                '</option>';
+            }
+        break;
     }
 ?>

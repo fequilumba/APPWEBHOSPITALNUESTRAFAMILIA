@@ -58,11 +58,11 @@ function mostrarform(flag){
         $("#listadoregistros").hide();
         $("#formularioregistros").show(); 
         $("#btnGuardar").prop("disabled",false);
-        $("#btnagregar").hide();
+        $("#btnagregar").hide(); //OCULTA EL BOTON NUEVO MÉDICO
     }else{
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
-        $("#btnagregar").show();
+        $("#btnagregar").show(); //MUESTRA EL BOTON NUEVO MÉDICO
     }
 }
 
