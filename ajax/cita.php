@@ -29,9 +29,29 @@ session_start();
                 
 
             }else{
-                $rspta=$cita->editar($idcita_medica,$diagnostico, $sintomas,$estado_idestado,
-                                    $_POST["idmedicamento"],$_POST["cantidad"], $_POST["observaciones"],$_POST["idexamen"]);
-                echo $rspta? "Cita Atendida" : "La cita no se pudo actualizar";
+                if(!empty($_POST["idmedicamento"]) && !empty($_POST["cantidad"]) && !empty($_POST["observaciones"])){
+
+                    /*Atender cita con una lista de examenes*/
+                    $rspta=$cita->editarE($idcita_medica,$diagnostico, $sintomas,$estado_idestado,$_POST["idexamen"]);
+                    echo $rspta? "Cita Atendida" : "La cita no se pudo actualizar";
+                }if(!empty($_POST["idexamen"])){
+                    /*Atender cita con una lista de meedicamentos*/
+                    $rspta=$cita->editarM($idcita_medica,$diagnostico, $sintomas,$estado_idestado,
+                    $_POST["idmedicamento"],$_POST["cantidad"], $_POST["observaciones"]);
+                    echo $rspta? "Cita Atendida" : "La cita no se pudo actualizar";
+                }
+                if(!empty($_POST["idexamen"])&&!empty($_POST["idmedicamento"]) && !empty($_POST["cantidad"]) && !empty($_POST["observaciones"])){
+                    $rspta=$cita->editar($idcita_medica,$diagnostico, $sintomas,$estado_idestado,
+                    $_POST["idmedicamento"],$_POST["cantidad"], $_POST["observaciones"],$_POST["idexamen"]);
+                    echo $rspta? "Cita Atendida" : "La cita no se pudo actualizar";
+                }
+                if($estado_idestado==3){
+                    /*Pasiente no asiste a la cita*/
+                    $rspta=$cita->editarN($idcita_medica,$estado_idestado);
+                    echo $rspta? "Cita Atendida" : "La cita no se pudo actualizar";
+                }
+                
+
                                 
             }
             break;

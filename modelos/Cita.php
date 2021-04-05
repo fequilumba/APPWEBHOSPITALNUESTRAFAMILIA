@@ -47,7 +47,47 @@
             return $sw;
 
         }
+        public function editarE($idcita_medica,$diagnostico, $sintomas,$estado_idestado, $idexamen){
+                $sql= "UPDATE `cita_medica` 
+                        SET `diagnostico`='$diagnostico', `sintomas`='$sintomas', `estado_idestado`='$estado_idestado' 
+                        WHERE `idcita_medica`='$idcita_medica'";
+            ejecutarConsulta($sql);
+            $examen= new Cita();
+            $rspta= $examen->insertarExamen($idcita_medica,$idexamen);
 
+        }
+        public function editarN($idcita_medica,$estado_idestado){
+            $sql= "UPDATE `cita_medica` 
+                    SET `estado_idestado`='$estado_idestado' 
+                    WHERE `idcita_medica`='$idcita_medica'";
+        return ejecutarConsulta($sql);
+
+        }
+
+        public function editarM($idcita_medica,$diagnostico, $sintomas,$estado_idestado,
+        $idmedicamento,$cantidad, $observaciones){
+        $sql= "UPDATE `cita_medica` 
+        SET `diagnostico`='$diagnostico', `sintomas`='$sintomas', `estado_idestado`='$estado_idestado' 
+        WHERE `idcita_medica`='$idcita_medica'";
+        ejecutarConsulta($sql);
+        $sqlreceta= "INSERT INTO `receta` (`cita_medica_idcita_medica`) 
+        VALUES ('$idcita_medica')";
+
+        $recetanew=ejecutarConsulta_retornarID($sqlreceta);
+
+        $num_elementos=0;
+        $sw=true;
+
+        while ($num_elementos < count($idmedicamento))
+        {
+            $sql_detalle = "INSERT INTO medicamento_has_receta(medicamento_idmedicamento, receta_idreceta,cantidad,observaciones) 
+                    VALUES ('$idmedicamento[$num_elementos]','$recetanew', '$cantidad[$num_elementos]','$observaciones[$num_elementos]')";
+            ejecutarConsulta($sql_detalle) or $sw = false;
+            $num_elementos=$num_elementos + 1;
+        }
+        return $sw;
+
+        }
         public function insertarExamen($idcita_medica,$idexamen)
         {
             $sqlexamen= "INSERT INTO `pedido_examen` (`cita_medica_idcita_medica`) 
@@ -66,8 +106,6 @@
             }
             return $sw;
         }
-
-
         //mostrar un registro para editar
         public function mostrar($idcita_medica)
             {
