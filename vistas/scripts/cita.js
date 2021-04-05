@@ -171,7 +171,7 @@ function agregarMedicamento(idmedicamento,nombre,descripcion) {
         '<td><input type="hidden" name="idmedicamento[]" value="'+idmedicamento+'">'+nombre+'</td>'+
         '<td><input type="hidden" name="descripcion[]" value="">'+descripcion+'</td>'+
         '<td><input type="number" maxlength="3" minlength="1" name="cantidad[]" id="cantidad[]" value="'+cantidad+'"></td>'+
-        '<td><input type="text" name="observaciones[]" id="observaciones[]" value="'+observaciones+'"></td>'
+        '<td><input type="text" name="observaciones[]" id="observaciones[]" value="'+observaciones+'" required></td>'
         //<textarea name="observaciones[]" id="observaciones[]" rows="2"></textarea>
         '</tr>';
         cont++;
