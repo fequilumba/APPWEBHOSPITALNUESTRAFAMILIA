@@ -129,5 +129,5 @@
             return ejecutarConsulta($sql_rol4);
         }
 
-    }
+    } //END CLASS PERSONA
 ?>

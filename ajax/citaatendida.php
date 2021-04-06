@@ -30,21 +30,21 @@
 
             break;*/
         case 'mostrar':
-                $rspta=$citaatendida->mostrar($idcita_medica);
-                echo json_encode($rspta);
-            break;
+            $rspta=$citaatendida->mostrar($idcita_medica);
+            echo json_encode($rspta);
+        break;
         case 'listar':
             $rspta=$citaatendida->listar($idusuario);
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                        "0"=>$reg->idcita_medica,
-                        "1"=>$reg->especialidad,
-                        "2"=>$reg->nombre,
-                        "3"=>$reg->telefono,
-                        "4"=>$reg->fecha_cita,
-                        "5"=>$reg->hora_cita,
-                        "6"=>$reg->estado
+                    "0"=>$reg->idcita_medica,
+                    "1"=>$reg->especialidad,
+                    "2"=>$reg->nombre,
+                    "3"=>$reg->telefono,
+                    "4"=>$reg->fecha_cita,
+                    "5"=>$reg->hora_cita,
+                    "6"=>$reg->estado
                 );
             }
             $results = array(
