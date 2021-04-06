@@ -1,6 +1,6 @@
 <?php
  require "../config/Conexion.php";
- class Medico{
+    class Medico{
      public function __construct(){
         
      }
@@ -110,7 +110,7 @@
         $num_elementos=0;
         $sw=true;
         while ($num_elementos < count($roles)) { //mientras que el numero de elementos sea menor que la cantidad de especialdiades escogidas
-            //insertamos cada uno de los permiso del usuario, cin wihle recorremo todos los permisos asigandos
+            //insertamos cada uno de los permiso del usuario, con wihle recorremo todos los permisos asigandos
             $sql_rol = "INSERT INTO `usuario_has_rol` (`usuario_idusuario`, `rol_idrol`) 
                             VALUES('$usuario_idusuario','$roles[$num_elementos]')";
                             //enviamos la variable.. true si es de manera correcta
