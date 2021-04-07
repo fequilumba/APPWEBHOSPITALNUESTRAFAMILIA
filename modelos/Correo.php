@@ -5,10 +5,6 @@
 
 			/*************email *********************/
 			$dest = $email; //Email de destino
-            /*$cedula = $_POST['cedula'];
-            $email = $_POST['email'];
-			$nombres = $_POST['nombres'];
-			$apellidos = $_POST['apellidos'];*/
                 $pieces = explode(" ", $nombres); 
                 $str=""; 
                 foreach($pieces as $piece) 

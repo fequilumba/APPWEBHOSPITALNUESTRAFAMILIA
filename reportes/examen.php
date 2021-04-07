@@ -3,7 +3,7 @@ require ('../fpdf/fpdf.php');
 
 $pdf = new FPDF($orientation='P',$unit='mm');
 $pdf->AddPage();
-$pdf->SetFont('Arial','B',20);    
+$pdf->SetFont('Arial','B',17);    
 $textypos = 5;
 $pdf->setY(12);
 $pdf->setX(10);
@@ -39,13 +39,13 @@ $pdf->setY(60);$pdf->setX(10);
 $pdf->Cell(5,$textypos,utf8_decode("Email: ".$reg->email."\n"));
 $pdf->Ln(10);
 
-$pdf->SetFont('Arial','B',10);
+$pdf->SetFont('Arial','B',9);
 $pdf->SetFillColor(93, 173, 226);
 $pdf->SetTextColor(255,255,255);
 $pdf->SetDrawColor(97, 106, 107 );
 
 $pdf->Cell(40,12,utf8_decode("NOMBRE"),0,0,'c',1);
-$pdf->Cell(70,12,utf8_decode("TIPO"),0,0,'c',1);
+$pdf->Cell(100,12,utf8_decode("TIPO"),0,0,'c',1);
 
 $pdf->SetTextColor(23, 32, 42);
 $pdf->Ln(12);
@@ -54,14 +54,14 @@ $rsptad = $examen->listarDetalle($_GET["id"]);
 //recorremos la lista de pedidos de examenes
 while ($mostrar = $rsptad->fetch_object()) {
 
-    //$pdf->Cell(70,6,utf8_decode("$mostrar->medicamento_idmedicamento"),1,0,'c',0);
-    $pdf->Cell(40,10,utf8_decode("$mostrar->nombre"),1,0,'c',0);
-    $pdf->Cell(70,10,utf8_decode("$mostrar->tipo"),1,1,'c',0);
+  //$pdf->Cell(70,6,utf8_decode("$mostrar->medicamento_idmedicamento"),1,0,'c',0);
+  $pdf->Cell(40,10,utf8_decode("$mostrar->nombre"),1,0,'c',0);
+  $pdf->Cell(100,10,utf8_decode("$mostrar->tipo"),1,1,'c',0);
 
-  }
+}
 
 
-$pdf->SetFont('Arial','B',10);    
+$pdf->SetFont('Arial','B',9);    
 
 $pdf->Ln(100);
 $pdf->setX(90);

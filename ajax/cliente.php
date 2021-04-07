@@ -37,9 +37,9 @@ session_start();
                 foreach($pieces as $piece) { 
                     $str.=$piece[0]; 
                 }
-
                 $contrasenia= $cedula . $str;
                 $contraseniahash=hash("SHA256",$contrasenia);
+
                 require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
                 $rspta = $usuario->insertar($cedula,$contraseniahash);

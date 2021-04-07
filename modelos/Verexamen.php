@@ -1,20 +1,22 @@
 <?php
  require "../config/Conexion.php";
- class Verexamen{
+
+ class Verexamen {
      public function __construct(){
         
      }
+
      public function listar($idusuario){
-        $sql= "SELECT pe.idpedido_examen, e.`nombre` AS especialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as paciente, 
-        CONCAT(pm.`nombres`, ' ' ,pm.`apellidos`) as medico, cm.`fecha_cita`, h.`hora` as hora_cita   
-        FROM `pedido_examen` pe
-        INNER JOIN `cita_medica` cm ON cm.`idcita_medica`=pe.`cita_medica_idcita_medica`
-        INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
-        INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
-        INNER JOIN `persona` pm ON pm.`idpersona`=cm.`personaMedico_idpersona`
-        INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario`
-        AND p.`idasociado`='$idusuario'
-        ORDER BY pe.`idpedido_examen` DESC";
+        $sql= "SELECT pe.idpedido_examen, e.nombre AS especialidad, CONCAT(p.nombres, ' ' ,p.apellidos) as paciente, 
+        CONCAT(pm.nombres, ' ' ,pm.apellidos) as medico, cm.fecha_cita, h.hora as hora_cita   
+        FROM pedido_examen pe
+        INNER JOIN cita_medica cm ON cm.idcita_medica = pe.cita_medica_idcita_medica
+        INNER JOIN especialidad e ON cm.especialidad_idespecialidad = e.idespecialidad 
+        INNER JOIN persona p ON p.idpersona = cm.personaPaciente_idpersona
+        INNER JOIN persona pm ON pm.idpersona = cm.personaMedico_idpersona
+        INNER JOIN horario h ON cm.horario_idhorario = h.idhorario
+        AND p.idasociado='$idusuario'
+        ORDER BY pe.idpedido_examen DESC";
         return ejecutarConsulta($sql);
      }
 
@@ -58,6 +60,7 @@
             AND pe.`idpedido_examen`='$idpedido_examen'";
             return ejecutarConsultaSimpleFila($sql);
         }
+        
    //listar los detalles de un pedido de examenes
    public function listarDetalle($idpedido_examen)
    {
