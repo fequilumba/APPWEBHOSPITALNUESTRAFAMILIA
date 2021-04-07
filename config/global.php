@@ -1,16 +1,19 @@
 <?php
-    //ip del servidor
+    //Ip del servidor de la base de datos
     define("DB_HOST", "localhost");
-    //nombre de la base de datos
+
+    //Nombre de la base de datos
     define("DB_NAME","dbhospitalnf");
-    //nombre del usuario propietario de la base de datos
+
+    //Nombre del usuario propietario de la base de datos
     define("DB_USERNAME","root");
-    //contrasenia d ela bd
+
+    //contrasenia del usuario de la base de datos
     define("DB_PASSWORD","");
-    //definir codificacion
+
+    //Definimos la codificación de los carácteres
     define("DB_ENCODE","utf8");
-    //constante del nombre del proyecto
+
+    //Definimos una constante como nombre del proyecto
     define("PRO_NOMBRE","Hospital");
-
-
 ?>

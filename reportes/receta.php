@@ -3,7 +3,7 @@ require ('../fpdf/fpdf.php');
 
 $pdf = new FPDF($orientation='P',$unit='mm');
 $pdf->AddPage();
-$pdf->SetFont('Arial','B',20);    
+$pdf->SetFont('Arial','B',17);    
 $textypos = 5;
 $pdf->setY(12);
 $pdf->setX(10);
@@ -25,7 +25,7 @@ $pdf->Cell(5,$textypos,utf8_decode("Teléfono: (+593) 979589877"));
 $pdf->setY(27);$pdf->setX(10);
 $pdf->Cell(5,$textypos,"Email: hospitalnuestrafam@gmail.com");
 
-$pdf->SetFont('Arial','',10);    
+$pdf->SetFont('Arial','',9);    
 $pdf->setY(35);$pdf->setX(10);
 $pdf->Cell(5,$textypos,utf8_decode("Médico: ".$reg->medico."\n"));
 $pdf->setY(40);$pdf->setX(10);
@@ -40,15 +40,15 @@ $pdf->setY(60);$pdf->setX(10);
 $pdf->Cell(5,$textypos,utf8_decode("Email: ".$reg->email."\n"));
 $pdf->Ln(10);
 
-$pdf->SetFont('Arial','B',10);
+$pdf->SetFont('Arial','B',8);
 $pdf->SetFillColor(93, 173, 226);
 $pdf->SetTextColor(255,255,255);
 $pdf->SetDrawColor(97, 106, 107 );
 
-$pdf->Cell(40,12,utf8_decode("NOMBRE"),0,0,'c',1);
-$pdf->Cell(70,12,utf8_decode("DESCRIPCIÓN"),0,0,'c',1);
+$pdf->Cell(30,12,utf8_decode("NOMBRE"),0,0,'c',1);
+$pdf->Cell(60,12,utf8_decode("DESCRIPCIÓN"),0,0,'c',1);
 $pdf->Cell(13,12,utf8_decode("CANT."),0,0,'c',1);
-$pdf->Cell(70,12,utf8_decode("INDICACIONES"),0,0,'c',1);
+$pdf->Cell(90,12,utf8_decode("INDICACIONES"),0,0,'c',1);
 
 $pdf->SetTextColor(23, 32, 42);
 $pdf->Ln(12);
@@ -58,19 +58,19 @@ $rsptad = $receta->listarDetalle($_GET["id"]);
 while ($mostrar = $rsptad->fetch_object()) {
 
     //$pdf->Cell(70,6,utf8_decode("$mostrar->medicamento_idmedicamento"),1,0,'c',0);
-    $pdf->Cell(40,10,utf8_decode("$mostrar->nombre"),1,0,'c',0);
-    $pdf->Cell(70,10,utf8_decode("$mostrar->descripcion"),1,0,'c',0);
-    $pdf->Cell(13,10,$mostrar->cantidad,1,0,'c',0);
-    $pdf->Cell(70,10,utf8_decode("$mostrar->observaciones"),1,1,'c',0);
+    $pdf->Cell(30,15,utf8_decode("$mostrar->nombre"),1,0,'c',0);
+    $pdf->Cell(60,15,utf8_decode("$mostrar->descripcion"),1,0,'c',0);
+    $pdf->Cell(13,15,$mostrar->cantidad,1,0,'c',0);
+    $pdf->Cell(90,15,utf8_decode("$mostrar->observaciones"),1,1,'c',0);
 
   }
 
-$pdf->SetFont('Arial','B',10);    
+$pdf->SetFont('Arial','B',8);    
 
 $pdf->Ln(100);
 $pdf->setX(90);
 $pdf->Cell(5,$textypos,"FIRMA Y SELLO");
-$pdf->SetFont('Arial','',10);    
+$pdf->SetFont('Arial','',8);    
 
 $pdf->Ln(15);
 $pdf->setX(65);
