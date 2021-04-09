@@ -33,7 +33,7 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
           <div class="card">
             <div class="card-body">
 
-              <div class="panel-body" id="listadoregistros">
+              <div class="panel-body table-responsive" id="listadoregistros">
                 <table id="tbllistadoe" class="table table-striped table-bordered table-hover dt-responsive DT" style="width:100%">
                   <thead>
                     <th>Opciones</th>
