@@ -33,7 +33,6 @@ if(!isset($_SESSION["nombres"])){ //si la validable de sesion no existe.. signif
               <div class="panel-body table-responsive" id="listadoregistros">
                 <table id="tbllistadocita" class="table table-striped table-bordered table-condensed table-hover dt-responsive DT">
                   <thead>
-                    <th>Opciones</th>
                     <th>Especialidad</th>
                     <th>Paciente</th>
                     <th>Teléfono</th>
@@ -45,7 +44,6 @@ if(!isset($_SESSION["nombres"])){ //si la validable de sesion no existe.. signif
 
                   </tbody>
                   <tfoot>
-                    <th>Opciones</th>
                     <th>Especialidad</th>
                     <th>Paciente</th>
                     <th>Teléfono</th>

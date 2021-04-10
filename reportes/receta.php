@@ -1,4 +1,16 @@
 <?php
+//Activamos el almacenamiento en el buffer
+ob_start();
+if (strlen(session_id()) < 1) 
+  session_start();
+ 
+if (!isset($_SESSION["nombres"]))
+{
+    echo "Debe ingresar al sistema correctamente para visualizar los exámenes";
+  }else{
+    
+    if ($_SESSION['rol_idrol']==1 || $_SESSION['rol_idrol']==2 || $_SESSION['rol_idrol']==3) 
+    {
 require ('../fpdf/fpdf.php');
 
 $pdf = new FPDF($orientation='P',$unit='mm');
@@ -81,4 +93,11 @@ $pdf->Cell(5,$textypos,utf8_decode("Médico: ".$reg->medico."\n"));
 $pdf->setX(80);
 
 $pdf->output();
+
+}else{
+  echo "No tiene acceso para vizualizar exámenes";
+}
+}
+
+ob_end_flush();
 ?>
