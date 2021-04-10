@@ -19,8 +19,7 @@ function init() {
 
     function(data) {
       if (data!="null") {
-        $("#idcita_medica").html(data);
-       // $("#hora").selectpicker('refresh');         
+        $("#idcita_medica").html(data);    
       } else {
         Swal.fire({
           icon: 'warning',
@@ -110,18 +109,6 @@ function calendario() {
         });
     },*/
       dateClick: function(info) {
-        /*var actual = new Date();
-        //var actual = new Date(dia_num,mes_num,año_num)
-        $fecha=info.date;
-        if($fecha >= actual){
-        $("#fecha_cita").val(info.dateStr);   
-        $("#modalCitas").modal();
-        //document.getElementById("dia").innerHTML= info.dateStr;
-        }else{
-          bootbox.alert({
-            message: "No se puede agendar citas en una fecha vencida"
-            });
-        }*/
         var date = new Date(info.date);
         var hoy = new Date();
         var ayer = new Date(hoy - 24 * 60 * 60 * 1000);

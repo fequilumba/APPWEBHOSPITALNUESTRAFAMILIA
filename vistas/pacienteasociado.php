@@ -69,17 +69,17 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                       <label for="">Cédula(*)</label>
                       <input type="hidden" name="idpersona" id="idpersona">
-                      <input type="text" name="cedula" maxlength="10" minlength="10" id="cedula" class="form-control" onkeypress="return soloNumeros(event)" maxlength="10" placeholder="Cédula" required>
+                      <input type="text" name="cedula" maxlength="10" minlength="10" id="cedula" class="form-control" onkeypress="return /[0-9]/i.test(event.key)" maxlength="10" placeholder="Cédula" required>
                     <div id="text"></div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                       <label for="">Nombres(*)</label>
-                      <input type="text" name="nombres" id="nombres" class="form-control" onkeypress="return soloLetras(event)" maxlength="45" placeholder="Nombres" required  >
+                      <input type="text" name="nombres" id="nombres" class="form-control" onkeypress="return /[a-z]/i.test(event.key)" maxlength="45" placeholder="Nombres" required  >
                     </div>
 
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                       <label for="">Apellidos(*)</label>
-                      <input type="text" name="apellidos" id="apellidos" class="form-control" onkeypress="return soloLetras(event)"  maxlength="45" placeholder="Apellidos"required>
+                      <input type="text" name="apellidos" id="apellidos" class="form-control" onkeypress="return /[a-z]/i.test(event.key)"  maxlength="45" placeholder="Apellidos"required>
                     </div>
 
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -89,7 +89,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                       <label for="">Teléfono</label>
-                      <input type="text" name="telefono" id="telefono" maxlength="10" minlength="10" class="form-control" onkeypress="return soloNumeros(event)" placeholder="Teléfono">
+                      <input type="text" name="telefono" id="telefono" maxlength="10" minlength="10" class="form-control" onkeypress="return /[0-9]/i.test(event.key)" placeholder="Teléfono">
                     </div>
 
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -101,7 +101,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                   <div class="form-row">
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                       <label for="">Ciudad(*)</label>
-                      <input type="text" name="ciudad_residencia" id="ciudad_residencia" class="form-control" onkeypress="return soloLetras(event)"  maxlength="45" placeholder="Ciudad"required>
+                      <input type="text" name="ciudad_residencia" id="ciudad_residencia" class="form-control" onkeypress="return /[a-z]/i.test(event.key)" maxlength="45" placeholder="Ciudad"required>
                     </div>
 
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

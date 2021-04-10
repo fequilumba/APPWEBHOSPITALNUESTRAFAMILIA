@@ -137,7 +137,7 @@
             //Mostrar una lista de especialidades en la vista de registro de medicos y si estan o no marcados 
             while ($reg = $rspta->fetch_object()) {
                 $sw=in_array($reg->idespecialidad,$valores)?'checked':'';
-                echo '<li> <input type="checkbox" '.$sw.'  name="especialidad[]" value="'.$reg->idespecialidad.'">'.$reg->nombre.'</li>';
+                echo '<li> <input type="checkbox" '.$sw.'  name="especialidad[]" value="'.$reg->idespecialidad.'"> '.$reg->nombre.'</li>';
             }
         break;
         
@@ -161,7 +161,7 @@
             //Mostramos la lista de permisos en la vista y si están o no marcados
             while ($reg = $rspta->fetch_object()) {
                 $sw=in_array($reg->idrol,$valores)?'checked':'';
-                echo '<li> <input type="checkbox" '.$sw.'  name="rol[]" value="'.$reg->idrol.'">'.$reg->nombre.'</li>';
+                echo '<li> <input type="checkbox" '.$sw.'  name="rol[]" value="'.$reg->idrol.'"> '.$reg->nombre.'</li>';
                 //echo '<li> <input type="checkbox" name="rol[]" value="'.$reg->idrol.'">'.$reg->nombre.'</li>';
             } 
         break;

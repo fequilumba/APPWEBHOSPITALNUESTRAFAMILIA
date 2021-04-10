@@ -1,8 +1,8 @@
 //FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
   validar();
-  soloLetras();
-  soloNumeros();
+  //soloLetras();
+  //soloNumeros();
 }
 
 
@@ -40,7 +40,7 @@ function validar() {
 
 
 //FUNCIÓN PARA VALIDAR SOLO LETRAS
-function soloLetras(e) {
+/*function soloLetras(e) {
   key = e.keyCode || e.which;
   tecla = String.fromCharCode(key).toLowerCase();
   letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
@@ -56,11 +56,11 @@ function soloLetras(e) {
 
   if(letras.indexOf(tecla) == -1 && !tecla_especial)
   return false;
-}
+}*/
 
 
 //FUNCIÓN PARA VALIDAR SOLO NUMEROS
-function soloNumeros(e) {
+/*function soloNumeros(e) {
   key = e.keyCode || e.which;
   tecla = String.fromCharCode(key).toLowerCase();
   letras = "0123456789";
@@ -76,5 +76,5 @@ function soloNumeros(e) {
 
   if(letras.indexOf(tecla) == -1 && !tecla_especial)
   return false;
-}
+}*/
 init();

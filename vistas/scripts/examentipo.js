@@ -143,24 +143,4 @@ function activar(idtipo_examen) {
     });
 }
 
-
-/*function eliminar(idtipo_examen)
-{ 
-    alertify.confirm("Exámen","¿Estas seguro de eliminar el examen de tipo Imágen?",
-        function(){
-            $.post(
-                "../ajax/examen.php?op=eliminarExamenSangre", {idtipo_examen : idtipo_examen},
-                function(e)
-                {
-                    //alertify.alert(e);
-                    tabla.ajax.reload();
-                    alertify.success('Exámen eliminado');
-                }
-            );
-        },
-        function(){
-            alertify.error('Cancelado');
-        });
-}*/
-
 init();
