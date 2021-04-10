@@ -8,13 +8,6 @@ function init() {
         guardaryeditar(e);
     });
 
-    //CARGAMOS LOS ITEMS AL SELECT ESPECIALIDAD
-    $.post("../ajax/medico.php?op=selectEspecialidad", function(r) {        
-        //console.log(data);
-        $("#especialidad_idespecialidad").html(r);
-        //$("#especialidad_idespecialidad").selectpicker('refresh');    
-    });
-
     //MOSTRAR ROLES
 	$.post("../ajax/medico.php?op=roles&id2=", function(r) {
 		$("#roles").html(r);
@@ -40,7 +33,6 @@ function limpiar(){
     $("#email").val("");
     $("#telefono").val("");
     $("#direccion").val("");
-    $("#roles").removeAttr('checked');
     $("#especialidades").val("");
 	$("#imagenmuestra").attr("src","");
 	$("#imagenactual").val("");

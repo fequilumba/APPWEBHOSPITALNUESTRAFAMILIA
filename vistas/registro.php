@@ -36,7 +36,7 @@
             <div class="form-group row">
               <label for="" class="col-sm-5 col-form-label">Cédula(*)</label>
               <div class="col-sm-12">
-                <input type="text" class="form-control" maxlength="10" minlength="10" id="cedula" name="cedula" onkeypress="return soloNumeros(event)" placeholder="Cédula" required>  
+                <input type="text" class="form-control" maxlength="10" minlength="10" id="cedula" name="cedula" onkeypress="return /[0-9]/i.test(event.key)" placeholder="Cédula" required>  
                 <span class=""></span>  
               </div>       
             </div>
@@ -44,14 +44,14 @@
             <div class="form-group row">
               <label for="" class="col-sm-5 col-form-label">Nombres(*)</label>
               <div class="col-sm-12">
-                <input type="text" class="form-control" id="nombres" name="nombres" onkeypress="return soloLetras(event)"  placeholder="Nombres" required>                    
+                <input type="text" class="form-control" id="nombres" name="nombres" onkeypress="return /[a-z]/i.test(event.key)" placeholder="Nombres" required>                    
               </div>
             </div>
 
             <div class="form-group row">
               <label for="" class="col-sm-5 col-form-label">Apellidos(*)</label>
               <div class="col-sm-12">
-                <input type="text" class="form-control" id="apellidos" name="apellidos" onkeypress="return soloLetras(event)" placeholder="Apellidos" required>                    
+                <input type="text" class="form-control" id="apellidos" name="apellidos" onkeypress="return /[a-z]/i.test(event.key)" placeholder="Apellidos" required>                    
               </div>
             </div>
             
@@ -65,7 +65,7 @@
             <div class="form-group row">
               <label for="" class="col-sm-5 col-form-label">Teléfono(*)</label>
               <div class="col-sm-12">
-                <input type="text" class="form-control" id="telefono" name="telefono" onkeypress="return soloNumeros(event)" placeholder="Teléfono" required>
+                <input type="text" class="form-control" id="telefono" name="telefono" onkeypress="return /[0-9]/i.test(event.key)" placeholder="Teléfono" required>
               </div>
             </div>
 
@@ -79,7 +79,7 @@
             <div class="form-group row">
               <label for="" class="col-sm-12 col-form-label">Ciudad de Residencia(*)</label>
               <div class="col-sm-12">
-                <input type="text" class="form-control" id="ciudad_residencia" onkeypress="return soloLetras(event)"  name="ciudad_residencia" placeholder="Ciudad" required>
+                <input type="text" class="form-control" id="ciudad_residencia" onkeypress="return /[a-z]/i.test(event.key)"  name="ciudad_residencia" placeholder="Ciudad" required>
               </div>
             </div>
 
