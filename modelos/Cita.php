@@ -20,6 +20,7 @@
             ;
             return ejecutarConsulta($sql);
         }
+
         //metodo para editar registros
         public function editar($idcita_medica,$diagnostico, $sintomas,$estado_idestado,
                                 $idmedicamento,$cantidad, $observaciones, $idexamen){
@@ -47,6 +48,7 @@
             return $sw;
 
         }
+
         public function editarE($idcita_medica,$diagnostico, $sintomas,$estado_idestado, $idexamen){
             $sql= "UPDATE `cita_medica` 
             SET `estado_idestado`='$estado_idestado', `diagnostico`='$diagnostico', `sintomas`='$sintomas' 
@@ -70,6 +72,7 @@
             return $sw;
 
         }
+
         public function editarN($idcita_medica,$estado_idestado){
             $sql= "UPDATE `cita_medica` 
                     SET `estado_idestado`='$estado_idestado' 
@@ -117,23 +120,24 @@
             while ($num_elementos < count($idexamen))
             {
                 $sql_detalle = "INSERT INTO examen_has_pedido_examen(examen_idexamen, pedido_examen_idpedido_examen) 
-                                VALUES ('$idexamen[$num_elementos]','$examennew')";
+                VALUES ('$idexamen[$num_elementos]','$examennew')";
                 ejecutarConsulta($sql_detalle) or $sw = false;
                 $num_elementos=$num_elementos + 1;
             }
             return $sw;
         }
+
         //mostrar un registro para editar
         public function mostrar($idcita_medica)
-            {
-                $sql= "SELECT cm.`idcita_medica`, e.nombre as especialidad_idespecialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as personaPaciente_idpersona,
-                        cm.`diagnostico`, cm.`sintomas`, cm.`motivo_consulta` 
-                        FROM `cita_medica` cm 
-                        INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
-                        INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
-                        WHERE `idcita_medica`='$idcita_medica'";
-                return ejecutarConsultaSimpleFila($sql);
-            }
+        {
+            $sql= "SELECT cm.`idcita_medica`, e.nombre as especialidad_idespecialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as personaPaciente_idpersona,
+                cm.`diagnostico`, cm.`sintomas`, cm.`motivo_consulta` 
+                FROM `cita_medica` cm 
+                INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
+                INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
+                WHERE `idcita_medica`='$idcita_medica'";
+            return ejecutarConsultaSimpleFila($sql);
+        }
         
         //listar citas
         public function listar($idusuario){
@@ -150,14 +154,15 @@
         }
         
         public function insertarCita($especialidad_idespecialidad,$personaPaciente_idpersona,$personaMedico_idpersona, 
-                                        $fecha_cita, $motivo_consulta, $horario_idhorario,$clavemedico,$clavepaciente,$clavepacientemedico){
+                        $fecha_cita, $motivo_consulta, $horario_idhorario,$clavemedico,$clavepaciente,$clavepacientemedico){
             $sql= "INSERT INTO `cita_medica` (`especialidad_idespecialidad`, `personaPaciente_idpersona`,`personaMedico_idpersona`, `fecha_cita`, 
-                                                `diagnostico`, `sintomas`, `motivo_consulta`, `horario_idhorario`, `estado_idestado`,
-                                                `clavemedico`,`clavepaciente`,`clavepacientemedico`)
+                        `diagnostico`, `sintomas`, `motivo_consulta`, `horario_idhorario`, `estado_idestado`,
+                        `clavemedico`,`clavepaciente`,`clavepacientemedico`)
                     VALUES ('$especialidad_idespecialidad', '$personaPaciente_idpersona','$personaMedico_idpersona', '$fecha_cita', 
                             '', '', '$motivo_consulta', '$horario_idhorario', '1','$clavemedico','$clavepaciente','$clavepacientemedico')";
             return ejecutarConsulta($sql);
         }
+
         public function editarCita($idcita_medica,$especialidad_idespecialidad,$personaPaciente_idpersona,$personaMedico_idpersona, 
         $fecha_cita, $motivo_consulta, $horario_idhorario){
             $sql= "UPDATE `cita_medica` SET `especialidad_idespecialidad`='$especialidad_idespecialidad',`persona_idpersona`='$persona_idpersona', 
@@ -166,13 +171,14 @@
 
             return ejecutarConsulta($sql);
         }
-    /*public function mostrarCita($idcita_medica)
+
+        /*public function mostrarCita($idcita_medica)
             {
                 $sql= "SELECT `especialidad_idespecialidad`,`persona_idpersona`, `fecha_cita`,`motivo_consulta`,
                 `horario_idhorario`
                 FROM `cita_medica` 
                 WHERE `idcita_medica`='$idcita_medica'";
                 return ejecutarConsultaSimpleFila($sql);
-            }*/
+        }*/
     }
 ?>

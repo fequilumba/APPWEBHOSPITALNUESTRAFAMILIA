@@ -144,7 +144,7 @@ function guardaryeditar(e){
     processData: false,
       
     success: function(datos){
-      bootbox.alert(datos);
+      alert(datos);
       location.reload();
     }   
   });

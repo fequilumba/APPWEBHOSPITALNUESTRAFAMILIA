@@ -145,7 +145,7 @@ function mostrar(idpersona){
 }
 
 
-//FUNCIÓN PARA DESACTIVAR MI PERFIL
+/*//FUNCIÓN PARA DESACTIVAR MI PERFIL
 function desactivar(idpersona) {
     alertify.confirm("Paciente","¿Estas seguro de desactivar al Paciente?", function() {
         $.post("../ajax/miperfil.php?op=desactivar", {idpersona : idpersona}, function(e) {
@@ -172,6 +172,6 @@ function activar(idpersona) {
     function(){
         alertify.error('Cancelado');
     });
-}
+}*/
 
 init();
