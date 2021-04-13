@@ -100,7 +100,7 @@ function guardaryeditar(e) {
 
         success: function(datos){
             
-            alert(datos);
+            bootbox.alert(datos);
             mostrarform(false);
             //alertify.success('Cita registrada');
             location.reload();
@@ -180,7 +180,7 @@ function agregarMedicamento(idmedicamento,nombre,descripcion) {
         detalles= detalles+1;
         $('#medicamentos').append(fila);
     } else {
-        alert("Error al ingresar el medicamento")
+        bootbox.alert("Error al ingresar el medicamento")
     }
 }
 
@@ -238,7 +238,7 @@ function agregarExamen(idexamen,nombre,tipo) {
         detalles2= detalles2+1;
         $('#examenes').append(fila);
     } else {
-        alert("Error al ingresar el medicamento")
+        bootbox.alert("Error al ingresar el medicamento")
     }
 }
 
