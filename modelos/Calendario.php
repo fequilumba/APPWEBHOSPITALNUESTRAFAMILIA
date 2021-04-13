@@ -1,5 +1,7 @@
 <?php
+ // Incluímos inicialmente la conexión a la base de datos
  require "../config/Conexion.php";
+
  class Calendario{
      public function __construct(){
         
@@ -50,27 +52,6 @@
         return ejecutarConsulta($sql);
      }
     
-}
-/*date_default_timezone_set("America/Guayaquil");
-        echo ("\n");
-        $fechasistema= date("Y-m-d");
-        echo ($fechasistema);
-        $horasistema = date("H:i:s");
-        echo ($horasistema);
-
-    $sql= "SELECT cm.idcita_medica, CONCAT(cm.`fecha_cita`, ' ' ,h.`hora`) as fecha
-        FROM `cita_medica` cm 
-        INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
-        INNER JOIN `persona` p ON p.`idpersona`=cm.`personaMedico_idpersona`
-	    INNER JOIN `horario` h ON cm.`horario_idhorario`= h.`idhorario`
-        WHERE cm.`estado_idestado`=4 AND cm.`personaMedico_idpersona`=6 
-        	AND cm.`especialidad_idespecialidad`=3 AND cm.`fecha_cita`>='$fechasistema'
-            AND h.`hora`>= '$horasistema'";
-
-        $resp=ejecutarConsultaSimpleFila($sql);
-        
-        echo json_encode($resp);*/
-
-        
+} 
 
 ?>

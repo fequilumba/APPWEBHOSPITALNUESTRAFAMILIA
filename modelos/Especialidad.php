@@ -1,56 +1,65 @@
 <?php
- require "../config/Conexion.php";
- class Especialidad{
-     public function __construct(){
-        
-     }
-     public function listar(){
-        $sql= "SELECT * FROM `especialidad`";
-        return ejecutarConsulta($sql);
-     }
-     //Metodo para insertar especialdiad
-     public function insertar($nombre){
-        $sql= "INSERT INTO `especialidad` (`nombre`, `estado`) 
-        VALUES ('$nombre','1')";
-        return ejecutarConsulta($sql);
-    }
-     //metodo para editar o actualizar especialidad
-     public function editar($idespecialidad,$nombre){
-        $sql= " UPDATE `especialidad` SET `nombre` = '$nombre' WHERE `especialidad`.`idespecialidad` = '$idespecialidad'";
-        return ejecutarConsulta($sql);
-    }
-    //mostrar datos de una especialdiad por id
-    public function mostrar($idespecialidad)
-        {
-            $sql= "SELECT * FROM `especialidad` WHERE `idespecialidad`='$idespecialidad'";
-            return ejecutarConsultaSimpleFila($sql);
+    // Incluímos inicialmente la conexión a la base de datos
+    require "../config/Conexion.php";
+
+    class Especialidad{
+        public function __construct(){
+            
         }
-    //METODOS PARA ACTIVAR/DESACTIVAR ESPECIALIDAD
-    public function desactivar($idespecialidad)
-    {
-        $sql= "UPDATE `especialidad` SET `estado`='0' 
-               WHERE `idespecialidad`='$idespecialidad'";
-        
-        return ejecutarConsulta($sql);
-    }
 
-    public function activar($idespecialidad)
-    {
-        $sql= "UPDATE `especialidad` SET `estado`='1' 
-               WHERE `idespecialidad`='$idespecialidad'";
-        
-        return ejecutarConsulta($sql);
-    }
-    //selecccionar una especialidad para un medico
-    public function selectEspecialidad(){
-        $sql= "SELECT * FROM `especialidad` 
-                WHERE `especialidad`.`estado`=1";
-        return ejecutarConsulta($sql);
-     }
-     public function listarEspecialidad(){
-        $sql= "SELECT * FROM `especialidad` WHERE `especialidad`.`estado`=1";
-        return ejecutarConsulta($sql);
-     }
+        public function listar(){
+            $sql= "SELECT * FROM `especialidad`";
+            return ejecutarConsulta($sql);
+        }
 
- }
+        //Metodo para insertar especialdiad
+        public function insertar($nombre){
+            $sql= "INSERT INTO `especialidad` (`nombre`, `estado`) 
+            VALUES ('$nombre','1')";
+            return ejecutarConsulta($sql);
+        }
+
+        //metodo para editar o actualizar especialidad
+        public function editar($idespecialidad,$nombre){
+            $sql= " UPDATE `especialidad` SET `nombre` = '$nombre' WHERE `especialidad`.`idespecialidad` = '$idespecialidad'";
+            return ejecutarConsulta($sql);
+        }
+
+        //mostrar datos de una especialdiad por id
+        public function mostrar($idespecialidad)
+            {
+                $sql= "SELECT * FROM `especialidad` WHERE `idespecialidad`='$idespecialidad'";
+                return ejecutarConsultaSimpleFila($sql);
+            }
+
+        //METODOS PARA ACTIVAR/DESACTIVAR ESPECIALIDAD
+        public function desactivar($idespecialidad)
+        {
+            $sql= "UPDATE `especialidad` SET `estado`='0' 
+                WHERE `idespecialidad`='$idespecialidad'";
+            
+            return ejecutarConsulta($sql);
+        }
+
+        public function activar($idespecialidad)
+        {
+            $sql= "UPDATE `especialidad` SET `estado`='1' 
+                WHERE `idespecialidad`='$idespecialidad'";
+            
+            return ejecutarConsulta($sql);
+        }
+
+        //selecccionar una especialidad para un medico
+        public function selectEspecialidad(){
+            $sql= "SELECT * FROM `especialidad` 
+                    WHERE `especialidad`.`estado`=1";
+            return ejecutarConsulta($sql);
+        }
+
+        public function listarEspecialidad(){
+            $sql= "SELECT * FROM `especialidad` WHERE `especialidad`.`estado`=1";
+            return ejecutarConsulta($sql);
+        }
+
+     }
 ?>
