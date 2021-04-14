@@ -2,6 +2,7 @@
 //Activamos el almacenamiento en el buffer
 ob_start();
 session_start();
+
 if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. significa que no se ha logeado al sistema
   header("Location: login.php");
 } else {
@@ -101,7 +102,7 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
                     </div>
 
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
-                      <table id="medicamentos" class="table table-striped table-bordered table-hover dt-responsive DT nowrap">
+                      <table id="medicamentos" class="table table-striped table-bordered table-hover dt-responsive DT">
                         <thead style="background-color:#A9D0F5">
                           <th>Opciones</th>
                           <th>Medicamento</th>
@@ -173,7 +174,7 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
         </div>
 
         <div class="modal-body table-responsive">
-          <table id="tblmedicamentos" class="table table-striped table-bordered table-condensed table-hover">
+          <table id="tblmedicamentos" class="table table-striped table-bordered  table-hover dt-responsive DT">
             <thead>
               <th>Opciones</th>
               <th>Nombre</th>
@@ -209,7 +210,7 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
         </div>
         
         <div class="modal-body table-responsive">
-          <table id="tblexamenes" class="table table-striped table-bordered table-condensed table-hover">
+          <table id="tblexamenes" class="table table-striped table-bordered table-hover dt-responsive DT">
             <thead>
                 <th>Opciones</th>
                 <th>Nombre</th>
