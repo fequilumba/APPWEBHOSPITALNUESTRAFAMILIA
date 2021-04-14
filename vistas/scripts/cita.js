@@ -6,13 +6,13 @@ function init() {
     listar();
     $("#formulariocita").on("submit",function(e) {
         guardaryeditar(e);
-    });
+    })
 
     //CARGAMOS LOS ITEMS AL SELECT ESTADO
     $.post("../ajax/cita.php?op=selectEstado",function(r) {        
         //console.log(data);
         $("#estado_idestado").html(r);
-        $("#estado_idestado").selectpicker('refresh');
+        $('#estado_idestado').selectpicker('refresh');
     });
 }
 
@@ -60,7 +60,7 @@ function listar(){
     tabla=$('#tbllistadocita').dataTable({
         "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
         "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
-        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
+        dom: 'Bfrtip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
@@ -139,7 +139,7 @@ function listarMedicamento() {
     tabla=$('#tblmedicamentos').dataTable({
         "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
         "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
-        dom: 'Bfetip', // DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
+        dom: 'Bfrtip', // DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
@@ -202,7 +202,7 @@ function listarExamen() {
     tabla=$('#tblexamenes').dataTable({
         "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
         "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
-        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
+        dom: 'Bfrtip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },

@@ -38,14 +38,14 @@
       <form class="form-horizontal" method="post" id="frmAcceso">
         <div class="card-body">
           <div class="form-group row">
-            <label for="" class="col-sm-5 col-form-label"><i class="glyphicon fas fa-user"></i> Usuario</label> <br>
+            <label for="" class="col-sm-5 col-form-label"><i class="fas fa-user"></i> Usuario</label> <br>
             <div class="col-sm-12 ">
               <input type="text" class="form-control" id="logina" name="logina" placeholder="Usuario" required>
             </div>
           </div>
 
           <div class="form-group row">
-            <label for="" class="col-sm-5 col-form-label"><i class="glyphicon fas fa-key"></i> Contraseña</label>
+            <label for="" class="col-sm-5 col-form-label"><i class="fas fa-key"></i> Contraseña</label>
             <div class="col-sm-12 input-group">
               <input id="clavea" name="clavea" type="password" Class="form-control" placeholder="Contraseña" required>
               <div class="input-group-append">
@@ -64,7 +64,7 @@
                 
         <div class="card-footer">
           <button type="submit" class="btn btn-info float-right">Ingresar</button>
-          <button class="btn btn-outline-info float-left"  OnClick="location.href=`registro.php`">Crear Cuenta</button><br>
+          <button class="btn btn-outline-info float-left"  OnClick="location.href='registro.php'">Crear Cuenta</button><br>
         </div> <!-- .card-footer --> 
       </form> <!-- .formulario login -->
     </div> <!-- /.card -->

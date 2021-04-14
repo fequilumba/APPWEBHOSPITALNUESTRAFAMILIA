@@ -29,7 +29,7 @@
             return $sw;    
         }
 
-        //MÉTODO PARA EDITAR REGISTROS
+        //MÉTODO PARA EDITAR REGISTROS DEL CLIENTE
         public function editarCliente ($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion, $ciudad_residencia, $fecha_nacimiento, $genero, $imagen) {
             $sql= "UPDATE persona SET cedula='$cedula', nombres='$nombres', apellidos='$apellidos', email='$email', telefono='$telefono', direccion='$direccion', ciudad_residencia='$ciudad_residencia', fecha_nacimiento='$fecha_nacimiento', genero='$genero'
             WHERE idpersona='$idpersona'";

@@ -103,7 +103,7 @@ switch ($_GET["op"]){
 
     break;
     case 'permisos':
-            //Obtenemos todos los permisos de la tabla permisos
+        //Obtenemos todos los permisos de la tabla permisos
 		require_once "../modelos/Permiso.php";
 		$permiso = new Permiso();
 		$rspta = $permiso->listar();
@@ -134,11 +134,11 @@ switch ($_GET["op"]){
 		$rol_idrol=$_POST['rol_idrol'];
 		//encriptar clave para comparar con la de la base de datos
 		$clavehash=hash("SHA256",$clavea);
-		//$clavehash=$clavea;
+		
 		$rspta=$usuario->verificar($logina,$clavehash,$rol_idrol);
 
 		$fetch=$rspta->fetch_object();
-		if (isset($fetch)) { //si el objeti fetch no esta vacio
+		if (isset($fetch)) { //si el objeto fetch no esta vacio
 			//declaramos las variables de sesion
 			$_SESSION['idusuario']=$fetch->idusuario;
 			$_SESSION['nombres']=$fetch->nombres;

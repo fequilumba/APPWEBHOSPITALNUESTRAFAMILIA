@@ -96,7 +96,7 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
                       <label>Imagen:</label> 
                       <div class="file-select inner-addon left-addon" id="src-file1" >
                         <i class="glyphicon fas fa-camera-retro"></i>
-                        <input type="file" class="" name="imagen" id="imagen" accept="image/x-png,image/gif,image/jpeg">
+                        <input type="file" class="" name="imagen" id="imagen" accept="image/jpg,image/jpeg,image/png">
                       </div>
                       <br>
                       <input type="hidden" name="imagenactual" id="imagenactual">

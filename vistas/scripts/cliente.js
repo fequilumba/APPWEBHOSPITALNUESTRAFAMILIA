@@ -57,7 +57,7 @@ function listar(){
     tabla=$('#tbllistado').dataTable({
         "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
         "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
-        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
+        dom: 'Bfrtip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
@@ -66,14 +66,14 @@ function listar(){
             'copyHtml5',
             'excelHtml5',
             'csvHtml5',
-            'pdf',
+            'pdf'
         ],
         "ajax":{
             url: '../ajax/cliente.php?op=listar',
             type: "get",
             dataType: "json",
             error: function(e){
-                console.log(e,responseText);
+                console.log(e.responseText);
             }
         },
         "bDestroy":true,
@@ -85,7 +85,7 @@ function listar(){
 
 //FUNCIÓN GUARDAR O EDITAR CLIENTE
 function guardaryeditar(e){
-    e.preventDefault();
+    e.preventDefault(); // No se activara la acción predeterminada del evento
     $("#btnGuardar").prop("disabled",true);
     var formData = new FormData($("#formulario")[0]);
     $.ajax({
@@ -110,6 +110,7 @@ function mostrar(idpersona){
     $.post("../ajax/cliente.php?op=mostrar",{idpersona : idpersona}, function(data, status) {
         data = JSON.parse(data);
         mostrarform(true);
+
         $("#cedula").val(data.cedula);
         $("#nombres").val(data.nombres);
         $("#apellidos").val(data.apellidos);
@@ -124,7 +125,7 @@ function mostrar(idpersona){
 		$("#imagenactual").val(data.imagen);
         $("#idpersona").val(data.idpersona);
 
-    });
+    })
 }
 
 
@@ -151,7 +152,7 @@ function activar(idpersona) {
             tabla.ajax.reload();
             alertify.success('Cliente activado');
         });
-        },
+    },
         function(){
             alertify.error('Cancelado');
         });
