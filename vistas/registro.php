@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../public/plugins/fontawesome-free/css/all.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="../public/css/blue.css">
-    <link rel="stylesheet" href="../public/css/centrar.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../public/dist/css/adminlte.min.css">
     <link rel="stylesheet" type="text/css" href="../public/css/estilo.css">

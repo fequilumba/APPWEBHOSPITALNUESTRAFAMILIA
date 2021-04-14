@@ -46,7 +46,7 @@ function listar(){
     tabla=$('#tbllistadoe').dataTable({
         "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
         "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
-        dom: 'Bfetip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
+        dom: 'Bfrtip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
