@@ -3,6 +3,7 @@
 lista de arreglos (Array)*/
 session_start();
     require_once "../modelos/Calendario.php";
+    
     $calendario = new Calendario();
     $idasociado=$_SESSION['idusuario'];
     $idasociado2=$_SESSION['idpersona'];
@@ -21,8 +22,7 @@ session_start();
                 echo "Error al resgistrar la cita verifique todos los datos";
                 
             }else{
-            /*$clavepaciente= $personaPaciente_idpersona."-".$fecha_cita."-".$horario_idhorario;
-            $clavepacientemedico=$personaPaciente_idpersona."-".$personaMedico_idpersona."-".$fecha_cita."-".$horario_idhorario;*/
+            
                 $rspta=$calendario->editar($idcita_medica,$especialidad_idespecialidad,$personaPaciente_idpersona,$personaMedico_idpersona, 
                 $fecha_cita, $motivo_consulta);
                 echo $rspta ? "Cita registrada" : "No se pudo registrar la cita";                
