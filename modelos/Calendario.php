@@ -42,7 +42,8 @@
         return ejecutarConsulta($sql);
     }
     public function selecthora($especialidad,$personaMedico,$fecha){
-        $sql= "SELECT cm.idcita_medica, CONCAT(cm.`fecha_cita`, ' ' ,h.`hora`) as fecha
+        //CONCAT(cm.`fecha_cita`, ' ' ,h.`hora`)
+        $sql= "SELECT cm.idcita_medica, h.`hora` as fecha
         FROM `cita_medica` cm 
         INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
         INNER JOIN `persona` p ON p.`idpersona`=cm.`personaMedico_idpersona`
