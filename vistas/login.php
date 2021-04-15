@@ -97,6 +97,5 @@
     <!-- AdminLTE App -->
     <script src="../public/dist/js/adminlte.min.js"></script>
     <script type="text/javascript" src="scripts/login.js"></script>
-    <script type="text/javascript" src="scripts/rol.js"></script>
   </body>
 </html>
