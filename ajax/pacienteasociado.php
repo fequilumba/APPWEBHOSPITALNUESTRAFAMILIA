@@ -2,7 +2,7 @@
 session_start();
     require_once "../modelos/Pacienteasociado.php";
     $pacientea = new Pacienteasociado();
-    //$idasociado=$_SESSION['idusuario'];
+    
     $idpersona = isset($_POST["idpersona"])? limpiarCadena($_POST["idpersona"]):""; 
     $especialidad_idespecialidad = isset($_POST["especialidad_idespecialidad"])? limpiarCadena($_POST["especialidad_idespecialidad"]):""; 
     $cedula= isset($_POST["cedula"])? limpiarCadena($_POST["cedula"]):"";
@@ -47,10 +47,10 @@ session_start();
                 $usuario = new Usuario();
                 $rspta = $usuario->insertar($cedula, $contraseniahash);
                 $iduser=$rspta;
-                echo $rspta? "Usuario registrado" : "Usuario no se pudo registrar ";
+                echo $rspta? "Usuario registrado " : "Usuario no se pudo registrar ";
                 $rspta2=$pacientea->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
                 $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$cliente,$imagen,$iduser);
-                echo $rspta2? "Paciente registrado" : "Paciente no se pudo registrar ";
+                echo $rspta2? " Paciente registrado" : " Paciente no se pudo registrar ";
             }else{
                 $rspta=$pacientea->editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
                 $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$cliente);

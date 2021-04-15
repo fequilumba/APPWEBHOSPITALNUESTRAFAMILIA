@@ -46,10 +46,10 @@ session_start();
                 $usuario = new Usuario();
                 $rspta = $usuario->insertar($cedula,$contraseniahash);
                 $iduser=$rspta;
-                echo $rspta? "Usuario registrado " : "Usuario no se pudo registrar ";
+                echo $rspta? "Usuario " : "Usuario ";
                 $rspta2=$paciente->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
                 $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$idasociado,$imagen,$iduser);
-                echo $rspta2? "Paciente registrado " : "Paciente no se pudo registrar ";               
+                echo $rspta2? " Paciente registrado " : " Paciente no se pudo registrar ";               
 
             }else{
                 $rspta=$paciente->editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,

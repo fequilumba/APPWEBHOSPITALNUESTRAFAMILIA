@@ -41,7 +41,7 @@
             }
         break;
 
-        case 'desactivar':
+        /*case 'desactivar':
             $rspta = $persona->desactivar($idpersona);
             echo $rspta ? "Persona desactivada" : "No se pudo desactivar la persona";
         break;
@@ -49,7 +49,7 @@
         case 'activar':
             $rspta=$persona->activar($idpersona);
             echo $rspta ? "Persona activada" : "No se pudo activar la persona";
-        break;
+        break;*/
 
         case 'mostrar':
             $rspta=$persona->mostrar($idpersona);

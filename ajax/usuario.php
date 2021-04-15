@@ -55,12 +55,12 @@ switch ($_GET["op"]){
 			require_once "../modelos/Correo.php";
 			$correo = new Correo();
 			$rspta3 = $correo->enviar($cedula, $nombres, $apellidos, $email);
-			echo $rspta2 ? "Usuario registrado " : "No se pudieron registrar todos los datos del usuario ";
+			echo $rspta2 ? "Usuario registrado " : " No se pudieron registrar todos los datos del usuario ";
 			
 		}
 		else {
 			$rspta=$usuario->editar($idusuario,$username,$contraseniahash,$email,$imagen);
-			echo $rspta ? "Usuario actualizado" : "Usuario no se pudo actualizar";
+			echo $rspta ? "Usuario actualizado " : " Usuario no se pudo actualizar";
 		}
 	break;
 
@@ -102,32 +102,7 @@ switch ($_GET["op"]){
  		echo json_encode($results);
 
     break;
-    case 'permisos':
-        //Obtenemos todos los permisos de la tabla permisos
-		require_once "../modelos/Permiso.php";
-		$permiso = new Permiso();
-		$rspta = $permiso->listar();
-
-		//Obtener los permisos asignados al usuario
-		$id=$_GET['id'];
-		$marcados = $usuario->listaMarcados($id);
-		//Declaramos el array para almacenar todos los permisos marcados
-		$valores=array();
-
-		//Almacenar los permisos asignados al usuario en el array
-		while ($per = $marcados->fetch_object())
-			{
-				array_push($valores, $per->permiso_idpermiso);
-			}
-
-		//Mostramos la lista de permisos en la vista y si están o no marcados
-		while ($reg = $rspta->fetch_object())
-				{
-					$sw=in_array($reg->idpermiso,$valores)?'checked':'';
-					echo '<li> <input type="checkbox" '.$sw.'  name="permiso[]" value=" '.$reg->idpermiso.'">'.$reg->nombre.'</li>';
-				}
-        
-		break;
+    
 	case 'verificar':
 		$logina=$_POST['logina'];
 		$clavea=$_POST['clavea'];

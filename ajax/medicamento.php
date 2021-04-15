@@ -48,10 +48,7 @@
                 "aaData"=>$data);    
                 echo json_encode($results);   
             break;
-            /*case 'eliminarExamenImagen':
-                $rspta=$examenimagen->eliminarExamenImagen($idtipo_examen);
-                echo $rspta ? "Cita eliminada" : "No se pudo eliminar la cita";
-            break;*/
+            
             case 'desactivar':
                 $rspta=$medicamento->desactivar($idmedicamento);
                 echo $rspta ? "Medicamento desactivado" : "No se pudo desactivar el Medicamento";
