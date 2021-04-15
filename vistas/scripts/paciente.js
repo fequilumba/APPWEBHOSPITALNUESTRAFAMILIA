@@ -65,7 +65,7 @@ function listar(){
             'copyHtml5',
             'excelHtml5',
             'csvHtml5',
-            'pdf',
+            'pdf'
         ],
         "ajax":{
             url: '../ajax/paciente.php?op=listar',

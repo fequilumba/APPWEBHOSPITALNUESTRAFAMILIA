@@ -30,7 +30,7 @@
           <div class="card">
             <div class="card-body">                 
               <div class="panel-body table-responsive" id="listadoregistros">
-                <table id="tbllistado" class="table table-striped table-bordered table-hover dt-responsive DT nowrap" style="width:100%">
+                <table id="tbllistado" class="table table-striped table-bordered table-hover dt-responsive DT nowrap">
                   <thead>
                     <th>Opciones</th>
                     <th>Cédula</th>

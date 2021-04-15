@@ -45,7 +45,7 @@
             return ejecutarConsultaSimpleFila($sql);
         }
 
-        //METODOS PARA ACTIVAR/DESACTIVAR CLIENTES
+        //METODOS PARA ACTIVAR/DESACTIVAR PACIENTE
         public function desactivar($idpersona)
         {
             $sql= " UPDATE `persona` SET `estado` = '0' 

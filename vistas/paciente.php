@@ -32,7 +32,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
           <div class="card">
             <div class="card-body">          
               <div class="panel-body table-responsive" id="listadoregistros">
-                <table id="tbllistado" class="table table-striped table-bordered table-hover dt-responsive DT nowrap" style="width:100%">
+                <table id="tbllistado" class="table table-striped table-bordered table-hover dt-responsive DT nowrap">
                   <thead>
                     <th>Opciones</th>
                     <th>Cédula</th>
@@ -62,7 +62,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                 </table> <!-- /.tbllistadoe -->
               </div> <!-- /.panel-body -->
 
-              <div class="panel-body" style="height: 600px;" id="formularioregistros">
+              <div class="panel-body" id="formularioregistros">
                 <form name="formulario" id="formulario" method="POST">
                   <div class="form-row">
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -121,7 +121,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                       <label>Imagen:</label>
                       <div class="file-select inner-addon left-addon" id="src-file1" >
-                              <i class="glyphicon fas fa-camera-retro"></i>
+                              <i class="fas fa-camera-retro"></i>
                               <input type="file" class="" name="imagen" id="imagen" accept="image/jpg,image/jpeg,image/png">
                               </div>
                               <br>

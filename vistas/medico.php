@@ -33,7 +33,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
           <div class="card">
             <div class="card-body">        
               <div class="panel-body table-responsive" id="listadoregistros">
-                <table id="tbllistado" class="table table-striped table-bordered table-hover dt-responsive DT nowrap" style="width:100%">
+                <table id="tbllistado" class="table table-striped table-bordered table-hover dt-responsive DT nowrap">
                   <thead>
                     <th>Opciones</th>
                     <th>Área</th>
@@ -68,11 +68,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 
               <div class="panel-body"  id="formularioregistros">
                 <form name="formulario" id="formulario" method="POST">
-                  <!--<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                  <label for="">Especialidad</label>
-                          
-                  <select name="especialidad_idespecialidad" id="especialidad_idespecialidad"  class="form-control" ></select>
-                  </div>-->
+                  
                   <div class="form-row">
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                       <label for="">Cédula(*)</label>
