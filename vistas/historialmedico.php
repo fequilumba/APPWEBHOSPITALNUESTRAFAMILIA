@@ -31,60 +31,63 @@
           <div class="card">
             <div class="card-body">
               <div class="panel-body table-responsive" id="listadoregistros">
-                <table id="tbllistadoe" class="table table-striped table-bordered table-hover dt-responsive DT nowrap">
+                <table id="tbllistadoe" class="table table-striped table-bordered table-hover dt-responsive DT">
                   <thead>
-                    <th>Opciones</th>
+                    <th>Acción</th>
                     <th>Especialidad</th>
                     <th>Paciente</th>
                     <th>Médico</th>
                     <th>Fecha</th>
                     <th>Hora</th>
+                    <th>Estado</th>
                   </thead>
                   <tbody>
                   </tbody>
                   <tfoot>
-                    <th>Opciones</th>
+                    <th>Acción</th>
                     <th>Especialidad</th>
                     <th>Paciente</th>
                     <th>Médico</th>
                     <th>Fecha</th>
                     <th>Hora</th>
+                    <th>Estado</th>
                   </tfoot>
                 </table> <!-- /.tbllistadoe -->
               </div> <!-- /.panel-body -->
 
+              <!-- ESTE FORMULARIO PERMITE VER AL ADMINISTRADOR, MÉDICO Y CLIENTE EL HISTORIAL DE LOS PACIENTES ATENDIDOS-->
               <div class="panel-body"  id="formularioregistros">
                 <form name="formularioe" id="formularioe" method="POST">
                   
                   <div class="form-row">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Especialidad</label>
                       <input type="hidden" name="idcita_medica" id="idcita_medica">
                       <input type="text" name="especialidad" id="especialidad" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
                     </div>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Paciente</label>
                       <input type="text" name="paciente" id="paciente" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
                     </div>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Médico</label>
                       <input type="text" name="medico" id="medico" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
                     </div>
                     
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label for="">Diagnostico</label>
+                    <div class="form-group col-md-6">
+                      <label for="">Diagnóstico</label>
                       <textarea name="diagnostico" id="diagnostico" class="form-control" rows="3" disabled></textarea>
                     </div>
-                  </div> <!-- .form-row -->
+                  </div>
                           
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button class="btn btn-danger" onclick="cancelarform()"
                       type="button"><i class="fa fa-arrow-circle-left"> Cancelar</i></button>
                   </div>
-                </form> <!-- /.formularioe -->
-              </div> <!-- /.panel-body -->
+                </form>
+              </div>
             </div> <!-- card-body -->
           </div> <!-- card -->
         </div> <!-- /.col-12 -->

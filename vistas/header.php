@@ -88,7 +88,7 @@
                 </div><br>
                     
                 <div class="text-center">
-                  <a href="../ajax/usuario.php?op=salir" class="btn btn-danger btn-flat"> 
+                  <a href="../ajax/registro.php?op=salir" class="btn btn-danger btn-flat"> 
                     <i class="fas fa-sign-out-alt"></i>
                     Cerrar Sesión</a>
                 </div>

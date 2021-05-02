@@ -35,7 +35,7 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
               <div class="panel-body table-responsive" id="listadoregistros">
                 <table id="tbllistadoe" class="table table-striped table-bordered table-hover dt-responsive DT" style="width:100%">
                   <thead>
-                    <th>Opciones</th>
+                    <th>Acciones</th>
                     <th>Nombre</th>
                     <th>Estado</th>
                   </thead>
@@ -43,16 +43,17 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
           
                   </tbody>
                   <tfoot>
-                    <th>Opciones</th>
+                    <th>Acciones</th>
                     <th>Nombre</th>
                     <th>Estado</th>
                   </tfoot>
                 </table> <!-- .tbllistadoe -->
               </div> <!-- .panel-body -->
 
+              <!-- FORMULARIO PARA REGISTRAR UNA ESPECIALIDAD -->
               <div class="panel-body"  id="formularioregistros">
                 <form name="formularioe" id="formularioe" method="POST">
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-md-6">
                     <label for="">Nombre</label>
                     <input type="hidden" name="idespecialidad" id="idespecialidad">
                     <input type="text" name="nombre" id="nombre" class="form-control" maxlength="45" placeholder="Nombre especialidad" required>

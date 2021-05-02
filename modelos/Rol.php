@@ -8,16 +8,13 @@
          
       }
 
+      //Método que lista todos los roles
       public function listarRol(){
          $sql= "SELECT * FROM rol";
          return ejecutarConsulta($sql);
       }
 
-      public function listarRolClientes(){
-         $sql= "SELECT * FROM rol WHERE idrol != '2'";
-         return ejecutarConsulta($sql);
-      }
-
+      //Método que lista el rol de acceso al sistema
       public function listarRolAcceso(){
          $sql= "SELECT * FROM rol WHERE idrol != '4'";
          return ejecutarConsulta($sql);

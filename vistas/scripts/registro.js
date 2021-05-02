@@ -29,7 +29,7 @@ function guardaryeditar(e){
     //$("#btnGuardar").prop("disabled",true);
     var formData = new FormData($("#frmRegistro")[0]);
     $.ajax({
-        url: "../ajax/usuario.php?op=guardaryeditar",
+        url: "../ajax/registro.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,

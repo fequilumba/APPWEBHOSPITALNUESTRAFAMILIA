@@ -2,6 +2,7 @@
 
 session_start();
     require_once "../modelos/Persona.php";
+    
     $persona = new Persona();
     $idasociado=$_SESSION['idpersona'];
     $iduserrol=$_SESSION['rol_idrol'];
@@ -19,6 +20,7 @@ session_start();
     $estado= isset($_POST["estado"])? limpiarCadena($_POST["estado"]):"";
 
     switch ($_GET["op"]) {
+
         case 'guardaryeditar':
             if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name'])) {
                 $imagen=$_POST["imagenactual"];
@@ -45,6 +47,8 @@ session_start();
                 $rspta = $usuario->insertar($cedula,$contraseniahash);
                 $iduser=$rspta;
                 echo $rspta? "Usuario registrado " : "Usuario no se pudo registrar ";
+                
+                //Almaceno en mi variable $rspta2 lo que viene de mi carpeta modelo Persona.php la variable clienteRegistro
                 $rspta2 = $persona->clienteRegistro($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
                 $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$iduser);
                 /*************email *********************/
@@ -56,34 +60,37 @@ session_start();
             }else{
                 $rspta=$persona->editarCliente($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
                 $ciudad_residencia, $fecha_nacimiento, $genero,$imagen);
-                echo $rspta? "Cliente actualizado" : "Cliente no se pudo actualizar";
-                                
+                echo $rspta? "Cliente actualizado" : "Cliente no se pudo actualizar";                    
             }
         break;
+        
         case 'desactivar':
             $rspta=$persona->desactivar($idpersona);
             echo $rspta ? "Cliente desactivado" : "No se pudo desactivar al cliente";
     
         break;
+
         case 'activar':
             $rspta=$persona->activar($idpersona);
             echo $rspta ? "Cliente activado" : "No se pudo activar al cliente";
     
-            break;
+        break;
+
         case 'mostrar':
             $rspta=$persona->mostrar($idpersona);
             echo json_encode($rspta);
         break;
+
         case 'listar':
             $rspta=$persona->listar();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
                     "0"=> ($reg->estado) ?
-                        '<button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-pencil-alt"></li></button>'.
-                        ' <button class="btn btn-danger" onclick="desactivar('.$reg->idpersona.')"><li class="fa fa-times"></li></button>':
-                        '<button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-pencil-alt"></li></button>'.
-                        ' <button class="btn btn-primary" onclick="activar('.$reg->idpersona.')"><li class="fa fa-check"></li></button>',
+                        '<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idpersona.')" title="Editar Cliente"><li class="fa fa-pencil-alt"></li></button>'.
+                        ' <button class="btn btn-danger btn-sm" onclick="desactivar('.$reg->idpersona.')" title="Desactivar"><li class="fa fa-times"></li></button></div>':
+                        '<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-pencil-alt"></li></button>'.
+                        ' <button class="btn btn-primary btn-sm" onclick="activar('.$reg->idpersona.')" title="Activar"><li class="fa fa-check"></li></button></div>',
                     "1"=>$reg->cedula,
                     "2"=>$reg->nombres,
                     "3"=>$reg->email,
@@ -104,7 +111,7 @@ session_start();
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data); 
  
-                echo json_encode($results);   
+            echo json_encode($results);   
         break;     
     }
     

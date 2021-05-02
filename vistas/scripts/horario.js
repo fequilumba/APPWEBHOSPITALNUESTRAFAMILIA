@@ -1,4 +1,4 @@
-var tabla
+var tabla;
 
 //FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {

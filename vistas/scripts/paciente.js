@@ -144,7 +144,7 @@ function desactivar(idpersona) {
 //FUNCIÓN PARA ACTIVAR PACIENTE
 function activar(idpersona) {
     alertify.confirm("Paciente","¿Estas seguro de activar al Paciente?", function() {
-        $.post("../ajax/persona.php?op=activar", {idpersona : idpersona}, function(e) {
+        $.post("../ajax/paciente.php?op=activar", {idpersona : idpersona}, function(e) {
             //alertify.alert(e);
             tabla.ajax.reload();
             alertify.success('Paciente activado');
