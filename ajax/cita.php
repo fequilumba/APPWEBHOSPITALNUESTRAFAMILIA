@@ -25,13 +25,12 @@ session_start();
                 $fecha_cita, $diagnostico, $sintomas, $motivo_consulta, $horario_idhorario,$estado_idestado);
                 echo $rspta? "Cita registrada" : "La cita no se pudo registrar";
                 
-
             }else{
                 if($estado_idestado==2 && empty($_POST["idexamen"]) && !empty($_POST["idmedicamento"]) && !empty($_POST["cantidad"]) && !empty($_POST["observaciones"])){
 
                     //Atender cita con una lista de meedicamentos
                     $rspta=$cita->editarM($idcita_medica,$diagnostico, $sintomas,$estado_idestado,
-                    $_POST["idmedicamento"],$_POST["cantidad"], $_POST["observaciones"]);
+                    $_POST["idmedicamento"], $_POST["cantidad"], $_POST["observaciones"]);
                     echo $rspta? "Cita Atendida con receta" : "La cita no se pudo actualizar";
                 }
                 
@@ -54,11 +53,13 @@ session_start();
 
                                 
             }
-            break;
+        break;
+
         case 'mostrar':
-                    $rspta=$cita->mostrar($idcita_medica);
-                    echo json_encode($rspta);
-                break;
+            $rspta=$cita->mostrar($idcita_medica);
+            echo json_encode($rspta);
+        break;
+
         case 'listar':
             $rspta=$cita->listar($idusuario);
             $data = Array();
@@ -79,7 +80,8 @@ session_start();
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data);    
                 echo json_encode($results);   
-            break;
+        break;
+
         case 'selectEstado':
                 require_once "../modelos/Estado.php";
                 $estado = new Estado();
@@ -90,7 +92,8 @@ session_start();
                             .$reg->nombre.
                           '</option>';
                 }
-            break;
+        break;
+
         case 'selectPaciente':
             require_once "../modelos/Paciente.php";
             $paciente = new Paciente();
@@ -111,7 +114,8 @@ session_start();
                 }
             }
                 
-            break;
+        break;
+
         case 'selectMedico':
             $idespecialidad = $_POST['idespecialidad'];
                 require_once "../modelos/Medico.php";
@@ -122,7 +126,8 @@ session_start();
                                 .$reg->nombres.
                               '</option>';
                     }
-                break;
+        break;
+
         case 'selectEspecialidad':
                 require_once "../modelos/Especialidad.php";             
                 $especialidad = new Especialidad();
@@ -132,7 +137,8 @@ session_start();
                             .$reg->nombre.
                           '</option>';
                 }
-            break;
+        break;
+
         case 'selectHorario':
                 require_once "../modelos/Horario.php";
                 $horario = new Horario();
@@ -142,7 +148,8 @@ session_start();
                             .$reg->hora.
                           '</option>';
                 }
-            break;
+        break;
+
         case 'listarMedicamentos':
             require_once "../modelos/Medicamento.php";
             $medicamento = new Medicamento();
@@ -162,7 +169,7 @@ session_start();
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data);    
                 echo json_encode($results);
-            break;
+        break;
 
         case 'listarExamenes':
                 require_once "../modelos/Examen.php";
@@ -183,7 +190,7 @@ session_start();
                     "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                     "aaData"=>$data);    
                     echo json_encode($results);
-                break;
+        break;
     }
 
 ?>

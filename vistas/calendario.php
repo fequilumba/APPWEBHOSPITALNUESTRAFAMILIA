@@ -33,7 +33,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 
 <!-- The modal CRUD -->
 <div class="modal fade" id="modalCitas" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
       <div class="modal-header">
@@ -43,37 +43,54 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
         </button>
       </div>
 
-      <form id="formCitas"  method="POST">
-        <div class="modal-body">
-        
-          <label for="">Especialidad</label>
-          <select name="especialidad_idespecialidad" id="especialidad_idespecialidad" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select> <br>
-          
-          <label for="">Médico</label>
-          <select name="personaMedico_idpersona" id="personaMedico_idpersona" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select> <br>
-          
-          <label for="">Paciente</label>
-          <select name="personaPaciente_idpersona" id="personaPaciente_idpersona" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select> <br>
-          
-          <label for="">Fecha</label>
-          <input type="date" name="fecha_cita" id="fecha_cita" class="form-control"> <br>
-          
-          <label for="">Motivo Cita</label>
-          <textarea name="motivo_consulta" id="motivo_consulta" class="form-control" rows="3" required></textarea><br>
+      <div class="modal-body">
+        <form id="formCitas"  method="POST">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="">Especialidad</label>
+              <select name="especialidad_idespecialidad" id="especialidad_idespecialidad" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select> <br>
+            </div>
 
-          <div>
-            <button class="btn btn-info" type="button"  name="btnHora"
-            id="btnHora"><i class="far fa-clock"> horario disponible</i></button> <br><br>
+            <div class="form-group col-md-6">
+              <label for="">Médico</label>
+              <select name="personaMedico_idpersona" id="personaMedico_idpersona" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select> <br>
+            </div>
           </div>
 
-          <select class="form-control" name="idcita_medica" id="idcita_medica"></select>      
-        </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="">Paciente</label>
+              <select name="personaPaciente_idpersona" id="personaPaciente_idpersona" class="form-control" data-live-search="true" data-live-search-style="startsWith" placeholder="seleccionar" required></select> <br>
+            </div> 
 
-        <div class="modal-footer">
-          <button type="submit" id="btnAgregar" class="btn btn-info">Guardar</button>
-          <button type="button" id="btnCancelar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        </div>
-      </form> <!-- .form-citas -->
+            <div class="form-group col-md-6">
+              <label for="">Fecha</label>
+              <input type="date" name="fecha_cita" id="fecha_cita" class="form-control"> <br>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="">Motivo Cita</label>
+              <textarea name="motivo_consulta" id="motivo_consulta" class="form-control" rows="3" required></textarea><br>
+            </div>
+
+            <div class="form-group col-md-6">
+              <div>
+                <button class="btn btn-sm btn-info" type="button"  name="btnHora"
+                id="btnHora"><i class="far fa-clock"> horario disponible</i></button> <br><br>
+              </div>
+
+              <select class="form-control" name="idcita_medica" id="idcita_medica"></select>
+            </div>     
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" id="btnAgregar" class="btn btn-info">Guardar</button>
+            <button type="button" id="btnCancelar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          </div>
+        </form> <!-- .form-citas -->
+      </div>
 	  </div> <!-- .modal-content -->
   </div> <!-- .modal-dialog -->
 </div> <!-- .modal .fade -->

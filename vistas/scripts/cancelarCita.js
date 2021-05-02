@@ -7,7 +7,6 @@ function init() {
     $("#formularioe").on("submit",function(e) {
         guardaryeditar(e);
     });
-
 }
 
 // FUNCIÓN LIMPIAR
@@ -112,7 +111,7 @@ function eliminarCita(idcita_medica) {
         });
 }
 
-// FUNCIÓN ELIMINAR CITA
+// FUNCIÓN del MENSAJE ELIMINAR CITA
 function alerEliminar(idcita_medica) {
     Swal.fire({
         title: 'Estas seguro de cancelar?',

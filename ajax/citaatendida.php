@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once "../modelos/Citaatendida.php";
+    
     $citaatendida = new Citaatendida();
     $idusuario=$_SESSION['idpersona'];
     $idtipo_examen= isset($_POST["idtipo_examen"])? limpiarCadena($_POST["idtipo_examen"]):"";
@@ -8,11 +9,7 @@
     $nombre= isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
     
     
-    switch ($_GET["op"]) {
-        case 'mostrar':
-            $rspta=$citaatendida->mostrar($idcita_medica);
-            echo json_encode($rspta);
-        break;
+    switch ($_GET["op"]) {  
         case 'listar':
             $rspta=$citaatendida->listar($idusuario);
             $data = Array();

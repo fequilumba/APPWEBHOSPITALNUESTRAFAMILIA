@@ -36,11 +36,11 @@
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
                     "0"=> ($reg->estado) ? 
-                        '<button class="btn btn-warning" onclick="mostrar('.$reg->idespecialidad.')"><li class="fa fa-pencil-alt"></li></button>'.
-                        ' <button class="btn btn-danger" onclick="desactivar('.$reg->idespecialidad.')"><li class="fa fa-times"></li></button>'
+                        '<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idespecialidad.')" title="Editar Especialidad"><li class="fa fa-pencil-alt"></li></button>'.
+                        ' <button class="btn btn-danger btn-sm" onclick="desactivar('.$reg->idespecialidad.')" title="Desactivar"><li class="fa fa-times"></li></button></div>'
                         :
-                        '<button class="btn btn-warning" onclick="mostrar('.$reg->idespecialidad.')"><li class="fa fa-pencil-alt"></li></button>'.
-                        ' <button class="btn btn-primary" onclick="activar('.$reg->idespecialidad.')"><li class="fa fa-check"></li></button>'
+                        '<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idespecialidad.')"><li class="fa fa-pencil-alt"></li></button>'.
+                        ' <button class="btn btn-primary btn-sm" onclick="activar('.$reg->idespecialidad.')" title="Activar"><li class="fa fa-check"></li></button></div>'
                         ,
                     "1"=>$reg->nombre,
                     "2"=>$reg->estado ?

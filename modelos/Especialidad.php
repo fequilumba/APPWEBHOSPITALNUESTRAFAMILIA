@@ -7,57 +7,57 @@
             
         }
 
-        public function listar(){
-            $sql= "SELECT * FROM `especialidad`";
+        //Método que lista todas las especialidades en el dataTable
+        public function listar()
+        {
+            $sql= "SELECT * FROM especialidad";
             return ejecutarConsulta($sql);
         }
 
-        //Metodo para insertar especialdiad
-        public function insertar($nombre){
-            $sql= "INSERT INTO `especialidad` (`nombre`, `estado`) 
+        //Metodo para insertar especialdiad con estado 1 (activo)
+        public function insertar($nombre)
+        {
+            $sql= "INSERT INTO especialidad (nombre, estado) 
             VALUES ('$nombre','1')";
             return ejecutarConsulta($sql);
         }
 
         //metodo para editar o actualizar especialidad
-        public function editar($idespecialidad,$nombre){
-            $sql= " UPDATE `especialidad` SET `nombre` = '$nombre' WHERE `especialidad`.`idespecialidad` = '$idespecialidad'";
+        public function editar($idespecialidad, $nombre)
+        {
+            $sql= "UPDATE especialidad SET nombre = '$nombre' WHERE especialidad.idespecialidad = '$idespecialidad'";
             return ejecutarConsulta($sql);
         }
 
         //mostrar datos de una especialdiad por id
         public function mostrar($idespecialidad)
-            {
-                $sql= "SELECT * FROM `especialidad` WHERE `idespecialidad`='$idespecialidad'";
-                return ejecutarConsultaSimpleFila($sql);
-            }
+        {
+            $sql= "SELECT * FROM especialidad WHERE idespecialidad = '$idespecialidad'";
+            return ejecutarConsultaSimpleFila($sql);
+        }
 
         //METODOS PARA ACTIVAR/DESACTIVAR ESPECIALIDAD
         public function desactivar($idespecialidad)
         {
-            $sql= "UPDATE `especialidad` SET `estado`='0' 
-                WHERE `idespecialidad`='$idespecialidad'";
-            
+            $sql= "UPDATE especialidad SET estado = '0' WHERE idespecialidad = '$idespecialidad'";
             return ejecutarConsulta($sql);
         }
 
         public function activar($idespecialidad)
         {
-            $sql= "UPDATE `especialidad` SET `estado`='1' 
-                WHERE `idespecialidad`='$idespecialidad'";
-            
+            $sql= "UPDATE especialidad SET estado = '1' WHERE idespecialidad = '$idespecialidad'";  
             return ejecutarConsulta($sql);
         }
 
-        //selecccionar una especialidad para un medico
+        //Método que selecciona todas las especialidades con estado activo = 1
         public function selectEspecialidad(){
-            $sql= "SELECT * FROM `especialidad` 
-                    WHERE `especialidad`.`estado`=1";
+            $sql= "SELECT * FROM especialidad WHERE especialidad.estado = 1 ";
             return ejecutarConsulta($sql);
         }
 
+        //Método que lista 
         public function listarEspecialidad(){
-            $sql= "SELECT * FROM `especialidad` WHERE `especialidad`.`estado`=1";
+            $sql= "SELECT * FROM especialidad WHERE especialidad.estado = 1";
             return ejecutarConsulta($sql);
         }
 

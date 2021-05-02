@@ -32,7 +32,7 @@
               <div class="panel-body table-responsive" id="listadoregistros">
                 <table id="tbllistado" class="table table-striped table-bordered table-hover dt-responsive DT nowrap">
                   <thead>
-                    <th>Opciones</th>
+                    <th>Acciones</th>
                     <th>Cédula</th>
                     <th>Nombres</th>
                     <th>Email</th>
@@ -47,7 +47,7 @@
 
                   </tbody>
                   <tfoot>
-                    <th>Opciones</th>
+                    <th>Acciones</th>
                     <th>Cédula</th>
                     <th>Nombres</th>
                     <th>Email</th>
@@ -61,53 +61,54 @@
                 </table> <!-- .tbllistado -->
               </div><!-- /.panel-body table -->
 
+              <!-- FORMULARIO PARA REGISTRAR UN CLIENTE EN LÍNEA Y DESDE EL PERFIL DE ADMINISTRADOR-->
               <div class="panel-body" id="formularioregistros">
                 <form name="formulario" id="formulario" method="POST">
                   <div class="form-row">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Cédula(*)</label>
                       <input type="hidden" name="idpersona" id="idpersona">
                       <input type="text" name="cedula" id="cedula" class="form-control" maxlength="10" minlength="10" onkeypress="return /[0-9]/i.test(event.key)"  placeholder="Cédula" required>
                     </div>
                     
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Nombres(*)</label>
                       <input type="text" name="nombres" id="nombres" class="form-control" onkeypress="return /^[a-z ñáéíóú]$/i.test(event.key)"  maxlength="45" placeholder="Nombres" required>
                     </div>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Apellidos(*)</label>
                       <input type="text" name="apellidos" id="apellidos" class="form-control" onkeypress="return /^[a-z ñáéíóú]$/i.test(event.key)" maxlength="45" placeholder="Apellidos"required>
                     </div>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Email(*)</label>
                       <input type="text" name="email" id="email" maxlength="45" class="form-control"  placeholder="email@address.com" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" >
                     </div>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Teléfono(*)</label>
                       <input type="text" name="telefono" id="telefono" maxlength="10" minlength="10" class="form-control" onkeypress="return /[0-9]/i.test(event.key)" placeholder="Teléfono">
                     </div>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Dirección(*)</label>
                       <input type="text" name="direccion" id="direccion" class="form-control"  maxlength="45" placeholder="Dirección"required>
                     </div>
                   </div><!-- /.form-row -->
 
                   <div class="form-row">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Ciudad(*)</label>
                       <input type="text" name="ciudad_residencia" id="ciudad_residencia" class="form-control" onkeypress="return /^[a-z ñáéíóú]$/i.test(event.key)" maxlength="45" placeholder="Ciudad"required>
                     </div>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Fecha Nacimiento(*)</label>
                       <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control"  required>
                     </div>
                               
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Género(*)</label>
                       <br>
                       <select class="form-control input-lg" name="genero" id="genero">
@@ -117,7 +118,7 @@
                       </select>
                     </div>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label>Imagen:</label>
                       <div class="file-select inner-addon left-addon" id="src-file1" >
                         <i class="glyphicon fas fa-camera-retro"></i>

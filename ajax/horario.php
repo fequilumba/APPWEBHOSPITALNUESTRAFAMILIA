@@ -1,5 +1,6 @@
 <?php
     require_once "../modelos/Horario.php";
+    
     $horario = new Horario();
     $idcita_medica = isset($_POST["idcita_medica"])? limpiarCadena($_POST["idcita_medica"]):"";     
     $especialidad_idespecialidad = isset($_POST["especialidad_idespecialidad"])? limpiarCadena($_POST["especialidad_idespecialidad"]):""; 
@@ -9,8 +10,9 @@
 
     switch ($_GET["op"]) {
         case 'guardaryeditar':
+            //Almacena los horarios creados con su especialidad, médico, fecha y hora
             if (empty($idcita_medica)) {
-                $rspta=$horario->insertar($especialidad_idespecialidad,$personaMedico_idpersona, $fecha_cita,$_POST['horarioc']);
+                $rspta=$horario->insertar($especialidad_idespecialidad, $personaMedico_idpersona, $fecha_cita, $_POST['horarioc'], $estado_idestado);
                 echo $rspta ? "Horarios registrados" : "No se pudo registrar los horarios";
                     
             } else {
@@ -19,15 +21,17 @@
         break;
 
         case 'listar':
+            //Lista mis horarios creados con estado disponible=4 en la tabla
             $rspta=$horario->listar();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                    "0"=>'<button class="btn btn-danger" onclick="alerEliminar('.$reg->idcita_medica.')"><li class="fa fa-times"></li> Eliminar</button>',
+                    "0"=>'<div class="text-center"><button class="btn btn-danger btn-sm" onclick="alerEliminar('.$reg->idcita_medica.')" title="Eliminar Turno"><li class="fa fa-times"></li></button>',
                     "1"=>$reg->nombre,
                     "2"=>$reg->medico,
                     "3"=>$reg->fecha_cita, 
-                    "4"=>$reg->hora,  
+                    "4"=>$reg->hora,
+                    "5"=>$reg->estado,  
                 );
             }
             $results = array(
@@ -39,39 +43,43 @@
         break;
         
         case 'selectEspecialidad':
+            //LLamo a mi modelo especialidad para seleccionar la especialidad a elejir para las horas
             require_once "../modelos/Especialidad.php";             
+            
             $especialidad = new Especialidad();
             $rspta = $especialidad->selectEspecialidad();
             echo '<option value=0>Seleccionar</option>';
             while ($reg = $rspta->fetch_object()) {
-                echo '<option value='.$reg->idespecialidad.'>'
-                            .$reg->nombre.'</option>';
+                echo '<option value='.$reg->idespecialidad.'>'.$reg->nombre.'</option>';
                 }
-            break;
+        break;
+
         case 'selectMedico':
-            $idespecialidad = $_POST['idespecialidad'];
+            //Llamo a mi modelo Médico para seleccionar el médico para el horario
             require_once "../modelos/Medico.php";
-                $medico = new Medico();
-                $rspta = $medico->selectMedico($idespecialidad);
-                while ($reg = $rspta->fetch_object()) {
-                    echo '<option value='.$reg->idpersona.'>'
-                            .$reg->nombres.
-                        '</option>';
-                }
-                break;
+            
+            $idespecialidad = $_POST['idespecialidad'];
+            $medico = new Medico();
+            $rspta = $medico->selectMedico($idespecialidad);
+            while ($reg = $rspta->fetch_object()) {
+                echo '<option value='.$reg->idpersona.'>'.$reg->nombres.'</option>';
+            }
+        break;
+
         case 'selectHorario':
-            
+            //Presenta todos las horas disponibles en el formulario de nuevo horario a travez de un checkbox
             $rspta = $horario->selectHorario();
-            
             while ($reg = $rspta->fetch_object()) 
             {
                 echo '<li> <input type="checkbox" name="horarioc[]" value="'.$reg->idhorario.'"> '.$reg->hora.'</li>';
             }
-            break;
+        break;
+
         case 'eliminar':
+            //Elimina los horarios creados en cita médica
             $rspta=$horario->eliminarHora($idcita_medica);
-            //echo $rspta? "Cita eliminada" : "No se pudo eliminar la cita";
-            break;
+            
+        break;
     }
 
 ?>

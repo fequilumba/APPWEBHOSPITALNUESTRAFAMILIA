@@ -186,14 +186,14 @@
             return ejecutarConsulta($sql);
         }
         
-        //select medico
+        //Método que selecciona un médico con su idespecialidad y estado 1 = activo de la carpeta ajax op selectMedico
         public  function selectMedico($idespecialidad)
         {
-            $sql= "SELECT p.`idpersona`, CONCAT(p.`cedula`, ' - ', p.`nombres`, ' ' ,p.`apellidos`) as nombres 
-            FROM `persona` p
-            INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` 
-            INNER JOIN `persona_has_especialidad` pe ON p.`idpersona`=pe.`persona_idpersona`
-            AND pr.`rol_idrol`=2 and pe.especialidad_idespecialidad=$idespecialidad and p.estado=1";
+            $sql= "SELECT p.idpersona, CONCAT(p.cedula,' - ', p.nombres,' ',p.apellidos) as nombres 
+            FROM persona p
+            INNER JOIN persona_has_rol pr ON p.idpersona = pr.persona_idpersona
+            INNER JOIN persona_has_especialidad pe ON p.idpersona = pe.persona_idpersona
+            AND pr.rol_idrol = 2 and pe.especialidad_idespecialidad = '$idespecialidad' and p.estado = 1";
 
             return ejecutarConsulta($sql);
         }

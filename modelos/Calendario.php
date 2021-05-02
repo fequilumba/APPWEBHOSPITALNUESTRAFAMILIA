@@ -19,6 +19,7 @@
                 AND `personaMedico_idpersona` = '$personaMedico_idpersona'";
         return ejecutarConsulta($sql);
     }
+    
     public function listarCitas(){
         $sql= "SELECT cm.idcita_medica, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as title , CONCAT(cm.fecha_cita,' ',h.hora) as start 
                         , e.nombre as especialidad

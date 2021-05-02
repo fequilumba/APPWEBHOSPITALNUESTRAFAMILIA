@@ -30,11 +30,13 @@
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
                     "0"=> ($reg->estado) ? 
-                    '<button class="btn btn-warning" onclick="mostrar('.$reg->idtipo_examen.')"><li class="fa fa-pencil-alt"></li></button>'.
-                    ' <button class="btn btn-danger" onclick="desactivar('.$reg->idtipo_examen.')"><li class="fa fa-times"></li></button>'
-                    :
-                    '<button class="btn btn-warning" onclick="mostrar('.$reg->idtipo_examen.')"><li class="fa fa-pencil-alt"></li></button>'.
-                    ' <button class="btn btn-primary" onclick="activar('.$reg->idtipo_examen.')"><li class="fa fa-check"></li></button>'
+                    '<div class="text-center">
+                        <button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idtipo_examen.')" title="Editar Tipo Examen"><li class="fas fa-pencil-alt"></li></button> '.
+                        '<button class="btn btn-danger btn-sm" onclick="desactivar('.$reg->idtipo_examen.')" title="Desactivar"><li class="fa fa-times"></li></button>'
+                        :
+                        '<button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idtipo_examen.')"><li class="fas fa-pencil-alt"></li></button> '.
+                        ' <button class="btn btn-primary btn-sm" onclick="activar('.$reg->idtipo_examen.')" title="Activar"><li class="fa fa-check"></li></button>
+                    </div>'
                     ,
                     "1"=>$reg->nombre,
                     "2"=>$reg->descripcion,
@@ -90,8 +92,7 @@
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                    "0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idexamen.')"><li class="fa fa-pencil-alt"></li></button>'/*.
-                        ' <button class="btn btn-danger" onclick="eliminar('.$reg->idexamen.')"><li class="fa fa-times"></li></button>'*/,
+                    "0"=>'<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idexamen.')" title="Editar Examen"><li class="fa fa-pencil-alt"></li></button></div>',
                         
                     "1"=>$reg->nombre,
                     "2"=>$reg->tipo

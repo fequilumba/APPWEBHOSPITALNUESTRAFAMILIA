@@ -46,17 +46,17 @@
 
         public function activar($idmedicamento)
         {
-            $sql= "UPDATE `medicamento` SET `estado`='1' 
-                WHERE `idmedicamento`='$idmedicamento'";
+            $sql= "UPDATE medicamento SET estado = '1' 
+                WHERE idmedicamento = '$idmedicamento'";
             
             return ejecutarConsulta($sql);
         }
 
-        //listar medicamentos activos para el modal
+        //listar medicamentos activos para la atención de la cita médica
         public function listarMedicamentosActivos(){
-            $sql= "SELECT m.`idmedicamento`, m.`nombre`, m.`descripcion` 
-            FROM `medicamento` m
-            WHERE m.`estado`=1";
+            $sql= "SELECT m.idmedicamento, m.nombre, m.descripcion 
+            FROM medicamento m
+            WHERE m.estado = 1";
             return ejecutarConsulta($sql);
         }
 

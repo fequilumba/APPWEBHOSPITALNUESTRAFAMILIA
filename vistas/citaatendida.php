@@ -1,4 +1,4 @@
-<?php
+  <?php
 //Activamos el almacenamiento en el buffer
 ob_start();
 session_start();

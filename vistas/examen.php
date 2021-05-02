@@ -32,32 +32,27 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
           <div class="card">
             <div class="card-body">
               <div class="panel-body table-responsive" id="listadoregistros">
-                <table id="tbllistadoe" class="table table-striped table-bordered table-hover dt-responsive DT nowrap" style="width:100%">
+                <table id="tbllistadoe" class="table table-striped table-bordered table-hover dt-responsive DT">
                   <thead>
-                    <th>Opciones</th>
+                    <th>Acción</th>
                     <th>Nombre</th>
                     <th>Tipo</th>
                   </thead>
                   <tbody>
 
                   </tbody>
-                  <tfoot>
-                    <th>Opciones</th>
-                    <th>Nombre</th>
-                    <th>Tipo</th>
-                  </tfoot>
                 </table> <!-- .tbllistadoe -->
               </div> <!-- .panel-body -->
 
               <div class="panel-body"  id="formularioregistros">
                 <form name="formularioe" id="formularioe" method="POST">
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-md-6">
                     <label for="">Tipo de Examen</label>
                     <input type="hidden" name="idexamen" id="idexamen">
                     <select name="tipo_examen_idtipo_examen" id="tipo_examen_idtipo_examen" data-live-search="true" data-live-search-style="startsWith" class="form-control" required></select>
                   </div>
 
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-md-6">
                     <label for="">Nombre</label>
                     <input type="text" name="nombree" id="nombree" class="form-control" maxlength="50" placeholder="Nombre examen" required>
                   </div>

@@ -24,6 +24,7 @@
             if (empty($idpersona)) {
                 $rspta = $persona->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
                 $direccion, $ciudad_residencia, $fecha_nacimiento, $genero, $_POST['rol']);
+                
                 require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
                 $rspta = $usuario->insertar($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
@@ -90,33 +91,6 @@
                 "iTotalDisplayRecords"=>count($data), //ENVIAMOS EL TOTAL REGISTROS A VISUALIZAR
                 "aaData"=>$data);    
                 echo json_encode($results);   
-        break;
-
-        case 'roles':
-            // OBTENEMOS TODOS LOS ROLES DE LA TABLA ROL
-            require_once "../modelos/Rol.php";
-            $rol = new Rol();
-            $rspta = $rol->listarRolClientes();
-            
-            //OBTENER LOS ROLES ASIGNADOS AL CLIENTE
-            $id=$_GET['id'];
-            $marcados = $persona->listaMarcados($id);
-
-            // DECLARAMOS EL ARRAY PARA ALMACENAR TODOS LOS ROLES MARCADOS
-            $valores=array();
-    
-            //ALMACENAR LOS ROLES ASIGNADOS AL CLIENTE EN EL ARRAY
-            while ($per = $marcados->fetch_object()) {
-                array_push($valores, $per->rol_idrol);
-            }
-    
-            //MOSTRAMOS LA LISTA DE PERMISOS EN LA VISTA Y SI ESTÁN O NO MARCADOS
-            while ($reg = $rspta->fetch_object()) {
-                $sw=in_array($reg->idrol,$valores)?'checked':'';
-                echo '<li> <input type="checkbox" '.$sw.'  name="rol[]" value="'.$reg->idrol.'">'.$reg->nombre.'</li>';
-                //echo '<li> <input type="checkbox" name="rol[]" value="'.$reg->idrol.'">'.$reg->nombre.'</li>';
-            }
-            
         break;
     }
 
