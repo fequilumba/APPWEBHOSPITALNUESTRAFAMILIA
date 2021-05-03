@@ -80,41 +80,8 @@ session_start();
         break;
 
         case 'listar':
-            if ($iduserrol == 1) {
-                $rspta = $paciente->listarTodosPacientes();
-            $data = Array();
-
-            while ($reg = $rspta->fetch_object()) {
-                $data[]= array(
-                    "0"=> ($reg->estado) ? 
-                    '<button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-pencil-alt"></li></button>'.
-                    ' <button class="btn btn-danger" onclick="desactivar('.$reg->idpersona.')"><li class="fa fa-times"></li></button>'
-                    :
-                    '<button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-pencil-alt"></li></button>'.
-                    ' <button class="btn btn-primary" onclick="activar('.$reg->idpersona.')"><li class="fa fa-check"></li></button>'
-                    ,
-                    "1"=>$reg->cedula,
-                    "2"=>$reg->nombres,
-                    "3"=>$reg->email,
-                    "4"=>$reg->telefono,
-                    "5"=>$reg->direccion,
-                    "6"=>$reg->ciudad_residencia,
-                    "7"=>$reg->fecha_nacimiento,
-                    "8"=>$reg->genero,
-                    "9"=>$reg->estado ?
-                    '<span class="label bg-green">Activado</span>'
-                    :      
-                    '<span class="label bg-red">Desactivado</span>'
-                );
-            }
-            $results = array(
-                "sEcho"=>1,//informacion para el datatable
-                "iTotalRecords"=>count($data),//enviamos el total registros al datatable
-                "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
-                "aaData"=>$data); 
-            }else {
-                //En la Variable rspta se almacena el listado de los pacientes asociados a la cuenta del clientes 
-                $rspta = $paciente->listar($idasociado);
+            //En la Variable rspta se almacena el listado de los pacientes asociados a la cuenta del clientes 
+            $rspta = $paciente->listar($idasociado);
             $data = Array();
 
             while ($reg = $rspta->fetch_object()) {
@@ -123,7 +90,7 @@ session_start();
                         '<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idpersona.')" title="Editar Paciente"><li class="fa fa-pencil-alt"></li></button>'.
                         ' <button class="btn btn-danger btn-sm" onclick="desactivar('.$reg->idpersona.')" title="Desactivar Paciente"><li class="fa fa-times"></li></button></div>'
                         :
-                        '<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-pencil-alt"></li></button>'.
+                        '<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idpersona.')" title="Editar Paciente"><li class="fa fa-pencil-alt"></li></button>'.
                         ' <button class="btn btn-primary btn-sm" onclick="activar('.$reg->idpersona.')" title="Activar Paciente"><li class="fa fa-check"></li></button></div>'
                         ,
                         "1"=>$reg->cedula,
@@ -145,7 +112,6 @@ session_start();
                 "iTotalRecords"=>count($data),//enviamos el total registros al datatable
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data); 
-            }     
                 echo json_encode($results);   
         break;    
     }

@@ -114,10 +114,6 @@
                           '</option>';
                 }
                 break;
-            /*case 'eliminarExamenSangre':
-                $rspta=$examenimagen->eliminarExamenSangre($idtipo_examen);
-                echo $rspta ? "Cita eliminada" : "No se pudo eliminar la cita";
-            break;*/
     }
 
 ?>
