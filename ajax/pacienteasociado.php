@@ -78,11 +78,11 @@ session_start();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
                     "0"=> ($reg->estado) ? 
-                        '<button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-pencil-alt"></li></button>'.
-                        ' <button class="btn btn-danger" onclick="desactivar('.$reg->idpersona.')"><li class="fa fa-times"></li></button>'
+                        '<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idpersona.')" title="Editar Paciente"><li class="fa fa-pencil-alt"></li></button>'.
+                        ' <button class="btn btn-danger btn-sm" onclick="desactivar('.$reg->idpersona.')" title="Desactivar Paciente"><li class="fa fa-times"></li></button></div>'
                         :
-                        '<button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-pencil-alt"></li></button>'.
-                        ' <button class="btn btn-primary" onclick="activar('.$reg->idpersona.')"><li class="fa fa-check"></li></button>'
+                        '<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idpersona.')" title="Editar Paciente"><li class="fa fa-pencil-alt"></li></button>'.
+                        ' <button class="btn btn-primary btn-sm" onclick="activar('.$reg->idpersona.')" title="Activar Paciente"><li class="fa fa-check"></li></button></div>'
                         ,
                         "1"=>$reg->cedula,
                         "2"=>$reg->nombres,

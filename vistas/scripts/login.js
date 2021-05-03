@@ -6,7 +6,7 @@ $("#frmAcceso").on('submit', function(e) {
     clavea=$("#clavea").val();
     rol_idrol=$("#rol_idrol").val();
 
-    $.post("../ajax/registro.php?op=verificar", {"logina":logina,"clavea":clavea,"rol_idrol":rol_idrol}, function(data) {
+    $.post("../ajax/login.php?op=verificar", {"logina":logina,"clavea":clavea,"rol_idrol":rol_idrol}, function(data) {
         if (data!="null") {
             $(location).attr("href","home.php");               
         } else {
@@ -20,7 +20,7 @@ $("#frmAcceso").on('submit', function(e) {
         }
     });
 });
-$.post("../ajax/registro.php?op=selectRol", function(r) {        
+$.post("../ajax/login.php?op=selectRol", function(r) {        
     //console.log(data);
     $("#rol_idrol").html(r);
     

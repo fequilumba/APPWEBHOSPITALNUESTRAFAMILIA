@@ -1,9 +1,9 @@
 <?php
 
 session_start();
-    require_once "../modelos/Persona.php";
+    require_once "../modelos/Cliente.php";
     
-    $persona = new Persona();
+    $cliente = new Cliente();
     $idasociado=$_SESSION['idpersona'];
     $iduserrol=$_SESSION['rol_idrol'];
     $idpersona = isset($_POST["idpersona"])? limpiarCadena($_POST["idpersona"]):"";  
@@ -48,8 +48,8 @@ session_start();
                 $iduser=$rspta;
                 echo $rspta? "Usuario registrado " : "Usuario no se pudo registrar ";
                 
-                //Almaceno en mi variable $rspta2 lo que viene de mi carpeta modelo Persona.php la variable clienteRegistro
-                $rspta2 = $persona->clienteRegistro($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
+                //Almaceno en mi variable $rspta2 lo que viene de mi carpeta modelo Cliente.php la variable clienteRegistro
+                $rspta2 = $cliente->clienteRegistro($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
                 $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$iduser);
                 /*************email *********************/
                 require_once "../modelos/Correo.php";
@@ -58,31 +58,31 @@ session_start();
                 echo $rspta2 ? " Cliente registrado " : "No se pudieron registrar todos los datos del Cliente ";              
 
             }else{
-                $rspta=$persona->editarCliente($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+                $rspta=$cliente->editarCliente($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
                 $ciudad_residencia, $fecha_nacimiento, $genero,$imagen);
                 echo $rspta? "Cliente actualizado" : "Cliente no se pudo actualizar";                    
             }
         break;
         
         case 'desactivar':
-            $rspta=$persona->desactivar($idpersona);
+            $rspta=$cliente->desactivar($idpersona);
             echo $rspta ? "Cliente desactivado" : "No se pudo desactivar al cliente";
     
         break;
 
         case 'activar':
-            $rspta=$persona->activar($idpersona);
+            $rspta=$cliente->activar($idpersona);
             echo $rspta ? "Cliente activado" : "No se pudo activar al cliente";
     
         break;
 
         case 'mostrar':
-            $rspta=$persona->mostrar($idpersona);
+            $rspta=$cliente->mostrar($idpersona);
             echo json_encode($rspta);
         break;
 
         case 'listar':
-            $rspta=$persona->listar();
+            $rspta=$cliente->listar();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(

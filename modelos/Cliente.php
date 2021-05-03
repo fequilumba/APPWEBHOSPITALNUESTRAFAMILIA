@@ -2,7 +2,7 @@
  // INCLUIMOS INICIALMENTE LA CONEXIÓN A LA BASE DE DATOS
  require "../config/Conexion.php";
  
-    Class Persona{
+    Class Cliente{
 
         //IMPLEMENTAMOS EL CONSTRUCTOR
         public function __construct(){
@@ -65,7 +65,7 @@
         }
 
         /* MÉTODO QUE REGISTRA A PERSONA CON ROL CLIENTE Y PACIENTE CON SU MISMO ID ASOCIADO 
-            DESDE EL FORMULARIO DE REGISTRO EN LÍNEA
+            DESDE EL FORMULARIO DE REGISTRO DEL ADMINISTRADOR
             El método clienteRegistro luego del SQL envía los resultados a mi modelo cliente.php de la carpeta ajax
         */
         public function clienteRegistro ($cedula, $nombres, $apellidos, $email, $telefono, $direccion, $ciudad_residencia, $fecha_nacimiento, $genero, $imagen, $iduser) {                 

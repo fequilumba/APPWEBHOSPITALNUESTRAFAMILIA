@@ -88,7 +88,7 @@
                 </div><br>
                     
                 <div class="text-center">
-                  <a href="../ajax/registro.php?op=salir" class="btn btn-danger btn-flat"> 
+                  <a href="../ajax/login.php?op=salir" class="btn btn-danger btn-flat"> 
                     <i class="fas fa-sign-out-alt"></i>
                     Cerrar Sesión</a>
                 </div>
@@ -108,7 +108,7 @@
             </div>
 
             <div class="info">
-              <a href="#" class="d-block">HOSPITAL NUESTRA <br> FAMILIA</a>
+              <a href="home.php" class="d-block">HOSPITAL NUESTRA <br> FAMILIA</a>
             </div>
           </div> <!-- user-panel -->
 
