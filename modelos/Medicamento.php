@@ -8,38 +8,39 @@
         }
 
         /*CRUD examen tipo imagen*/
+        //Método para listar todos los medicamentos
         public function listar(){
-            $sql= "SELECT * FROM `medicamento`";
+            $sql= "SELECT * FROM medicamento";
             return ejecutarConsulta($sql);
         }
 
-        //Metodo para insertar tipo examen
-        public function insertar($nombre,$descripcion){
-            $sql= "INSERT INTO `medicamento` (`nombre`, `descripcion`, `estado`) 
+        //Metodo para registrar datos de tipo examen en estado Activo
+        public function insertar($nombre, $descripcion){
+            $sql= "INSERT INTO medicamento (nombre, descripcion, estado) 
             VALUES ('$nombre','$descripcion','1')";
             return ejecutarConsulta($sql);
         }
 
-        //metodo para editar o actualizar tipo examen
-        public function editar($idmedicamento, $nombre,$descripcion){
-            $sql= " UPDATE `medicamento` m 
-                    SET m.`nombre` = '$nombre',m.`descripcion` = '$descripcion' 
-                    WHERE m.`idmedicamento` = '$idmedicamento'";
+        //Método para editar o actualizar un tipo examen
+        public function editar($idmedicamento, $nombre, $descripcion){
+            $sql= " UPDATE medicamento m 
+                    SET m.nombre = '$nombre', m.descripcion = '$descripcion' 
+                    WHERE m.idmedicamento = '$idmedicamento'";
             return ejecutarConsulta($sql);
         }
 
-        //mostrar datos de un tipo examen por id
+        //Método par mostrar datos de un tipo examen
         public function mostrar($idmedicamento)
         {
-            $sql= "SELECT * FROM `medicamento` WHERE `idmedicamento`='$idmedicamento'";
+            $sql= "SELECT * FROM medicamento WHERE idmedicamento = '$idmedicamento'";
             return ejecutarConsultaSimpleFila($sql);
         }
 
-        //METODOS PARA ACTIVAR/DESACTIVAR TIPO DE EXAMEN
+        //METODOS PARA ACTIVAR/DESACTIVAR MEDICAMENTOS
         public function desactivar($idmedicamento)
         {
-            $sql= "UPDATE `medicamento` SET `estado`='0' 
-                WHERE `idmedicamento`='$idmedicamento'";
+            $sql= "UPDATE medicamento SET estado ='0' 
+                WHERE idmedicamento = '$idmedicamento'";
             
             return ejecutarConsulta($sql);
         }
@@ -52,7 +53,7 @@
             return ejecutarConsulta($sql);
         }
 
-        //listar medicamentos activos para la atención de la cita médica
+        //Método que lista medicamentos activos para la atención de la cita médica 
         public function listarMedicamentosActivos(){
             $sql= "SELECT m.idmedicamento, m.nombre, m.descripcion 
             FROM medicamento m

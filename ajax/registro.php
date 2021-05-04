@@ -42,11 +42,12 @@ switch ($_GET["op"]){
         { 
             $str.=$piece[0]; 
         }  
-        $contrasenia= $cedula . $str;
-       	$contraseniahash=hash("SHA256",$contrasenia);
+        $contrasenia = $cedula . $str;
+       	$contraseniahash = hash("SHA256", $contrasenia);
 		if (empty($idusuario)){
-			$rspta=$usuario->insertar($cedula,$contraseniahash);
-			$iduser=$rspta;
+			$rspta = $usuario->insertar($cedula, $contraseniahash);
+			$iduser = $rspta;
+
 			$rspta2 = $registro->clienteRegistro($cedula, $nombres, $apellidos, $email,  $telefono, $direccion,
 			$ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$iduser);
 			/*************email *********************/

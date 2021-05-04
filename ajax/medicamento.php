@@ -9,29 +9,29 @@
         /*Operaciones de medicamento*/
         case 'guardaryeditar':
                 if (empty($idmedicamento)) {
-                    $rspta=$medicamento->insertar($nombre,$descripcion);
+                    $rspta = $medicamento->insertar($nombre,$descripcion);
                     echo $rspta ? "Medicamento registrado" : "No se pudo registrar el Medicamento";
                     
                 }else{
-                    $rspta=$medicamento->editar($idmedicamento, $nombre,$descripcion);
+                    $rspta = $medicamento->editar($idmedicamento, $nombre,$descripcion);
                     echo $rspta ? "Medicamento actualizado" : "No se pudo actualizar el Medicamento";                
                 }
             break;
         case 'mostrar':
-                $rspta=$medicamento->mostrar($idmedicamento);
+                $rspta = $medicamento->mostrar($idmedicamento);
                 echo json_encode($rspta);
             break;
         case 'listar':
-            $rspta=$medicamento->listar();
+            $rspta = $medicamento->listar();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
                     "0"=> ($reg->estado) ? 
-                    '<button class="btn btn-warning" onclick="mostrar('.$reg->idmedicamento.')"><li class="fa fa-pencil-alt"></li></button>'.
-                    ' <button class="btn btn-danger" onclick="desactivar('.$reg->idmedicamento.')"><li class="fa fa-times"></li></button>'
+                    '<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idmedicamento.')" title="Editar Medicamento"><li class="fa fa-pencil-alt"></li></button>'.
+                    ' <button class="btn btn-danger btn-sm" onclick="desactivar('.$reg->idmedicamento.')" title="Desactivar"><li class="fa fa-times"></li></button></div>'
                     :
-                    '<button class="btn btn-warning" onclick="mostrar('.$reg->idmedicamento.')"><li class="fa fa-pencil-alt"></li></button>'.
-                    ' <button class="btn btn-primary" onclick="activar('.$reg->idmedicamento.')"><li class="fa fa-check"></li></button>'
+                    '<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idmedicamento.')" title="Editar Medicamento"><li class="fa fa-pencil-alt"></li></button>'.
+                    ' <button class="btn btn-primary btn-sm" onclick="activar('.$reg->idmedicamento.')" title="Activar"><li class="fa fa-check"></li></button></div>'
                     ,
                     "1"=>$reg->nombre,
                     "2"=>$reg->descripcion,
@@ -50,12 +50,12 @@
             break;
             
             case 'desactivar':
-                $rspta=$medicamento->desactivar($idmedicamento);
+                $rspta = $medicamento->desactivar($idmedicamento);
                 echo $rspta ? "Medicamento desactivado" : "No se pudo desactivar el Medicamento";
     
                 break;
             case 'activar':
-                $rspta=$medicamento->activar($idmedicamento);
+                $rspta = $medicamento->activar($idmedicamento);
                 echo $rspta ? "Medicamento activado" : "No se pudo activar Medicamento";
     
                 break;

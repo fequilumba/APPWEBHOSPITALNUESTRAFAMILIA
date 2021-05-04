@@ -162,14 +162,15 @@ function listarMedicamento() {
 
 
 // FUNCIÓN AGREGAR MEDICAMENTOS
-var cont=0;
-var detalles=0;
-function agregarMedicamento(idmedicamento,nombre,descripcion) {
-    var cantidad=1;
+var cont = 0;
+var detalles = 0;
+function agregarMedicamento(idmedicamento, nombre, descripcion) 
+{
+    var cantidad = 1;
     var observaciones="";
-    if (idmedicamento!="") {
-        var fila='<tr class="filas" id="fila'+cont+'">'+
-        '<td> <button type="button" class="btn btn-danger" onclick="eliminarMedicamento('+cont+')">X</button></td>'+
+    if (idmedicamento != "") {
+        var fila = '<tr class="filas" id="fila'+cont+'">'+
+        '<td><div class="text-center"><button type="button" class="btn btn-danger btn-sm" onclick="eliminarMedicamento('+cont+')" title="Eliminar medicamento">X</button></div></td>'+
         '<td><input type="hidden" name="idmedicamento[]" value="'+idmedicamento+'">'+nombre+'</td>'+
         '<td><input type="hidden" name="descripcion[]" value="">'+descripcion+'</td>'+
         '<td><input type="number" max="100" min="1" name="cantidad[]" id="cantidad[]" value="'+cantidad+'"></td>'+
@@ -230,7 +231,7 @@ var detalles2=0;
 function agregarExamen(idexamen,nombre,tipo) {
     if (idexamen!="") {
         var fila='<tr class="filas" id="fila2'+cont2+'">'+
-        '<td> <button type="button" class="btn btn-danger" onclick="eliminarExamen('+cont2+')">X</button></td>'+
+        '<td><div class="text-center"><button type="button" class="btn btn-danger btn-sm" onclick="eliminarExamen('+cont2+')" title="Eliminar Examen">X</button></div></td>'+
         '<td><input type="hidden" name="idexamen[]" value="'+idexamen+'">'+nombre+'</td>'+
         '<td><input type="hidden" name="tipo[]" value="">'+tipo+'</td>'
         '</tr>';

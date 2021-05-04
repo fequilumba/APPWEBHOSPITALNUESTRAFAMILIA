@@ -36,7 +36,7 @@
               <div class="panel-body table-responsive" id="listadoregistros">
                 <table id="tbllistadoe" class="table table-striped table-bordered table-hover dt-responsive DT">
                   <thead>
-                    <th>Opciones</th>
+                    <th>Acciones</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Estado</th>
@@ -46,7 +46,7 @@
                   </tbody>
 
                   <tfoot>
-                    <th>Opciones</th>
+                    <th>Acciones</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Estado</th>
@@ -57,13 +57,13 @@
               <div class="panel-body"  id="formularioregistros">
                 <form name="formularioe" id="formularioe" method="POST">
                   
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-md-6">
                     <label for="">Nombre</label>
                     <input type="hidden" name="idmedicamento" id="idmedicamento">
                     <input type="text" name="nombre" id="nombre" class="form-control" maxlength="50" placeholder="Nombre medicamento" required>
                   </div> <!-- .form-group-->
 
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-md-6">
                     <label for="">Descripción</label>
                     <textarea name="descripcion" id="descripcion" class="form-control" maxlength="255" cols="" rows="6" required></textarea>
                   </div> <!-- .form-group-->

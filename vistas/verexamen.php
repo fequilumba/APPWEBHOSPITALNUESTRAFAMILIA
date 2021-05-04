@@ -36,7 +36,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
               <div class="panel-body table-responsive" id="listadoregistros">
                 <table id="tbllistadoe" class="table table-striped table-bordered table-hover dt-responsive DT">
                   <thead>
-                    <th>Opciones</th>
+                    <th>Acción</th>
                     <th>Especialidad</th>
                     <th>Paciente</th>
                     <th>Médico</th>
@@ -45,46 +45,40 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                   </thead>
                   <tbody>
                   </tbody>
-                  <tfoot>
-                    <th>Opciones</th>
-                    <th>Especialidad</th>
-                    <th>Paciente</th>
-                    <th>Médico</th>
-                    <th>Fecha</th>
-                    <th>Hora</th>
-                  </tfoot>
                 </table> <!-- /.tbllistadoe -->
               </div> <!-- /.panel-body -->
 
               <div class="panel-body"  id="formularioregistros">
                 <form name="formularioe" id="formularioe" method="POST">
                   <div class="form-row">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Especialidad</label>
                       <input type="hidden" name="idpedido_examen" id="idpedido_examen">
                       <input type="text" name="especialidad" id="especialidad" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
                     </div>
                     
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Paciente</label>
                       <input type="text" name="paciente" id="paciente" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
                     </div>
                     
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Médico</label>
                       <input type="text" name="medico" id="medico" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
                     </div>
                   </div> <!-- .form-row -->
                   
-                  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
-                    <table id="examenes" class="table table-striped table-bordered table-hover nowrap">
-                      <thead style="background-color:#A9D0F5">
-                        <th>Nombre</th>
-                        <th>Tipo</th>
-                      </thead>
-                      <tbody>            
-                      </tbody>
-                    </table>
+                  <div class="panel-body table-responsive">
+                    <div class="form-group col-md-6 col-md-12" >
+                      <table id="examenes" class="table table-striped table-bordered table-hover dt-responsive DT">
+                        <thead style="background-color:#A9D0F5">
+                          <th>Nombre</th>
+                          <th>Tipo</th>
+                        </thead>
+                        <tbody>            
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                           
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

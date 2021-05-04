@@ -27,7 +27,8 @@ switch ($_GET["op"]){
 
 		}
 		echo json_encode($fetch);
-		break;
+	break;
+
 	case 'selectRol':
 			require_once "../modelos/Rol.php";
             $rol = new Rol();
@@ -37,7 +38,8 @@ switch ($_GET["op"]){
                             .$reg->nombre.
                           '</option>';
                 }
-		break;
+	break;
+
 	case 'salir':
 			//limpiamos las variables de sesion
 			session_unset();
@@ -45,6 +47,6 @@ switch ($_GET["op"]){
 			session_destroy();
 			//redireccionamos al login
 			header("Location: ../index.php");
-		break;
+	break;
 }
 ?>
