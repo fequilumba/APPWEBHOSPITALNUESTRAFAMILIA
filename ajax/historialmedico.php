@@ -61,8 +61,9 @@
             }
             else {
                 $rspta = $historial->listar($idusuario);
-            $data = Array();
-            while ($reg=$rspta->fetch_object()) {
+                $data = Array();
+                
+                while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
                     "0"=>'<div class="text-center"><button class="btn btn-primary btn-sm" onclick="mostrar('.$reg->idcita_medica.')" title="Ver Historial"><li class="fa fa-eye"></li></button></div>',
                     

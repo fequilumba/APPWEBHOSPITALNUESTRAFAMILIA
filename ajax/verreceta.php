@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once "../modelos/Verreceta.php";
+    
     $verreceta = new Verreceta();
     $idusuario=$_SESSION['idusuario'];
     $idpersonam=$_SESSION['idpersona'];
@@ -14,35 +15,46 @@
        
     switch ($_GET["op"]) {
         case 'mostrar':
-                $rspta=$verreceta->mostrar($idreceta);
-                echo json_encode($rspta);
-            break;
+            $rspta=$verreceta->mostrar($idreceta);
+            echo json_encode($rspta);
+        break;
+
         case 'listarDetalle':
             //recibimos id receta
             $id=$_GET['id'];
 
             echo '<thead style="background-color:#A9D0F5">
-                                    <th>Medicamento</th>
-                                    <th>Descripción</th>
-                                    <th>Cantidad</th>
-                                    <th>Indicaciones</th>
-                                </thead>';
-                $rspta=$verreceta->listarDetalle($id);
-                while ($reg=$rspta->fetch_object()) {
-                    echo '<tr><td>'.$reg->nombre.'</td><td>'.$reg->descripcion.'</td>
-                                        <td>'.$reg->cantidad.'</td><td>'.$reg->observaciones.'</td></tr>';
-                }
-                
-            break;
+                    <th>Medicamento</th>
+                    <th>Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Indicaciones</th>
+            </thead>';
+
+            $rspta=$verreceta->listarDetalle($id);
+            while ($reg=$rspta->fetch_object()) 
+            {
+                echo '<tr>
+                        <td>'.$reg->nombre.'</td>
+                        <td>'.$reg->descripcion.'</td>
+                        <td>'.$reg->cantidad.'</td>
+                        <td>'.$reg->observaciones.'</td>
+                </tr>';
+            }        
+        break;
+
         case 'listar':
-            if ($rolusuario==1) {
+            if ($rolusuario == 1) 
+            {
                 $rspta=$verreceta->listarTodo();
-            $data = Array();
-            while ($reg=$rspta->fetch_object()) {
+                $data = Array();
+
+                while ($reg=$rspta->fetch_object()) {
                 $url='../reportes/receta.php?id=';
                 $data[]= array(
-                    "0"=>'<button class="btn btn-primary" onclick="mostrar('.$reg->idreceta.')"><li class="fa fa-eye"></li></button>'.
-                    ' <a href="'.$url.$reg->idreceta.'" target="_blank"> <button class="btn btn-info"><li class="fa fa-print"></li></button> </a>',
+                    "0"=>'<div class="text-center">
+                            <button class="btn btn-primary btn-sm" onclick="mostrar('.$reg->idreceta.')" title="Ver Receta"><li class="fa fa-eye"></li></button>'.'<a href="'.$url.$reg->idreceta.'" target="_blank">
+                            <button class="btn btn-info btn-sm" title="Imprimir Receta"><li class="fa fa-print"></li></button></a>
+                        </div>',
                     
                     "1"=>$reg->especialidad,
                     "2"=>$reg->paciente,
@@ -56,53 +68,57 @@
                 "iTotalRecords"=>count($data),//enviamos el total registros al datatable
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data);
-            }elseif ($rolusuario==2) {
+            }else if ($rolusuario == 2) {
                 $rspta=$verreceta->listarRecetaMedica($idpersonam);
-            $data = Array();
-            while ($reg=$rspta->fetch_object()) {
-                $url='../reportes/receta.php?id=';
-                $data[]= array(
-                    "0"=>'<button class="btn btn-primary" onclick="mostrar('.$reg->idreceta.')"><li class="fa fa-eye"></li></button>'.
-                    ' <a href="'.$url.$reg->idreceta.'" target="_blank"> <button class="btn btn-info"><li class="fa fa-print"></li></button> </a>',
-                    
-                    "1"=>$reg->especialidad,
-                    "2"=>$reg->paciente,
-                    "3"=>$reg->medico,
-                    "4"=>$reg->fecha_cita, 
-                    "5"=>$reg->hora_cita,
-                );
-            }
+                $data = Array();
+
+                while ($reg=$rspta->fetch_object()) {
+                    $url='../reportes/receta.php?id=';
+                    $data[]= array(
+                        "0"=>'<div class="text-center">
+                                <button class="btn btn-primary btn-sm" onclick="mostrar('.$reg->idreceta.')" title="Ver Receta"><li class="fa fa-eye"></li></button>'.'<a href="'.$url.$reg->idreceta.'" target="_blank">
+                                <button class="btn btn-info btn-sm" title="Imprimir Receta"><li class="fa fa-print"></li></button></a>
+                            </div>',
+                        
+                        "1"=>$reg->especialidad,
+                        "2"=>$reg->paciente,
+                        "3"=>$reg->medico,
+                        "4"=>$reg->fecha_cita, 
+                        "5"=>$reg->hora_cita,
+                    );
+                }
             $results = array(
                 "sEcho"=>1,//informacion para el datatable
                 "iTotalRecords"=>count($data),//enviamos el total registros al datatable
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data);
-            }
-            else {
+            } else {
                 $rspta=$verreceta->listar($idusuario);
-            $data = Array();
-            while ($reg=$rspta->fetch_object()) {
-                $url='../reportes/receta.php?id=';
-                $data[]= array(
-                    "0"=>'<button class="btn btn-primary" onclick="mostrar('.$reg->idreceta.')"><li class="fa fa-eye"></li></button>'.
-                    ' <a href="'.$url.$reg->idreceta.'" target="_blank"> <button class="btn btn-info"><li class="fa fa-print"></li></button> </a>',
-                    
-                    "1"=>$reg->especialidad,
-                    "2"=>$reg->paciente,
-                    "3"=>$reg->medico,
-                    "4"=>$reg->fecha_cita, 
-                    "5"=>$reg->hora_cita,
-                );
-            }
-            $results = array(
+                $data = Array();
+
+                while ($reg=$rspta->fetch_object()) {
+                    $url='../reportes/receta.php?id=';
+                    $data[]= array(
+                        "0"=>'<div class="text-center">
+                                <button class="btn btn-primary btn-sm" onclick="mostrar('.$reg->idreceta.')" title="Ver Receta"><li class="fa fa-eye"></li></button>'.'<a href="'.$url.$reg->idreceta.'" target="_blank">
+                                <button class="btn btn-info btn-sm" title="Imprimir Receta"><li class="fa fa-print"></li></button></a>
+                        </div>',
+                        
+                        "1"=>$reg->especialidad,
+                        "2"=>$reg->paciente,
+                        "3"=>$reg->medico,
+                        "4"=>$reg->fecha_cita, 
+                        "5"=>$reg->hora_cita,
+                    );
+                }
+                $results = array(
                 "sEcho"=>1,//informacion para el datatable
                 "iTotalRecords"=>count($data),//enviamos el total registros al datatable
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data); 
             }
                
-                echo json_encode($results);   
-            break;
+            echo json_encode($results);   
+        break;
     }
-
 ?>

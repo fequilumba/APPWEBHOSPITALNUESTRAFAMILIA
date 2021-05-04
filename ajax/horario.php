@@ -12,7 +12,7 @@
         case 'guardaryeditar':
             //Almacena los horarios creados con su especialidad, médico, fecha y hora
             if (empty($idcita_medica)) {
-                $rspta=$horario->insertar($especialidad_idespecialidad, $personaMedico_idpersona, $fecha_cita, $_POST['horarioc'], $estado_idestado);
+                $rspta = $horario->insertar($especialidad_idespecialidad, $personaMedico_idpersona, $fecha_cita, $_POST['horarioc'], $estado_idestado);
                 echo $rspta ? "Horarios registrados" : "No se pudo registrar los horarios";
                     
             } else {
@@ -77,7 +77,7 @@
 
         case 'eliminar':
             //Elimina los horarios creados en cita médica
-            $rspta=$horario->eliminarHora($idcita_medica);
+            $rspta = $horario->eliminarHora($idcita_medica);
             
         break;
     }

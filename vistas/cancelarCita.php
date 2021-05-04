@@ -51,31 +51,6 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
 
                 </table> <!-- .tbllistadoe-->
               </div> <!-- .panel-body-->
-
-              <!--<div class="panel-body"  id="formularioregistros">
-                <form name="formularioe" id="formularioe" method="POST">
-                  <div class="form-group col-md-6">
-                    <input type="hidden" name="idcita_medica" id="idcita_medica">
-                  </div> 
-                              
-                  <div class="form-group col-md-6">
-                    <button 
-                      class="btn btn-primary" 
-                      type="submit" 
-                      id="btnGuardar">
-                      <i class="fa fa-save"> Guardar</i>
-                    </button>
-
-                    <button 
-                      class="btn btn-danger" 
-                      onclick="cancelarform()" 
-                      type="button">
-                      <i class="fa fa-arrow-circle-left">Cancelar</i>
-                    </button>
-                  </div> 
-                </form>
-              </div>-->
-
             </div> <!-- /.card-body -->  
           </div> <!-- /.card -->
         </div> <!-- /.col-12 -->

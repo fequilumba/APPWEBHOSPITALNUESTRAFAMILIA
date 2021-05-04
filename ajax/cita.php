@@ -56,16 +56,16 @@ session_start();
         break;
 
         case 'mostrar':
-            $rspta=$cita->mostrar($idcita_medica);
+            $rspta = $cita->mostrar($idcita_medica);
             echo json_encode($rspta);
         break;
 
         case 'listar':
-            $rspta=$cita->listar($idusuario);
+            $rspta = $cita->listar($idusuario);
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                        "0"=> '<button class="btn btn-warning" onclick="mostrar('.$reg->idcita_medica.')"><li class="fa fa-edit"></li> Atender</button>',
+                        "0"=> '<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idcita_medica.')" title="Atender Cita Médica"><li class="fa fa-edit"></li> Atender</button></div>',
                         "1"=>$reg->especialidad,
                         "2"=>$reg->nombre,
                         "3"=>$reg->telefono,
@@ -153,12 +153,14 @@ session_start();
         case 'listarMedicamentos':
             require_once "../modelos/Medicamento.php";
             $medicamento = new Medicamento();
-            $rspta=$medicamento->listarMedicamentosActivos();
+            $rspta = $medicamento->listarMedicamentosActivos();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                    "0"=>' <button class="btn btn-warning" onclick="agregarMedicamento('.$reg->idmedicamento.',\''.$reg->nombre.'\',\''.$reg->descripcion.'\')">
-                            <span class="fa fa-plus"></span></button>',
+                    "0"=>'<div class="text-center">
+                            <button class="btn btn-warning btn-sm" onclick="agregarMedicamento('.$reg->idmedicamento.',\''.$reg->nombre.'\',\''.$reg->descripcion.'\')" title="Agregar Medicamento">
+                            <span class="fa fa-plus"></span></button>
+                        </div>',
                     "1"=>$reg->nombre,
                     "2"=>$reg->descripcion
                 );
@@ -178,8 +180,10 @@ session_start();
                 $data = Array();
                 while ($reg=$rspta->fetch_object()) {
                     $data[]= array(
-                        "0"=>' <button class="btn btn-warning" onclick="agregarExamen('.$reg->idexamen.',\''.$reg->nombre.'\',\''.$reg->tipo.'\')">
-                                <span class="fa fa-plus"></span></button>',
+                        "0"=>'<div class="text-center">
+                            <button class="btn btn-warning btn-sm" onclick="agregarExamen('.$reg->idexamen.',\''.$reg->nombre.'\',\''.$reg->tipo.'\')" title="Agregar Examen">
+                            <span class="fa fa-plus"></span></button>
+                        </div>',
                         "1"=>$reg->nombre,
                         "2"=>$reg->tipo
                     );
