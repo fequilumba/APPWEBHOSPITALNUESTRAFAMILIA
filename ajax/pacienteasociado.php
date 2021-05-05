@@ -36,87 +36,97 @@ session_start();
             if (empty($idpersona)) {
                 //hash SHA256 en la contrasenia
                 $pieces = explode(" ", $nombres); 
-                    $str=""; 
-                    foreach($pieces as $piece) 
-                    { 
-                        $str.=$piece[0]; 
-                    }  
-                    $contrasenia= $cedula . $str;
-                    $contraseniahash=hash("SHA256",$contrasenia);
+                $str=""; 
+                foreach($pieces as $piece) 
+                { 
+                    $str.=$piece[0]; 
+                }
+
+                $contrasenia = $cedula . $str;
+                $contraseniahash = hash("SHA256",$contrasenia);
+
                 require_once "../modelos/Usuario.php";
                 $usuario = new Usuario();
                 $rspta = $usuario->insertar($cedula, $contraseniahash);
-                $iduser=$rspta;
-                echo $rspta? "Usuario registrado " : "Usuario no se pudo registrar ";
-                $rspta2=$pacientea->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
-                $direccion,$ciudad_residencia, $fecha_nacimiento, $genero,$cliente,$imagen,$iduser);
+                $iduser = $rspta;
+                echo $rspta? " Usuario registrado " : "Usuario no se pudo registrar ";
+
+                $rspta2 = $pacientea->insertar($cedula, $nombres, $apellidos, $email, $telefono, 
+                $direccion, $ciudad_residencia, $fecha_nacimiento, $genero, $cliente, $imagen, $iduser);
                 echo $rspta2? " Paciente registrado" : " Paciente no se pudo registrar ";
-            }else{
-                $rspta=$pacientea->editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
-                $ciudad_residencia, $fecha_nacimiento, $genero,$imagen,$cliente);
-                echo $rspta? "Paciente actualizado" : "Paciente no se pudo actualizar";
-                                
+            } else {
+                $rspta = $pacientea->editar($idpersona, $cedula, $nombres, $apellidos, $email, $telefono, $direccion,
+                $ciudad_residencia, $fecha_nacimiento, $genero, $imagen, $cliente);
+                echo $rspta? "Paciente actualizado" : "Paciente no se pudo actualizar";                    
             }
-            break;
+        break;
+
         case 'desactivar':
-                $rspta=$pacientea->desactivar($idpersona);
-                echo $rspta ? "Paciente desactivado" : "No se pudo desactivar al paciente";
+            $rspta = $pacientea->desactivar($idpersona);
+            echo $rspta ? "Paciente desactivado" : "No se pudo desactivar al paciente";
     
-                break;
+        break;
+
         case 'activar':
-                $rspta=$pacientea->activar($idpersona);
-                echo $rspta ? "Paciente activado" : "No se pudo activar al paciente";
+            $rspta = $pacientea->activar($idpersona);
+            echo $rspta ? "Paciente activado" : "No se pudo activar al paciente";
     
-                break;
+        break;
+
         case 'mostrar':
-                    $rspta=$pacientea->mostrar($idpersona);
-                    echo json_encode($rspta);
-                break;
+            $rspta = $pacientea->mostrar($idpersona);
+            echo json_encode($rspta);
+        break;
+
         case 'listar':
-                $rspta=$pacientea->listarTodosPacientes();
+            $rspta=$pacientea->listarTodosPacientes();
             $data = Array();
-            while ($reg=$rspta->fetch_object()) {
+            while ($reg=$rspta->fetch_object()) 
+            {
                 $data[]= array(
                     "0"=> ($reg->estado) ? 
-                        '<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idpersona.')" title="Editar Paciente"><li class="fa fa-pencil-alt"></li></button>'.
-                        ' <button class="btn btn-danger btn-sm" onclick="desactivar('.$reg->idpersona.')" title="Desactivar Paciente"><li class="fa fa-times"></li></button></div>'
+                        '<div class="text-center">
+                            <button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idpersona.')" title="Editar Paciente"><li class="fa fa-pencil-alt"></li></button>'.
+                            ' <button class="btn btn-danger btn-sm" onclick="desactivar('.$reg->idpersona.')" title="Desactivar Paciente"><li class="fa fa-times"></li></button>
+                        </div>'
                         :
-                        '<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idpersona.')" title="Editar Paciente"><li class="fa fa-pencil-alt"></li></button>'.
-                        ' <button class="btn btn-primary btn-sm" onclick="activar('.$reg->idpersona.')" title="Activar Paciente"><li class="fa fa-check"></li></button></div>'
-                        ,
-                        "1"=>$reg->cedula,
-                        "2"=>$reg->nombres,
-                        "3"=>$reg->email,
-                        "4"=>$reg->telefono,
-                        "5"=>$reg->direccion,
-                        "6"=>$reg->ciudad_residencia,
-                        "7"=>$reg->fecha_nacimiento,
-                        "8"=>$reg->genero,
-                        "9"=>$reg->estado ?
+                        '<div class="text-center">
+                            <button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idpersona.')" title="Editar Paciente"><li class="fa fa-pencil-alt"></li></button>'.
+                            ' <button class="btn btn-primary btn-sm" onclick="activar('.$reg->idpersona.')" title="Activar Paciente"><li class="fa fa-check"></li></button>
+                        </div>',
+
+                    "1"=>$reg->cedula,
+                    "2"=>$reg->nombres,
+                    "3"=>$reg->email,
+                    "4"=>$reg->telefono,
+                    "5"=>$reg->direccion,
+                    "6"=>$reg->ciudad_residencia,
+                    "7"=>$reg->fecha_nacimiento,
+                    "8"=>$reg->genero,
+                    "9"=>$reg->estado ?
                     '<span class="label bg-green">Activado</span>'
                     :      
                     '<span class="label bg-red">Desactivado</span>'
                 );
             }
             $results = array(
-                "sEcho"=>1,//informacion para el datatable
-                "iTotalRecords"=>count($data),//enviamos el total registros al datatable
-                "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
-                "aaData"=>$data); 
-            
+            "sEcho"=>1,//informacion para el datatable
+            "iTotalRecords"=>count($data),//enviamos el total registros al datatable
+            "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
+            "aaData"=>$data); 
                
-                echo json_encode($results);   
-            break;
+            echo json_encode($results);   
+        break;
+
         case 'selectCliente':
-                $rspta = $pacientea->selectCliente();
-                while ($reg = $rspta->fetch_object()) {
-                    echo '<option value='.$reg->idpersona.'>'
-                            .$reg->nombres.
-                          '</option>';
-                }
-            break;
+            $rspta = $pacientea->selectCliente();
+            while ($reg = $rspta->fetch_object()) 
+            {
+                echo '<option value='.$reg->idpersona.'>'
+                        .$reg->nombres.
+                    '</option>';
+            }
+        break;
         
     }
-    
-
 ?>

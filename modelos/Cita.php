@@ -124,15 +124,16 @@
             return $sw;
         }
 
-        //mostrar un registro para editar
+        //mostrar un registro de un paciente que ha sido atendido
         public function mostrar($idcita_medica)
         {
-            $sql= "SELECT cm.`idcita_medica`, e.nombre as especialidad_idespecialidad, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as personaPaciente_idpersona,
-                cm.`diagnostico`, cm.`sintomas`, cm.`motivo_consulta` 
-                FROM `cita_medica` cm 
-                INNER JOIN `especialidad` e ON cm.`especialidad_idespecialidad`=e.`idespecialidad` 
-                INNER JOIN `persona` p ON p.`idpersona`=cm.`personaPaciente_idpersona`
-                WHERE `idcita_medica`='$idcita_medica'";
+            $sql= "SELECT cm.idcita_medica, e.nombre AS especialidad_idespecialidad, CONCAT(p.nombres,' ',p.apellidos) AS personaPaciente_idpersona,
+                cm.diagnostico, cm.sintomas, cm.motivo_consulta 
+            FROM cita_medica cm 
+            INNER JOIN especialidad e ON cm.especialidad_idespecialidad = e.idespecialidad
+            INNER JOIN persona p ON p.idpersona = cm.personaPaciente_idpersona
+            WHERE idcita_medica = '$idcita_medica'";
+            
             return ejecutarConsultaSimpleFila($sql);
         }
         

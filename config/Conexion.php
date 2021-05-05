@@ -10,17 +10,20 @@
         exit();
     }
 
-    if(!function_exists('ejecutarConsulta')) {
+    if(!function_exists('ejecutarConsulta')) 
+    {
         
         //Función para ejecutar consulta
-        function ejecutarConsulta($sql){
+        function ejecutarConsulta($sql)
+        {
             global $conexion;
             $query = $conexion->query($sql);
             return $query;
         }
 
         //Función para ejecutar una sola fila
-        function ejecutarConsultaSimpleFila($sql){
+        function ejecutarConsultaSimpleFila($sql)
+        {
             global $conexion;
             $query = $conexion->query($sql);
             $row = $query->fetch_assoc();
@@ -28,14 +31,16 @@
         }
 
         //Función para ejecutar consulta retornar un Id
-        function ejecutarConsulta_retornarID($sql){
+        function ejecutarConsulta_retornarID($sql)
+        {
             global $conexion;
             $query = $conexion->query($sql);
             return $conexion->insert_id;
         }
 
         //Función para limpiar las cadenas
-        function limpiarCadena($str){
+        function limpiarCadena($str)
+        {
             global $conexion;
             $str = mysqli_real_escape_string($conexion, trim($str));
             return htmlspecialchars($str);

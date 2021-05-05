@@ -44,13 +44,6 @@
 
                   <tbody>
                   </tbody>
-
-                  <tfoot>
-                    <th>Acciones</th>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Estado</th>
-                  </tfoot>
                 </table> <!-- .tbllistadoe-->
               </div> <!-- .panel-body-->
 

@@ -6,6 +6,8 @@ session_start();
     $cliente = new Cliente();
     $idasociado=$_SESSION['idpersona'];
     $iduserrol=$_SESSION['rol_idrol'];
+
+    //Estructuras condicionales de una sola línea
     $idpersona = isset($_POST["idpersona"])? limpiarCadena($_POST["idpersona"]):"";  
     $cedula= isset($_POST["cedula"])? limpiarCadena($_POST["cedula"]):"";
     $nombres= isset($_POST["nombres"])? limpiarCadena($_POST["nombres"]):"";

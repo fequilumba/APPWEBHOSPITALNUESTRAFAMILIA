@@ -7,7 +7,7 @@
   } else {
     require 'header.php';
 
-    if ($_SESSION['rol_idrol']==3||$_SESSION['rol_idrol']==1||$_SESSION['rol_idrol']==2) {   
+    if ($_SESSION['rol_idrol']==3 || $_SESSION['rol_idrol']==1 || $_SESSION['rol_idrol']==2) {   
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -31,7 +31,7 @@
           <div class="card">
             <div class="card-body">
               <div class="panel-body table-responsive" id="listadoregistros">
-                <table id="tbllistadoe" class="table table-striped table-bordered table-hover dt-responsive DT">
+                <table id="tblHistorialMedico" class="table table-striped table-bordered table-hover dt-responsive DT">
                   <thead>
                     <th>Acción</th>
                     <th>Especialidad</th>
@@ -43,16 +43,7 @@
                   </thead>
                   <tbody>
                   </tbody>
-                  <tfoot>
-                    <th>Acción</th>
-                    <th>Especialidad</th>
-                    <th>Paciente</th>
-                    <th>Médico</th>
-                    <th>Fecha</th>
-                    <th>Hora</th>
-                    <th>Estado</th>
-                  </tfoot>
-                </table> <!-- /.tbllistadoe -->
+                </table> <!-- /.tblHistorialMedico -->
               </div> <!-- /.panel-body -->
 
               <!-- ESTE FORMULARIO PERMITE VER AL ADMINISTRADOR, MÉDICO Y CLIENTE EL HISTORIAL DE LOS PACIENTES ATENDIDOS-->
@@ -63,17 +54,17 @@
                     <div class="form-group col-md-6">
                       <label for="">Especialidad</label>
                       <input type="hidden" name="idcita_medica" id="idcita_medica">
-                      <input type="text" name="especialidad" id="especialidad" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
+                      <input type="text" name="especialidad" id="especialidad" class="form-control" disabled>
                     </div>
 
                     <div class="form-group col-md-6">
                       <label for="">Paciente</label>
-                      <input type="text" name="paciente" id="paciente" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
+                      <input type="text" name="paciente" id="paciente" class="form-control" disabled>
                     </div>
 
                     <div class="form-group col-md-6">
                       <label for="">Médico</label>
-                      <input type="text" name="medico" id="medico" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
+                      <input type="text" name="medico" id="medico" class="form-control" disabled>
                     </div>
                     
                     <div class="form-group col-md-6">

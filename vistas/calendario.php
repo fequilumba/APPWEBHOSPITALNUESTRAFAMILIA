@@ -9,7 +9,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 }else
 {
   require 'header.php';
-  if ($_SESSION['rol_idrol']==3 ||$_SESSION['rol_idrol']==1) {
+  if ($_SESSION['rol_idrol']==3 || $_SESSION['rol_idrol']==1) {
 ?>
 
 <!-- Content Wrapper. Contains page content -->

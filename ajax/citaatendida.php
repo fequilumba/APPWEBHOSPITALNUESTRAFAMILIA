@@ -4,6 +4,8 @@
     
     $citaatendida = new Citaatendida();
     $idusuario=$_SESSION['idpersona'];
+
+    //Estructuras condicionales de una sola línea
     $idtipo_examen= isset($_POST["idtipo_examen"])? limpiarCadena($_POST["idtipo_examen"]):"";
     $seleccita = isset($_POST["seleccita"])? limpiarCadena($_POST["seleccita"]):""; 
     $nombre= isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";

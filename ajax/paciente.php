@@ -1,21 +1,23 @@
 <?php
 session_start();
     require_once "../modelos/Paciente.php";
+
     $paciente = new Paciente();
-    $idasociado=$_SESSION['idpersona'];
-    $iduserrol=$_SESSION['rol_idrol'];
+    $idasociado = $_SESSION['idpersona'];
+    $iduserrol = $_SESSION['rol_idrol'];
+
     $idpersona = isset($_POST["idpersona"])? limpiarCadena($_POST["idpersona"]):""; 
-    $cedula= isset($_POST["cedula"])? limpiarCadena($_POST["cedula"]):"";
-    $nombres= isset($_POST["nombres"])? limpiarCadena($_POST["nombres"]):"";
-    $apellidos= isset($_POST["apellidos"])? limpiarCadena($_POST["apellidos"]):"";
+    $cedula = isset($_POST["cedula"])? limpiarCadena($_POST["cedula"]):"";
+    $nombres = isset($_POST["nombres"])? limpiarCadena($_POST["nombres"]):"";
+    $apellidos = isset($_POST["apellidos"])? limpiarCadena($_POST["apellidos"]):"";
     $email = isset($_POST["email"])? limpiarCadena($_POST["email"]):"";
-    $telefono= isset($_POST["telefono"])? limpiarCadena($_POST["telefono"]):"";
-    $direccion= isset($_POST["direccion"])? limpiarCadena($_POST["direccion"]):"";
-    $ciudad_residencia= isset($_POST["ciudad_residencia"])? limpiarCadena($_POST["ciudad_residencia"]):"";
-    $fecha_nacimiento= isset($_POST["fecha_nacimiento"])? limpiarCadena($_POST["fecha_nacimiento"]):""; 
-    $genero= isset($_POST["genero"])? limpiarCadena($_POST["genero"]):"";
-    $imagen=isset($_POST["imagen"])? limpiarCadena($_POST["imagen"]):"";
-    $estado= isset($_POST["estado"])? limpiarCadena($_POST["estado"]):"";
+    $telefono = isset($_POST["telefono"])? limpiarCadena($_POST["telefono"]):"";
+    $direccion = isset($_POST["direccion"])? limpiarCadena($_POST["direccion"]):"";
+    $ciudad_residencia = isset($_POST["ciudad_residencia"])? limpiarCadena($_POST["ciudad_residencia"]):"";
+    $fecha_nacimiento = isset($_POST["fecha_nacimiento"])? limpiarCadena($_POST["fecha_nacimiento"]):""; 
+    $genero = isset($_POST["genero"])? limpiarCadena($_POST["genero"]):"";
+    $imagen = isset($_POST["imagen"])? limpiarCadena($_POST["imagen"]):"";
+    $estado = isset($_POST["estado"])? limpiarCadena($_POST["estado"]):"";
 
     switch ($_GET["op"]) {
         case 'guardaryeditar':
@@ -35,15 +37,15 @@ session_start();
             if (empty($idpersona)) {
                 //hash SHA256 en la contrasenia
                 $pieces = explode(" ", $nombres); 
-                    $str=""; 
-                    foreach($pieces as $piece) 
-                    { 
-                        $str.=$piece[0]; 
-                    }  
-                    $contrasenia= $cedula . $str;
-                    $contraseniahash=hash("SHA256",$contrasenia);
+                $str=""; 
+                foreach($pieces as $piece) 
+                { 
+                    $str.=$piece[0]; 
+                }  
+                $contrasenia= $cedula . $str;
+                $contraseniahash=hash("SHA256",$contrasenia);
                     
-                    require_once "../modelos/Usuario.php";
+                require_once "../modelos/Usuario.php";
 
                 $usuario = new Usuario();
                 //Se realiza el llamado al método insertar de mi modelo Usuario.php

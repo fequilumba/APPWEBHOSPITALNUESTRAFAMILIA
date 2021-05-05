@@ -3,6 +3,8 @@
     require "../config/Conexion.php";
 
     class Perfil{
+
+        //Implementamos nuestro constructor
         public function __construct(){
             
         }

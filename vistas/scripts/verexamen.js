@@ -1,4 +1,4 @@
-var tabla
+var tabla;
 
 //FUNCIÓN QUE SE EJECUTA AL INICIO
 function init() {
@@ -27,7 +27,7 @@ function cancelarform(){
 
 //FUNCIÓN LISTAR VER EXÁMENES
 function listar(){
-    tabla=$('#tbllistadoe').dataTable({
+    tabla=$('#tblListadoExamenes').dataTable({
         "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
         "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
         dom: 'Bfrtip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
