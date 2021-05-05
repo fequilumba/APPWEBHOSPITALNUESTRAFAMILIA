@@ -2,12 +2,15 @@
    // Incluímos inicialmente la conexión a la base de datos
    require "../config/Conexion.php";
    class Verreceta{
+
+      //Implementamos nuestro constructor
       public function __construct(){
          
       }
 
       //Método que lista las recetas médicas en la vista del cliente, modulo visualizar opción Recetas
-      public function listar($idusuario){
+      public function listar($idusuario)
+      {
          $sql= "SELECT r.idreceta, e.nombre AS especialidad, CONCAT(p.nombres,' ',p.apellidos) AS paciente, 
          CONCAT(pm.nombres,' ',pm.apellidos) AS medico, cm.fecha_cita, h.hora AS hora_cita   
          FROM receta r
@@ -23,7 +26,8 @@
       }
 
       //Método que lista las recetas médicas en la vista del médico, modulo Visualizar opción Recetas
-      public function listarRecetaMedica($idpersonam){
+      public function listarRecetaMedica($idpersonam)
+      {
          $sql= "SELECT r.idreceta, e.nombre AS especialidad, CONCAT(p.nombres,' ',p.apellidos) AS paciente, 
          CONCAT(pm.nombres,' ',pm.apellidos) AS medico, cm.fecha_cita, h.hora AS hora_cita   
          FROM receta r
@@ -37,8 +41,9 @@
          return ejecutarConsulta($sql);
       }
 
-      ////Método que lista todas los pacientes que los médicos han dado al menos una receta médica, para el administrador en su módulo visualizar opcion Recetas
-      public function listarTodo(){
+      //Método que lista todas los pacientes que los médicos han dado al menos una receta médica, para el administrador en su módulo visualizar opcion Recetas
+      public function listarTodo()
+      {
          $sql= "SELECT r.idreceta, e.nombre AS especialidad, CONCAT(p.nombres,' ',p.apellidos) AS paciente, 
          CONCAT(pm.nombres,' ',pm.apellidos) AS medico, cm.fecha_cita, h.hora AS hora_cita   
          FROM receta r
@@ -93,5 +98,5 @@
          
          return ejecutarConsulta($sql);
       }
-   }
+   } //End class verReceta
 ?>

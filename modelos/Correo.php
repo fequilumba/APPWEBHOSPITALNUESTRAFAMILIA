@@ -1,5 +1,5 @@
 <?php
- class Correo{
+ class Correo {
      public function enviar($cedula, $nombres, $apellidos, $email){
         
 

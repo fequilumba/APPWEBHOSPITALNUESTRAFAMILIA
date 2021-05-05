@@ -24,7 +24,8 @@
                 "sEcho"=>1,//informacion para el datatable
                 "iTotalRecords"=>count($data),//enviamos el total registros al datatable
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
-                "aaData"=>$data);    
+                "aaData"=>$data); 
+                //Codificar el resultado utilizando json  
                 echo json_encode($results);    
             break;
             

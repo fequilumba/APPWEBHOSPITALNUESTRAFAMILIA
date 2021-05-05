@@ -28,7 +28,7 @@ function cancelarform(){
 
 //FUNCIÓN LISTAR VER RECETA
 function listar(){
-    tabla=$('#tbllistadoe').dataTable({
+    tabla=$('#tblListadoRecetas').dataTable({
         "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
         "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
         dom: 'Bfrtip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA

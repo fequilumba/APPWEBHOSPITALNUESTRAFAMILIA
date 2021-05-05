@@ -3,6 +3,8 @@
 require "../config/Conexion.php";
 
 class Citaatendida {
+
+    //Implementamos nuestro constructor
     public function __construct() {
         
     }

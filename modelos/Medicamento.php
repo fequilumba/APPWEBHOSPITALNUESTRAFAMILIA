@@ -3,11 +3,13 @@
     require "../config/Conexion.php";
 
     class Medicamento{
+
+        //Implementamos nuestro constructor
         public function __construct(){
             
         }
 
-        /*CRUD examen tipo imagen*/
+        /*CRUD medicamentos*/
         //Método para listar todos los medicamentos
         public function listar(){
             $sql= "SELECT * FROM medicamento";

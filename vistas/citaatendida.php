@@ -43,14 +43,6 @@ if(!isset($_SESSION["nombres"])){ //si la validable de sesion no existe.. signif
                   <tbody>
 
                   </tbody>
-                  <tfoot>
-                    <th>Especialidad</th>
-                    <th>Paciente</th>
-                    <th>Teléfono</th>
-                    <th>Fecha</th>
-                    <th>Hora</th>
-                    <th>Estado</th>
-                  </tfoot>
                 </table> <!-- .tbllistadocita --> 
               </div> <!-- .panel-body -->
 

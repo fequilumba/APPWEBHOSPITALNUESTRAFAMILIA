@@ -46,18 +46,6 @@
                   <tbody>
 
                   </tbody>
-                  <tfoot>
-                    <th>Acciones</th>
-                    <th>Cédula</th>
-                    <th>Nombres</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Dirección</th>
-                    <th>Ciudad</th>
-                    <th>Fecha Nacimiento</th>
-                    <th>Género</th>
-                    <th>Estado</th>
-                  </tfoot>
                 </table> <!-- .tbllistado -->
               </div><!-- /.panel-body table -->
 

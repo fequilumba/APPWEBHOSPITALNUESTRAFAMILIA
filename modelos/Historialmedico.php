@@ -3,6 +3,8 @@
    require "../config/Conexion.php";
 
    class Historialmedico{
+
+      //Implementamos nuestro constructor
       public function __construct(){
          
       }
@@ -39,8 +41,8 @@
 
       //Método que lista todos los pacientes con estado Atendido para la vista del Administrador
       public function listarTodo(){
-         $sql= "SELECT cm.idcita_medica, e.nombre AS especialidad, CONCAT(p.nombres,' ',p.apellidos) as paciente, 
-         CONCAT(pm.nombres,' ',pm.apellidos) as medico, cm.fecha_cita, h.hora as hora_cita, s.nombre as estado   
+         $sql= "SELECT cm.idcita_medica, e.nombre AS especialidad, CONCAT(p.nombres,' ',p.apellidos) AS paciente, 
+         CONCAT(pm.nombres,' ',pm.apellidos) AS medico, cm.fecha_cita, h.hora AS hora_cita, s.nombre AS estado   
          FROM cita_medica cm 
          INNER JOIN estado s ON cm.estado_idestado = s.idestado
          INNER JOIN especialidad e ON cm.especialidad_idespecialidad = e.idespecialidad
@@ -54,8 +56,8 @@
       //Método para mostrar información que se extraen de la base de datos del historial medico de los pacientes a través del icono fa-eye
       public function mostrar($idcita_medica)
       {
-         $sql= "SELECT cm.idcita_medica, e.nombre AS especialidad, CONCAT(p.nombres,' ',p.apellidos) as paciente, 
-         CONCAT(pm.nombres,' ',pm.apellidos) as medico, cm.diagnostico  
+         $sql= "SELECT cm.idcita_medica, e.nombre AS especialidad, CONCAT(p.nombres,' ',p.apellidos) AS paciente, 
+         CONCAT(pm.nombres,' ',pm.apellidos) AS medico, cm.diagnostico  
          FROM cita_medica cm 
          INNER JOIN estado s ON cm.estado_idestado = s.idestado
          INNER JOIN especialidad e ON cm.especialidad_idespecialidad = e.idespecialidad 

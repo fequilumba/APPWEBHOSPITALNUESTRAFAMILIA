@@ -3,6 +3,8 @@
  require "../config/Conexion.php";
 
     class Login{
+
+        //Implementamos nuestro constructor
         public function __construct(){
             
         }

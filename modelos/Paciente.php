@@ -3,6 +3,8 @@
     require "../config/Conexion.php";
 
     class Paciente{
+
+        //Implementamos nuestro constructor
         public function __construct()
         {
             
@@ -58,29 +60,32 @@
             return ejecutarConsulta($sql);
         }
 
-        //Método para listar pacientes con el id asociado a la cuenta del cliente
-        public function listar($idasociado){
-            $sql= "SELECT p.`idpersona`, p.`cedula`, CONCAT(p.`nombres`, ' ' ,p.`apellidos`) as nombres,p.`email`, p.`telefono`,p.`direccion`,
-            p.`ciudad_residencia`, p.`fecha_nacimiento`,p.`genero`, p.`estado` 
-            FROM `persona` p  
-            INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` AND pr.`rol_idrol`=4 AND p.`idasociado`='$idasociado'";
+        //Método para listar solo pacientes con el id asociado a la cuenta del cliente
+        public function listar($idasociado)
+        {
+            $sql= "SELECT p.idpersona, p.cedula, CONCAT(p.nombres,' ',p.apellidos) AS nombres, p.email, p.telefono, p.direccion, p.ciudad_residencia, p.fecha_nacimiento, p.genero, p.estado 
+            FROM persona p  
+            INNER JOIN persona_has_rol pr ON p.idpersona = pr.persona_idpersona AND pr.rol_idrol = 4 AND p.idasociado = '$idasociado'";
 
             return ejecutarConsulta($sql);
         }
 
-        public function selectPaciente($idasociado2){
-            $sql= "SELECT p.`idpersona`, CONCAT(p.`cedula`, ' - ', p.`nombres`, ' ' ,p.`apellidos`) as nombres 
-            FROM `persona` p
-            INNER JOIN `persona_has_rol` pr ON p.`idpersona`=pr.`persona_idpersona` 
-            AND pr.`rol_idrol`=4 and p.estado=1
-            AND p.`idasociado`='$idasociado2'";
+        //Método que selecciona todos los pacientes con estado "activo" dentro del modal calendario, al momento de agendar en la cuenta del Cliente asociado a su paciente
+        public function selectPaciente($idasociado2)
+        {
+            $sql= "SELECT p.idpersona, CONCAT(p.cedula,' - ', p.nombres,' ',p.apellidos) AS nombres 
+            FROM persona p
+            INNER JOIN persona_has_rol pr ON p.idpersona = pr.persona_idpersona 
+            AND pr.rol_idrol = 4 AND p.estado = 1
+            AND p.idasociado = '$idasociado2'";
 
             return ejecutarConsulta($sql);
         }
         
-        //Método que selecciona todos los pacientes (rol=4) y con estado 1="activo" retorna la respuesta a ajax archivo cita.php op selectPaciente
-        public function selectTodosPacientes(){
-            $sql= "SELECT p.idpersona, CONCAT(p.cedula,' - ', p.nombres,' ',p.apellidos) as nombres 
+        //Método que selecciona todos los pacientes con estado "activo" dentro del modal calendario, al momento de agendar la cita en la vista del Administrador
+        public function selectTodosPacientes()
+        {
+            $sql= "SELECT p.idpersona, CONCAT(p.cedula,' - ', p.nombres,' ',p.apellidos) AS nombres 
             FROM persona p
             INNER JOIN persona_has_rol pr ON p.idpersona = pr.persona_idpersona
             AND pr.rol_idrol = 4 and p.estado = 1";
@@ -89,7 +94,8 @@
         }
 
         //Método que selecciona todos los pacientes (rol=4) y con estado 1="activo" retorna la respuesta a ajax archivo cita.php op selectPaciente
-        public function selectPacienteM(){
+        public function selectPacienteM()
+        {
             $sql= "SELECT p.idpersona, CONCAT(p.cedula,' - ', p.nombres,' ', p.apellidos) as nombres 
             FROM persona p
             INNER JOIN persona_has_rol pr ON p.idpersona = pr.persona_idpersona

@@ -82,32 +82,8 @@ function calendario() {
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
-      events: '../ajax/calendario.php?op=listarCitas'
-      ,
-  
-     /* eventClick:'../ajax/cita.php?op=mostrarCita', function (data,events) {
-        data = JSON.parse(data);
-          $("#especialidad_idespecialidad").val(data.especialidad_idespecialidad);
-          $("#persona_idpersona").val(data.persona_idpersona);
-          $("#fecha_cita").val(data.start);
-          $("#motivo_consulta").val(data.motivo_consulta);
-          $("#horario_idhorario").val(data.horario_idhorario);
-          $("#idcita_medica").val(events.id);
-      }
-      function mostrar(idcita_medica){
-        $.post("../ajax/especialidad.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status)
-        {
-            data = JSON.parse(data);
-            $("#modalCitas").modal();
-            $("#especialidad_idespecialidad").val(data.especialidad_idespecialidad);
-            $("#persona_idpersona").val(data.persona_idpersona);
-            $("#fecha_cita").val(data.start);
-            $("#motivo_consulta").val(data.motivo_consulta);
-            $("#horario_idhorario").val(data.horario_idhorario);
-            $("#idcita_medica").val(data.idcita_medica);  
-    
-        });
-    },*/
+      events: '../ajax/calendario.php?op=listarCitas',
+
       dateClick: function(info) {
         var date = new Date(info.date);
         var hoy = new Date();
@@ -120,8 +96,7 @@ function calendario() {
           bootbox.alert({
             message: "No se puede agendar citas en una fecha vencida"
           });
-        }
-    
+        }  
       },
 
       hiddenDays: [0,6]

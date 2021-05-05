@@ -9,7 +9,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
 {
   require 'header.php';
 
-  if ($_SESSION['rol_idrol']==3||$_SESSION['rol_idrol']==1||$_SESSION['rol_idrol']==2) {
+  if ($_SESSION['rol_idrol']==3 || $_SESSION['rol_idrol']==1 || $_SESSION['rol_idrol']==2) {
     
 ?>
 
@@ -34,7 +34,7 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
           <div class="card">
             <div class="card-body">
               <div class="panel-body table-responsive" id="listadoregistros">
-                <table id="tbllistadoe" class="table table-striped table-bordered table-hover dt-responsive DT">
+                <table id="tblListadoExamenes" class="table table-striped table-bordered table-hover dt-responsive DT">
                   <thead>
                     <th>Acción</th>
                     <th>Especialidad</th>
@@ -54,23 +54,23 @@ if(!isset($_SESSION["nombres"])) //si la validable de sesion no existe.. signifi
                     <div class="form-group col-md-6">
                       <label for="">Especialidad</label>
                       <input type="hidden" name="idpedido_examen" id="idpedido_examen">
-                      <input type="text" name="especialidad" id="especialidad" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
+                      <input type="text" name="especialidad" id="especialidad" class="form-control" disabled>
                     </div>
                     
                     <div class="form-group col-md-6">
                       <label for="">Paciente</label>
-                      <input type="text" name="paciente" id="paciente" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
+                      <input type="text" name="paciente" id="paciente" class="form-control" disabled>
                     </div>
                     
                     <div class="form-group col-md-6">
                       <label for="">Médico</label>
-                      <input type="text" name="medico" id="medico" class="form-control" maxlength="45" placeholder="Nombre especialidad" disabled>
+                      <input type="text" name="medico" id="medico" class="form-control" disabled>
                     </div>
                   </div> <!-- .form-row -->
                   
                   <div class="panel-body table-responsive">
                     <div class="form-group col-md-6 col-md-12" >
-                      <table id="examenes" class="table table-striped table-bordered table-hover dt-responsive DT">
+                      <table id="examenes" class="table table-striped table-bordered dt-responsive DT">
                         <thead style="background-color:#A9D0F5">
                           <th>Nombre</th>
                           <th>Tipo</th>

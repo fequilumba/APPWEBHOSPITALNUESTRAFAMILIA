@@ -81,7 +81,7 @@
         break;
 
         case 'mostrar':
-            $rspta=$medico->mostrar($idpersona);
+            $rspta = $medico->mostrar($idpersona);
             echo json_encode($rspta);
         break;
 

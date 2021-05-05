@@ -1,6 +1,8 @@
 <?php
     require_once "../modelos/Especialidad.php";
     $especialidad = new Especialidad();
+
+    //Estructuras condicionales de una sola línea
     $idespecialidad = isset($_POST["idespecialidad"])? limpiarCadena($_POST["idespecialidad"]):""; 
     $nombre= isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
     $estado= isset($_POST["estado"])? limpiarCadena($_POST["estado"]):"";

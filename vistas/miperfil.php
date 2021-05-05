@@ -6,7 +6,7 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
   header("Location: login.php");
 } else {
   require 'header.php';
-  if ($_SESSION['rol_idrol']==1||$_SESSION['rol_idrol']==2||$_SESSION['rol_idrol']==3) {
+  if ($_SESSION['rol_idrol']==1 || $_SESSION['rol_idrol']==2 || $_SESSION['rol_idrol']==3) {
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -33,7 +33,7 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
               <div class="panel-body table-responsive" id="listadoregistros">
                 <table id="tbllistado" class="table table-striped table-bordered table-hover dt-responsive DT nowrap">
                   <thead>
-                    <th>Opciones</th>
+                    <th>Acciones</th>
                     <th>Cédula</th>
                     <th>Nombres</th>
                     <th>Email</th>
@@ -44,15 +44,6 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
                   <tbody>
 
                   </tbody>
-                  <tfoot>
-                    <th>Opciones</th>
-                    <th>Cédula</th>
-                    <th>Nombres</th>
-                    <th>Email</th>
-                    <th>teléfono</th>
-                    <th>Foto</th>
-                    <th>Estado</th>
-                  </tfoot>
                 </table>
               </div> <!-- panel-body datetable -->
 
@@ -60,39 +51,39 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
                 <form name="formulario" id="formulario" method="POST">
                   
                   <div class="form-row">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Nombres</label>
                       <input type="hidden" name="idpersona" id="idpersona">
                       <input type="hidden" name="cedula" id="cedula" class="form-control" onkeypress="return soloLetras(event)"  maxlength="45" placeholder="Nombres" required>
                       <input type="text" name="nombres" id="nombres" class="form-control" onkeypress="return soloLetras(event)"  maxlength="45" placeholder="Nombres" required>
-                    </div> <!-- /.form-group -->
+                    </div>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Apellidos</label>
                       <input type="text" name="apellidos" id="apellidos" class="form-control" onkeypress="return soloLetras(event)"  maxlength="45" placeholder="Apellidos"required>
-                    </div> <!-- /.form-group -->
+                    </div>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Email</label>
                       <input type="text" name="email" id="email" maxlength="45" class="form-control"  placeholder="email@address.com" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required>
-                    </div> <!-- /.form-group -->
+                    </div>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Teléfono</label>
                       <input type="text" name="telefono" id="telefono" maxlength="10" minlength="10" class="form-control" onkeypress="return soloNumeros(event)" placeholder="Teléfono" required>
-                    </div> <!-- /.form-group -->
+                    </div>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Dirección</label>
                       <input type="text" name="direccion" id="direccion" class="form-control"  maxlength="45" placeholder="Dirección" required>
-                    </div> <!-- /.form-group -->
+                    </div>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Ciudad</label>
                       <input type="text" name="ciudad_residencia" id="ciudad_residencia" class="form-control" onkeypress="return soloLetras(event)" maxlength="45" placeholder="Ciudad" required>
-                    </div> <!-- /.form-group -->
+                    </div>
                                               
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="form-group col-md-6 ">
                       <label>Imagen:</label> 
                       <div class="file-select inner-addon left-addon" id="src-file1" >
                         <i class="glyphicon fas fa-camera-retro"></i>
@@ -101,16 +92,16 @@ if(!isset($_SESSION["nombres"])) { //si la validable de sesion no existe.. signi
                       <br>
                       <input type="hidden" name="imagenactual" id="imagenactual">
                       <img src="" width="150px" height="120px" id="imagenmuestra">
-                    </div> <!-- /.form-group -->
+                    </div>
                   </div> <!-- /.form-row -->
                   
                   <div class="form-row">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Contraseña</label>
                       <input type="password" name="contrasenia" id="contrasenia" class="form-control"  minlength="8" placeholder="********">
-                    </div> <!-- /.form-group -->
+                    </div>
                                                 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-md-6">
                       <label for="">Confirmar Contraseña</label>
                       <input type="password" name="confircontrasenia" id="confircontrasenia" class="form-control" minlength="8" placeholder="********">
                     </div>

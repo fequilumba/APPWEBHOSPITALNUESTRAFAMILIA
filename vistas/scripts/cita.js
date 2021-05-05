@@ -4,7 +4,8 @@ var tabla;
 function init() {
     mostrarform(false);
     listar();
-    $("#formulariocita").on("submit",function(e) {
+    $("#formulariocita").on("submit",function(e) 
+    {
         guardaryeditar(e);
     })
 
@@ -18,7 +19,8 @@ function init() {
 
 
 //FUNCIÓN LIMPIAR
-function limpiar(){
+function limpiar()
+{
     $("#idcita_medica").val("");
     $("#especialidad_idespecialidad").val("");
     $("#personaPaciente_idpersona").val("");
@@ -31,9 +33,11 @@ function limpiar(){
 
 
 //FUNCIÓN MOSTRAR FORMULARIO
-function mostrarform(flag){
+function mostrarform(flag)
+{
     limpiar();
-    if(flag) {
+    if(flag) 
+    {
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
         $("#btnGuardar").prop("disabled",false);
@@ -49,7 +53,8 @@ function mostrarform(flag){
 
 
 //FUNCIÓN CANCELAR FORM
-function cancelarform(){
+function cancelarform()
+{
     limpiar();
     mostrarform(false);
 }
@@ -60,7 +65,7 @@ function listar(){
     tabla=$('#tbllistadocita').dataTable({
         "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
         "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
-        dom: 'Bfrtip', //DEFINIR LOS PARAMETROS DEL CONTROL DE TABLA
+        dom: 'Bfrtip', //DEFINIR LOS ELEMENTOS DEL CONTROL DE TABLA
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
@@ -69,7 +74,7 @@ function listar(){
             'copyHtml5',
             'excelHtml5',
             'csvHtml5',
-            'pdf',
+            'pdf'
         ],
         "ajax":{
             url: '../ajax/cita.php?op=listar',
@@ -98,11 +103,10 @@ function guardaryeditar(e) {
         contentType: false,
         processData: false,
 
-        success: function(datos){
-            
+        success: function(datos)
+        {
             bootbox.alert(datos);
             mostrarform(false);
-            //alertify.success('Cita registrada');
             location.reload();
         }
     });
@@ -111,7 +115,8 @@ function guardaryeditar(e) {
 
 
 //FUNCIÓN MOSTRAR CITA
-function mostrar(idcita_medica){
+function mostrar(idcita_medica)
+{
     $.post("../ajax/cita.php?op=mostrar",{idcita_medica : idcita_medica}, function(data, status)
     {
         data = JSON.parse(data);
@@ -122,8 +127,6 @@ function mostrar(idcita_medica){
         $("#diagnostico").val(data.diagnostico);
         $("#sintomas").val(data.sintomas);
         $("#motivo_consulta").val(data.motivo_consulta);
-        //$("#estado_idestado").val(data.estado_idestado);
-        //$("#estado_idestado").selectpicker('refresh');
         $("#idcita_medica").val(data.idcita_medica);
     });
 }

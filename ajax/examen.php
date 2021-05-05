@@ -11,23 +11,26 @@
     switch ($_GET["op"]) {
         /*Operaciones de tipo de examen */
         case 'guardaryeditarExamenTipo':
-                if (empty($idtipo_examen)) {
-                    $rspta=$examentipo->insertarExamenTipo($nombre,$descripcion);
-                    echo $rspta ? "Examen registrado" : "No se pudo registrar el examen";
+            if (empty($idtipo_examen)) 
+            {
+                $rspta = $examentipo->insertarExamenTipo($nombre,$descripcion);
+                echo $rspta ? "Examen registrado" : "No se pudo registrar el examen";
                     
-                }else{
-                    $rspta=$examentipo->editarExamenTipo($idtipo_examen, $nombre,$descripcion);
-                    echo $rspta ? "Examen actualizado" : "No se pudo actualizar el examen";                
-                }
-            break;
+            }else{
+                $rspta = $examentipo->editarExamenTipo($idtipo_examen, $nombre,$descripcion);
+                echo $rspta ? "Examen actualizado" : "No se pudo actualizar el examen";                
+            }
+        break;
+
         case 'mostrarExamenTipo':
-                $rspta=$examentipo->mostrarExamenTipo($idtipo_examen);
-                echo json_encode($rspta);
-            break;
+            $rspta = $examentipo->mostrarExamenTipo($idtipo_examen);
+            echo json_encode($rspta);
+        break;
+
         case 'listarExamenTipo':
-            $rspta=$examentipo->listarExamenTipo();
+            $rspta = $examentipo->listarExamenTipo();
             $data = Array();
-            while ($reg=$rspta->fetch_object()) {
+            while ($reg = $rspta->fetch_object()) {
                 $data[]= array(
                     "0"=> ($reg->estado) ? 
                     '<div class="text-center">
@@ -52,68 +55,70 @@
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data);    
                 echo json_encode($results);   
-            break;
-            /*case 'eliminarExamenImagen':
-                $rspta=$examenimagen->eliminarExamenImagen($idtipo_examen);
-                echo $rspta ? "Cita eliminada" : "No se pudo eliminar la cita";
-            break;*/
-            case 'desactivar':
-                $rspta=$examentipo->desactivarExamenTipo($idtipo_examen);
-                echo $rspta ? "Tipo de examen desactivado" : "No se pudo desactivar el tipo de examen";
-    
-                break;
-            case 'activar':
-                $rspta=$examentipo->activarExamenTipo($idtipo_examen);
-                echo $rspta ? "Tipo de examen activado" : "No se pudo activar el tipo de examen";
-    
-                break;
+        break;
+            
+        case 'desactivar':
+            $rspta = $examentipo->desactivarExamenTipo($idtipo_examen);
+            echo $rspta ? "Tipo de examen desactivado" : "No se pudo desactivar el tipo de examen";
+        break;
 
-            /***********************
-             * *                        * *
-             * *CRUD examen             * *
-             * *                        * *
-             * *************************/
-            case 'guardaryeditarExamen':
-                if (empty($idexamen)) {
-                    $rspta=$examentipo->insertarExamen($nombree,$tipo_examen_idtipo_examen);
-                    echo $rspta ? "Examen registrado" : "No se pudo registrar el examen";
+        case 'activar':
+            $rspta = $examentipo->activarExamenTipo($idtipo_examen);
+            echo $rspta ? "Tipo de examen activado" : "No se pudo activar el tipo de examen";
+        break;
+
+            /**************************
+             * *                    * *
+             * *CRUD examen         * *
+             * *                    * *
+            * *************************/
+        case 'guardaryeditarExamen':
+            if (empty($idexamen)) 
+            {
+                $rspta = $examentipo->insertarExamen($nombree,$tipo_examen_idtipo_examen);
+                echo $rspta ? "Examen registrado" : "No se pudo registrar el examen";
                     
-                }else{
-                    $rspta=$examentipo->editarExamen($idexamen, $nombree,$tipo_examen_idtipo_examen);
-                    echo $rspta ? "Examen actualizado" : "No se pudo actualizar el examen";                
-                }
-            break;
+            } else {
+                $rspta = $examentipo->editarExamen($idexamen, $nombree,$tipo_examen_idtipo_examen);
+                echo $rspta ? "Examen actualizado" : "No se pudo actualizar el examen";                
+            }
+        break;
+
         case 'mostrarExamen':
-                $rspta=$examentipo->mostrarExamen($idexamen);
-                echo json_encode($rspta);
-            break;
+            $rspta = $examentipo->mostrarExamen($idexamen);
+            echo json_encode($rspta);
+        break;
+
         case 'listarExamen':
-            $rspta=$examentipo->listarExamen();
+            $rspta = $examentipo->listarExamen();
             $data = Array();
-            while ($reg=$rspta->fetch_object()) {
+            while ($reg = $rspta->fetch_object()) {
                 $data[]= array(
-                    "0"=>'<div class="text-center"><button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idexamen.')" title="Editar Examen"><li class="fa fa-pencil-alt"></li></button></div>',
+                    "0"=>'<div class="text-center">
+                            <button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idexamen.')" title="Editar Examen"><li class="fa fa-pencil-alt"></li></button>
+                        </div>',
                         
                     "1"=>$reg->nombre,
                     "2"=>$reg->tipo
                 );
             }
             $results = array(
-                "sEcho"=>1,//informacion para el datatable
-                "iTotalRecords"=>count($data),//enviamos el total registros al datatable
-                "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
-                "aaData"=>$data);    
-                echo json_encode($results);   
-            break;
+            "sEcho"=>1,//informacion para el datatable
+            "iTotalRecords"=>count($data),//enviamos el total registros al datatable
+            "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
+            "aaData"=>$data);    
+            echo json_encode($results);   
+        break;
 
-            case 'selectExamenTipo':
-                $rspta = $examentipo->selectExamenTipo();
-                while ($reg = $rspta->fetch_object()) {
-                    echo '<option value='.$reg->idtipo_examen.'>'
-                            .$reg->nombre.
-                          '</option>';
-                }
-                break;
+        case 'selectExamenTipo':
+            $rspta = $examentipo->selectExamenTipo();
+            while ($reg = $rspta->fetch_object()) 
+            {
+                echo '<option value='.$reg->idtipo_examen.'>'
+                        .$reg->nombre.
+                    '</option>';
+            }
+        break;
     }
 
 ?>

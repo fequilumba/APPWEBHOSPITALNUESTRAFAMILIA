@@ -2,6 +2,7 @@
 session_start();
     require_once "../modelos/Miperfil.php";
     $perfil = new Perfil();
+
     $idusuario=$_SESSION['idusuario'];
     $idpersona = isset($_POST["idpersona"])? limpiarCadena($_POST["idpersona"]):""; 
     $cedula= isset($_POST["cedula"])? limpiarCadena($_POST["cedula"]):"";
@@ -78,7 +79,9 @@ session_start();
             $data = Array();
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
-                    "0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')"><li class="fa fa-edit"></li></button>',
+                    "0"=>'<div class="text-center">
+                            <button class="btn btn-warning btn-sm" onclick="mostrar('.$reg->idpersona.')" title="Editar Mi Perfil"><li class="fa fa-edit"></li></button>
+                        </div>',
                         "1"=>$reg->cedula,
                         "2"=>$reg->nombres,
                         "3"=>$reg->email,
