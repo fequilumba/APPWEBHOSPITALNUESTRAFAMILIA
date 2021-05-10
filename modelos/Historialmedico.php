@@ -48,7 +48,7 @@
          INNER JOIN especialidad e ON cm.especialidad_idespecialidad = e.idespecialidad
          INNER JOIN persona p ON p.idpersona = cm.personaPaciente_idpersona
          INNER JOIN persona pm ON pm.idpersona = cm.personaMedico_idpersona
-         INNER JOIN horario h ON cm.horario_idhorario = h.idhorario AND cm.estado_idestado = 2
+         INNER JOIN horario h ON cm.horario_idhorario = h.idhorario AND cm.estado_idestado IN (2,3)
          ORDER BY cm.idcita_medica DESC";
          return ejecutarConsulta($sql);
       }

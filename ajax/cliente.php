@@ -24,13 +24,15 @@ session_start();
     switch ($_GET["op"]) {
 
         case 'guardaryeditar':
-            if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name'])) {
+            if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name'])) 
+            {
                 $imagen=$_POST["imagenactual"];
             } else {
                 $ext = explode(".", $_FILES["imagen"]["name"]);
-                if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png") {
-                    $imagen = round(microtime(true)) . '.' . end($ext);
-                    move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/usuarios/" . $imagen);
+                if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png")  //Unicamente se permite imagenes jpg, jpeg, png
+                {
+                    $imagen = round(microtime(true)) . '.' . end($ext); //el nombre de la imagen se renombrara con microtime y no se repita la imagen
+                    move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/usuarios/" . $imagen); //subir o mover imagen y a que ruta se va a subir
                 }
             }
 

@@ -27,7 +27,7 @@
         //metodo para editar o actualizar especialidad
         public function editar($idespecialidad, $nombre)
         {
-            $sql= "UPDATE especialidad SET nombre = '$nombre' WHERE especialidad.idespecialidad = '$idespecialidad'";
+            $sql= "UPDATE especialidad SET nombre = '$nombre' WHERE idespecialidad = '$idespecialidad'";
             return ejecutarConsulta($sql);
         }
 
@@ -53,13 +53,13 @@
 
         //Método que selecciona todas las especialidades con estado activo = 1
         public function selectEspecialidad(){
-            $sql= "SELECT * FROM especialidad WHERE especialidad.estado = 1 ";
+            $sql= "SELECT * FROM especialidad WHERE estado = '1'";
             return ejecutarConsulta($sql);
         }
 
-        //Método que lista 
+        //Método que lista todas las especialidades con estado activo
         public function listarEspecialidad(){
-            $sql= "SELECT * FROM especialidad WHERE especialidad.estado = 1";
+            $sql= "SELECT * FROM especialidad WHERE estado = '1'";
             return ejecutarConsulta($sql);
         }
 

@@ -23,8 +23,7 @@ session_start();
                 
             } else {
             
-                $rspta = $calendario->editar($idcita_medica,$especialidad_idespecialidad,$personaPaciente_idpersona,$personaMedico_idpersona, 
-                $fecha_cita, $motivo_consulta);
+                $rspta = $calendario->editar($idcita_medica, $especialidad_idespecialidad, $personaPaciente_idpersona, $personaMedico_idpersona, $fecha_cita, $motivo_consulta);
                 echo $rspta ? "Cita registrada" : "No se pudo registrar la cita";                
             }
         break;

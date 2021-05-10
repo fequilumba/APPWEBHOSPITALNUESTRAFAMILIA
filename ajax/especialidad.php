@@ -9,32 +9,40 @@
     
     switch ($_GET["op"]) {
         case 'guardaryeditar':
-                if (empty($idespecialidad)) {
-                    $rspta=$especialidad->insertar($nombre);
-                    echo $rspta ? "Especialidad registrada" : "No se pudo registrar la especialidad";
+            if (empty($idespecialidad)) {
+                $rspta=$especialidad->insertar($nombre);
+                echo $rspta ? "Especialidad registrada" : "No se pudo registrar la especialidad";
                     
-                }else{
-                    $rspta=$especialidad->editar($idespecialidad, $nombre);
-                    echo $rspta ? "Especialidad actualizada" : "No se pudo actualizar la especialidad";                
-                }
-            break;
+            }
+            else {
+                $rspta=$especialidad->editar($idespecialidad, $nombre);
+                echo $rspta ? "Especialidad actualizada" : "No se pudo actualizar la especialidad";                
+            }
+        break;
+
         case 'desactivar':
             $rspta=$especialidad->desactivar($idespecialidad);
             echo $rspta ? "Especialidad desactivada" : "No se pudo desactivar la especialidad";
 
-            break;
+        break;
+
         case 'activar':
             $rspta=$especialidad->activar($idespecialidad);
             echo $rspta ? "Especialidad activada" : "No se pudo activar la especialidad";
 
-            break;
+        break;
+
         case 'mostrar':
-                $rspta=$especialidad->mostrar($idespecialidad);
-                echo json_encode($rspta);
-            break;
+            $rspta=$especialidad->mostrar($idespecialidad);
+            //Codificar el resultado utilizando json
+            echo json_encode($rspta);
+        break;
+
         case 'listar':
             $rspta=$especialidad->listar();
+            //Vamos a declarar un array
             $data = Array();
+            
             while ($reg=$rspta->fetch_object()) {
                 $data[]= array(
                     "0"=> ($reg->estado) ? 
@@ -57,7 +65,7 @@
                 "iTotalDisplayRecords"=>count($data),//enviamos el total registros a visualizar
                 "aaData"=>$data);    
                 echo json_encode($results);   
-            break;
+        break;
     }
 
 ?>
