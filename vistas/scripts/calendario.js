@@ -98,6 +98,10 @@ function calendario() {
           });
         }  
       },
+      
+      /*eventClick: function(event, jsEvent, view){
+        $('#modalCitas').modal(); //hay que verificar para que traiga los datos a editar
+      },*/
 
       hiddenDays: [0,6]
     }); // FIN EVENLISTENER

@@ -17,7 +17,7 @@
                 echo $rspta ? "Examen registrado" : "No se pudo registrar el examen";
                     
             }else{
-                $rspta = $examentipo->editarExamenTipo($idtipo_examen, $nombre,$descripcion);
+                $rspta = $examentipo->editarExamenTipo($idtipo_examen, $nombre, $descripcion);
                 echo $rspta ? "Examen actualizado" : "No se pudo actualizar el examen";                
             }
         break;

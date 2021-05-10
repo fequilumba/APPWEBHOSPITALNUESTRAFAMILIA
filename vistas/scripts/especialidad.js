@@ -41,7 +41,8 @@ function cancelarform() {
 
 
 // FUNCIÓN LISTAR
-function listar() {
+function listar() 
+{
     tabla=$('#tbllistadoe').dataTable({
         "aProcessing":true, //ACTIVAR EL PROCESAMIENTO DEL DATATABLE
         "aServerSide": true, //PAGINACIÓN Y FILTRADO REALIZADO POR EL SERVIDOR
@@ -95,8 +96,9 @@ function guardaryeditar(e) {
 // FUNCIÓN MOSTRAR ESPECIALIDAD
 function mostrar(idespecialidad) {
     $.post("../ajax/especialidad.php?op=mostrar",{idespecialidad : idespecialidad}, function(data, status) {
-        data = JSON.parse(data);
+        data = JSON.parse(data); //Lo que recivimos de ../ajax/especialidad.php?op=mostrar, lo convertimos a un objeto javaScript
         mostrarform(true);
+        
         $("#nombre").val(data.nombre)
         $("#idespecialidad").val(data.idespecialidad)
     });

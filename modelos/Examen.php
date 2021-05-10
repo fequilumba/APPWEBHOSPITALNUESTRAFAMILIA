@@ -10,7 +10,7 @@
         }
 
         //Metodo para insertar tipo examen
-        public function insertarExamenTipo($nombre,$descripcion)
+        public function insertarExamenTipo($nombre, $descripcion)
         {
             $sql= "INSERT INTO tipo_examen (nombre, descripcion, estado) 
             VALUES ('$nombre','$descripcion','1')";
@@ -18,10 +18,10 @@
         }
 
         //metodo para editar o actualizar el tipo examen
-        public function editarExamenTipo($idtipo_examen,$nombre,$descripcion)
+        public function editarExamenTipo($idtipo_examen, $nombre, $descripcion)
         {
-            $sql= " UPDATE tipo_examen ex SET ex.nombre = '$nombre', ex.descripcion = '$descripcion' 
-                    WHERE ex.idtipo_examen = '$idtipo_examen'";
+            $sql= " UPDATE tipo_examen SET nombre = '$nombre', descripcion = '$descripcion' 
+                    WHERE idtipo_examen = '$idtipo_examen'";
             return ejecutarConsulta($sql);
         }
 
@@ -70,7 +70,7 @@
         //metodo para editar o actualizar especialidad
         public function editarExamen($idexamen, $nombree, $tipo_examen_idtipo_examen)
         {
-            $sql= " UPDATE examen e SET e.nombre = '$nombree', e.tipo_examen_idtipo_examen = '$tipo_examen_idtipo_examen' 
+            $sql= "UPDATE examen e SET e.nombre = '$nombree', e.tipo_examen_idtipo_examen = '$tipo_examen_idtipo_examen' 
             WHERE e.idexamen = '$idexamen'";
             
             return ejecutarConsulta($sql);
@@ -96,9 +96,9 @@
         //Método para listar los tipos de exámenes
         public function selectExamenTipo()
         {
-            $sql= "SELECT te.idtipo_examen, te.nombre 
-                    FROM tipo_examen te 
-                    WHERE te.estado = 1";
+            $sql= "SELECT idtipo_examen, nombre 
+                    FROM tipo_examen
+                    WHERE estado = 1";
             return ejecutarConsulta($sql);
         }
 

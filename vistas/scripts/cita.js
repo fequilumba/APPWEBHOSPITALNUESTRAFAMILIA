@@ -105,7 +105,7 @@ function guardaryeditar(e) {
 
         success: function(datos)
         {
-            bootbox.alert(datos);
+            alert(datos);
             mostrarform(false);
             location.reload();
         }
