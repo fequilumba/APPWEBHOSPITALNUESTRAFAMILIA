@@ -263,7 +263,7 @@
             $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; //
  
             if(mail($dest,$asunto,$cuerpo,$headers)){
-                echo 'Las credenciales de acceso han sido enviadas al correo el usuario registrado';
+                echo 'Las credenciales de acceso han sido enviadas al correo del usuario registrado.'."\n";
             }else{
                 echo 'Hubo un error al enviar las credenciales a su correo';
             }
@@ -525,9 +525,9 @@ public function cambiarContrasenia($cedula,$contrasenia, $nombres, $apellidos, $
             $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; //
  
             if(mail($dest,$asunto,$cuerpo,$headers)){
-                echo 'Las credenciales de acceso han sido enviadas al correo el usuario registrado';
+                echo 'Las credenciales de acceso han sido enviadas al correo del usuario registrado.'."\n";
             }else{
-                echo 'Hubo un error al enviar las credenciales a su correo';
+                echo 'Hubo un error al enviar las credenciales a su correo.'."\n";
             }
      }
 
