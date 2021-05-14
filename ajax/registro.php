@@ -45,6 +45,8 @@ switch ($_GET["op"]){
         $contrasenia = $cedula . $str;
        	$contraseniahash = hash("SHA256", $contrasenia);
 		if (empty($idusuario)){
+			require_once "../modelos/Usuario.php";
+			$usuario = new Usuario();
 			$rspta = $usuario->insertar($cedula, $contraseniahash);
 			$iduser = $rspta;
 
